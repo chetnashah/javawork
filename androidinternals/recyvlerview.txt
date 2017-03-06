@@ -1,0 +1,76 @@
+------------------------ ViewGroup --------------------------
+Understanding detaching vs removing in ViewGroup :
+
+detach : detaching should only be temporary and reattachment or
+removal should happen within same drawing cycle as detachment
+When a view is detached, its parent link is null and it 
+cannot be retrieved by a call to getChildAt(int), 
+All detach methods only call removeFromArray(index), and notification/onDetached methods on child are not called.
+
+attach :  Attaches a view to viewgroup. Attaching a view
+assigns viewgroup as parent and sets layout params and
+puts view in list mChildren so that it can be retrieved using
+getChildrenAt(int)
+
+removeDetachedView(View child) : Finishes removal of detached view.
+this will trigger child.dispatchDetachedFromWindow. This is the actual point when detachedfromwindow is called on the child view.
+
+All addView methods lead to addViewInner.
+
+In a viewgroup, addViewInner sets up child's mParent to this,
+and removeFromArray, sets child's mParent = null.
+attachViewToParent also sets up childs mParent to this.
+
+------------------------------- RecyclerView -------------------
+The primary class of interaction is viewholder which is a static nested class.
+RecyclerView Layoutparams is also a static nested class.
+
+Recyclerview primarily deals in terms of viewholder
+
+Adapter is the primary generator of views for the first time. via oncreateViewHolder.
+The viewholder recieves the itemView from the first time from onCreateViewHolder method of the adapter.
+
+there is this cyclic chanin of references, where all of the three can be reached from each other. 
+ViewHolder <-> ItemView <-> LayoutParams.
+itemView.getLayoutParams() // public
+layoutParams.mViewHolder // package private property
+viewHolder.itemView // public
+
+Scrap views vs recycled views : 
+Scrap views and recycled views both indicate views that may be dirty and can be reusd with/without binding, difference being, scrap views may still be attached
+to parent recyclerview, where as recycled views are mostly not attached to the parent recyclerview, but only just initialized templates (saving time on inflation).
+
+getViewForPosition :
+primary API for outside world to get views for a particular position.
+At the end of this call, the view would have been properly allocated, bound with
+correct data as per position. Note, they may or maynot have been added to 
+the recyclerview yet.
+It looks for view in scrap by position.
+ If not found , look for scrap by Id, If it has stableIds
+If not found in scrap, take a garbage templateview from recycler pool.
+If nothing was available from recycler pool, ask adapter to make viewholder via
+oncreate viewholder.
+No matter where the viewholder came from in above, it will be bound using bindviewholder.
+Setup layoutparams to point to the viewholder and return holder.itemView
+
+scrapping :
+Viewholder has a private variable :
+Recycler mScrapContainer , which if non null means itemView is currently
+considered scrap.
+Calling scrapView(itemView) will set this above variable.
+and calling unscrapView(vh) will make it null.
+
+public apis on LayoutManager:
+addView(view)
+attachView(view)
+detachView(view)
+removeView(view) - remove parent child relation ship between recyclerview and view. This should be followed by recycleView(view) in order to put view into the pool
+
+
+
+
+
+
+
+
+
