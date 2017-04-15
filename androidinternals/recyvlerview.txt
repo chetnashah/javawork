@@ -5,15 +5,16 @@ detach : detaching should only be temporary and reattachment or
 removal should happen within same drawing cycle as detachment
 When a view is detached, its parent link is null and it 
 cannot be retrieved by a call to getChildAt(int), 
-All detach methods only call removeFromArray(index), and notification/onDetached methods on child are not called.
+All detach methods only call removeFromArray(index).
+
+removeDetachedView = free child resources with notification cb, linking is already broken during detach as above. Usually detach should be followed by this method or attached.
+
+removeView = detach (break link) + free child resorces with notification cb.
 
 attach :  Attaches a view to viewgroup. Attaching a view
 assigns viewgroup as parent and sets layout params and
 puts view in list mChildren so that it can be retrieved using
 getChildrenAt(int)
-
-removeDetachedView(View child) : Finishes removal of detached view.
-this will trigger child.dispatchDetachedFromWindow. This is the actual point when detachedfromwindow is called on the child view.
 
 All addView methods lead to addViewInner.
 
@@ -60,13 +61,23 @@ considered scrap.
 Calling scrapView(itemView) will set this above variable.
 and calling unscrapView(vh) will make it null.
 
-public apis on LayoutManager:
-addView(view)
-attachView(view)
-detachView(view)
-removeView(view) - remove parent child relation ship between recyclerview and view. This should be followed by recycleView(view) in order to put view into the pool
+public API on recycler :
 
+recycleView(view) : add the given view to pool. Note: it should have already been
+detached from parent.
 
+getViewForPosition(view) :
+bindViewToPosition(view, position):
+
+public API on LayoutManager :
+
+addView(view) :
+attachView(view) :
+detachView(view) :
+removeView(view) :
+detachAndScrapView(view, recycler) :
+removeAndRecycleView(view, recycler) :
+detachAndScrapAttachedViews(recycler) :
 
 
 

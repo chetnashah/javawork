@@ -15,3 +15,9 @@ basic :
 
 gradle init --type basic
 
+
+
+
+javap is the java class file disassembler.
+javap -c includes bytecode.
+javap -c -verbose is more verbose
