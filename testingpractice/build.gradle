@@ -5,6 +5,21 @@ apply plugin: 'java'
 
 sourceCompatibility = 1.5
 
+// needed for annotation processing tool start
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "net.ltgt.gradle:gradle-apt-plugin:0.10"
+    }
+}
+
+apply plugin: "net.ltgt.apt"
+// needed for annotation processing tool end
+
 repositories {
     mavenCentral()
 }
@@ -13,4 +28,7 @@ dependencies {
     compile group: 'com.google.inject', name: 'guice', version: '4.1.0'
     testCompile group: 'junit', name: 'junit', version: '4.11'
     testCompile "org.mockito:mockito-core:2.+"
+
+    compileOnly "com.google.auto.value:auto-value:1.2"
+    apt         "com.google.auto.value:auto-value:1.2"
 }

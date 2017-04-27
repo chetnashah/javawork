@@ -21,46 +21,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="StdIn.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/StdLibFork/src/stdlibfork/StdIn.java">
+      <file leaf-file-name="U162.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/onlinejudges/acmuva/U162.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5454">
-              <caret line="312" column="63" selection-start-line="312" selection-start-column="63" selection-end-line="312" selection-end-column="63" />
-              <folding>
-                <element signature="e#9725#9726#0" expanded="false" />
-                <element signature="e#9766#9767#0" expanded="false" />
-                <element signature="e#10181#10182#0" expanded="false" />
-                <element signature="e#10225#10226#0" expanded="false" />
-                <element signature="e#22607#22608#0" expanded="false" />
-                <element signature="e#22704#22705#0" expanded="false" />
-                <element signature="e#23210#23211#0" expanded="false" />
-                <element signature="e#23246#23247#0" expanded="false" />
-                <element signature="e#23625#23626#0" expanded="false" />
-                <element signature="e#23664#23665#0" expanded="false" />
-                <element signature="e#23933#23934#0" expanded="false" />
-                <element signature="e#23972#23973#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="576">
+              <caret line="32" column="62" selection-start-line="32" selection-start-column="62" selection-end-line="32" selection-end-column="62" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/j8t/Main.java">
+      <file leaf-file-name="U353.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/onlinejudges/acmuva/U353.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="270">
+              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="U11683.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/onlinejudges/acmuva/U11683.java">
+      <file leaf-file-name="Scanner.java" pinned="false" current-in-tab="false">
+        <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/Scanner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
+            <state relative-caret-position="195">
+              <caret line="1356" column="18" selection-start-line="1356" selection-start-column="18" selection-end-line="1356" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -71,7 +56,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="576">
               <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -89,7 +76,7 @@
       <file leaf-file-name="U11679.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/onlinejudges/acmuva/U11679.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
+            <state relative-caret-position="396">
               <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
             </state>
@@ -114,7 +101,15 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="648">
               <caret line="38" column="19" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#2505#2506#0" expanded="false" />
+                <element signature="e#2541#2542#0" expanded="false" />
+                <element signature="e#8255#8256#0" expanded="false" />
+                <element signature="e#8313#8314#0" expanded="false" />
+                <element signature="e#8632#8633#0" expanded="false" />
+                <element signature="e#8686#8687#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -124,7 +119,17 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3438">
               <caret line="198" column="7" selection-start-line="198" selection-start-column="7" selection-end-line="198" selection-end-column="7" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#3595#3596#0" expanded="false" />
+                <element signature="e#3622#3623#0" expanded="false" />
+                <element signature="e#3769#3770#0" expanded="false" />
+                <element signature="e#3804#3805#0" expanded="false" />
+                <element signature="e#5069#5070#0" expanded="false" />
+                <element signature="e#5121#5122#0" expanded="false" />
+                <element signature="e#5794#5795#0" expanded="false" />
+                <element signature="e#5843#5844#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -134,7 +139,29 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="756">
               <caret line="56" column="19" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="19" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#8177#8178#0" expanded="false" />
+                <element signature="e#8215#8216#0" expanded="false" />
+                <element signature="e#8733#8734#0" expanded="false" />
+                <element signature="e#8774#8775#0" expanded="false" />
+                <element signature="e#9188#9189#0" expanded="false" />
+                <element signature="e#9232#9233#0" expanded="false" />
+                <element signature="e#21352#21353#0" expanded="false" />
+                <element signature="e#21383#21384#0" expanded="false" />
+                <element signature="e#21735#21736#0" expanded="false" />
+                <element signature="e#21788#21789#0" expanded="false" />
+                <element signature="e#22146#22147#0" expanded="false" />
+                <element signature="e#22202#22203#0" expanded="false" />
+                <element signature="e#22560#22561#0" expanded="false" />
+                <element signature="e#22616#22617#0" expanded="false" />
+                <element signature="e#22895#22896#0" expanded="false" />
+                <element signature="e#22940#22941#0" expanded="false" />
+                <element signature="e#23228#23229#0" expanded="false" />
+                <element signature="e#23276#23277#0" expanded="false" />
+                <element signature="e#23565#23566#0" expanded="false" />
+                <element signature="e#23613#23614#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -189,6 +216,8 @@
         <option value="$PROJECT_DIR$/src/com/onlinejudges/acmuva/U11332.java" />
         <option value="$PROJECT_DIR$/src/com/onlinejudges/acmuva/U11679.java" />
         <option value="$PROJECT_DIR$/src/com/onlinejudges/acmuva/U11683.java" />
+        <option value="$PROJECT_DIR$/src/com/onlinejudges/acmuva/U162.java" />
+        <option value="$PROJECT_DIR$/src/com/onlinejudges/acmuva/U353.java" />
       </list>
     </option>
   </component>
@@ -200,10 +229,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="715" />
-    <option name="y" value="52" />
-    <option name="width" value="651" />
-    <option name="height" value="716" />
+    <option name="x" value="65" />
+    <option name="y" value="24" />
+    <option name="width" value="1301" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -231,7 +260,9 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
+      <pane id="PackagesPane">
+        <subPane />
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -292,9 +323,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane />
-      </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -307,44 +336,7 @@
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="sedgewickbooksite" />
   </component>
-  <component name="RunManager" selected="Application.U11683">
-    <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="com.company.j8t.Main" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="SedgewickBooksite" />
-      <envs />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="ThreeSum" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.company.j8t.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="com.company.j8t.ThreeSum" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="1Kints.txt" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/src/com/company/j8t" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="SedgewickBooksite" />
-      <envs />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Application.U353">
     <configuration default="false" name="U11332" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -393,6 +385,46 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="com.onlinejudges.acmuva.U11683" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="SedgewickBooksite" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="U162" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.onlinejudges.acmuva.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.onlinejudges.acmuva.U162" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="SedgewickBooksite" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="U353" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.onlinejudges.acmuva.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.onlinejudges.acmuva.U353" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" />
@@ -673,19 +705,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.Main" />
-      <item index="1" class="java.lang.String" itemvalue="Application.ThreeSum" />
-      <item index="2" class="java.lang.String" itemvalue="Application.U11332" />
-      <item index="3" class="java.lang.String" itemvalue="Application.U11679" />
-      <item index="4" class="java.lang.String" itemvalue="Application.U11683" />
+      <item index="0" class="java.lang.String" itemvalue="Application.U11332" />
+      <item index="1" class="java.lang.String" itemvalue="Application.U11679" />
+      <item index="2" class="java.lang.String" itemvalue="Application.U11683" />
+      <item index="3" class="java.lang.String" itemvalue="Application.U162" />
+      <item index="4" class="java.lang.String" itemvalue="Application.U353" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.U11683" />
-        <item index="1" class="java.lang.String" itemvalue="Application.U11679" />
-        <item index="2" class="java.lang.String" itemvalue="Application.U11332" />
-        <item index="3" class="java.lang.String" itemvalue="Application.ThreeSum" />
-        <item index="4" class="java.lang.String" itemvalue="Application.Main" />
+        <item index="0" class="java.lang.String" itemvalue="Application.U353" />
+        <item index="1" class="java.lang.String" itemvalue="Application.U162" />
+        <item index="2" class="java.lang.String" itemvalue="Application.U11683" />
+        <item index="3" class="java.lang.String" itemvalue="Application.U11679" />
+        <item index="4" class="java.lang.String" itemvalue="Application.U11332" />
       </list>
     </recent_temporary>
   </component>
@@ -711,7 +743,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="715" y="52" width="651" height="716" extended-state="5" />
+    <frame x="65" y="24" width="1301" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -721,17 +753,17 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33170733" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33125973" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37480798" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18754804" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -760,33 +792,21 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/StdLibFork/src/stdlibfork/BinaryOut.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5850">
-          <caret line="341" column="1" selection-start-line="341" selection-start-column="1" selection-end-line="341" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StdLibFork/src/stdlibfork/BinaryIn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="46" column="19" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StdLibFork/src/stdlibfork/BinaryStdIn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="38" column="19" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/StdLibFork/src/stdlibfork/BinaryStdOut.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3438">
           <caret line="198" column="7" selection-start-line="198" selection-start-column="7" selection-end-line="198" selection-end-column="7" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#3595#3596#0" expanded="false" />
+            <element signature="e#3622#3623#0" expanded="false" />
+            <element signature="e#3769#3770#0" expanded="false" />
+            <element signature="e#3804#3805#0" expanded="false" />
+            <element signature="e#5069#5070#0" expanded="false" />
+            <element signature="e#5121#5122#0" expanded="false" />
+            <element signature="e#5794#5795#0" expanded="false" />
+            <element signature="e#5843#5844#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -794,7 +814,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1008">
           <caret line="56" column="19" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="19" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#8177#8178#0" expanded="false" />
+            <element signature="e#8215#8216#0" expanded="false" />
+            <element signature="e#8733#8734#0" expanded="false" />
+            <element signature="e#8774#8775#0" expanded="false" />
+            <element signature="e#9188#9189#0" expanded="false" />
+            <element signature="e#9232#9233#0" expanded="false" />
+            <element signature="e#21352#21353#0" expanded="false" />
+            <element signature="e#21383#21384#0" expanded="false" />
+            <element signature="e#21735#21736#0" expanded="false" />
+            <element signature="e#21788#21789#0" expanded="false" />
+            <element signature="e#22146#22147#0" expanded="false" />
+            <element signature="e#22202#22203#0" expanded="false" />
+            <element signature="e#22560#22561#0" expanded="false" />
+            <element signature="e#22616#22617#0" expanded="false" />
+            <element signature="e#22895#22896#0" expanded="false" />
+            <element signature="e#22940#22941#0" expanded="false" />
+            <element signature="e#23228#23229#0" expanded="false" />
+            <element signature="e#23276#23277#0" expanded="false" />
+            <element signature="e#23565#23566#0" expanded="false" />
+            <element signature="e#23613#23614#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -916,9 +958,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1080">
           <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -926,20 +965,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5454">
           <caret line="312" column="63" selection-start-line="312" selection-start-column="63" selection-end-line="312" selection-end-column="63" />
-          <folding>
-            <element signature="e#9725#9726#0" expanded="false" />
-            <element signature="e#9766#9767#0" expanded="false" />
-            <element signature="e#10181#10182#0" expanded="false" />
-            <element signature="e#10225#10226#0" expanded="false" />
-            <element signature="e#22607#22608#0" expanded="false" />
-            <element signature="e#22704#22705#0" expanded="false" />
-            <element signature="e#23210#23211#0" expanded="false" />
-            <element signature="e#23246#23247#0" expanded="false" />
-            <element signature="e#23625#23626#0" expanded="false" />
-            <element signature="e#23664#23665#0" expanded="false" />
-            <element signature="e#23933#23934#0" expanded="false" />
-            <element signature="e#23972#23973#0" expanded="false" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/j8t/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/onlinejudges/acmuva/U11683.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/onlinejudges/acmuva/U162.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="32" column="62" selection-start-line="32" selection-start-column="62" selection-end-line="32" selection-end-column="62" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -947,7 +996,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
           <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -955,6 +1006,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
           <caret line="28" column="33" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/onlinejudges/acmuva/U11679.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -974,7 +1033,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="648">
           <caret line="38" column="19" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#2505#2506#0" expanded="false" />
+            <element signature="e#2541#2542#0" expanded="false" />
+            <element signature="e#8255#8256#0" expanded="false" />
+            <element signature="e#8313#8314#0" expanded="false" />
+            <element signature="e#8632#8633#0" expanded="false" />
+            <element signature="e#8686#8687#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -982,7 +1049,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3438">
           <caret line="198" column="7" selection-start-line="198" selection-start-column="7" selection-end-line="198" selection-end-column="7" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#3595#3596#0" expanded="false" />
+            <element signature="e#3622#3623#0" expanded="false" />
+            <element signature="e#3769#3770#0" expanded="false" />
+            <element signature="e#3804#3805#0" expanded="false" />
+            <element signature="e#5069#5070#0" expanded="false" />
+            <element signature="e#5121#5122#0" expanded="false" />
+            <element signature="e#5794#5795#0" expanded="false" />
+            <element signature="e#5843#5844#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -990,32 +1067,44 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="756">
           <caret line="56" column="19" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/onlinejudges/acmuva/U11679.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/j8t/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#8177#8178#0" expanded="false" />
+            <element signature="e#8215#8216#0" expanded="false" />
+            <element signature="e#8733#8734#0" expanded="false" />
+            <element signature="e#8774#8775#0" expanded="false" />
+            <element signature="e#9188#9189#0" expanded="false" />
+            <element signature="e#9232#9233#0" expanded="false" />
+            <element signature="e#21352#21353#0" expanded="false" />
+            <element signature="e#21383#21384#0" expanded="false" />
+            <element signature="e#21735#21736#0" expanded="false" />
+            <element signature="e#21788#21789#0" expanded="false" />
+            <element signature="e#22146#22147#0" expanded="false" />
+            <element signature="e#22202#22203#0" expanded="false" />
+            <element signature="e#22560#22561#0" expanded="false" />
+            <element signature="e#22616#22617#0" expanded="false" />
+            <element signature="e#22895#22896#0" expanded="false" />
+            <element signature="e#22940#22941#0" expanded="false" />
+            <element signature="e#23228#23229#0" expanded="false" />
+            <element signature="e#23276#23277#0" expanded="false" />
+            <element signature="e#23565#23566#0" expanded="false" />
+            <element signature="e#23613#23614#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/onlinejudges/acmuva/U11683.java">
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/Scanner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
+        <state relative-caret-position="195">
+          <caret line="1356" column="18" selection-start-line="1356" selection-start-column="18" selection-end-line="1356" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/onlinejudges/acmuva/U353.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
         </state>
       </provider>
