@@ -3,7 +3,6 @@ package com.onlinejudges.acmuva;
 import java.util.Scanner;
 
 /**
- * Created by jayshah on 9/4/17.
  */
 public class U11679 {
     public static void main(String[] args) {

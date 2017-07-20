@@ -8,7 +8,6 @@ import javax.lang.model.element.TypeElement;
 import java.util.Set;
 
 /**
- * Created by jayshah on 17/4/17.
  */
 public class FooAnnotationProcessor extends AbstractProcessor {
 

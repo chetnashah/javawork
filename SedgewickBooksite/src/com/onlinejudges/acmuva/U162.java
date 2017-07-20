@@ -3,7 +3,6 @@ package com.onlinejudges.acmuva;
 import java.util.*;
 
 /**
- * Created by jayshah on 18/4/17.
  */
 public class U162 {
     public static void main(String[] args){

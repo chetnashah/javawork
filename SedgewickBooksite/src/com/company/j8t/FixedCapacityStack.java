@@ -5,7 +5,6 @@ import java.util.Spliterator;
 import java.util.function.Consumer;
 
 /**
- * Created by Jay Shah on 05-07-2017.
  * Generic Iterable stack, of fixed capacity
  */
 public class FixedCapacityStack<T> implements Iterable<T> {

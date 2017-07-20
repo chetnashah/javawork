@@ -1,7 +1,6 @@
 package com.langer;
 
 /**
- * Created by Jay Shah on 09-07-2017.
  */
 public class Main {
 
@@ -14,6 +13,15 @@ public class Main {
         // in its simplest form it is "?" and stands for all types/unknown type
         Pair<?,?> pp = new Pair<>("Well",0l);
 
+
+        // Q> can I create an array whose component type is concrete parametrized type ?
+        //e.g. an array of Pair<String,String>
+
+        //Pair<String,String>[] parr = new Pair<String,String>[];
+        // not allowed because cannot throw an arraystore exception because not able to check types
+        // at runtime due to type erasure
+        //https://docs.oracle.com/javase/tutorial/java/generics/restrictions.html#createArrays
+        // so use Collections instead for collection of concrete parametrized types
     }
 
     /**
