@@ -5,7 +5,6 @@ import stdlibfork.StdOut;
 import stdlibfork.Stopwatch;
 
 /**
- * Created by jayshah on 2/4/17.
  */
 public class ThreeSum {
     public static int count(int[] a) {
@@ -32,8 +31,8 @@ public class ThreeSum {
      */
     public static void main(String[] args)  {
         In in = new In(args[0]);
+        // go to edit run configuration, and set argument to res\ThreeSum\1Kints.txt
         int[] a = in.readAllInts();
-
         Stopwatch timer = new Stopwatch();
         int count = count(a);
         StdOut.println("elapsed time = " + timer.elapsedTime());

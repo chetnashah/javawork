@@ -1,4 +1,60 @@
 
+### equals and hashcode contract
+
+Default implementation for equals() :
+true only if same object
+
+Default implementation for hashcode():
+same only for same objects.
+
+Often for data like classes: which should be
+considered same if properties are same also known as structural/value equality e.g. points
+Do following:
+* Override equals to satisfy structural equality
+
+Don't forget to override hashcode() when override
+equals() because :
+Hashing retrieval is a two-step process.
+1. Find the right bucket (using hashCode())
+2. Search the bucket for the right element (using equals())
+
+If you implement equals (thus structural equality), but you forgot overriding hashcode, now every object has different hashcode, so semantically equal objects may end up in different hashcode/buckets. and hash collections may be inconsistent.
+
+Alternatively for data classes: you can use facilities like
+```AutoValue``` which will correctly implement the
+necessary methods.
+
+### Why make your data class comparable?
+
+Making your Class Item implements Comparable\<Item\>
+
+It will impose a possible natural ordering on collection of your Items and 
+will allow you to do following:
+
+1. calling Collections.sort and Collections.binarySearch
+2. calling Arrays.sort and Arrays.binarySearch
+3. using objects as keys in a TreeMap
+4. using objects as elements in a TreeSet
+
+
+### Generics:
+
+Generic item creation/instantiation:
+
+https://stackoverflow.com/questions/7934186/java-how-to-create-an-instance-of-generic-type-t
+
+Generic array creation :
+
+        /*
+        This is one of the suggested ways of implementing a generic collection in Effective Java; Item 26.
+        However this triggers a warning because it is potentially dangerous, and should be used with caution.
+        Worth mentioning that wherever possible,
+        you'll have a much happier time working with Lists rather than arrays if you're using generics
+         */
+		private T[] a;
+        a = (T [])new Object[capacity]; // generic array creation is not allowed, so make object array and cast
+
+ 
 
 JavaBeans:
 follow from http://docs.oracle.com/javase/tutorial/javabeans/writing/properties.html
