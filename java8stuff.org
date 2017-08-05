@@ -1,0 +1,29 @@
+
+Find more on collection pipelines at
+https://martinfowler.com/articles/collection-pipeline/
+
+** Stream operations
+
+*** Intermediate operations:
+    These operations take a stream and return a stream.
+    These operations do not get executed until a terminal
+    operation is invoked. Examples are
+    - filter
+    - map
+    - flatmap
+    - peek (useful for debugging)
+    - distinct
+    - sorted
+    - limit (same as take)
+
+*** Terminal operations:
+    Terminal operations produces a non-stream, result
+    such as a primitive value, a collection or no value
+    at all.
+    - forEach
+    - toArray
+    - reduce
+    - collect
+    - min, max, count
+    - anyMatch, allMatch, noneMatch
+    - findFirst, findAny

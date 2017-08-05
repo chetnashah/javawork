@@ -1,0 +1,70 @@
+
+
+
+** LifecycleOwner
+
+A thing with a lifecycle
+
+*** Activities and fragments
+
+    
+** LifecycleObserver
+A thing that cares about lifecycles
+
+*** Location listeners etc.
+
+** Lifecycle Aware Components
+A component that knows how to initialie and cleanup
+itself based on a provided lifecycles
+
+** Sharing resources:
+e.g. you have two activities or two fragments over
+each other, and you will have a single location for
+device so why make two listeners?
+
+* LiveData<T>
+** An observable data holder
+** Lifecycle Aware
+** Automatic subscripton management
+No needs of cancellatons on activity rotations etc.
+** Active Observer
+An observer whose lifecycle is STARTED or RESUMED
+** 
+
+* ViewModel
+Each activity or fragment has a viewmodelprovider
+that you can obtain e.g. in Activity's onCreate
+
+#+BEGIN_SRC java
+  ViewModelProviders.of(this)
+#+END_SRC
+
+** Data holder for activity/fragment
+** Survives config changes
+** Never references View/Activity/Fragment
+because they ought to leave the activity and can be reconnected
+to later.
+
+* Persistence
+** Room: An object mapping library for SQLite
+Uses lots of annotations to get rid of boilerplate.
+Takes benefit of annotations and generates implementations
+for e.g. like retrofit, all you need to care about\
+is your interfaces.
+*** Compile time query verification
+*** Room can return LiveData<Entity>
+
+* Architechture
+Documented well online
+Main components:
+** UI Controller (activities and fragments)
+** ViewModel (LiveData1, LiveData2, ..)
+** Repository
+** Data sources (network, disk, ram)
+
+
+
+
+
+
+
