@@ -11,8 +11,21 @@ To define a multi project build you need to make a settings.gradle file.
 
 ### How gradle tasks work?
 
+Note: just defining a task won't run it by itself, you have to put it somewhere in the build-pipline via dependsOn or explicitly run it from command line.
+
 Before a task is executed for the first time, Gradle takes a snapshot of the inputs. This snapshot contains the paths of input files and a hash of the contents of each file. Gradle then executes the task. If the task completes successfully, Gradle takes a snapshot of the outputs. This snapshot contains the set of output files and a hash of the contents of each file. Gradle persists both snapshots for the next time the task is executed.
 
 Each time after that, before the task is executed, Gradle takes a new snapshot of the inputs and outputs. If the new snapshots are the same as the previous snapshots, Gradle assumes that the outputs are up to date and skips the task. If they are not the same, Gradle executes the task. Gradle persists both snapshots for the next time the task is executed.
 
 Gradle also considers the code of the task as part of the inputs to the task. When a task, its actions, or its dependencies change between executions, Gradle considers the task as out-of-date
+
+### Gradle build lifecycle
+
+1. Initialization
+2. Configuration
+3. Execution
+
+afterEvaluate {
+
+}
+is a useful debugging place that executes after configuration but before exection to inspect state.
