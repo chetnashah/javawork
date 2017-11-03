@@ -2,6 +2,24 @@
 ### Gradle project
 
 There is 1 to 1 relationship between a gradle project and a build.gradle file. 
+Anything that is not defined in a buildscript is delegated to project object.
+
+Standard properties include : 
+1. project - the Project instance
+2. name - name of project directory
+3. path - absolute path of project
+4. description - string description of project
+5. projectDir - the File dir containing buildscript
+6. buildDir - projectDir/build
+7. group,version - strings specifying group and version.
+
+extra properties can be added in an ext block
+e.g.
+``` gradle
+ext {
+    emailNotification="build@master.org"
+}
+```
 
 ### What is .gradle directory for?
 
@@ -126,3 +144,30 @@ mainFreeDebugMdpi
 or
 testPaidReleaseHdpi etc.
 
+### gradle function syntax specifics
+
+Now we will go through different ways to call method which accepts closure:
+
+``` gradle
+method accepts 1 parameter - closure 
+myMethod(myClosure)
+
+if method accepts only 1 parameter - parentheses can be omitted 
+myMethod myClosure
+
+I can create in-line closure 
+myMethod {println 'Hello World'}
+
+method accepts 2 parameters 
+myMethod(arg1, myClosure)
+
+or the same as '4', but closure is in-line 
+myMethod(arg1, { println 'Hello World' })
+
+if last parameter is closure - it can be moved out of parentheses 
+myMethod(arg1) { println 'Hello World' }
+
+At this point I really have to point your attention to example #3 and #6. Doesn't it remind you something from gradle scripts?
+```
+
+Summary : Each closure has a delegate object, which groovy uses to lookup (free)variable & method references, this is usally known as environment, context etc. in other functional languages, where usually it is lexical, but in groovy it can be explicitly set.
