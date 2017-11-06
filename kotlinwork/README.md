@@ -1,26 +1,26 @@
 Function Syntax:
 
 1. functions are defined/declared using fun keyword
-```
+``` kt
 fun double(x: Int): Int {
 
 }
 ```
 
 2. Function usage, uses traditional approach, no surprises here.
-```
+``` kt
 val result = double(2)
 ```
 
 3. Parameters are defined using pascal notation i.e. name: type
-```
+``` kt
 fun powerOf(number: Int, exponent: Int){
 
 }
 ```
 
 4. Unit return type, is optional
-```
+``` kt
 fun printHello(name: String): Unit {
   println("Hi there")
 }
@@ -28,7 +28,7 @@ fun printHello(name: String): Unit {
 
 or
 
-```
+``` kt
 fun printHello(name: String) {
   println("Hello htere")
 }
