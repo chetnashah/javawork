@@ -1,6 +1,6 @@
 Function Syntax:
 
-1. functions are defined/declared using fun keyword
+1. functions are defined/declared using "fun" keyword
 ``` kt
 fun double(x: Int): Int {
 
@@ -93,3 +93,10 @@ val max = if (a > b) a else b
 data class Customer(val name: String, val email: String)
 ```
 
+18. Kotlin class instance creation syntax:
+Like python, there is no need of "new" keyword to create instances of a class
+``` kt
+val invoice = Invoice() // creating instance of class Invoice
+
+val customer = Customer("Joe Smith") // create instance of class Customer
+```
