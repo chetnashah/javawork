@@ -100,3 +100,55 @@ val invoice = Invoice() // creating instance of class Invoice
 
 val customer = Customer("Joe Smith") // create instance of class Customer
 ```
+
+19. "is" operator for type check + automatic cast:
+As soon as "is" keyword is used for checking the type of a (immutable) variable,
+the consequenting code has variable typecasted if type matched.
+ If an immutable local variable or property is checked for a specific type, there's no need to cast it explicitly
+e.g.
+``` kt
+if (obj is String) {
+  // obj is automatically cast to String in this branch
+}
+```
+
+20. "for in" loop loops over iterable sequences like lists ranges etc.
+
+21. ranges have a concise syntax like in haskell i.e. 1..29
+e.g.
+``` kt
+for (x in 1..5) {
+  print (x)
+}
+```
+
+22. Referential and structural equality
+Referential equality is checked with triple equals "===",
+and structural + type both equality is checked with double equals "==", 
+no need of .equals like java for structural equality
+
+23. Due to representation issues, smaller types are not implicitly converted to bigger types
+e.g. Int will not be auto converted to Long, instead use Int.toLong()
+e.g. Byte will not be auto converted to Int, instead use Byte.toInt()
+
+24. Number is an important abstract class with following usefule methods
+- toByte(): Byte
+- toChar(): Char
+- toDouble(): Double
+- toFloat(): Float
+- toInt(): Int
+- toLong(): Long
+
+25. Arrays in kotlin are represented by Array class, has get and set functions that turn into [] by operator overloading conventions.
+
+26. Note: **Kotlin Arrays are invariant**
+
+27. kotlin.Any and java.lang.Object are not the same thing, Any has only three methods - equals(), hashCode() and toString(). Every kotlin class has Any as a superclass.
+
+
+
+
+
+
+
+
