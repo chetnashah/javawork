@@ -1,3 +1,5 @@
+Note: see (inferred) type of a binding with Ctrl + Shft + P.
+
 Function Syntax:
 
 1. functions are defined/declared using "fun" keyword
@@ -65,8 +67,17 @@ have a specify a function type for that parameter.
 
 11. types are non nullable by default, if you want to make a variable
 which can hold null value, add a ? at the end
-e.g. String? response = getStringResponse();
-
+e.g. 
+```kt
+String? response = getStringResponse();
+```
+Other use is safe calls.
+e.g.
+```kt
+val l = response?.length
+```
+In above code, the type of expression is Int? since response?.length 
+returns null if response is null, or an int representing length of response
 
 11. types are non nullable by default, if you want to make a variable
 which can hold null value, add a ? at the end
@@ -100,6 +111,10 @@ val invoice = Invoice() // creating instance of class Invoice
 
 val customer = Customer("Joe Smith") // create instance of class Customer
 ```
+
+18. Kotlin classes have concept of primary and secondary constructors.
+Primary constructor is what goes along with class header.
+Secondary constructor are prefixed with constructor keyword. 
 
 19. "is" operator for type check + automatic cast:
 As soon as "is" keyword is used for checking the type of a (immutable) variable,
@@ -145,10 +160,39 @@ e.g. Byte will not be auto converted to Int, instead use Byte.toInt()
 
 27. kotlin.Any and java.lang.Object are not the same thing, Any has only three methods - equals(), hashCode() and toString(). Every kotlin class has Any as a superclass.
 
+28. When you want to throw null pointer exception, use !! operator, e.g.
+```kt
+val l = b!!.length
+```
+The above code will throw NPE if b is null and work as expected if b is not null.
 
+29. Inheritance:
+Inheritance should be designed and documented for, and that is the reason all classes are final by default in kotlin. To make classes overridable, they should be prefixed open.
 
+30. For use with android, take a look at: https://kotlinlang.org/docs/tutorials/android-plugin.html
 
+31. Null Safety and platform types(for use with Java): Any reference in Java may be null, which makes Kotlin's requirements of strict null-safety impractical for objects coming from Java. Types of Java declarations are treated specially in Kotlin and called platform types. Null-checks are relaxed for such types, so that safety guarantees for them are the same as in Java.
+IDE represents them using:
+```
+T! means "T or T?"
+``` 
 
+32. Kotlin use of data classes with default values
+``` kt
+data class Artist(
+        val id: String,
+        val name: String,
+        val url: String? = null,
+        val bio: String? = null,
+        val albums: List<Album>? = null)
+```
 
-
+33. Annotations for "type usage" (which is from java 8) 
+go before parameter name (not type name).
+e.g.
+```kt
+public abstract void setTitle(@StringRes int resId) { … }
+becomes
+setTitle(@StringRes resId: Int): Void
+```
 
