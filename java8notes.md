@@ -5,6 +5,8 @@ default methods are methods in an interface which should have an implementation.
 * What is a functional interface?
 
 A functional interface is an interface that has exactly one single abstract method that is not in plain Object.
+It is also common to use lambda in all interfaces with single methods, 
+e.g. onClickListeners etc. which you can see even in Kotlin.
 
 e.g. 
 ```
