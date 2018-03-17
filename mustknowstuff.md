@@ -24,6 +24,32 @@ Alternatively for data classes: you can use facilities like
 ```AutoValue``` which will correctly implement the
 necessary methods.
 
+### Typical hashcode implementation for Value classes
+
+* For references use ref.hashCode()
+* For primitives like double etc. use wrapper e.g. ((Double) d).hashcode
+* For array, use array.deepHashCode()
+* For null, add 0
+* combine all hashcode of fields using horner's method.
+
+e.g.
+``` java
+public class Employee {
+	int eid;
+	String name;
+
+	equals(Object o){ ... }
+
+	hashcode() {
+		int hash = 17; // start with num
+		hash = 31 * hash + (Integer eid).hashCode();
+		hash = 31 * hash + name.hashCode();
+
+		return hash;
+	}
+}
+```
+
 ### Why make your data class comparable?
 
 Making your Class Item implements Comparable\<Item\>
@@ -44,15 +70,15 @@ Generic item creation/instantiation:
 https://stackoverflow.com/questions/7934186/java-how-to-create-an-instance-of-generic-type-t
 
 Generic array creation :
-
-        /*
-        This is one of the suggested ways of implementing a generic collection in Effective Java; Item 26.
-        However this triggers a warning because it is potentially dangerous, and should be used with caution.
-        Worth mentioning that wherever possible,
-        you'll have a much happier time working with Lists rather than arrays if you're using generics
-         */
-		private T[] a;
-        a = (T [])new Object[capacity]; // generic array creation is not allowed, so make object array and cast
+Java arrays need to know the type of items at runtime. so it cannot be T.
+/*
+This is one of the suggested ways of implementing a generic collection in Effective Java; Item 26.
+However this triggers a warning because it is potentially dangerous, and should be used with caution.
+Worth mentioning that wherever possible,
+you'll have a much happier time working with Lists rather than arrays if you're using generics
+	*/
+private T[] a;
+a = (T [])new Object[capacity]; // generic array creation is not allowed, so make object array and cast
 
  
 
