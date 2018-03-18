@@ -41,7 +41,8 @@ doSomething(listOfDogs); // works fine
 
 ### What is bounded type parameter?
 
-There may be times when you want to restrict the types that can be used as type arguments in a parameterized type. For example, a method that operates on numbers might only want to accept instances of Number or its subclasses. This is what bounded type parameters are for. e.g. use of super or extends in type parameter.
+The primary need for bounded types is to work around the fact the collections etc are invariant, and cannot accept subtypes/supertypes, so inorder to make them flexible, types are given bounds. For example, a method that operates on numbers might only want to accept instances of Number or its subclasses. This is what bounded type parameters are for. e.g. use of super or extends in type parameter.
+
 
 ### When to use 'super' vs 'extends' in type bounds?
 
@@ -56,7 +57,7 @@ It stands for **for all unknown types**.
 
 ### Use case for unbounded wildcard.
 
-Unbounded wildcard is represented as `List<?> l`.
+Unbounded wildcard is represented as `List<?> l`, i.e. no bounds added using super or extends.
 
 Let's say we want a method that works on all lists:
 i.e.

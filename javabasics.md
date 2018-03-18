@@ -88,3 +88,10 @@ static String readFirstLineFromFile(String path) throws IOException {
 ```
 
 Prior to Java SE 7, you can use a finally block to ensure that a resource is closed regardless of whether the try statement completes normally or abruptly.
+
+
+###
+
+Java String and arrays do not implement iterable intrface.
+However you can use `for : loop` with arrays, and a `for c: str.toCharArray()` with strings.
+

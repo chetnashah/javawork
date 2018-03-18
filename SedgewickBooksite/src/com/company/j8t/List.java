@@ -46,7 +46,7 @@ public class List<T> {
         return List.filter(pred, xs.tail);
     }
 
-    static <A> int length(List<A> xs) {
+    static int length(List<?> xs) {
         int ans = 0;
         while (xs != null) {
             ans += 1;
