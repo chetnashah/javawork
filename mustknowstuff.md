@@ -226,6 +226,10 @@ java.io.Serializable (automatic serialization)
 and java.io.Externalizable (custom serialization)
 
 ### Classes and serializability
+
+Serialization in java is a mechanism of writing the state of an object into a byte stream.
+It is mainly used in Hibernate, RMI, JPA, EJB and JMS technologies.
+
 Any class is serializable as long as that class or parent class
 implements java.io.Serializable.
 e.g.
@@ -266,7 +270,10 @@ private void readObject(java.io.ObjectInputStream in)
     throws IOException, ClassNotFoundException;
 ```
 
-You can control how more complex objects are serialized, by writing your own implementations of the writeObject and readObject methods
+You can control how more complex objects are serialized, by writing your own implementations of the writeObject and readObject methods.
+
+`ObjectOutputStream.writeObject(p1)` will invoke serialization for object p1.
+Similarly to read in object from a serialized representation we use `Person p1 = (Person) ObjectInputStream.readObject()`
 
 
 

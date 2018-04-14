@@ -45,7 +45,7 @@ they can have complex control flow
 5. Lambdas/Anonymous functions:
  lambdas start and end with curly braces, 
  parameters (with annotations) are before "->" and 
- lambda body is after "->".
+ lambda body is after "->"(thin arrow function)
 
  e.g.
  ``` kt
