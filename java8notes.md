@@ -34,7 +34,7 @@ public interface Supplier<T> {
     T get();
 }
 
-Represents a function that takes one argument and produces a result
+// Represents a function that takes one argument and produces a result
 public interface Function<T,R> {
     R apply(T t);
 }

@@ -8,3 +8,4 @@ groovysh is the groovy REPL
 groovyConsole is a minimalistic IDE for groovy.
 
 
+All gotchas and idioms can be found at http://groovy-lang.org/style-guide.html

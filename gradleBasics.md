@@ -42,6 +42,25 @@ Repositories are places to look for artifacts, or places to publish artifacts. T
 ### How are dependencies grouped in gradle?
 Gradle dependency groups are also known as 'configuration' which are mainly: compile, runtime, testCompile and testRuntime
 
+### Gradle Dependency Configuraiton
+Every dependency declared for a Gradle project applies to a specific scope.
+For example some dependencies should be used for compiling source code whereas others only need to be available at runtime. Gradle represents the scope of a dependency with the help of a Configuration.
+Some examples are: `testRuntime`, `implementation` etc.
+
+### Well known configurations
+
+#### `implementation`
+The dependencies required to compile the production source of the project which are not part of the API exposed by the project. For example the project uses Hibernate for its internal persistence layer implementation.
+
+#### `api`
+The dependencies required to compile the production source of the project which are part of the API exposed by the project. For example the project uses Guava and exposes public interfaces with Guava classes in their method signatures.
+
+#### `testImplementation`
+The dependencies required to compile and run the test source of the project. For example the project decided to write test code with the test framework JUnit.
+
+
+
+
 ### How many types of dependency does gradle have?
 
 1. external - living in a repository
