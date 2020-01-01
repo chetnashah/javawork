@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - LengthOfLongestSubstringWithoutRepeating",
+            "request": "launch",
+            "mainClass": "com.com.onlinejudges.leetcode.LengthOfLongestSubstringWithoutRepeating"
+        }
+    ]
+}
