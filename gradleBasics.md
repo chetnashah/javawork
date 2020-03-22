@@ -1,5 +1,91 @@
 
+### Key classes/Interfaces:
+
+1. Script Interace - represents the `build.gradle` file instance (https://docs.gradle.org/current/dsl/org.gradle.api.Script.html)
+2. Project Interface - represents a project via `build.gradle`.
+3. Gradle Interface.
+4. Settings Interface
+5. Task Interface
+6. Action Interface
+
+### Script interface
+
+You always have `logger` available in your build script.
+
+`apply`: Configures the delegate object for this script using plugins or scripts. The given closure is used to configure an ObjectConfigurationAction which is then used to configure the delegate object.
+
+`build.gradle` build script delegates to project Object.
+`settings.gradle` build script delegates to Seggings Object which in turn has access to bunch of Project objects.
+`Gradle`: TOp level object. - Can be used in files like `init.gradle` where no other context like Project etc. has started yet. https://docs.gradle.org/current/dsl/org.gradle.api.invocation.Gradle.html#org.gradle.api.invocation.Gradle:gradle
+Project and SEttings object have access to the gradle object.
+
+### Gradle Task
+
+A Task represents a single atomic piece of work for a build, such as compiling classes or generating javadoc.
+
+You can also use the task keyword in your build file:
+
+```
+ task myTask
+ task myTask { configure closure }
+ task myTask(type: SomeType)
+ task myTask(type: SomeType) { configure closure }
+```
+
+Each task has a name, which can be used to refer to the task within its owning project, and a fully qualified path, which is unique across all tasks in all projects. The path is the concatenation of the owning project's path and the task's name
+
+A Task has 4 'scopes' for properties. You can access these properties by name from the build file or by calling the property(String) method. You can change the value of these properties by calling the setProperty(String, Object) method.
+
+
+1. The Task object itself. This includes any property getters and setters declared by the Task implementation class. The properties of this scope are readable or writable based on the presence of the corresponding getter and setter methods.
+
+2. The extensions added to the task by plugins. Each extension is available as a read-only property with the same name as the extension.
+
+3. The convention properties added to the task by plugins. A plugin can add properties and methods to a task through the task's Convention object. The properties of this scope may be readable or writable, depending on the convention objects.
+
+4. The extra properties of the task. Each task object maintains a map of additional properties. These are arbitrary name -> value pairs which you can use to dynamically add properties to a task object. Once defined, the properties of this scope are readable and writable.
+
+#### Extra task properties
+
+You can add your own properties to a task. To add a property named myProperty, set ext.myProperty to an initial value. From that point on, the property can be read and set like a predefined task property.
+
+```groovy
+task myTask {
+    ext.myProperty = "myValue"
+}
+
+task printTaskProperties {
+    doLast {
+        println myTask.myProperty
+    }
+}
+```
+
+```sh
+> gradle -q printTaskProperties
+myValue
+```
+
+#### TaskContainer
+
+A `TaskContainer` is responsible for managing a set of `Task` instances.
+
+You can obtain a `TaskContainer` instance by calling `Project.getTasks()`, or using the tasks property in your build script.
+
+#### Task Actions
+
+A `Task` is made up of a sequence of `Action` objects. When the task is executed, each of the actions is executed in turn, by calling `Action.execute(T)`. You can add actions to a task by calling `doFirst(Action)` or `doLast(Action)`.
+
+### ScriptHandler
+
+A ScriptHandler allows you to manage the compilation and execution of a build script. You can declare the classpath used to compile and execute a build script. This classpath is also used to load the plugins which the build script uses.
+
+You can obtain a ScriptHandler instance using `Project.getBuildscript()` or `Script.getBuildscript()`.
+
+
 ### Gradle project
+
+Project object is the default context in the build.gradle file.
 
 There is 1 to 1 relationship between a gradle project and a build.gradle file. 
 Anything that is not defined in a buildscript is delegated to project object.
@@ -12,6 +98,8 @@ Standard properties include :
 5. projectDir - the File dir containing buildscript
 6. buildDir - projectDir/build
 7. group,version - strings specifying group and version.
+
+
 
 extra properties can be added in an ext block
 e.g.
@@ -108,8 +196,12 @@ Gradle also considers the code of the task as part of the inputs to the task. Wh
 
 ### Gradle build lifecycle
 
-1. Initialization - settings.gradle runs
-2. Configuration - build.gradle runs, task dependency resolved
+All `.gradle` files under `$USER_HOME_DIR/.gradle/init.d` will be executed first.
+If you setup some `ext` properties in these gradle files, they are available to all the projects etc. e.g. you can define a `timestamp` an other shared global util methods.
+
+1. Initialization - settings.gradle and/or init.gradle runs - determination of projects to be taking part in 
+the build. Project instances created for each of the projects.
+2. Configuration - build.gradle runs, You will be able to see `Configure Project:` on cli, task dependency resolved
 3. Execution - task actions are run according to dependency graph
 
 afterEvaluate {
@@ -125,6 +217,26 @@ ext is shorthand for project.ext, and is used to define extra properties for the
 ### What is the role of gradle.properties file?
 
 populate properties to a project just like an ext block does, but if ext block is present with same property names, than ext block will take more priority/weightage over properties in gradle.properties.
+
+A bunch of key-value pairs on each line, like an `ini` file, something similar to setting
+env variables for your project.
+
+### Where can gradle properties come from?
+
+The can come from (last one wins/overrides previous ones):
+1. `<prooject-root>/gradle.properties`
+2. `<user-home>/gradle.properties`
+3. command line using `-D` or `-P`
+4. within code itself (via `project.prop=val` or `ext.prop=val` or `project.ext.prop=val`)
+
+Gradle doesn’t provide any information on the source of a property.
+Use `SomeObject.hasProperty(propname)` to avoid runtime exceptions.
+
+Setting a project property via a system property
+`org.gradle.project.foo=bar`
+Setting a project property via an environment variable
+`ORG_GRADLE_PROJECT_foo=bar`
+
 
 ### What is a gradle plugin?
 

@@ -2,28 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78915bda-3edb-424a-9bdc-2e6f374085b4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SedgewickBooksite.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SedgewickBooksite.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/company/j8t/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/company/j8t/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/onlinejudges/acmuva/U11332.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/onlinejudges/acmuva/U11332.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/onlinejudges/acmuva/U11679.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/onlinejudges/acmuva/U11679.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/onlinejudges/acmuva/U11683.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/onlinejudges/acmuva/U11683.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/onlinejudges/acmuva/U162.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/onlinejudges/acmuva/U162.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/onlinejudges/acmuva/U353.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/onlinejudges/acmuva/U353.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/BinaryIn.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/BinaryIn.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/BinaryOut.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/BinaryOut.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/BinaryStdIn.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/BinaryStdIn.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/BinaryStdOut.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/BinaryStdOut.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/In.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/In.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/Out.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/Out.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/StdAudio$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/StdAudio$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/StdAudio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/StdAudio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/StdDraw.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/StdDraw.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/StdIn.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/StdIn.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/StdOut.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/StdOut.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/Stopwatch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/Stopwatch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/StopwatchCPU.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/StdLibFork/stdlibfork/StopwatchCPU.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../testingpractice/.settings/org.eclipse.buildship.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/../testingpractice/.settings/org.eclipse.buildship.core.prefs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -309,6 +288,7 @@
       <workItem from="1570933992729" duration="535000" />
       <workItem from="1570934549786" duration="4877000" />
       <workItem from="1575771275421" duration="688000" />
+      <workItem from="1581223951952" duration="775000" />
     </task>
     <servers />
   </component>

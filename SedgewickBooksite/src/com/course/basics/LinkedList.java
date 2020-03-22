@@ -78,6 +78,24 @@ public class LinkedList<T extends Comparable<? super T>> {
         }
     }
 
+    void removeDuplicatesWithoutBuffer(){
+        Node<T> curr = this.head;
+        Node<T> p = curr;
+        while(curr != null) {
+            while(p.next != null){
+                if(p.next.data == curr.data) {
+                    Node<T> tmp = p.next.next;
+                    p.next.next = null;
+                    p.next = tmp;
+                } else {
+                    p = p.next;
+                }
+            }
+            curr = curr.next;
+            p = curr;
+        }
+    }
+
     void printList(){
         Node<T> n = head;
         while (n != null) {
@@ -113,6 +131,16 @@ public class LinkedList<T extends Comparable<? super T>> {
             p = p.next;
         }
         return len;
+    }
+
+    void checkPNullLoop(){
+        // loop to check what gets printed if we condition p!= null
+        Node<T> p = head;
+        while(p.next != null) {
+            System.out.println("Saw2 : " + p);
+            p = p.next;
+        }
+        System.out.println("After termination2: " + p);
     }
 
     boolean isSorted() {
@@ -243,6 +271,8 @@ public class LinkedList<T extends Comparable<? super T>> {
         l2.printList();
         System.out.println("l2 sorted = "+l2.isSorted());
 
+        l2.checkPNullLoop();
+
         LinkedList<Integer> l3 = new LinkedList<>();
         Integer[] intlist = {914,1, 1, 2, 4,4, 238, 296, 39, 627, 668, 800, 265, 249, 364, 843, 931, 723, 78,
                 967, 609, 433, 200, 508, 726, 744, 966, 2, 447, 475, 432, 59, 556, 343, 676, 651,
@@ -260,6 +290,25 @@ public class LinkedList<T extends Comparable<? super T>> {
         alreadySortedList.sortLinkedList();
         alreadySortedList.printList();
         System.out.println("already count = " + alreadySortedList.countNodes());
+
+
+        LinkedList<Integer> listWithDuplicates = new LinkedList<>();
+        listWithDuplicates.addToTail(1);
+        listWithDuplicates.addToTail(2);
+        listWithDuplicates.addToTail(3);
+        listWithDuplicates.addToTail(5);
+        listWithDuplicates.addToTail(2);
+        listWithDuplicates.addToTail(3);
+        listWithDuplicates.addToTail(2);
+        listWithDuplicates.addToTail(4);
+        listWithDuplicates.addToTail(8);
+        listWithDuplicates.addToTail(3);
+        listWithDuplicates.addToTail(2);
+        listWithDuplicates.addToTail(2);
+        listWithDuplicates.printList();
+        System.out.println("listWithDuplicates count = " + listWithDuplicates.countNodes());
+        listWithDuplicates.removeDuplicatesWithoutBuffer();
+        listWithDuplicates.printList();
 
         Integer[] randlist = {914,1, 1, 2, 4,4, 238, 296, 39, 627, 668, 800, 265, 249, 364, 843, 931, 723, 78,
                 967, 609, 433, 200, 508, 726, 744, 966, 2, 447, 475, 432, 59, 556, 343, 676, 651,
