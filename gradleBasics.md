@@ -23,13 +23,25 @@ Project and SEttings object have access to the gradle object.
 
 A Task represents a single atomic piece of work for a build, such as compiling classes or generating javadoc.
 
+A Task contains a list of actions to be performed
+
 You can also use the task keyword in your build file:
 
+The task configure closure has access to the task. One can do
+things like configure task description etc. in the configure closure.
 ```
  task myTask
  task myTask { configure closure }
  task myTask(type: SomeType)
  task myTask(type: SomeType) { configure closure }
+```
+
+```groovy
+task Hello {
+    // sets property of the task
+    description "This is a description"
+}
+println Hello.descrition
 ```
 
 Each task has a name, which can be used to refer to the task within its owning project, and a fully qualified path, which is unique across all tasks in all projects. The path is the concatenation of the owning project's path and the task's name
@@ -220,6 +232,21 @@ populate properties to a project just like an ext block does, but if ext block i
 
 A bunch of key-value pairs on each line, like an `ini` file, something similar to setting
 env variables for your project.
+
+Remember all gradle property values are read in as strings, so need to explicitly convert to intger wherver needed.
+e.g
+```properties
+// gradle.properties
+VERSION_CODE=2
+```
+```groovy
+//build.gradle
+android {
+    defaultConfig {
+        versionCode project.VERSION_CODE.toInteger()
+    }
+}
+```
 
 ### Where can gradle properties come from?
 
