@@ -8,6 +8,14 @@
 5. Task Interface
 6. Action Interface
 
+### Gradle FileCollection
+
+A `FileCollection` represents a collection of file system locations which you can query in certain ways. A file collection is can be used to define a classpath, or a set of source files, or to add files to an archive.
+
+There are no methods on this interface that allow the contents of the collection to be modified. However, there are a number of sub-interfaces, such as `ConfigurableFileCollection` that allow changes to be made.
+
+A file collection may contain task outputs. The file collection tracks not just a set of files, but also the tasks that produce those files. When a file collection is used as a task input property, Gradle will take care of automatically adding dependencies between the consuming task and the producing tasks.
+
 ### Script interface
 
 You always have `logger` available in your build script.
@@ -18,6 +26,12 @@ You always have `logger` available in your build script.
 `settings.gradle` build script delegates to Seggings Object which in turn has access to bunch of Project objects.
 `Gradle`: TOp level object. - Can be used in files like `init.gradle` where no other context like Project etc. has started yet. https://docs.gradle.org/current/dsl/org.gradle.api.invocation.Gradle.html#org.gradle.api.invocation.Gradle:gradle
 Project and SEttings object have access to the gradle object.
+
+### gradle domain object
+
+Lives on the project.
+Can be accessed in script like this:
+`project.gradle.someMethods`.
 
 ### Gradle Task
 
@@ -44,6 +58,16 @@ task Hello {
 println Hello.descrition
 ```
 
+If task already exists in scope, you can also configure just using
+their name and closure
+e.g.
+```
+taskName {
+    println "this task's name is $name"
+    description "What a new description"
+}
+```
+
 Each task has a name, which can be used to refer to the task within its owning project, and a fully qualified path, which is unique across all tasks in all projects. The path is the concatenation of the owning project's path and the task's name
 
 A Task has 4 'scopes' for properties. You can access these properties by name from the build file or by calling the property(String) method. You can change the value of these properties by calling the setProperty(String, Object) method.
@@ -56,6 +80,78 @@ A Task has 4 'scopes' for properties. You can access these properties by name fr
 3. The convention properties added to the task by plugins. A plugin can add properties and methods to a task through the task's Convention object. The properties of this scope may be readable or writable, depending on the convention objects.
 
 4. The extra properties of the task. Each task object maintains a map of additional properties. These are arbitrary name -> value pairs which you can use to dynamically add properties to a task object. Once defined, the properties of this scope are readable and writable.
+
+### Gradle configurations
+
+A `Configuration` represents a group/scope of artifacts and their dependencies.
+e.g. `compile` configuration, or `implementation` configuration.
+
+
+Configuration is an instance of a `FileCollection` that contains all dependencies (see also `getAllDependencies()`) but not artifacts. If you want to refer to the artifacts declared in this configuration please use `getArtifacts()` or `getAllArtifacts()`.
+
+Configurations are a fundamental part of dependency resolution in Gradle. In the context of dependency resolution, it is useful to distinguish between a consumer and a producer. Along these lines, configurations have at least 3 different roles:
+
+1. to declare dependencies
+
+2. as a consumer, to resolve a set of dependencies to files
+
+3. as a producer, to expose artifacts and their dependencies for consumption by other projects (such consumable configurations usually represent the variants the producer offers to its consumers)
+
+
+Configuration role    can be resolved  can be consumed
+Bucket of dependencies     false   false
+Resolve for certain usage  true  false
+Exposed to consumers       false   true
+Legacy, don’t us           true    true
+
+
+
+A configuration that can be resolved is a configuration for which we can compute a dependency graph, because it contains all the necessary information for resolution to happen. 
+That is to say we’re going to compute a dependency graph, resolve the components in the graph, and eventually get artifacts. 
+
+A configuration which has `canBeResolved` set to false is not meant to be resolved. Such a configuration is there only to declare dependencies. The reason is that depending on the usage (compile classpath, runtime classpath), it can resolve to different graphs. It is an error to try to resolve a configuration which has `canBeResolved` set to false. To some extent, this is similar to an abstract class (`canBeResolved=false`) which is not supposed to be instantiated, and a concrete class extending the abstract class (`canBeResolved=true`). A resolvable configuration will extend at least one non-resolvable configuration (and may extend more than one).
+
+### Gradle plugins
+
+Applying a plugin means actually executing the plugin’s `Plugin.apply(T)` on the Project you want to enhance with the plugin. Applying plugins is idempotent. That is, you can safely apply any plugin multiple times without side effects.
+
+There are two general types of plugins in Gradle, `script plugins` and `binary plugins`.
+
+`Script plugins`: Script plugins are additional build scripts that further configure the build and usually implement a declarative approach to manipulating the build. They are typically used within a build although they can be externalized and accessed from a remote location.
+
+```groovy
+/* 
+Script plugins are automatically resolved and can be applied from a script on the local filesystem or at a remote location.
+*/
+apply from: 'other.gradle'
+```
+
+
+`Binary plugins`: Binary plugins are classes that implement the Plugin interface and adopt a programmatic approach to manipulating the build. Binary plugins can reside within a build script, within the project hierarchy or externally in a plugin jar.
+
+You apply plugins by their plugin `id`, which is a globally unique identifier, or name, for plugins. Core Gradle plugins are special in that they provide short names, such as 'java' for the core JavaPlugin.
+```groovy
+plugins {
+    id 'java'
+}
+
+plugins {
+    id 'com.jfrog.bintray' version '0.4.1'
+}
+```
+
+A plugin often starts out as a script plugin (because they are easy to write) and then, as the code becomes more valuable, it’s migrated to a binary plugin that can be easily tested and shared between multiple projects or organizations.
+
+#### Java Plugin
+
+has useful tasks like `build`, `clean`, `test`.
+
+Build artifacts are placed under `build` directory.
+Expects convention like `src/main/java` for prod/app code, 
+`src/test/java` for test code which form what is known as SourceSet.
+
+
+
 
 #### Extra task properties
 
@@ -88,6 +184,56 @@ You can obtain a `TaskContainer` instance by calling `Project.getTasks()`, or us
 
 A `Task` is made up of a sequence of `Action` objects. When the task is executed, each of the actions is executed in turn, by calling `Action.execute(T)`. You can add actions to a task by calling `doFirst(Action)` or `doLast(Action)`.
 
+#### Task dependencies and execution
+
+Callback available is `whenReady`.
+`project.gradle.taskGraph.allTasks` is only ready after `whenReady`, because Task graph is populated in configuration phase.
+
+Here is the correctway:
+```groovy
+project.gradle.taskGraph.whenReady {
+    taskGraph ->
+        println "whenReady closure cb!"
+        println taskGraph.allTasks
+}
+```
+
+Another callbacks are `TaskGraph.beforeTask` and `TaskGraph.afterTask` which are called before and after every task. This is allowed to use during config phase, no need for whenReady. 
+
+`TaskGraph` has other useful propeties like
+`allTasks` and `hasTask(taskName)` etc. which are recommended to use inside whenReady only.
+
+```groovy
+task doStartProcess {
+    doLast {
+        println "$name - Now starting process - OK"
+    }
+}
+
+task doStep2 {
+    doLast {
+        println "$name - Performed doStep2 OK"
+    }
+}
+
+task doSomethingInTheMiddle {
+    doLast {
+        println "$name - performed middleStep OK"
+    }
+}
+
+task doFinished (dependsOn: ['doSomethingInTheMiddle', 'doStep2']) {
+    doLast {
+        println "$name performed DONE OK"
+    }
+}
+
+println ">>>> ${project.tasks.findAll { task -> task.name.startsWith('do') } }"
+
+if (project.hasProperty('doSomethingDependsOnDoStep2')) { // conditional task dependency
+    doSomethingInTheMiddle.dependsOn(doStartProcess, tasks.findAll { task -> task.name.startsWith('doStep2')})
+}
+```
 ### ScriptHandler
 
 A ScriptHandler allows you to manage the compilation and execution of a build script. You can declare the classpath used to compile and execute a build script. This classpath is also used to load the plugins which the build script uses.
