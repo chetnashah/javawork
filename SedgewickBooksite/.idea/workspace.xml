@@ -1,343 +1,207 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="78915bda-3edb-424a-9bdc-2e6f374085b4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../testingpractice/.settings/org.eclipse.buildship.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/../testingpractice/.settings/org.eclipse.buildship.core.prefs" afterDir="false" />
+    <list default="true" id="2e83217d-f47d-4bb9-ab81-ecc378fccd4e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SedgewickBooksite.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StdLibFork/StdLibFork.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/BinaryDump.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/BinaryDump.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/BinaryIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/BinaryIn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/BinaryOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/BinaryOut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/BinaryStdIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/BinaryStdIn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/BinaryStdOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/BinaryStdOut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/In.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/In.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/Out.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/Out.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/StdArrayIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/StdArrayIO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/StdAudio.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/StdAudio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/StdDraw.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/StdDraw.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/StdIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/StdIn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/StdOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/StdOut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/StdRandom.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/StdRandom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/StdStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/StdStats.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/Stopwatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/Stopwatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/StopwatchCPU.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/StopwatchCPU.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module_sedgewickbooksite.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/company/j8t/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/company/j8t/ThreeSum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/onlinejudges/acmuva/U11332.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/onlinejudges/acmuva/U11679.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/onlinejudges/acmuva/U11683.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/onlinejudges/acmuva/U162.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/onlinejudges/acmuva/U353.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sedgewickbooksite.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sedgewickbooksite.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/books/effectivejava3rdEd/Sports.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/algoexpert/LevehnStein.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/algoexpert/ThreeSum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/algoexpert/TwoSum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/codeforces/A959.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/codeforces/A987.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/codeforces/B987.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/codeforces/C4.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/codeforces/C959.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/codeforces/C987.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/codeforces/D959.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/leetcode/LengthOfLongestSubstringWithoutRepeating.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/leetcode/RepeatedSubstringPattern459.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/leetcode/SubdomainVisitCount811.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/leetcode/weeklycontest158/QueenAttackKing.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/leetcode/weeklycontest158/SplitStrings.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/leetcode/weeklycontest185/ReformatTheString.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/leetcode/weeklycontest185/croakproblem.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/topcoder/SRM733/BuildingSpanningTreesDiv2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/topcoder/SRM733/Pt250.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/topcoder/Solution.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/j8t/FixedCapacityStack.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/j8t/List.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/j8t/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/j8t/ThreeSum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/course/basics/ArrayProblems.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/course/basics/BinaryTree.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/course/basics/GraphTraversal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/course/basics/IndexMinPQ.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/course/basics/LinkedList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/course/basics/MathUtils/NextLexicographicPermutation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/course/basics/MathUtils/NumTheoryUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/course/basics/MergeSort.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/course/basics/PriorityQueueTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/course/basics/QueueTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/course/basics/QuickSort.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/course/basics/StringProblems.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/course/basics/TwoPointerTechnique.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/course/basics/UFTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/cracking/coding/interview/chapter1/MakingAnagrams.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/cracking/coding/interview/chapter1/PalindromePermutation1dot4.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/languagebasics/practice/Person.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/onlinejudges/acmuva/U11332.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/onlinejudges/acmuva/U11679.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/onlinejudges/acmuva/U11683.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/onlinejudges/acmuva/U162.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/onlinejudges/acmuva/U353.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/NumUtilsTest.java" beforeDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>compareto</find>
-      <find>keys</find>
-      <find>Node</find>
-      <find>hal.</find>
-      <find>team</find>
-      <find>hal.team</find>
-      <find>net</find>
-      <find>net</find>
-      <find>syw.team</find>
-    </findStrings>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1S88iDAPBy2oD10WIuY1Fgb8sJw" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="PropertiesComponent">
-    <property name="Downloaded.Files.Path.Enabled" value="true" />
-    <property name="Repository.Attach.Annotations" value="false" />
-    <property name="Repository.Attach.JavaDocs" value="false" />
-    <property name="Repository.Attach.Sources" value="false" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/jaysh/Documents/programming/javawork/SedgewickBooksite/src/com/course/basics/MathUtils/NumTheoryUtils.java" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/junit-4.12.jar!/" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.2.3\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
     </option>
   </component>
-  <component name="RunManager" selected="Application.QueenAttackKing">
-    <configuration default="true" type="Applet">
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+  <component name="ProjectId" id="1lE2fxTCOeHbgT1ukT15cgtI86q" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="show.unlinked.gradle.project.popup" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="UnionFindTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;UnionFindTest&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
     </configuration>
-    <configuration name="BinaryTree" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.course.basics.BinaryTree" />
-      <module name="SedgewickBooksite" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.course.basics.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="D959" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.com.onlinejudges.codeforces.D959" />
-      <module name="SedgewickBooksite" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.com.onlinejudges.codeforces.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LengthOfLongestSubstringWithoutRepeating" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.com.onlinejudges.leetcode.LengthOfLongestSubstringWithoutRepeating" />
-      <module name="SedgewickBooksite" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.com.onlinejudges.leetcode.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LinkedList" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.course.basics.LinkedList" />
-      <module name="SedgewickBooksite" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.course.basics.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MergeSort" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.course.basics.MergeSort" />
-      <module name="SedgewickBooksite" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.course.basics.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NextLexicographicPermutation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.course.basics.MathUtils.NextLexicographicPermutation" />
-      <module name="SedgewickBooksite" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.course.basics.MathUtils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NumTheoryUtils" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.course.basics.MathUtils.NumTheoryUtils" />
-      <module name="SedgewickBooksite" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.course.basics.MathUtils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Person" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.languagebasics.practice.Person" />
-      <module name="SedgewickBooksite" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.languagebasics.practice.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="QueenAttackKing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.com.onlinejudges.leetcode.weeklycontest158.QueenAttackKing" />
-      <module name="SedgewickBooksite" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.com.onlinejudges.leetcode.weeklycontest158.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RepeatedSubstringPattern459" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.com.onlinejudges.leetcode.RepeatedSubstringPattern459" />
-      <module name="SedgewickBooksite" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.com.onlinejudges.leetcode.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestCases" type="JUnit" factoryName="JUnit">
-      <module name="SedgewickBooksite" />
-      <option name="PACKAGE_NAME" value="test" />
-      <option name="MAIN_CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <option name="TEST_OBJECT" value="class" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="TestNG">
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file enabled="true" id="idea.log" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.LinkedList" />
-      <item itemvalue="Application.MergeSort" />
-      <item itemvalue="Application.RepeatedSubstringPattern459" />
-      <item itemvalue="Application.NumTheoryUtils" />
-      <item itemvalue="Application.Person" />
-      <item itemvalue="Application.D959" />
-      <item itemvalue="Application.NextLexicographicPermutation" />
-      <item itemvalue="Application.LengthOfLongestSubstringWithoutRepeating" />
-      <item itemvalue="Application.BinaryTree" />
-      <item itemvalue="Application.QueenAttackKing" />
-      <item itemvalue="JUnit.TestCases" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.QueenAttackKing" />
-        <item itemvalue="Application.BinaryTree" />
-        <item itemvalue="Application.LengthOfLongestSubstringWithoutRepeating" />
-        <item itemvalue="Application.NextLexicographicPermutation" />
-        <item itemvalue="Application.D959" />
+        <item itemvalue="Gradle.UnionFindTest" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="78915bda-3edb-424a-9bdc-2e6f374085b4" name="Default" comment="" />
-      <created>1514112156834</created>
+      <changelist id="2e83217d-f47d-4bb9-ab81-ecc378fccd4e" name="Default Changelist" comment="" />
+      <created>1607148039647</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1514112156834</updated>
-      <workItem from="1570933992729" duration="535000" />
-      <workItem from="1570934549786" duration="4877000" />
-      <workItem from="1575771275421" duration="688000" />
-      <workItem from="1581223951952" duration="775000" />
+      <updated>1607148039647</updated>
     </task>
     <servers />
-  </component>
-  <component name="TestHistory">
-    <history-entry file="TestCases - 2018.04.06 at 14h 55m 14s.xml">
-      <configuration name="TestCases" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestCases - 2018.04.06 at 14h 55m 42s.xml">
-      <configuration name="TestCases" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestCases - 2018.04.06 at 14h 56m 00s.xml">
-      <configuration name="TestCases" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestCases - 2018.04.06 at 14h 56m 19s.xml">
-      <configuration name="TestCases" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestCases - 2018.04.06 at 14h 58m 26s.xml">
-      <configuration name="TestCases" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestCases - 2018.04.06 at 14h 58m 38s.xml">
-      <configuration name="TestCases" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestCases - 2018.04.06 at 15h 00m 59s.xml">
-      <configuration name="TestCases" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestCases - 2018.04.06 at 15h 02m 18s.xml">
-      <configuration name="TestCases" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestCases - 2018.04.06 at 15h 04m 47s.xml">
-      <configuration name="TestCases" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestCases - 2018.04.06 at 15h 04m 58s.xml">
-      <configuration name="TestCases" configurationId="JUnit" />
-    </history-entry>
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="94" y="94" width="1093" height="533" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1607148282972">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="94" y="94" width="1093" height="533" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1280.720/3200.0.1920.1080@0.0.1280.720" timestamp="1607148282972" />
+    <state width="1236" height="254" key="GridCell.Tab.0.bottom" timestamp="1607148267186">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1236" height="254" key="GridCell.Tab.0.bottom/0.0.1280.720/3200.0.1920.1080@0.0.1280.720" timestamp="1607148267186" />
+    <state width="1236" height="254" key="GridCell.Tab.0.center" timestamp="1607148267185">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1236" height="254" key="GridCell.Tab.0.center/0.0.1280.720/3200.0.1920.1080@0.0.1280.720" timestamp="1607148267185" />
+    <state width="1236" height="254" key="GridCell.Tab.0.left" timestamp="1607148267185">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1236" height="254" key="GridCell.Tab.0.left/0.0.1280.720/3200.0.1920.1080@0.0.1280.720" timestamp="1607148267185" />
+    <state width="1236" height="254" key="GridCell.Tab.0.right" timestamp="1607148267186">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1236" height="254" key="GridCell.Tab.0.right/0.0.1280.720/3200.0.1920.1080@0.0.1280.720" timestamp="1607148267186" />
   </component>
 </project>

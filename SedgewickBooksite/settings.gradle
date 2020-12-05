@@ -1,0 +1,3 @@
+rootProject.name='sedgewickbooksite'
+include('app')
+include('stdlibfork')
