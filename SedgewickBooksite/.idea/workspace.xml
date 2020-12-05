@@ -23,86 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e83217d-f47d-4bb9-ab81-ecc378fccd4e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SedgewickBooksite.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StdLibFork/StdLibFork.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/BinaryDump.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/BinaryDump.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/BinaryIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/BinaryIn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/BinaryOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/BinaryOut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/BinaryStdIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/BinaryStdIn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/BinaryStdOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/BinaryStdOut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/In.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/In.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/Out.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/Out.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/StdArrayIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/StdArrayIO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/StdAudio.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/StdAudio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/StdDraw.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/StdDraw.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/StdIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/StdIn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/StdOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/StdOut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/StdRandom.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/StdRandom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/StdStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/StdStats.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/Stopwatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/Stopwatch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StdLibFork/src/stdlibfork/StopwatchCPU.java" beforeDir="false" afterPath="$PROJECT_DIR$/stdlibfork/src/main/java/stdlibfork/StopwatchCPU.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module_sedgewickbooksite.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/company/j8t/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/company/j8t/ThreeSum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/onlinejudges/acmuva/U11332.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/onlinejudges/acmuva/U11679.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/onlinejudges/acmuva/U11683.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/onlinejudges/acmuva/U162.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SedgewickBooksite/com/onlinejudges/acmuva/U353.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sedgewickbooksite.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sedgewickbooksite.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/books/effectivejava3rdEd/Sports.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/algoexpert/LevehnStein.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/algoexpert/ThreeSum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/algoexpert/TwoSum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/codeforces/A959.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/codeforces/A987.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/codeforces/B987.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/codeforces/C4.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/codeforces/C959.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/codeforces/C987.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/codeforces/D959.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/leetcode/LengthOfLongestSubstringWithoutRepeating.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/leetcode/RepeatedSubstringPattern459.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/leetcode/SubdomainVisitCount811.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/leetcode/weeklycontest158/QueenAttackKing.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/leetcode/weeklycontest158/SplitStrings.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/leetcode/weeklycontest185/ReformatTheString.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/leetcode/weeklycontest185/croakproblem.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/topcoder/SRM733/BuildingSpanningTreesDiv2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/topcoder/SRM733/Pt250.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/com/onlinejudges/topcoder/Solution.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/j8t/FixedCapacityStack.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/j8t/List.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/j8t/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/j8t/ThreeSum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/course/basics/ArrayProblems.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/course/basics/BinaryTree.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/course/basics/GraphTraversal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/course/basics/IndexMinPQ.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/course/basics/LinkedList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/course/basics/MathUtils/NextLexicographicPermutation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/course/basics/MathUtils/NumTheoryUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/course/basics/MergeSort.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/course/basics/PriorityQueueTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/course/basics/QueueTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/course/basics/QuickSort.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/course/basics/StringProblems.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/course/basics/TwoPointerTechnique.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/course/basics/UFTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/cracking/coding/interview/chapter1/MakingAnagrams.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/cracking/coding/interview/chapter1/PalindromePermutation1dot4.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/languagebasics/practice/Person.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/onlinejudges/acmuva/U11332.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/onlinejudges/acmuva/U11679.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/onlinejudges/acmuva/U11683.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/onlinejudges/acmuva/U162.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/onlinejudges/acmuva/U353.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/NumUtilsTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,6 +34,13 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -134,7 +62,20 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.BinarySearch">
+    <configuration name="BinarySearch" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.course.basics.BinarySearch" />
+      <module name="sedgewickbooksite.app.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.course.basics.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UnionFindTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -156,6 +97,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.BinarySearch" />
         <item itemvalue="Gradle.UnionFindTest" />
       </list>
     </recent_temporary>
