@@ -24,6 +24,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2e83217d-f47d-4bb9-ab81-ecc378fccd4e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/GraphTraversal.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/com/course/basics/GraphTraversal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/UnionFind.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/com/course/basics/UnionFind.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,9 +64,22 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
-  <component name="RunManager" selected="Application.BinarySearch">
+  <component name="RunManager" selected="Application.GraphTraversal">
     <configuration name="BinarySearch" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.course.basics.BinarySearch" />
+      <module name="sedgewickbooksite.app.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.course.basics.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GraphTraversal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.course.basics.GraphTraversal" />
       <module name="sedgewickbooksite.app.main" />
       <extension name="coverage">
         <pattern>
@@ -92,13 +107,16 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.BinarySearch" />
+        <item itemvalue="Application.GraphTraversal" />
         <item itemvalue="Gradle.UnionFindTest" />
+        <item itemvalue="Application.BinarySearch" />
       </list>
     </recent_temporary>
   </component>
@@ -123,27 +141,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="94" y="94" width="1093" height="533" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1607148282972">
-      <screen x="0" y="0" width="1280" height="720" />
-    </state>
-    <state x="94" y="94" width="1093" height="533" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1280.720/3200.0.1920.1080@0.0.1280.720" timestamp="1607148282972" />
-    <state width="1236" height="254" key="GridCell.Tab.0.bottom" timestamp="1607148267186">
-      <screen x="0" y="0" width="1280" height="720" />
-    </state>
-    <state width="1236" height="254" key="GridCell.Tab.0.bottom/0.0.1280.720/3200.0.1920.1080@0.0.1280.720" timestamp="1607148267186" />
-    <state width="1236" height="254" key="GridCell.Tab.0.center" timestamp="1607148267185">
-      <screen x="0" y="0" width="1280" height="720" />
-    </state>
-    <state width="1236" height="254" key="GridCell.Tab.0.center/0.0.1280.720/3200.0.1920.1080@0.0.1280.720" timestamp="1607148267185" />
-    <state width="1236" height="254" key="GridCell.Tab.0.left" timestamp="1607148267185">
-      <screen x="0" y="0" width="1280" height="720" />
-    </state>
-    <state width="1236" height="254" key="GridCell.Tab.0.left/0.0.1280.720/3200.0.1920.1080@0.0.1280.720" timestamp="1607148267185" />
-    <state width="1236" height="254" key="GridCell.Tab.0.right" timestamp="1607148267186">
-      <screen x="0" y="0" width="1280" height="720" />
-    </state>
-    <state width="1236" height="254" key="GridCell.Tab.0.right/0.0.1280.720/3200.0.1920.1080@0.0.1280.720" timestamp="1607148267186" />
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

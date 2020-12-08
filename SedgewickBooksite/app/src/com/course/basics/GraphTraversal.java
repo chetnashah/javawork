@@ -1,3 +1,4 @@
+package com.course.basics;
 // identity of a vertex - a number from 0 to N-1 for N vertices
 // the best representation for Graph is Array of Arraylist 
 // which is top level array for N vertices
@@ -24,7 +25,7 @@ class GraphTraversal {
         System.out.println("Hello graph traversal!");
         Scanner sc = new Scanner(System.in);
         Graph g = new Graph();
-        g.setup(sc, false);
+        g.setup(sc, true);
         System.out.println(g);
         g.dfsStack();
 
@@ -79,13 +80,14 @@ class Graph {
         for(int i = 0; i< this.N; i++) {
             if (visitColor[i] == WHITE) {
                 ++compCount;
+                pred[i] = -1; // source vertex has no predecessor
                 dfsCLRSVisit(i, disc, finish, pred, visitColor, components, compCount);
             }
         }
         System.out.println(Arrays.toString(disc));
         System.out.println(Arrays.toString(finish));
-        System.out.println(Arrays.toString(pred));
-        System.out.println(Arrays.toString(components));
+        System.out.println("pred is " +Arrays.toString(pred));
+        System.out.println("components is " + Arrays.toString(components));
     }
 
     void dfsCLRSVisit(int u, int[] disc, int[] finish, int[] pred, int[] visitColor, int[] components, int compCount) {
@@ -93,8 +95,13 @@ class Graph {
         disc[u] = ++dfsTime;
         for(Integer v: this.adj[u]) {
             if(visitColor[v] == WHITE) {
+                System.out.println("dfs tree edge: " + u + " -> " + v);
                 pred[v] = u;
                 dfsCLRSVisit(v, disc, finish, pred, visitColor, components, compCount);
+            } else if (visitColor[v] == GRAY) {
+                System.out.println("dfs back edge: " + u + " -> " + v);
+            } else if (visitColor[v] == BLACK) {
+                System.out.println("dfs forward/cross edge: " + u + " -> " + v);
             }
         }
         visitColor[u] = BLACK;
