@@ -47,3 +47,23 @@ Common TestRules: `ErrorCollector`: collect multiple error in one test method
 `RuleChain`: Takes a list of rules and takes care of their execution order.
 
 
+### JUnit Runner
+
+A `Runner` runs tests and notifies a `RunNotifier` of significant events as it does so. You will need to subclass `Runner` when using `RunWith` to invoke a custom runner. When creating a custom runner, in addition to implementing the abstract methods here you must also provide a constructor that takes as an argument the Class containing the tests.
+
+The default runner implementation guarantees that the instances of the test case class will be constructed immediately before running the test and that the runner will retain no reference to the test case instances, generally making them available for garbage collection.
+
+```java
+public class MinimalRunner extends Runner {
+ 
+    public MinimalRunner(Class testClass) {
+    }
+ 
+    public Description getDescription() {
+        return null;
+    }
+ 
+    public void run(RunNotifier runNotifier) {
+    }
+}
+```
