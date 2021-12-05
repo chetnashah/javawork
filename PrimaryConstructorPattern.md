@@ -3,6 +3,8 @@ A primary constructor is the one that constructs an object and encapsulates othe
 
 A secondary one is simply a preparation step before calling a primary constructor and is not really a constructor but rather an introductory layer in front of a real constructing mechanism
 
+Java has known to have this pattern,
+because Java is known to have no support for default parameters in constructors
 
 ```java
 final class Cash {
