@@ -87,3 +87,59 @@ Method is invoked based on instance type, not the reference type.
 Why use it?
 1. Do it so that you can take advantage of the compiler checking to make sure you actually are overriding a method when you think you are.
 2. If the parent class changes, the compiler will make sure that the child classes have been updated as well
+
+### Auto super insertion in subclass constructor
+
+If parent has a no-arg constructor, and we are missing call to super constructor in subclass constructor,
+compielr with auto insert `super()` statement as first line of subclass constructor.
+
+```java
+// valid java code
+class Animal {
+    public Animal() {
+        System.out.println("Animal constructor");
+    }
+}
+
+class Cat extends Animal {
+    public Cat(){
+        // automatic insert call to super() by compiler
+        System.out.println("I am cat constructor");
+    }
+}
+
+public class ClassSuperTest {
+    public static void main(String[] args) {
+        Cat c = new Cat();
+    }
+}
+//Animal constructor
+//I am cat constructor
+```
+
+This case becomes invalid and auto-insertion of super constructor call is not done if 
+parent class has nonzero arg constructor
+
+```java
+// COMPILER ERROR!
+class Animal {
+    public Animal(int k) {
+        System.out.println("Animal constructor");
+    }
+}
+
+class Cat extends Animal {
+    public Cat(){
+        // COMPLIER ERROR: There is no default constructor available in 'Animal'
+        // super(10); // this will fix the compiler error: explicit super constructor initialization
+        System.out.println("I am cat constructor");
+    }
+}
+
+public class ClassSuperTest {
+    public static void main(String[] args) {
+        Cat c = new Cat();
+    }
+}
+
+```
