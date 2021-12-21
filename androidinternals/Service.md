@@ -1,6 +1,7 @@
 A Service is an application component representing either an application's desire
   to perform a longer-running operation while not interacting with the user
-  or to supply functionality for other applications to use
+  or to supply functionality for other applications to use.
+A bound service is the server in a client-server interface.
 
 Abstract class
 
