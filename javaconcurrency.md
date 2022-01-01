@@ -55,7 +55,7 @@ if(!vector.contains(element)) {
 
 Synchronization also creates a `"happens-before" memory barrier`, causing a memory visibility constraint such that anything done up to the point some thread releases a lock appears to another thread subsequently acquiring the same lock to have happened before it acquired the lock
 
-![Synchronization](synchronization.png)
+![Synchronization](images/synchronization.png)
 
 #### synchronized method
 
