@@ -1,4 +1,5 @@
 
+A good tool to do visual tracing is VisualVM.
 
 ### Java Thread states
 
