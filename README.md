@@ -21,3 +21,8 @@ gradle init --type basic
 javap is the java class file disassembler.
 javap -c includes bytecode.
 javap -c -verbose is more verbose
+
+
+### JNI code for JDK sits in `jdk/src/java.base/share/native/libjava/`
+e.g. `FileInputStream.c` which has native methods implemented 
+for `FileInputStream.java`.
