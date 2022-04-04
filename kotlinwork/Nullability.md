@@ -11,6 +11,20 @@ e.g.
 var abc : String? = null
 ```
 
+### lateinit var preferred for onetime late initialization
+
+Use the lateinit keyword for the field to avoid needing to declare it nullable. (one time late initialization use case)
+Can be used for class member fields or also function level variables.
+
+```kt
+class Something{
+    lateinit var abc: String
+    fun onCreated(){
+        abc = '1234';
+    }
+}
+```
+
 ### Platform types (Type!)
 
 Any reference in Java may be `null`, which makes Kotlin's requirements of strict null-safety impractical for objects coming from Java. Types of Java declarations are treated in Kotlin in a specific manner and called platform types. Null-checks are relaxed for such types, so that safety guarantees for them are the same as in Java (not strict null safety, and can throw NPEs)
