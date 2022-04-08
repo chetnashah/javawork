@@ -1,4 +1,8 @@
 
+### Kotlin with Gradle
+
+https://www.youtube.com/watch?v=KN-_q3ss4l0
+
 ### Key classes/Interfaces:
 
 1. Script Interace - represents the `build.gradle` file instance (https://docs.gradle.org/current/dsl/org.gradle.api.Script.html)
@@ -475,3 +479,9 @@ At this point I really have to point your attention to example #3 and #6. Doesn'
 ```
 
 Summary : Each closure has a delegate object, which groovy uses to lookup (free)variable & method references, this is usally known as environment, context etc. in other functional languages, where usually it is lexical, but in groovy it can be explicitly set.
+
+### Writing your own plugin
+
+https://www.youtube.com/watch?v=LPzBVtwGxlo&list=RDCMUCVHFbqXqoYvEWM1Ddxl0QDg&index=8
+
+Create a new directory known as `buildSrc` where you put your custom tasks/plugins code.
