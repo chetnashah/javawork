@@ -26,7 +26,9 @@ Use the Intent extras:
 
 ### setting/getting URI on an intent
 
-Use the `setData()` method with a Uri object to add that URI to the Intent
+Uri data goes well with actions, and used as primary source of data/info passed in an intent.
+
+Use the `intent.setData()` method with a Uri object to add that URI to the Intent
 To get Uri data from intent use `intent.getData()` method:
 ```java
 Uri locationUri = intent.getData();
