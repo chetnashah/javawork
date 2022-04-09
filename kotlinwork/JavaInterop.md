@@ -25,3 +25,10 @@ RxJava 3 (io.reactivex.rxjava3.annotations)
 ```
 
 
+### Get java classReference
+
+A kotlin class reference (`KClass`) is not same as java class reference:
+`SecondActivity::class` - kotline class reference
+`SecondActivity::class.java` - java class reference
+
+
