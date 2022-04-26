@@ -1,13 +1,40 @@
 package com.course.basics.MathUtils;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class NumTheoryUtils {
     public static void main(String[] args) {
         System.out.println(getDivisors(100));
         System.out.println(isPrime(77));
         System.out.println(gcd(10, 80));
+    }
+
+
+    /**
+     * IN O(n log log n),
+     * Get a seive array of primes upto N
+     * @param n
+     * @return ArrayList by seive where arr.get(i) = true if i is prime.
+     */
+    public static List<Boolean> seiveErastothenesPrimes(int N) {
+        ArrayList<Boolean> primeList = new ArrayList<Boolean>(N+1);
+        for(int i=0;i<N+1;i++){
+            primeList.add(Boolean.TRUE);
+        }
+
+        primeList.set(0, Boolean.FALSE);
+        primeList.set(1, Boolean.FALSE);
+
+        // outer loop goes from 2 to sqrt(N)
+        for(int i=2; (long)i*i<=N; i++) {
+            if(primeList.get(i) == Boolean.TRUE){
+                // inner loop loops via multiples till the end.
+                for(int j=i+i; j <= N; j += i){
+                    primeList.set(j, Boolean.FALSE);
+                }
+            }
+        }
+        return primeList;
     }
 
     /**

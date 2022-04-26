@@ -23,10 +23,66 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e83217d-f47d-4bb9-ab81-ecc378fccd4e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SedgewickBooksite.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/books/effectivejava3rdEd/Sports.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/books/effectivejava3rdEd/Sports.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/algoexpert/LevehnStein.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/algoexpert/LevehnStein.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/algoexpert/ThreeSum.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/algoexpert/ThreeSum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/algoexpert/TwoSum.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/algoexpert/TwoSum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/codeforces/A959.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/codeforces/A959.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/codeforces/A987.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/codeforces/A987.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/codeforces/B987.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/codeforces/B987.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/codeforces/C4.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/codeforces/C4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/codeforces/C959.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/codeforces/C959.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/codeforces/C987.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/codeforces/C987.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/codeforces/D959.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/codeforces/D959.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/leetcode/LengthOfLongestSubstringWithoutRepeating.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/leetcode/LengthOfLongestSubstringWithoutRepeating.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/leetcode/RepeatedSubstringPattern459.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/leetcode/RepeatedSubstringPattern459.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/leetcode/SubdomainVisitCount811.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/leetcode/SubdomainVisitCount811.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/leetcode/weeklycontest158/QueenAttackKing.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/leetcode/weeklycontest158/QueenAttackKing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/leetcode/weeklycontest158/SplitStrings.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/leetcode/weeklycontest158/SplitStrings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/leetcode/weeklycontest185/ReformatTheString.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/leetcode/weeklycontest185/ReformatTheString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/leetcode/weeklycontest185/croakproblem.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/leetcode/weeklycontest185/croakproblem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/leetcode/weeklycontest208/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/leetcode/weeklycontest208/Solution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/topcoder/SRM733/BuildingSpanningTreesDiv2.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/topcoder/SRM733/BuildingSpanningTreesDiv2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/topcoder/SRM733/Pt250.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/topcoder/SRM733/Pt250.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/topcoder/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/topcoder/Solution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/company/j8t/FixedCapacityStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/j8t/FixedCapacityStack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/company/j8t/List.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/j8t/List.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/company/j8t/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/j8t/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/company/j8t/ThreeSum.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/j8t/ThreeSum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/ArrayProblems.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/ArrayProblems.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/BinarySearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/BinarySearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/BinaryTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/BinaryTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/GraphTraversal.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/GraphTraversal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/IndexMinPQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/IndexMinPQ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/LinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/MathUtils/NextLexicographicPermutation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/MathUtils/NextLexicographicPermutation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/MathUtils/NumTheoryUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/MathUtils/NumTheoryUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/MergeSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/MergeSort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/PriorityQueueTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/PriorityQueueTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/QueueTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/QueueTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/QuickSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/QuickSort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/StringProblems.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/StringProblems.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/TwoPointerTechnique.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/TwoPointerTechnique.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/UnionFind.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/UnionFind.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/cracking/coding/interview/chapter1/MakingAnagrams.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cracking/coding/interview/chapter1/MakingAnagrams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/cracking/coding/interview/chapter1/PalindromePermutation1dot4.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cracking/coding/interview/chapter1/PalindromePermutation1dot4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/languagebasics/practice/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/languagebasics/practice/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/onlinejudges/acmuva/U11332.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/onlinejudges/acmuva/U11332.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/onlinejudges/acmuva/U11679.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/onlinejudges/acmuva/U11679.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/onlinejudges/acmuva/U11683.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/onlinejudges/acmuva/U11683.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/onlinejudges/acmuva/U162.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/onlinejudges/acmuva/U162.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/com/onlinejudges/acmuva/U353.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/onlinejudges/acmuva/U353.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/NumUtilsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/NumUtilsTest.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,6 +93,31 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="sedgewickbooksite" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="sedgewickbooksite" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -46,6 +127,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -67,32 +151,12 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jay\Documents\programming\javawork\SedgewickBooksite\app\src\main\java" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.GraphTraversal">
-    <configuration name="BinarySearch" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.course.basics.BinarySearch" />
-      <module name="sedgewickbooksite.app.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.course.basics.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Gradle.NumUtilsTest.testSeive">
     <configuration name="GraphTraversal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.course.basics.GraphTraversal" />
       <module name="sedgewickbooksite.app.main" />
@@ -105,6 +169,75 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="NumUtilsTest (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;NumUtilsTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="NumUtilsTest.testDivisors" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;NumUtilsTest.testDivisors&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="NumUtilsTest.testSeive" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;NumUtilsTest.testSeive&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
     </configuration>
     <configuration name="UnionFindTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -122,14 +255,29 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.GraphTraversal" />
+        <item itemvalue="Gradle.NumUtilsTest.testSeive" />
         <item itemvalue="Gradle.UnionFindTest" />
-        <item itemvalue="Application.BinarySearch" />
+        <item itemvalue="Gradle.NumUtilsTest.testDivisors" />
+        <item itemvalue="Gradle.NumUtilsTest (1)" />
+        <item itemvalue="Application.GraphTraversal" />
       </list>
     </recent_temporary>
   </component>
@@ -156,9 +304,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>

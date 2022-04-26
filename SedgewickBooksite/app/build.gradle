@@ -8,13 +8,7 @@ version '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
 }
-sourceSets {
-    main {
-        java {
-            srcDirs = ['src']
-        }
-    }
-}
+
 dependencies {
     implementation project(':stdlibfork')
     compile 'junit:junit:4.12'

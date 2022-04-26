@@ -3,9 +3,7 @@ import com.course.basics.MathUtils.NumTheoryUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class NumUtilsTest {
 
@@ -31,5 +29,20 @@ public class NumUtilsTest {
         Assert.assertEquals(1, NumTheoryUtils.gcd(11, 31));
         Assert.assertEquals(1, NumTheoryUtils.gcd(1, 12));
         Assert.assertEquals(5, NumTheoryUtils.gcd(5,5));
+    }
+
+    @Test
+    public void testSeive(){
+
+        List<Boolean> arrayList = Arrays.asList(
+                Boolean.FALSE, Boolean.FALSE,// 0,1
+                Boolean.TRUE, //2
+                Boolean.TRUE, //3
+                Boolean.FALSE, //4
+                Boolean.TRUE);// 5
+
+        List<Boolean> ans = NumTheoryUtils.seiveErastothenesPrimes(5);
+
+        Assert.assertArrayEquals(arrayList.toArray(), ans.toArray());
     }
 }
