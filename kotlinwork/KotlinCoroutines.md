@@ -1,7 +1,25 @@
 
+## Usage
+
+on jvm:
+```groovy
+dependencies {
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1")
+}
+```
+
+On android:
+```groovy
+dependencies {
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1")
+}
+```
+
+## 
 * A suspendable computation.
 * Not bound to any particular thread. It may suspend its execution on one thread and resume on another.
-
+* multiple coroutines can concurrently run on a single thread,
+* very cheap
 ## Using coroutines
 
 Not available by default, needs to be added as a gradle dependency.

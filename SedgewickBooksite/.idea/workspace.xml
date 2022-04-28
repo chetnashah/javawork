@@ -23,65 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e83217d-f47d-4bb9-ab81-ecc378fccd4e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/SedgewickBooksite.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/books/effectivejava3rdEd/Sports.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/books/effectivejava3rdEd/Sports.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/algoexpert/LevehnStein.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/algoexpert/LevehnStein.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/algoexpert/ThreeSum.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/algoexpert/ThreeSum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/algoexpert/TwoSum.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/algoexpert/TwoSum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/codeforces/A959.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/codeforces/A959.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/codeforces/A987.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/codeforces/A987.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/codeforces/B987.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/codeforces/B987.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/codeforces/C4.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/codeforces/C4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/codeforces/C959.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/codeforces/C959.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/codeforces/C987.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/codeforces/C987.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/codeforces/D959.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/codeforces/D959.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/leetcode/LengthOfLongestSubstringWithoutRepeating.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/leetcode/LengthOfLongestSubstringWithoutRepeating.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/leetcode/RepeatedSubstringPattern459.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/leetcode/RepeatedSubstringPattern459.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/leetcode/SubdomainVisitCount811.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/leetcode/SubdomainVisitCount811.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/leetcode/weeklycontest158/QueenAttackKing.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/leetcode/weeklycontest158/QueenAttackKing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/leetcode/weeklycontest158/SplitStrings.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/leetcode/weeklycontest158/SplitStrings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/leetcode/weeklycontest185/ReformatTheString.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/leetcode/weeklycontest185/ReformatTheString.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/leetcode/weeklycontest185/croakproblem.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/leetcode/weeklycontest185/croakproblem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/leetcode/weeklycontest208/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/leetcode/weeklycontest208/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/topcoder/SRM733/BuildingSpanningTreesDiv2.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/topcoder/SRM733/BuildingSpanningTreesDiv2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/topcoder/SRM733/Pt250.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/topcoder/SRM733/Pt250.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/com/onlinejudges/topcoder/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/com/onlinejudges/topcoder/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/company/j8t/FixedCapacityStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/j8t/FixedCapacityStack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/company/j8t/List.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/j8t/List.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/company/j8t/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/j8t/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/company/j8t/ThreeSum.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/company/j8t/ThreeSum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/ArrayProblems.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/ArrayProblems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/BinarySearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/BinarySearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/BinaryTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/BinaryTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/GraphTraversal.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/GraphTraversal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/IndexMinPQ.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/IndexMinPQ.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/LinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/MathUtils/NextLexicographicPermutation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/MathUtils/NextLexicographicPermutation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/MathUtils/NumTheoryUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/MathUtils/NumTheoryUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/MergeSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/MergeSort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/PriorityQueueTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/PriorityQueueTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/QueueTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/QueueTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/QuickSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/QuickSort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/StringProblems.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/StringProblems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/TwoPointerTechnique.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/TwoPointerTechnique.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/course/basics/UnionFind.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/UnionFind.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/cracking/coding/interview/chapter1/MakingAnagrams.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cracking/coding/interview/chapter1/MakingAnagrams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/cracking/coding/interview/chapter1/PalindromePermutation1dot4.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/cracking/coding/interview/chapter1/PalindromePermutation1dot4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/languagebasics/practice/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/languagebasics/practice/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/onlinejudges/acmuva/U11332.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/onlinejudges/acmuva/U11332.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/onlinejudges/acmuva/U11679.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/onlinejudges/acmuva/U11679.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/onlinejudges/acmuva/U11683.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/onlinejudges/acmuva/U11683.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/onlinejudges/acmuva/U162.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/onlinejudges/acmuva/U162.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/com/onlinejudges/acmuva/U353.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/onlinejudges/acmuva/U353.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/NumUtilsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/NumUtilsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kotlinwork/KotlinCoroutines.md" beforeDir="false" afterPath="$PROJECT_DIR$/../kotlinwork/KotlinCoroutines.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
