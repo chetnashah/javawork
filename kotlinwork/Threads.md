@@ -21,7 +21,7 @@ This is a stdlib function that directly runs the given lambda which is part of `
 ```kt
 fun main(){
     println("Main running! from thread name = ${Thread.currentThread().name}")// "main"
-    thread {
+    thread { // creates a background worker thread and starts it
         println("Running from a separate thread name = ${Thread.currentThread().name}")// "thread-0"
     }
 }
