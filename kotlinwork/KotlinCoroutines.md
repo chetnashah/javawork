@@ -20,12 +20,14 @@ dependencies {
 
 https://github.com/Kotlin/KEEP/blob/master/proposals/coroutines.md
 https://www.youtube.com/watch?v=YrrUCSi72E8
+
+https://www.youtube.com/watch?v=Mj5P47F6nJg
 ## 
 * A suspendable computation.
 * Not bound to any particular thread. It may suspend its execution on one thread and resume on another.
 * multiple coroutines can concurrently run on a single thread,
 * very cheap
-
+* Different continuations of a same coroutine might be scheduled on different threads.
 
 ## DEbugging coroutines on android
 
@@ -131,9 +133,9 @@ To create and start a new coroutine we use one of the main "coroutine builders".
 
 All coroutine builders are regular functions, that take a `context` and a `block: suspend () -> ?` i.e. a suspending lambda.
 
-1. `runBlocking` - runs/blocks coroutine on thread in which it is specified
+1. `runBlocking` - runs/blocks coroutine on thread in which it is specified. It will block the hosting thread until the coroutine is done. It is designed to bridge regular blocking code to libraries that are written in suspending style, to be used in main functions and in tests. when this run-blocking block starts, it will even stop/block other half run/suspended coroutines that were launched on this thread from executing
 2. `async` - takes a suspending lambda returns a `Deferred<Result>` which is same as a Promise/Future. You can call `.await()` on a deferred object e.g. `deferred1.await()`.
-3. `launch` - non-blocking in nature, as it runs coroutine in separate thread than where it is specified.
+3. `launch` - Fire and forget, non-blocking in nature, as it runs coroutine in separate thread than where it is specified.
 4. `future` - returns a CompletableFuture.
 
 All coroutine builders take a lambda in which `this` is set to coroutineScope
@@ -224,23 +226,102 @@ The completion continuation is invoked when the coroutine completes with a resul
 
 Scope decides lifetime in which a coroutine is valid. Every coroutine needs to run in a scope. 
 Coroutine scope is responsible for the structure and parent-child relationships between different coroutines. We always start new coroutines inside a scope.
+CoroutineScope is a place where execution can be suspended.
 
 Every `coroutine builder`, e.g. `launch`, `async` is an extension of `CoroutineScope` and automatically inherits its `coroutineContext` to automatically propogate all its elements and cancellation.
 
 When `launch`, `async`, or `runBlocking` are used to create and start a new coroutine, they automatically create the corresponding scope.
+For `launch`/`async` that are not run using `GlobalScope`, they will use the
+context like thread to run and other things from parent coroutinescope.
 
-
+`CoroutineScope interace`: see below
+It is present inside `this` argument of any suspending lambda given to coroutine builders. So for e.g.
 ```kt
-launch { /* this: CoroutineScope */
+public interface CoroutineScope {
+    /**
+     * The context of this scope.
+     * Context is encapsulated by the scope and used for implementation of coroutine builders that are extensions on the scope.
+     * Accessing this property in general code is not recommended for any purposes except accessing the [Job] instance for advanced usages.
+     *
+     * By convention, should contain an instance of a [job][Job] to enforce structured concurrency.
+     */
+    public val coroutineContext: CoroutineContext
 }
 ```
 
-`GlobalScope`: top level coroutines launched via `GlobalScope.launch { }` are top level coroutines that can survive entire life span of an application.
+Interesting extra methods on `CoroutineScope Interface` (as extension functions):
+1. `launch`
+2.  `async`
+3. `plus`
+4. `isActive`
+5. `cancel`
+6. `ensureActive`
 
+`CoroutineScope function (not interface)`: Creates a coroutineScope that wraps a given coroutine context. If the given context does not containa `Job` element, a default `Job()` is created.
+```kt
+public fun CoroutineScope(context: CoroutineContext): CoroutineScope =
+    ContextScope(if (context[Job] != null) context else context + Job())
+```
 
+`coroutineScope function` suspend function, takes a suspending lambda and creates a CoroutineScope, inheriting coroutineContext from outer scope.
+```kt
+public suspend fun <R> coroutineScope(block: suspend CoroutineScope.() -> R): R {
+    contract {
+        callsInPlace(block, InvocationKind.EXACTLY_ONCE)
+    }
+    return suspendCoroutineUninterceptedOrReturn { uCont ->
+        val coroutine = ScopeCoroutine(uCont.context, uCont)
+        coroutine.startUndispatchedOrReturn(coroutine, block)
+    }
+}
+```
+Example usage:
+```kt
+suspend fun showSomeData() = coroutineScope {
+    val data = async(Dispatchers.IO) { // <- extension on current scope
+     ... load some UI data for the Main thread ...
+    }
+
+    withContext(Dispatchers.Main) {
+        doSomeWork()
+        val result = data.await()
+        display(result)
+    }
+}
+```
+
+`GlobalScope`: top level scope, coroutines launched via `GlobalScope.launch { }` are top level coroutines that can survive entire life span of an application.
+
+Implementation of GlobalScope:
+```kt
+public object GlobalScope : CoroutineScope {
+    /**
+     * Returns [EmptyCoroutineContext].
+     */
+    override val coroutineContext: CoroutineContext
+        get() = EmptyCoroutineContext
+}
+```
+
+`MainScope`: The resulting scope has SupervisorJob and Dispatchers.Main context elements.
+
+```kt
+public fun MainScope(): CoroutineScope = ContextScope(SupervisorJob() + Dispatchers.Main)
+```
 Android provides:
 1. `lifecycleScope`:
 2. `viewModelScope`:
+
+### ContextScope
+
+Given a CoroutineContext, create a CoroutineScope with sensible defaults.
+```kt
+internal class ContextScope(context: CoroutineContext) : CoroutineScope {
+    override val coroutineContext: CoroutineContext = context
+    // CoroutineScope is used intentionally for user-friendly representation
+    override fun toString(): String = "CoroutineScope(coroutineContext=$coroutineContext)"
+}
+```
 
 ### Dispatchers
 
@@ -270,24 +351,35 @@ launch(newSingleThreadContext("MyOwnThread")) { // will get its own new thread
 
 The default dispatcher is used when no other dispatcher is explicitly specified in the scope. It is represented by Dispatchers.Default and uses a shared background pool of threads.
 
+In order to work with the Main dispatcher, the following artifact should be added to the project runtime dependencies:
+
+`kotlinx-coroutines-android` — for Android Main thread dispatcher
+`kotlinx-coroutines-javafx` — for JavaFx Application thread dispatcher
+`kotlinx-coroutines-swing` — for Swing EDT dispatcher
+
+
+
 ### runBlocking
 
 It is designed to bridge regular blocking code to libraries that are written in suspending style, to be used in main functions and in tests.
 
-**It runs coroutine in the same thread where it is specified** (e.g. here in the example in main thread)
+**It runs coroutine in the same thread where it is specified** (e.g. here in the example in main thread). All code after this block does not get a chance to run till this block/job is finished
+
+when this run-blocking block starts, it will even stop/block other half run/suspended coroutines that were launched on this thread from executing.
 
 ```kotlin
 fun main(){
     println("hello ")
     runBlocking {
         println("fake work by coroutine is done inside thread - ${Thread.currentThread().name}") // runs on main thread
-    }
+        delay(10000)
+    } // code after this line does not get executed and is blocked till above coroutine-job finishes. 
 }
 ```
 
 ### launch
 
-`launch` is a coroutine builder.
+`launch` is a coroutine builder, it cannot be used directly but needs a scope in order to be used. It is an extension function on `CoroutineScope` object.
 launch is used for starting a computation that isn't expected to return a specific result. launch returns `Job`, which represents the coroutine. 
 
 It is possible to wait until it completes by calling `Job.join()`.
@@ -296,7 +388,7 @@ It launches a new coroutine concurrently with the rest of code.
 
 ### async
 
-async starts a new coroutine and returns a Deferred object.
+async starts a new coroutine and returns a Deferred object. Cannot be directly used at toplevel, needs to be declared in a scope.
 Think of `async` as `launch`, but with a Deferred result to be returned.
 Runs as soon as specified,
 `Deferred` extends `JOb`, but also has extra methods like `.await()`.
@@ -311,6 +403,18 @@ Since `delay` is a suspendable function, it can be only called inside a coroutin
 
 You can think of this as similar to how await is only allowed to be called inside async functions in javascript.
 
+## Structured concurrency
+
+Parent always waits for children completion
+
+### Resource cleanup
+
+* never loose a working coroutine
+### Error propogation
+
+* Never loose an exception
+
+
 ## Job
 
 To better manage a coroutine, a `job` is provided when we `launch` or `async`.
@@ -318,9 +422,33 @@ A `job` is part of context of the coroutine. It is kind of like a handle to the 
 
 A `Job` represents a coroutine or task that is being performed.
 A `Job` is a `CoroutineContext.Element`.
+i.e.
+```kotlin
+interface Job : CoroutineContext.Element {
+    companion object key : CoroutineContext.Key<Job>
+}
+```
 
 A `CoroutineContext` is a collection of different couroutine context elements.
 `Deferred` is also a `Job` so it can be cancelled if needed.
+
+API:
+1. `job.join()`: wherever declared, it will suspend execution till the specified job is finished, and resume execution post that.
+e.g.
+```kt
+fun main() = runBlocking {
+    println("main prog starts")
+    val job = launch {
+        println(" fake work starts")
+        delay(1000)
+        println(" fake work ends)
+    }
+    job.join()
+    println("main prog ends")
+}
+```
+
+2. `job.cancel()`: 
 
 ## CPS transformation of suspending functions
 
@@ -334,3 +462,12 @@ Object createPost(Token token, Item item, Continuation<Post> cont)
 ```
 
 In detail this is done through state machines
+
+## Coroutines on android
+
+```groovy
+implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.0'
+```
+
+
+* get Access to `Main` Dispatcher
