@@ -3,3 +3,14 @@ https://medium.com/androiddevelopers/android-styling-themes-vs-styles-ebe05f9175
 https://medium.com/androiddevelopers/android-styling-themes-overlay-1ffd57745207
 https://medium.com/androiddevelopers/android-styling-common-theme-attributes-8f7c50c9eaba
 https://medium.com/androiddevelopers/android-styling-prefer-theme-attributes-412caa748774
+
+## Style
+
+A style can specify attributes for a View, such as font color, font size, background color, and much more.
+
+
+## Theme
+
+A theme is a collection of styles that's applied to an entire app, activity, or view hierarchy—not just an individual View.
+
+When you apply a theme to an app, activity, view, or view group, the theme is applied to that element and all of its children. Themes can also apply styles to non-view elements, such as the status bar and window background

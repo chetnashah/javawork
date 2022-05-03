@@ -1,7 +1,7 @@
-
+This is different from `databinding`.
 ## Why?
 
-Used to prevent `findViewById` boilerplate.
+Used to prevent `findViewById` boilerplate. 
 
 Details at: https://developer.android.com/topic/libraries/view-binding
 
