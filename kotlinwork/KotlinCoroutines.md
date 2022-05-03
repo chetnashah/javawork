@@ -139,7 +139,7 @@ All coroutine builders are regular functions, that take a `context` and a `block
 4. `future` - returns a CompletableFuture.
 
 All coroutine builders take a lambda in which `this` is set to coroutineScope
-### CoroutineContext
+### CoroutineContext (An interface)
 
 Coroutine context is a persistent set of user-defined objects that can be attached to the coroutine. 
 
@@ -150,12 +150,78 @@ Think of a coroutine as a light-weight thread. In this case, coroutine context i
 
 Coroutines always execute in some context represented by a value of `CoroutineContext type`.
 
-#### CoroutineContext.Element
+#### CoroutineContext.Element (An interface that extends CorutineContext)
 
 An `Element` of the coroutine context is a context itself. 
 It is a singleton context with this element only. 
 
 This enables creation of composite contexts by taking library definitions of coroutine context elements and joining them with +. For example, if one library defines auth element with user authorization information, and some other library defines threadPool object with some execution context information, then you can use a `launch{}` coroutine builder with the combined context using `launch(auth + threadPool) {...}` invocation.
+
+Code Implementation
+```kotlin
+public interface CoroutineContext {
+    /**
+     * Returns the element with the given [key] from this context or `null`.
+     */
+    public operator fun <E : Element> get(key: Key<E>): E?
+
+    /**
+     * Accumulates entries of this context starting with [initial] value and applying [operation]
+     * from left to right to current accumulator value and each element of this context.
+     */
+    public fun <R> fold(initial: R, operation: (R, Element) -> R): R
+
+    /**
+     * Returns a context containing elements from this context and elements from  other [context].
+     * The elements from this context with the same key as in the other one are dropped.
+     */
+    public operator fun plus(context: CoroutineContext): CoroutineContext =
+        if (context === EmptyCoroutineContext) this else // fast path -- avoid lambda creation
+            context.fold(this) { acc, element ->
+                val removed = acc.minusKey(element.key)
+                if (removed === EmptyCoroutineContext) element else {
+                    // make sure interceptor is always last in the context (and thus is fast to get when present)
+                    val interceptor = removed[ContinuationInterceptor]
+                    if (interceptor == null) CombinedContext(removed, element) else {
+                        val left = removed.minusKey(ContinuationInterceptor)
+                        if (left === EmptyCoroutineContext) CombinedContext(element, interceptor) else
+                            CombinedContext(CombinedContext(left, element), interceptor)
+                    }
+                }
+            }
+
+    /**
+     * Returns a context containing elements from this context, but without an element with
+     * the specified [key].
+     */
+    public fun minusKey(key: Key<*>): CoroutineContext
+
+    /**
+     * Key for the elements of [CoroutineContext]. [E] is a type of element with this key.
+     */
+    public interface Key<E : Element>
+
+    /**
+     * An element of the [CoroutineContext]. An element of the coroutine context is a singleton context by itself.
+     */
+    public interface Element : CoroutineContext {
+        /**
+         * A key of this coroutine context element.
+         */
+        public val key: Key<*>
+
+        public override operator fun <E : Element> get(key: Key<E>): E? =
+            @Suppress("UNCHECKED_CAST")
+            if (this.key == key) this as E else null
+
+        public override fun <R> fold(initial: R, operation: (R, Element) -> R): R =
+            operation(initial, this)
+
+        public override fun minusKey(key: Key<*>): CoroutineContext =
+            if (this.key == key) EmptyCoroutineContext else this
+    }
+}
+```
 
 ### suspendCoroutine
 
@@ -290,7 +356,7 @@ suspend fun showSomeData() = coroutineScope {
 }
 ```
 
-`GlobalScope`: top level scope, coroutines launched via `GlobalScope.launch { }` are top level coroutines that can survive entire life span of an application.
+`GlobalScope`: top level scope, coroutines launched via `GlobalScope.launch { }` are top level coroutines that can survive entire life span of an application. Should not be used unless careful.
 
 Implementation of GlobalScope:
 ```kt
@@ -382,6 +448,22 @@ fun main(){
 `launch` is a coroutine builder, it cannot be used directly but needs a scope in order to be used. It is an extension function on `CoroutineScope` object.
 launch is used for starting a computation that isn't expected to return a specific result. launch returns `Job`, which represents the coroutine. 
 
+When launch is not given any dispatcher/context, it will run the coroutine inside in 
+the thread where it was declared i.e. inheriting the scope & context on where to run.
+
+```kotlin
+launch { // will get dispatched to same thread where it was declared running 
+    println("I'm working in thread ${Thread.currentThread().name}")
+}
+```
+
+You can change by specifying a different context/dispatcher e.g.
+```kotlin
+launch(Dispatchers.IO) {
+    println("I'm working in thread ${Thread.currentThread().name}")
+}
+```
+
 It is possible to wait until it completes by calling `Job.join()`.
 It launches a new coroutine concurrently with the rest of code.
 
@@ -471,3 +553,6 @@ implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.0'
 
 
 * get Access to `Main` Dispatcher
+
+## Testing with Coroutines
+

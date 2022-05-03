@@ -1,5 +1,13 @@
 Note: see (inferred) type of a binding with Ctrl + Shft + P.
 
+## Difference from Java
+
+1. functions can be put on the top of a file, no need to put them in classes. This helps in modular and cleaner strucuture and separation of logic from entities.
+
+
+
+## Common Idioms
+
 Function Syntax:
 
 1. functions are defined/declared using "fun" keyword
