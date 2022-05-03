@@ -28,20 +28,10 @@ class Person(firstName: String) { // firstName is a parameter to constructor bod
     init {
         // custom init code goes here
     }
-}
-```
 
-Another e.g. with member fun.
-```kotlin
-fun main() {
-	val p = Polygon()
-    p.doSomething()
-}
-
- class Polygon {
-   fun doSomething(){
-          println("blah blah")  
-   }
+    fun doSomething(){
+        println("blah blah")  
+    }
 }
 ```
 
@@ -128,7 +118,7 @@ abstract class Polygon{
     }
 }
 
-class Rect : Polygon() { //Note braces around Polygon
+class Rect : Polygon() { //Note braces around Polygon, we are calling parent primary constructor
     override fun draw(){
 
     }
@@ -165,8 +155,27 @@ abstract class Dwelling(private var residents: Int){
 
 ONe needs to **re-declare members with override keyword** in derived class
 
+### subclassing a normal class
 
+Since classes are `final` by default, you must add `open` keyword to indicate that a normal class is a candidate for subclassing
+all properties or functions must also be declared `open` if they are meant for overriding, and derived class must use `override` keyword to compile.
+```kotlin
+open class RoundShape(open val radius: Double){ // radius property available for overriding
+    val buildingMaterial = "Straw"
+    
+    fun floorArea(): Double {
+        return PI * radius * radius;
+    }
+    fun calculateMaxCarpetSize():Double {
+        val diameter = 2 * radius
+        return sqrt(diameter * diameter / 2)
+    }
+}
 
+class RoundCylinder(override val radius: Double) : RoundShape(radius){
+
+}
+```
 
 ## Visibility
 

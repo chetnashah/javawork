@@ -6,3 +6,4 @@ Interfaces in Kotlin can **contain declarations of abstract methods, as well as 
 ## Properties
 
 They can have properties, but these **need to be abstract or provide accessor implementations**
+
