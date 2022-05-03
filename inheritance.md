@@ -1,4 +1,17 @@
 
+## Abstract classes
+
+**Methods may or not be abstract, properties cannot be marked abstract.**
+
+```java
+abstract class GraphicObj {
+    int prop;
+    abstract void draw();
+    int sum(int a, int b){
+        return a + b;
+    }
+}
+```
 
 ### `this` in inheritance is same
 

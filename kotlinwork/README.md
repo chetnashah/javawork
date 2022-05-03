@@ -5,6 +5,15 @@ Note: see (inferred) type of a binding with Ctrl + Shft + P.
 1. functions can be put on the top of a file, no need to put them in classes. This helps in modular and cleaner strucuture and separation of logic from entities.
 
 
+### All properties must be initialized or lateinit
+
+e.g.
+```kotlin
+class Some {
+  var abc: String // Compiler Error! Value must be initialized or abstractk
+  lateinit var p; // This is fine!
+}
+```
 
 ## Common Idioms
 
