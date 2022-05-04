@@ -84,6 +84,12 @@ To create an instrumented JUnit 4 test class, specify `AndroidJUnit4` as your de
 
 Mark tests as usual with `@Test`.
 
+specify `ActivityScenarioRule` to get an activity launched for test:
+```kt
+    @get:Rule()
+    val activity = ActivityScenarioRule(MainActivity::class.java)
+```
+
 ## Reducing flakiness
 
 https://developer.android.com/training/testing/espresso/idling-resource
