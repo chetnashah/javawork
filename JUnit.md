@@ -14,7 +14,7 @@ our test code is run.
 ### JUnit TestRule
 
 Affects all tests!
-A `TestRule` is an change in how a test method/methods is run and reported.
+A `TestRule` is an change in how a test method/methods is run and reported. (enhance tests by running some code around a test case execution)
 It is an interface with a single method `apply : Statement -> Statement`.
 A `TestRule` may add additional checks that cause a test to either fail/pass, or perform necessary setup/cleanup or observe execution to report elsewhere.
 The `Statement` that executes the method or suite is passed to each annotated `Rule` in turn, and each may return a substitute or modified `Statement` which is passed to

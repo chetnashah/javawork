@@ -1,0 +1,54 @@
+A unit test verifies the behavior of a small section of code, the unit under test. It does so by executing that code and checking the result.
+
+## Dependencies needed
+
+the dependency configuration used is `testImplementation` for unit tests
+
+Main dependencies needed:
+```groovy
+dependencies {
+  // Required -- JUnit 4 framework
+  testImplementation "junit:junit:$jUnitVersion"
+  // Optional -- Robolectric environment
+  testImplementation "androidx.test:core:$androidXTestVersion"
+  // Optional -- Mockito framework
+  testImplementation "org.mockito:mockito-core:$mockitoVersion"
+  // Optional -- mockito-kotlin
+  testImplementation "org.mockito.kotlin:mockito-kotlin:$mockitoKotlinVersion"
+  // Optional -- Mockk framework
+  testImplementation "io.mockk:mockk:$mockkVersion"
+}
+```
+
+## tests location
+
+`src/test/java/`
+
+## Test runner and its configuration
+
+No test runner configuration is needed by default, 
+
+if you want to change a test runner you can specify it in `@RunWith(SOmeRunner.class)`.
+Test runner in case of Mockito is `MockitoJUnitRunner`,
+For e.g. you want to use RoboElectric framework, you would use `@RunWith(RobolectricTestRunner.class)`.
+
+An example :
+```java
+@RunWith(RobolectricTestRunner.class)
+public class MyActivityTest {
+
+  @Test
+  public void clickingButton_shouldChangeMessage() {
+    MyActivity activity = Robolectric.setupActivity(MyActivity.class);
+    activity.button.performClick();
+    assertThat(activity.message.getText()).isEqualTo("Robolectric Rocks!");
+  }
+}
+```
+
+## Creating and running tests
+
+## Mocking android framework
+
+https://developer.android.com/training/testing/local-tests#mocking-dependencies
+
