@@ -17,6 +17,13 @@ public fun SampleInterface.subs(): Int {
     return 0
 }
 
+class Outer {
+    private val bar: Int = 1
+    class Nested {
+        fun foo() = 2
+    }
+}
+
 
 fun main() = runBlocking {
     println("Main running! from thread name = ${Thread.currentThread().name}")

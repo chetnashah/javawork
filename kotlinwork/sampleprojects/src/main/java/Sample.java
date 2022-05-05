@@ -11,6 +11,8 @@ class SquareCabin extends Dwelling {
     }
 }
 
+
+
 abstract class Dwelling {
     int buildingMaterial;
     int hasRoom(){
