@@ -46,6 +46,18 @@ public class MyActivityTest {
 }
 ```
 
+## Where does assert come from?
+
+```kotlin
+import org.junit.Assert.*
+```
+
+## Where does @Test come from?
+
+```kotlin
+import org.junit.Test
+```
+
 ## Creating and running tests
 
 ## Mocking android framework
