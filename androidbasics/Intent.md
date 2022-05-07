@@ -5,6 +5,10 @@ A Bundle is a collection of data, stored as key/value pairs.
 An Intent can include data on which to perform an action (as a URI) or additional information as Intent extras.
 Intent extras are key/value pairs in a Bundle that are sent along with the Intent.
 
+## Implicit intent
+
+An implicit intent is a bit more abstract, where you tell the system the type of action, such as opening a link, composing an email, or making a phone call, and the system is responsible for figuring out how to fulfill the request.
+
 
 ### What can be passed inside intents?
 

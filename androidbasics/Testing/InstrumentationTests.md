@@ -58,6 +58,40 @@ in general use `modulename/src/androidTest/java/`
 ![instrumentationcode](images/instrumentedtests.PNG)
 
 
+## How to test functions that need Context?
+
+Get hold via `val context = ApplicationProvider.getApplicationContext<Context>()`
+Since this is an androidTest, it will launch an emulator and run it there.
+
+`ApplicationProvider`: Provides ability to retrieve the current application Context in tests.
+
+This can be useful if you need to access the application assets (eg `getApplicationContext().getAssets()`), preferences (eg `getApplicationContext().getSharedPreferences()`), file system (eg `getApplicationContext().getDir()`) or one of the many other context APIs in test.
+
+e.g. 
+```kotlin
+class ResourceComparer {
+    fun isEqual(context: Context, resId: Int, string: String) : Boolean {
+        return context.getString(resId) == string
+    }
+}
+```
+
+Test case write it in `src/androidTest/java`:
+```kotlin
+class ResourceComparerTest {
+
+    private val resourceComparer = ResourceComparer()
+
+    @Test
+    fun stringResourceSameAsGivenString_returnsTrue() {
+        val context = ApplicationProvider.getApplicationContext<Context>() // Note this usage
+        val result = resourceComparer.isEqual(context, R.string.app_name, "philiplacknertesting")
+        assertEquals(result, true)
+    }
+}
+```
+
+
 ## AndroidJUnit4 vs AndroidJUnitRunner
 
 `AndroidJUnit4` comes from `import androidx.test.ext.junit.runners.AndroidJUnit4`

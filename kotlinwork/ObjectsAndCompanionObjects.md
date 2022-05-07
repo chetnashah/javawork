@@ -13,7 +13,48 @@ anonymous class
 
 ## object declaration
 
-class with collection of static members
+class with collection of static members.
+You simply get a singleton without any extra effort.
+
+```kotlin
+object ForeverAlone {
+    var playCount: Int = 0
+    fun singLonelySong() {
+        println("Lonely, I'm so lonely!")
+        playCount++
+    }
+}
+```
+decompiles to 
+```java
+public final class ForeverAlone {
+   private static int playCount;
+   @NotNull
+   public static final ForeverAlone INSTANCE;
+
+   public final int getPlayCount() {
+      return playCount;
+   }
+
+   public final void setPlayCount(int var1) {
+      playCount = var1;
+   }
+
+   public final void singLonelySong() {
+      String var1 = "Lonely, I'm so lonely!";
+      System.out.println(var1);
+      int var10000 = playCount++;
+   }
+
+   private ForeverAlone() {
+   }
+
+   static {
+      ForeverAlone var0 = new ForeverAlone();
+      INSTANCE = var0;
+   }
+}
+```
 
 ## companion object - Companion is an inner class that can extend/implement interfaces
 

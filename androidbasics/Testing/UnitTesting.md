@@ -24,6 +24,24 @@ dependencies {
 
 `src/test/java/`
 
+## Quck way to generate tests in intellij/android studio
+
+![gen tests](images/quickgentests.png)
+
+## Using more readable test names with kotlin
+
+In kotlin you can do this:
+```kotlin
+  @Test
+  fun `empty username returns false`(){
+      
+  }
+```
+
+## @Before and @After
+
+`@Before` for setup and `@After` for teardown.
+
 ## Test runner and its configuration
 
 No test runner configuration is needed by default, 
