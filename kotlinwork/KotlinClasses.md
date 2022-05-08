@@ -55,8 +55,9 @@ class Person(val firstName: String, val lastName: String, var age: Int)
 
 ## Secondary constructors
 
-A class can also declare secondary constructors, which are prefixed with constructor:
-
+The main use case of secondary constructors is overloaded constructors which can have some sensible defaults or extra logic before calling primary constructor.
+A class can also declare secondary constructors, which are prefixed with constructor keyword:
+Note - You cannot have primary and secondary constructor with same argument list, they must be overloaded with different signature.
 ```kotlin
 class Pet {
     constructor(owner: Person) {
@@ -65,7 +66,15 @@ class Pet {
 }
 ```
 
-**Note** - If the class has a primary constructor, each secondary constructor needs to delegate to the primary constructor, either directly or indirectly through another secondary constructor(s). Delegation to another constructor of the same class is done using the `this` keyword.
+**Note** - `If the class has a primary constructor, each secondary constructor needs to delegate to the primary constructor, either directly or indirectly through another secondary constructor(s) using this`. Delegation to another constructor of the same class is done using the `this` keyword.
+
+```kotlin
+class Abc(val name: String, val surname: String) {
+    constructor(singleName: String): this(singleName, singleName) { // secondary constructor delegating to primary constructor
+
+    }
+}
+```
 
 Note- it is possible to have a class with no primary constructor, but secondary constructor(s)
 ```kotlin
@@ -78,7 +87,7 @@ class Abc {
 ```
 ## Inheritance notation
 
-Instead of `extends` keyword, we simply use `:` notation.
+Instead of `extends` keyword, we simply use `:` notation, must also call base class constructor in class header
 
 ```kotlin
 open class Base(p: Int)
@@ -95,11 +104,13 @@ class MyView : View {
 }
 ```
 
-## Abstract classes
+## Abstract classes (can have constructors, but cannot be instantiated without being subclassed)
 
 An abstract class does not have an implementation in its class. 
 You cannot create an instance of abstract class.
 **No need** to annotate abstract classes or functions with **open** keyword.
+
+**Abstract classes can have constructors!**
 
 Unlike Java, abstract classes in kotlin are allowed to mark properties abstract.
 ```kotlin
@@ -176,6 +187,22 @@ class RoundCylinder(override val radius: Double) : RoundShape(radius){
 
 }
 ```
+
+###  anonymous i.e. temporary/inline class objects (that implement interfaces etc)
+
+**Allows us to create temporary unnamed subclass impl + its object instantiated at the same place.**
+Note if it is a SAM interface, you can directly give a lambda and language will convert it to expected interface.
+
+*Note - if we are subclassing interface, specifying interface is fine, If we are subclassing another normal/abstract class with constructor(s), it's constructor must be called in the header*
+
+In other cases temporary class object (that usually extends interfaces or abstract classes) can be made like this:
+```kotlin
+val tempclickListener = object : View.OnClickListener() {  
+    override fun onClick(view: View) {
+        // do something on click
+    }
+}
+``` 
 
 ## Visibility
 

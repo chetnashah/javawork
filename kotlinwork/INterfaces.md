@@ -8,6 +8,20 @@ Interfaces in Kotlin can **contain declarations of abstract methods, as well as 
 
 They can have properties, but these **need to be abstract or provide accessor implementations**
 
+## Classes implementing interfaces
+
+```kotlin
+class Eagle(val name: String) : Flyable {   
+    override fun fly() { // note: override keyword is necessary
+        println(" I am a flyer")
+    }
+}
+
+interface Flyable {
+    fun fly()
+}
+```
+
 ## Functional/SAM interfaces
 
 An interface with `single abstract method` is called a functionl/SAM interface.

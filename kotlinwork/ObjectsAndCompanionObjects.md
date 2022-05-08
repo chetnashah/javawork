@@ -56,6 +56,47 @@ public final class ForeverAlone {
 }
 ```
 
+## Companion object use case
+
+The primary use case of a `companion object` is holding all the **class level members, not the object level members**.
+Companion objects can be named as well as unnamed.
+```kt
+class MyClass {
+    companion object Something { // named
+        fun doSomething() {
+            println("doing something")
+        }
+    }
+}
+
+fun main() {    
+    MyClass.doSomething() // doing something 
+    MyClass.Something.doSomething() // doing something
+}
+```
+In Java, this is primarily done using static keyword that used to hold all static members.
+
+Another use case would be to expose static methods to instantiate an instance and making original constructor private
+and make companion object instantiate instance like a factory pattern
+```kotlin
+class Foo private constructor(val someData: Data) {
+    companion object {
+        operator fun invoke(): Foo {
+            // do stuff
+            return Foo(someData)
+        }
+        fun pleaseConstructMeAFoo() : Foo{
+            return Foo()
+        }
+    }
+}
+
+//usage
+val foo1: Foo = Foo() //even though it looks like constructor, it is a function call because of invoke operator
+
+val foo2: Foo = Foo.pleaseConstructMeAFoo()
+```
+
 ## companion object - Companion is an inner class that can extend/implement interfaces
 
 `public static final class Companion` or `public static final class NamedComapnion` is generated for

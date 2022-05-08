@@ -10,13 +10,13 @@ because Java is known to have no support for default parameters in constructors
 final class Cash {
   private final int cents;
   private final String currency;
-  public Cash() { // secondary
+  public Cash() { // secondary constructor have lesser arguments and default for remaining
     this(0);
   }
-  public Cash(int cts) { // secondary
+  public Cash(int cts) { // secondary constructor have lesser arguments and default for remaining
     this(cts, "USD");
   }
-  public Cash(int cts, String crn) { // primary constructor, maximum arguments
+  public Cash(int cts, String crn) { // primary constructor, maximum arguments, must initialize all members
     this.cents = cts;
     this.currency = crn;
   }

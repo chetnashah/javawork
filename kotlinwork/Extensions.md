@@ -3,8 +3,8 @@ Kotlin provides the ability to **extend a class or an interface** with new funct
 
 ## Extension Functions
 
-To declare an extension function, prefix function name with a `receiver type: which refers to the type being extended`
-
+To declare an extension function, prefix function name with a `receiver type: which refers to the type being extended` e.g. 
+e.g. `fun List<Int>.myFunction() { ... }` or `fun Int.isPrime(): Boolean { ... }`
 * **The `this` keyword inside an extension function corresponds to the receiver object (the one that is passed before the dot).**
 
 Add `swap` method to `MutableList` class:
