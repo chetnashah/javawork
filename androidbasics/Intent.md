@@ -49,3 +49,20 @@ Take class reference and a context
 
 ### Implicit intents 
 only need action
+
+## ACTION_VIEW
+
+ACTION_VIEW is a generic intent that `takes a URI`.
+
+You must pass data as Uri along with intent constructor or setData on existing intent
+e.g.
+```kotlin
+var i = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"))
+
+// or
+
+var i2 = Intent(Intent.ACTION_VIEW)
+i2.setData(Uri.parse("http://www.google.com"))
+```
+
+On the receiving end, you must use `Uri uri = intent.getData()` to get actual intent data to show/view something.
