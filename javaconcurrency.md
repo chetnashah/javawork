@@ -1,7 +1,10 @@
 
 A good tool to do visual tracing is VisualVM.
+https://docs.oracle.com/javase/specs/jls/se8/html/jls-17.html#jls-17.4
 
-### Java Thread states
+http://jeremymanson.blogspot.com/
+
+## Java Thread states
 
 A thread state. A thread can be in one of the following states:
 * `NEW` - A thread that has not yet started is in this state.
@@ -14,6 +17,33 @@ A thread state. A thread can be in one of the following states:
 Linux States -  state (R is `running`, S is `sleeping`, D is `sleeping in an uninterruptible wait`, Z is `zombie`,T is `traced or stopped`)
 
 Checking Windows thread states - download (Process Explorer) http://technet.microsoft.com/en-us/sysinternals/bb896653.aspx
+
+## Synchronization actions
+
+Synchronization actions, which are:
+
+1. `Volatile read`. A volatile read of a variable.
+2. `Volatile write`. A volatile write of a variable.
+3. `Lock`. Locking a monitor
+4. `Unlock`. Unlocking a monitor.
+5. The (synthetic) `first and last action of a thread`. (everything has to be flushed before start of a thread and at end of a thread), thus introducing a synchronization order/barrier.
+6. Actions that start a thread or detect that a thread has terminated (§17.4.4).
+
+jni actions.
+
+
+## Happens-before order
+
+If we have two actions x and y, we write `hb(x, y)` to indicate that x happens-before y.
+
+1. If x and y are actions of the same thread and x comes before y in program order, then hb(x, y).
+There is a happens-before edge from the end of a constructor of an object to the start of a finalizer (§12.6) for that object.
+
+2. If an action x synchronizes-with a following action y, then we also have hb(x, y).
+
+3. If hb(x, y) and hb(y, z), then hb(x, z).
+
+
 
 ### JNI and threads
 
@@ -69,8 +99,13 @@ At the processor level, a memory model defines necessary and sufficient conditio
 ### volatile keyword
 
 makes sure cache variables are flushed to RAM on write,
-and read from RAM on read. effectively keeping the volatile variable out of CPU caches
+and read from RAM on read. effectively keeping the volatile variable out of CPU caches. **Volatile influences visibility by influencing both instruction reordering fence and also main memory flushing**
 
+`certain reorderings are not allowed, once you introduce a volatile keyword, i.e. instructions around volatile reads and writes are not allowed to reorder across to the other side of volatile read/write`.
+
+- When a thread is writes to a volatile variable, all of its previous writes are guaranteed to be visible to another thread when that thread is reading the same value.
+
+http://jeremymanson.blogspot.com/2008/11/what-volatile-means-in-java.html
 
 ### Out of thin air safety
 
@@ -100,12 +135,32 @@ if(!vector.contains(element)) {
 }
 ```
 
+### Object construction can be a non-atomic three step process (that might have reordering)
+
+```java
+MyClass obj = new MyClass();
+```
+1. Allocate memory for `new MyClass()`.
+2. update obj reference to point to that memory
+3. initalize fields & run constructor of `mYClass`.
 
 ### Synchronized
 
-Synchronization also creates a `"happens-before" memory barrier`, causing a memory visibility constraint such that anything done up to the point some thread releases a lock appears to another thread subsequently acquiring the same lock to have happened before it acquired the lock
+**Synchronization also creates a `"happens-before" memory barrier`, causing a memory visibility constraint such that anything done up to the point some thread releases a lock appears to another thread subsequently acquiring the same lock to have happened before it acquired the lock**
+
+exiting monitor flushes everyting, entering monitor gets everything afresh.
+
+synchronized blocks are by definition `mutually exclusive`.
+
+instructions that are part of the same synchronized block, may be reordered with each other.
 
 ![Synchronization](images/synchronization.png)
+
+
+### synchronized and constructors
+
+**constructors cannot be marked synchronized** because other threads 
+cannot see the object being created until the thread creating it has finished it.
 
 #### synchronized method
 
@@ -127,4 +182,27 @@ unless they are declared volatile or guarded by a lock.
 
 Locking is not just about mutual exclusion. `It is also about memory visibility`.
 To ensure visibility across all threads for a common shared mutable object, reading and writing threads must synchronize on a common lock.
+
+## Double checked locking
+
+Double Checked Locking is this idiom:
+```java
+// Broken -- Do Not Use!
+class Foo {
+  private Helper helper = null;
+  public Helper getHelper() {
+    if (helper == null) {
+      synchronized(this) {
+        if (helper == null) {
+          helper = new Helper();
+        }
+      }
+    }
+  return helper;
+}
+```
+The point of this code is to avoid synchronization when the object has already been constructed. This code doesn't work in Java. The basic principle is that compiler transformations (this includes the JIT, which is the optimizer that the JVM uses) can change the code around so that the code in the Helper constructor occurs after the write to the helper variable. If it does this, then after the constructing thread writes to helper, but before it actually finishes constructing the object, another thread can come along and read helper before it is finished initializing.
+See the double-checked locking is broken declaration for a much more detailed explanation.
+
+Anyway, the question I always get is "does making the helper field volatile fix this?" The answer is yes. If you make the helper field volatile, the actions that happen before the write to helper in the code must, when the program executes, actually happen before the write to helper — no sneaky reordering is allowed.
 
