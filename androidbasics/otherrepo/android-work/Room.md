@@ -14,6 +14,7 @@ Example Database:
 ```java
 @Database(entities = {User.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
+    // usually databse class with have this getDao method
     public abstract UserDao userDao();
 }
 

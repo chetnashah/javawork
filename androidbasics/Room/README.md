@@ -25,6 +25,7 @@ data class Article(
 ```kotlin
 @Database(entities = [Article::class], version = 1)
 abstract class ArticleDatabase : RoomDatabase() {
+    // usually database wiill have this getXYZDao()
     abstract fun getArticleDao(): ArticleDao
 }
 ```
