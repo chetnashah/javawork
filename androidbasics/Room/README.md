@@ -1,5 +1,16 @@
 
 
+## Dependencies
+
+1. room runtime - runtime stuff for room
+2. room compiler - annotations and other compile time checking stuff.
+
+## Gradle plugin needed
+
+`apply kotlin-kapt`
+
+## Coroutine support for room
+
 ## Tables
 
 Tables are specified via `@Entity` annotation, along with a `@PrimaryKey`
