@@ -12,3 +12,11 @@ The ViewModel class is designed to store and manage UI-related data in a lifecyc
 ViewModel objects are designed to outlive specific instantiations of views or LifecycleOwners. This design also means you can write tests to cover a ViewModel more easily as it doesn't know about view and Lifecycle objects.
 
 ## lifecycle of a viewmodel
+
+
+## ViewModelFactory
+
+A `ViewModelFactory instantiates ViewModel objects`, with or without constructor parameters.
+
+
+
