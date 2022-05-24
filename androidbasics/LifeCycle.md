@@ -1,0 +1,99 @@
+
+Lifecycles are managed by the operating system or the framework code running in your process. They are core to how Android works and your application must respect them.
+
+##
+
+`Lifecycle` is a class that holds the information about the lifecycle state of a component (like an activity or a fragment) and allows other objects to observe this state.
+
+Think of the states as nodes of a graph and events as the edges between these nodes.
+
+![lifecycle states](images/lifecycle-states.svg)
+
+`Note`: on_pause, we don't say "Paused" state, but we say `STARTED` state. similarly on_stop, we don't say `STOPPED` state, instead we say `CREATED` state.
+
+ON_CREATE, ON_START, ON_RESUME events in this class are dispatched after the LifecycleOwner's related method returns. ON_PAUSE, ON_STOP, ON_DESTROY events in this class are dispatched before the LifecycleOwner's related method is called. For instance, ON_START will be dispatched after onStart returns, ON_STOP will be dispatched before onStop is called. This gives you certain guarantees on which state the owner is in.
+
+
+## Events
+
+The lifecycle events that are dispatched from the framework and the Lifecycle class. These events map to the callback events in activities and fragments.
+
+
+## States
+
+The current state of the component tracked by the Lifecycle object.
+
+## class `LifeCycle`
+
+Important methods are to getCurrentState, add and remove observers.
+
+```java
+    public abstract void addObserver(@NonNull LifecycleObserver observer);
+    public abstract void removeObserver(@NonNull LifecycleObserver observer);
+    public abstract State getCurrentState();
+    public enum Event { ... }
+    public enum State { ... }
+```
+
+## Interface LifecycleOwner (to get Lifecycle object)
+
+LifecycleOwner is a single method interface that denotes that the class has a Lifecycle. (Examples are `Activity` and `Fragment`).
+
+```java
+public interface LifecycleOwner {
+    /**
+     * Returns the Lifecycle of the provider..
+     */
+    @NonNull
+    Lifecycle getLifecycle();
+}
+```
+
+This interface is implemented by `Activity` and `Fragment` and expose access to `Lifecycle` via `getLifecycle` method.
+
+## Adding lifecycle observer on `Lifecycle` objects (to get notified of changes in lifecycle)
+
+`LifecycleEventObserver` - Class that can receive any lifecycle change and dispatch it to the receiver.
+```java
+public interface LifecycleEventObserver extends LifecycleObserver {
+    /**
+     * Called when a state transition event happens.
+     *
+     * @param source The source of the event
+     * @param event The event
+     */
+    void onStateChanged(@NonNull LifecycleOwner source, @NonNull Lifecycle.Event event);
+}
+```
+
+WE would often use a higher level abstraction like `DefaultLifecycleObserver` e.g.
+`DefaultLifeCycleObserver` - Callback interface for listening to LifecycleOwner state changes
+callbacks inside `DefaultLifeCycleObserver`:
+* `onCreate(LifeCycleOwner owner)`
+* `onStart(LifeCycleOwner owner)`
+* `onResume(LifeCycleOwner owner)`
+* `onPause(LifeCycleOwner owner)`
+* `onStop(LifeCycleOwner owner)`
+* `onDestroy(LifeCycleOwner owner)`
+
+
+```java
+public class MyObserver implements DefaultLifecycleObserver {
+    @Override
+    public void onResume(LifecycleOwner owner) {
+        connect()
+    }
+
+    @Override
+    public void onPause(LifecycleOwner owner) {
+        disconnect()
+    }
+}
+
+myLifecycleOwner.getLifecycle().addObserver(new MyObserver());
+```
+
+Components that implement `DefaultLifecycleObserver` work seamlessly with components that implement `LifecycleOwner` because an owner can provide a lifecycle, which an observer can register to watch.
+
+
+
