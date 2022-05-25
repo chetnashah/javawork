@@ -8,6 +8,9 @@ Fragments introduce modularity and reusability into your activity’s UI by allo
 
 **You can even show multiple fragments at once on a single screen, such as a master-detail layout for tablet devices**
 
+## Implemented interfaces:
+LifecycleOwner, ViewModelStoreOwner
+
 ## Using from androidx
 
 ```groovy

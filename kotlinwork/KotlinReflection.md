@@ -1,4 +1,5 @@
 
 ### Get class reference
 
-SecondActivity::class
+if `KClass` is expected -> `SomeClass::class`
+if `Class` is expected -> `SomeClass::class.java`

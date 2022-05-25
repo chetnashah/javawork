@@ -6,7 +6,36 @@ https://guides.codepath.com/android/Applying-Data-Binding-for-Views#mvvm-archite
 https://developer.android.com/topic/libraries/data-binding
 
 
-## Enabling it
+## ViewBinding vs DataBinding
+
+`DataBinding` - two way data binding, like angularjs. Binding data (from code) to views + ViewBinding (Binding views to code).
+
+`ViewBinding` - Roughly speaking, view binding is a subset of data binding. You do not get the data binding expressions, but you do get the generated binding class that you can use to handle the findViewById() calls and give you type-safe and null-safe access to the widgets from the layout.
+
+An instance of this binding class contains direct reference to all views in that have id in the corresponding layout.
+
+
+## Enabling viewbinding
+
+gradle v3.6
+```groovy
+android {
+    viewBinding {
+        enabled = true
+    }
+}
+```
+
+but in gradle 4+
+```groovy
+android {
+    buildFeatures {
+        viewBinding = true
+    }
+}
+```
+
+## Enabling Databinding
 
 In app/build.gradle
 ```gradle
@@ -15,8 +44,7 @@ dataBinding {
 }
 ```
 
-In your layout files:
-Wrap your layouts with `<layout>...</layout>`
+**Note** : To pariticipate in `DataBinding` -> In your layout files: Wrap your layouts with `<layout>...</layout>`
 
 The layout container tag tells Android Studio that this layout should take the extra processing during compilation time to find all the interesting Views and note them for use with the data binding library.
 
@@ -40,6 +68,7 @@ class MainActivity : AppCompatActivity() {
 ```
 layout file:
 ```xml
+<!-- layout tag is necessary to take part in databinding -->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools">
     <RelativeLayout
