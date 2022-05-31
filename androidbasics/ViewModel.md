@@ -61,6 +61,36 @@ The ViewModel is destroyed when the associated fragment is detached, or when the
 
 A `ViewModelFactory instantiates ViewModel objects`, with or without constructor parameters.
 
+`isAssignableFrom`: `clazz.isAssignableFrom(Foo.class)` will be true whenever the class represented by the clazz object is a superclass or superinterface of Foo, or in other words, Foo is a subclass of clazz.
+
+
+e.g.
+```java
+class ScoreViewModelFactory(private val finalScore: Int) : ViewModelProvider.Factory {
+    // this method is abstract in the parent factory
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        TODO("Not yet implemented")
+    }
+}
+
+class ScoreViewModel(finalScore: Int) : ViewModel() {
+    // The final score
+    var score = finalScore
+    init {
+        Log.i("ScoreViewModel", "Final score is $finalScore")
+    }
+}
+
+
+SomeFragment {
+    onCreateView() {
+        //... 
+        viewModelFactory = ScoreViewModelFactory(100)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(ScoreViewModel::class.java)
+    }
+}
+```
+
 ## Internals
 
 ### ViewModelStore
