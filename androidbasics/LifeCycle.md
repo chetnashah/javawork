@@ -77,6 +77,8 @@ callbacks inside `DefaultLifeCycleObserver`:
 * `onDestroy(LifeCycleOwner owner)`
 
 
+**Note** - `DefaultLifecycleObserver extends FullLifecycleObserver extends LifeCycleObserver`
+
 ```java
 public class MyObserver implements DefaultLifecycleObserver {
     @Override
