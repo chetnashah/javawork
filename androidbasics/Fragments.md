@@ -20,6 +20,27 @@ LifecycleOwner, ViewModelStoreOwner
     implementation("androidx.fragment:fragment-ktx:$fragment_version")
 ```
 
+## lifecycle summary
+
+To manage lifecycle, `Fragment` implements `LifecycleOwner`, exposing a `Lifecycle` object that you can access through the `getLifecycle()` method.
+
+**A fragment's view has a separate Lifecycle that is managed independently from that of the fragment's Lifecycle.**.
+Fragments maintain a separate LifecycleOwner for their view, which can be accessed using `getViewLifecycleOwner()`.
+
+A fragment's lifecycle state can never be greater than its parent. For example, a parent fragment or activity must be started before its child fragments. Likewise, child fragments must be stopped before their parent fragment or activity.
+
+![fragment lifecycle](images/fragmentlifecycle.png)
+
+`onCreate()`: The fragment has been instantiated and is in the CREATED state. However, its corresponding view has not been created yet.
+`onCreateView()`: This method is where you inflate the layout. The fragment has entered the CREATED state.
+`onViewCreated()`: This is called after the view is created. In this method, you would typically bind specific views to properties by calling findViewById().
+`onStart()`: The fragment has entered the STARTED state.
+`onResume()`: The fragment has entered the RESUMED state and now has focus (can respond to user input).
+`onPause()`: The fragment has re-entered the STARTED state. The UI is visible to the user
+`onStop()`: The fragment has re-entered the CREATED state. The object is instantiated but is no longer presented on screen.
+`onDestroyView()`: Called right before the fragment enters the DESTROYED state. The view has already been removed from memory, but the fragment object still exists.
+`onDestroy()`: The fragment enters the DESTROYED state.
+
 ## Declaring fragments in XML only
 
 ```xml
@@ -80,6 +101,9 @@ The `android:name` attribute specifies the class name of the Fragment to instant
 
 When the activity's layout is inflated, the specified fragment is instantiated, `onInflate()` is called on the newly instantiated fragment, and a FragmentTransaction is created to add the fragment to the FragmentManager.
 
+**Note** - Avoid using the `<fragment>` tag to add a fragment using XML, as the `<fragment>` tag allows a fragment to move beyond the state of its FragmentManager. Instead, always use FragmentContainerView for adding a fragment using XML.
+
+
 ## Adding fragment to activity programmatically
 
 To programmatically add a fragment to your activity's layout, the layout should include a `FragmentContainerView` to serve as a fragment container, as shown in the following example:
@@ -105,22 +129,73 @@ Each set of fragment changes that you commit is called a transaction, and you ca
 
  You can group multiple actions into a single transaction—for example, a transaction can add or replace multiple fragments. This grouping can be useful for when you have multiple sibling fragments displayed on the same screen, such as with split views.
 
-## Fragment lifecycle
+## Sharing data between fragments
 
-To manage lifecycle, `Fragment` implements `LifecycleOwner`, exposing a `Lifecycle` object that you can access through the `getLifecycle()` method.
+You can have a shared viewmodel on activity scope, which can be shared between all the fragments inside that activity.
 
-**A fragment's view has a separate Lifecycle that is managed independently from that of the fragment's Lifecycle.**.
-Fragments maintain a separate LifecycleOwner for their view, which can be accessed using `getViewLifecycleOwner()`.
+## FragmentFactory
 
-`onAttach()` is always called before any Lifecycle state changes.
-`onDetach()` is always called after any Lifecycle state changes.
+https://proandroiddev.com/android-fragments-fragmentfactory-ceec3cf7c959
 
-![fragment lifecycle vs fragment view lifecycle](images/fragment-view-lifecycle.png)
+class used to control the instantiation of Fragment instances.
 
-Each possible Lifecycle state is represented in the Lifecycle.State enum.
+Traditionally, a Fragment instance could only be instantiated using its default empty constructor. This is because the system would need to reinitialize it under certain circumstances like configuration changes and the app’s process recreation. If it weren’t for the default constructor restriction, the system wouldn’t know how to reinitialize the Fragment instance.
 
-* INITIALIZED
-* CREATED
-* STARTED
-* RESUMED
-* DESTROYED
+If your Fragment has a non-empty constructor, you will need to create a FragmentFactory that will handle initializing it.
+
+Fragments are managed by FragmentManagers, so it’s only natural that the `FragmentFactory needs to be attached to a FragmentManager in order to be used`
+
+To provide dependencies to your fragment, or to use any custom constructor, you must instead create a custom FragmentFactory subclass and then override FragmentFactory.instantiate. You can then override the FragmentManager's default factory with your custom factory, which is then used to instantiate your fragments.
+
+E.g. DessertsFragment depends on DessertsRepository
+```java
+public class DessertsFragment extends Fragment {
+    private DessertsRepository dessertsRepository;
+
+    public DessertsFragment(DessertsRepository dessertsRepository) {
+        super();
+        this.dessertsRepository = dessertsRepository;
+    }
+
+    // Getter omitted.
+
+    ...
+}
+```
+
+Fragment factory for injecting fragment dependencies
+
+```java
+public class MyFragmentFactory extends FragmentFactory {
+    private DessertsRepository repository;
+
+    public MyFragmentFactory(DessertsRepository repository) {
+        super();
+        this.repository = repository;
+    }
+
+    // note custom implementation
+    @NonNull
+    @Override
+    public Fragment instantiate(@NonNull ClassLoader classLoader, @NonNull String className) {
+        Class<? extends Fragment> fragmentClass = loadFragmentClass(classLoader, className);
+        if (fragmentClass == DessertsFragment.class) {
+            return new DessertsFragment(repository);
+        } else {
+            return super.instantiate(classLoader, className);
+        }
+    }
+}
+```
+
+Registering custom fragmentfactory:
+```java
+public class MealActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        DessertsRepository repository = DessertsRepository.getInstance();
+        getSupportFragmentManager().setFragmentFactory(new MyFragmentFactory(repository));
+        super.onCreate(savedInstanceState);
+    }
+}
+```

@@ -14,6 +14,8 @@ Can be `Activity` or `Fragment`
 
 ## NavigationController
 
+**NavController** is the main class that helps you navigate from one destination to another.
+
 Each `NavHostFragment` has an associated NavController, this is what triggers navigation actions.
 e.g.
 ```kotlin
@@ -26,6 +28,19 @@ NavigationController can be hooked up to navigationViews like bottomtab or drawe
 e.g.
 ```kt
     bottomNavigationView.setupWithNavController(newsNavHostFragment.navController)
+```
+
+### How to get access to NavController?
+
+```java
+//Activity
+var navController = findNavController(R.id.nav_hostfragment);
+
+// Fragmnt
+var navController = findNavController()
+
+// any view inside nav graph
+var navController = view.findNavController()
 ```
 
 ## NavHostFragment
@@ -128,3 +143,6 @@ In MainActivity.kt file in `onCreate()` after setContentView
 
 Getting error `app:id/newsNavHostFragment} does not have a NavController set`?
 
+## Navigation params
+
+We create args/params using `SafeArgs` and we get a `Directions` object, that we pass to `navController.navigate(directions)`.

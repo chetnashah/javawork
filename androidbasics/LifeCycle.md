@@ -13,7 +13,6 @@ Think of the states as nodes of a graph and events as the edges between these no
 
 ON_CREATE, ON_START, ON_RESUME events in this class are dispatched after the LifecycleOwner's related method returns. ON_PAUSE, ON_STOP, ON_DESTROY events in this class are dispatched before the LifecycleOwner's related method is called. For instance, ON_START will be dispatched after onStart returns, ON_STOP will be dispatched before onStop is called. This gives you certain guarantees on which state the owner is in.
 
-
 ## Events
 
 The lifecycle events that are dispatched from the framework and the Lifecycle class. These events map to the callback events in activities and fragments.
@@ -51,9 +50,10 @@ public interface LifecycleOwner {
 
 This interface is implemented by `Activity` and `Fragment` and expose access to `Lifecycle` via `getLifecycle` method.
 
+
 ## Adding lifecycle observer on `Lifecycle` objects (to get notified of changes in lifecycle)
 
-`LifecycleEventObserver` - Class that can receive any lifecycle change and dispatch it to the receiver.
+`LifecycleEventObserver` - Class that can receive any lifecycle change and dispatch it to the receiver via single method `onStateChanged`.
 ```java
 public interface LifecycleEventObserver extends LifecycleObserver {
     /**
@@ -96,4 +96,47 @@ myLifecycleOwner.getLifecycle().addObserver(new MyObserver());
 Components that implement `DefaultLifecycleObserver` work seamlessly with components that implement `LifecycleOwner` because an owner can provide a lifecycle, which an observer can register to watch.
 
 
+## How are events mapped to callbacks being called?
 
+```java
+class FullLifecycleObserverAdapter implements LifecycleEventObserver {
+
+    private final FullLifecycleObserver mFullLifecycleObserver;
+    private final LifecycleEventObserver mLifecycleEventObserver;
+
+    FullLifecycleObserverAdapter(FullLifecycleObserver fullLifecycleObserver,
+            LifecycleEventObserver lifecycleEventObserver) {
+        mFullLifecycleObserver = fullLifecycleObserver;
+        mLifecycleEventObserver = lifecycleEventObserver;
+    }
+
+    @Override
+    public void onStateChanged(@NonNull LifecycleOwner source, @NonNull Lifecycle.Event event) {
+        switch (event) {
+            case ON_CREATE:
+                mFullLifecycleObserver.onCreate(source);
+                break;
+            case ON_START:
+                mFullLifecycleObserver.onStart(source);
+                break;
+            case ON_RESUME:
+                mFullLifecycleObserver.onResume(source);
+                break;
+            case ON_PAUSE:
+                mFullLifecycleObserver.onPause(source);
+                break;
+            case ON_STOP:
+                mFullLifecycleObserver.onStop(source);
+                break;
+            case ON_DESTROY:
+                mFullLifecycleObserver.onDestroy(source);
+                break;
+            case ON_ANY:
+                throw new IllegalArgumentException("ON_ANY must not been send by anybody");
+        }
+        if (mLifecycleEventObserver != null) {
+            mLifecycleEventObserver.onStateChanged(source, event);
+        }
+    }
+}
+```

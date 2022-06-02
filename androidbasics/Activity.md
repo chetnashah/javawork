@@ -85,4 +85,3 @@ and this data can be recovered in `onRestoreInstanceState()` calback or in `onCr
 Combination of `onSaveInstanceState` + `onCreate` is an interesting combination to persist Activity level instance variables (i.e. activity instance state) across process restarts without using stuff like sharedprefs/files or any other persisted mechanism.
 
 
-
