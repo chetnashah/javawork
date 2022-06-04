@@ -96,3 +96,16 @@ You can write b!!, and this will return a non-null value of b
 val l = b!!.length
 ```
 
+## Conditional execution with `?.let`
+
+`arguments: Bundle?`, so it must be either surrounded by null check or `?.let` with a lambda where nullable variable can be referred via `it`.
+
+```
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+
+    arguments?.let {
+        letterId = it.getString(LETTER).toString()
+    }
+}
+```
