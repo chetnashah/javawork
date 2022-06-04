@@ -46,6 +46,9 @@ var navController = view.findNavController()
 ## NavHostFragment
 
 A central fragment that swaps in and out other fragments based on `NavigationGraph` specification.
+A `NavHost` is used to display destinations from a navigation graph within an activity. 
+When you navigate between fragments, the destination shown in the `NavHost` is updated. You'll use a built-in implementation, called `NavHostFragment`, in your MainActivity
+
 
 ### FRagment container View to setup NavHostFragment
 
@@ -145,4 +148,24 @@ Getting error `app:id/newsNavHostFragment} does not have a NavController set`?
 
 ## Navigation params
 
-We create args/params using `SafeArgs` and we get a `Directions` object, that we pass to `navController.navigate(directions)`.
+We create args/params using `SafeArgs` and we get a `Directions` object, that we pass to `navController.navigate(directions)`
+
+### For using safe args plugin
+
+top level Gradle dep
+```
+dependencies {
+    classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+}
+```
+
+module level gradle file:
+```
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+```
+

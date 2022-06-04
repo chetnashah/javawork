@@ -33,7 +33,7 @@ A fragment's lifecycle state can never be greater than its parent. For example, 
 
 `onCreate()`: The fragment has been instantiated and is in the CREATED state. However, its corresponding view has not been created yet.
 `onCreateView()`: This method is where you inflate the layout. The fragment has entered the CREATED state.
-`onViewCreated()`: This is called after the view is created. In this method, you would typically bind specific views to properties by calling findViewById().
+`onViewCreated()`: This is called after the view is created. In this method, you would typically bind specific views to properties by calling findViewById(). This is where you can bind views and setup view stuff like layoutadapters, api calls etc.
 `onStart()`: The fragment has entered the STARTED state.
 `onResume()`: The fragment has entered the RESUMED state and now has focus (can respond to user input).
 `onPause()`: The fragment has re-entered the STARTED state. The UI is visible to the user
@@ -66,6 +66,19 @@ class TitleFragment : Fragment() {
         return binding.root
     }
 }
+```
+
+`Note`: prefer `XYZViewBinding/Databinding` inflater given from XML generated Viewbinding class e.g.
+```kt
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // use the xml binding auto generated class inflater
+        val wordListBinding: FragmentWordListBinding =  FragmentWordListBinding.inflate(inflater, container, false)
+        return wordListBinding.root
+    }
 ```
 
 ## onInflate
