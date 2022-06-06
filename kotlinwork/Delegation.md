@@ -76,7 +76,7 @@ fun main() {
 
 https://kotlinlang.org/docs/delegated-properties.html
 
-The syntax is: `val/var <property name>: <Type> by <expression>`. 
+The syntax is: `val/var <property name>: <Type> by <expression>` -> `expression` object implements `getValue`/`setValue` methods.
 
 ```kt
 import kotlin.reflect.KProperty

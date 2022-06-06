@@ -217,3 +217,14 @@ public class MealActivity extends AppCompatActivity {
     }
 }
 ```
+
+## `viewModels()` extension on `Fragment` class
+
+Returns a Lazy ViewModel, to which delegation can happen.
+
+```kt
+public inline fun <reified VM : ViewModel> Fragment.viewModels(
+    noinline ownerProducer: () -> ViewModelStoreOwner = { this },
+    noinline factoryProducer: (() -> Factory)? = null
+): Lazy<VM> = createViewModelLazy(VM::class, { ownerProducer().viewModelStore }, factoryProducer)
+```

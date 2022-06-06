@@ -139,3 +139,77 @@ override fun onCreate(savedInstanceState: Bundle?) {
     }
 }
 ```
+
+### Lazy types
+Represents a value with lazy initialization.
+To create an instance of `Lazy`, use the `lazy` function that takes a initializer lambda.
+
+```kt
+public interface Lazy<out T> {
+    /**
+     * Gets the lazily initialized value of the current Lazy instance.
+     * Once the value was initialized it must not change during the rest of lifetime of this Lazy instance.
+     */
+    public val value: T
+
+    /**
+     * Returns `true` if a value for this Lazy instance has been already initialized, and `false` otherwise.
+     * Once this function has returned `true` it stays `true` for the rest of lifetime of this Lazy instance.
+     */
+    public fun isInitialized(): Boolean
+}
+
+// delegate/extension for get on lazy type, that unwraps the underlying value on get access
+public inline operator fun <T> Lazy<T>.getValue(thisRef: Any?, property: KProperty<*>): T = value
+```
+
+#### How lazy lambda works
+
+```kt
+/**
+ * Creates a new instance of the [Lazy] that uses the specified initialization function [initializer]
+ * and the default thread-safety mode [LazyThreadSafetyMode.SYNCHRONIZED].
+ *
+ * If the initialization of a value throws an exception, it will attempt to reinitialize the value at next access.
+ *
+ * Note that the returned instance uses itself to synchronize on. Do not synchronize from external code on
+ * the returned instance as it may cause accidental deadlock. Also this behavior can be changed in the future.
+ */
+public actual fun <T> lazy(initializer: () -> T): Lazy<T> = SynchronizedLazyImpl(initializer)
+```
+
+```kt
+private class SynchronizedLazyImpl<out T>(initializer: () -> T, lock: Any? = null) : Lazy<T>, Serializable {
+    private var initializer: (() -> T)? = initializer
+    @Volatile private var _value: Any? = UNINITIALIZED_VALUE
+    // final field is required to enable safe publication of constructed instance
+    private val lock = lock ?: this
+
+    override val value: T
+        get() {
+            val _v1 = _value
+            if (_v1 !== UNINITIALIZED_VALUE) {
+                @Suppress("UNCHECKED_CAST")
+                return _v1 as T
+            }
+
+            return synchronized(lock) {
+                val _v2 = _value
+                if (_v2 !== UNINITIALIZED_VALUE) {
+                    @Suppress("UNCHECKED_CAST") (_v2 as T)
+                } else {
+                    val typedValue = initializer!!()
+                    _value = typedValue
+                    initializer = null
+                    typedValue
+                }
+            }
+        }
+
+    override fun isInitialized(): Boolean = _value !== UNINITIALIZED_VALUE
+
+    override fun toString(): String = if (isInitialized()) value.toString() else "Lazy value not initialized yet."
+
+    private fun writeReplace(): Any = InitializedLazyImpl(value)
+}
+```
