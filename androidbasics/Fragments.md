@@ -1,4 +1,6 @@
 
+Dont use platform version, only use `androidx` version.
+
 ## Fragments
 
 A fragment is a reusable piece of UI; fragments can be reused and embedded in one or more activities.
@@ -220,6 +222,7 @@ public class MealActivity extends AppCompatActivity {
 
 ## `viewModels()` extension on `Fragment` class
 
+This is one more way to get viewmodel in a fragment, other than using `ViewModelProvider(fragInstance).get(ModelClass)`.
 Returns a Lazy ViewModel, to which delegation can happen.
 
 ```kt
@@ -228,3 +231,66 @@ public inline fun <reified VM : ViewModel> Fragment.viewModels(
     noinline factoryProducer: (() -> Factory)? = null
 ): Lazy<VM> = createViewModelLazy(VM::class, { ownerProducer().viewModelStore }, factoryProducer)
 ```
+
+Why use it?
+We want to own instantiation of the ViewModel, instead delegate it to `Fragments.viewModels` extension:
+The delegate class creates the viewModel object for you on the first access, and retains its value through configuration changes and returns the value when requested.
+
+### Can't access ViewModels from detached fragment
+
+If I try to access the lazy ViewModel returned from `viewModels` extension, before it is the fragment is attached,
+I will get following error:
+```
+    init {
+        Log.d("Gamefragment", "fragment init viewmodel = "+viewModel)
+    }
+
+        Caused by: java.lang.IllegalStateException: Can't access ViewModels from detached fragment
+        at androidx.fragment.app.Fragment.getDefaultViewModelProviderFactory(Fragment.java:427)
+        at androidx.fragment.app.FragmentViewModelLazyKt$createViewModelLazy$factoryPromise$1.invoke(FragmentViewModelLazy.kt:95)
+        at androidx.fragment.app.FragmentViewModelLazyKt$createViewModelLazy$factoryPromise$1.invoke(Unknown Source:0)
+        at androidx.lifecycle.ViewModelLazy.getValue(ViewModelProvider.kt:52)
+        at androidx.lifecycle.ViewModelLazy.getValue(ViewModelProvider.kt:41)
+        at com.example.android.unscramble.ui.game.GameFragment.getViewModel(GameFragment.kt:38)
+        at com.example.android.unscramble.ui.game.GameFragment.<init>(GameFragment.kt:41)
+```
+
+### lazy Viewmodel can be accessed in `onAttach` and `onCreate`
+
+```kt
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        Log.d("GameFragment", "onAttach callback, viewmodel = " + viewModel)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.d("GameFragment", "onCreate callback, viewmodel = " + viewModel)
+    }
+
+ D/GameFragment: onAttach callback, viewmodel = com.example.android.unscramble.ui.game.GameViewModel@a42443d
+ D/GameFragment: onCreate callback, viewmodel = com.example.android.unscramble.ui.game.GameViewModel@a42443d
+```
+
+## Destroy vs Detach
+
+when a Fragment is detached, its `onPause`, `onStop` and `onDestroyView` methods are called only (in that order). 
+
+On the other hand, when a Fragment is removed, its `onPause`, `onStop`, `onDestroyView`, `onDestroy` and `onDetach` methods are called (in that order). 
+
+Similarly, when attaching, the Fragment's `onCreateView`, `onStart` and `onResume` methods are called only; 
+and when adding, the Fragment's `onAttach`, `onCreate`, `onCreateView`, `onStart` and `onResume` methods are called (in that order).
+
+So attaching/detaching does not call onCreate/onDestroy and onAttach/onDetach
+But add/remove adds calls like onCreate/onDestroy and onAttach/onDetach.
+
+## Why onAttach is called before onCreate?
+
+https://stackoverflow.com/questions/29677812/why-is-onattach-called-before-oncreate
+
+`onAttach()` assigns hosting activity to the Fragment. If it had been called after `onCreate()` then there would be no context for your fragment (`getActivity()` would return null) and you would not be able to do anything in `onCreate()` method without that context anyway.
+
+Another fitting reason is that Fragment's lifecycle is similar to Activity's lifecycle. In `Activity.attach()` activity gets attached to its parent (a window). Similarly in `Fragment.onAttach()` fragment gets attached to its parent (an activity), before any other initialization is done. Note, `Activity.attach()` happens before `Activity.onCreate`, but `onAttachedToWindow` callback is called from `performTraversals` which is late.
+
+
+
