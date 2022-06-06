@@ -41,8 +41,8 @@ Actual instance/implementation class of this in android framework is `PhoneWindo
 public class PhoneWindow extends Window implements MenuBuilder.Callback {
 
     // This is the top-level view of the window, containing the window decor.
-    private DecorView mDecor; // initialized via installDecor() method
-        // This is the view in which the window contents are placed. It is either
+    private DecorView mDecor; // initialized via installDecor() method, done lazily on need or setContentView
+    // This is the view in which the window contents are placed. It is either
     // mDecor itself, or a child of mDecor where the contents go.
     ViewGroup mContentParent;
 
@@ -54,12 +54,17 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
         return mDecor;
     }
 
+    // This is lazily called when someone requests a decorview or does setContentView
     private void installDecor() {
         mForceDecorInstall = false;
         if (mDecor == null) {
             mDecor = generateDecor(-1);
         } else {
             mDecor.setWindow(this);
+        }
+        if (mContentParent == null) {
+            mContentParent = generateLayout(mDecor);
+            // ...
         }
         // ...
         // ...
@@ -87,6 +92,46 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
         return new DecorView(context, featureId, this, getAttributes());
     }
 
+    // setContentView layoutId version
+    @Override
+    public void setContentView(int layoutResID) {
+        if (mContentParent == null) {
+            installDecor();
+        } else if (!hasFeature(FEATURE_CONTENT_TRANSITIONS)) {
+            mContentParent.removeAllViews();
+        }
 
+        mLayoutInflater.inflate(layoutResID, mContentParent);
+        mContentParent.requestApplyInsets();
+        final Callback cb = getCallback();
+        if (cb != null && !isDestroyed()) {
+            cb.onContentChanged();
+        }
+        mContentParentExplicitlySet = true;
+    }
 
+    // setContentView View version
+    @Override
+    public void setContentView(View view, ViewGroup.LayoutParams params) {
+        if (mContentParent == null) {
+            installDecor();
+        } else if (!hasFeature(FEATURE_CONTENT_TRANSITIONS)) {
+            mContentParent.removeAllViews();
+        }
+
+        mContentParent.addView(view, params);
+        mContentParent.requestApplyInsets();
+        final Callback cb = getCallback();
+        if (cb != null && !isDestroyed()) {
+            cb.onContentChanged();
+        }
+        mContentParentExplicitlySet = true;
+    }
+```
+
+## DecorView
+
+Base View where the content should go
+```java
+public class DecorView extends FrameLayout implements RootViewSurfaceTaker, WindowCallbacks {
 ```
