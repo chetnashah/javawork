@@ -37,6 +37,36 @@ Any reference in Java may be `null`, which makes Kotlin's requirements of strict
 * `T!` means `T` or `T?`,
 * **Note: You cannot create directly values of `Type!` in kotlin, only returned at a Java framework/sdk/jar**
 
+### lateinit var - initialized late once, but non-null once initialized
+
+Use case: where real initialization happens after construction and its impossible to provide any value at all of the right type before the initialization method is called.
+
+e.g.
+On Android, I can’t have an Activity member variable of type View without lateinit. It’s impossible to create a View without the Context that is provided to `onCreate`.  I just can’t create any value at all to use as a placeholder until `onCreate` is called.
+
+#### lateinit with val is not allowed
+
+If I try `lateinit val abc`: I will get following:
+```
+'lateinit' modifier is allowed only on mutable local variables
+```
+
+#### lateinit with nullable types is not allowed e.g. `String?`
+
+I will get error:
+`'lateinit' modifier is not allowed on local variables of nullable types`
+
+```kt
+fun main() {
+    lateinit var kk: Int? // ERROR!: 'lateinit' modifier is not allowed on local variables of nullable types
+
+    kk = 11
+    println(kk)
+}
+```
+Why?
+https://discuss.kotlinlang.org/t/why-cant-one-use-lateinit-with-nullable-types/19992
+https://gyurigrell.com/2018/08/lateinit-modifier-is-not-allowed/
 
 ### Null checking 
 

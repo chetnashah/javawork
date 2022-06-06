@@ -214,3 +214,64 @@ To make members private, explicitly specify `private` keyword
 ```kotlin
 class Something(private val name: String) // name only accessible inside of class
 ```
+
+## Properties
+
+In Kotlin, each mutable (`var`) property has `default getter and setter functions automatically generated` for it. 
+The setter and getter functions are called when you assign a value or read the value of the property.
+
+For a read-only property (`val`), it differs slightly from a mutable property. 
+Only the `getter function is generated` by default. This getter function is called when you read the value of a read-only property.
+
+### What is a property?
+
+The most common kind of property simply reads from (and maybe writes to) a backing field, but custom getters and setters allow you to use properties so one can implement any sort of behavior of a property.
+
+### Fields vs properties
+
+**You cannot directly declared fields. The field identifier can only be used in the accessors of the property.**
+fields can be referenced in accessors using the field identifier
+
+```kt
+var counter = 0 // the initializer assigns the backing field directly
+    set(value) {
+        if (value >= 0)
+            field = value
+            // counter = value // ERROR StackOverflow: Using actual name 'counter' would make setter recursive
+    }
+```
+
+### Properties syntax
+
+```
+var <propertyName>[: <PropertyType>] [= <property_initializer>]
+    [<getter>]
+    [<setter>]
+```
+
+```kt
+var initialized = 1 // has type Int, default getter and setter
+val simple: Int? // has type Int, default getter, must be initialized in constructor
+val inferredType = 1 // has type Int and a default getter
+```
+
+e.g.
+```kt
+var stringRepresentation: String
+    get() = this.toString()
+    set(value) {
+        setDataFromString(value) // parses the string and assigns values to other properties
+    }
+```
+
+### When is backing field generated?
+
+A backing field will be generated for a property if 
+1. it uses the default implementation of at least one of the accessors, or 
+2. if a custom accessor references it through the field identifier.
+
+No backing field for this:
+```kt
+val isEmpty: Boolean // no set accessor because this is a val
+    get() = this.size == 0 // this only accessor, does not use field identifier, so no backing field
+```

@@ -11,10 +11,19 @@ The ViewModel class is designed to store and manage UI-related data in a lifecyc
 
 ViewModel objects are designed to outlive specific instantiations of views or LifecycleOwners. This design also means you can write tests to cover a ViewModel more easily as it doesn't know about view and Lifecycle objects.
 
+## What is ViewModelProvider?
+
+An utility class that provides ViewModels for a scope.
+
+Default `ViewModelProvider` for an Activity or a Fragment can be obtained by passing it to the constructor: `ViewModelProvider(myFragment)`
+
 ## Creating a ViewModel via ViewModelProvider (Recommended way)
 
 **Always use `ViewModelProvider` to create ViewModel objects rather than directly instantiating an instance of ViewModel.**
 `The reason`: instantiating directly from fragment/activity might result in multiple viewmodels, but we want to viewmodel to live across config changes/fragment/activity recreation.
+
+
+
 
 ViewModelProvider internally does the lifecycle management with the first argument it gets: `ViewModelProvider.get(this)..`
 

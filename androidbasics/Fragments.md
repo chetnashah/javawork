@@ -3,6 +3,11 @@
 
 A fragment is a reusable piece of UI; fragments can be reused and embedded in one or more activities.
 Basically a peice of UI with some controller logic.
+`UI controllers like fragment` control the UI by drawing views on the screen, capturing user events, and anything else related to the UI that the user interacts with. 
+Data in the app or any decision-making logic about that data should not be in the UI controller classes
+
+The Android system can destroy UI controllers like fragments at any time based on certain user interactions or because of system conditions like low memory. 
+Because these events aren't under your control, you shouldn't store any app data or state in UI controllers e.g. lets say shared state between many fragments.
 
 Fragments introduce modularity and reusability into your activity’s UI by allowing you to divide the UI into discrete chunks.
 
@@ -33,7 +38,7 @@ A fragment's lifecycle state can never be greater than its parent. For example, 
 
 `onCreate()`: The fragment has been instantiated and is in the CREATED state. However, its corresponding view has not been created yet.
 `onCreateView()`: This method is where you inflate the layout. The fragment has entered the CREATED state.
-`onViewCreated()`: This is called after the view is created. In this method, you would typically bind specific views to properties by calling findViewById(). This is where you can bind views and setup view stuff like layoutadapters, api calls etc.
+`onViewCreated()`: This is called after the view is created. In this method, you would typically bind specific views to properties by calling findViewById(). This is where you can bind views and setup view stuff like layoutadapters, api calls, click listeners.
 `onStart()`: The fragment has entered the STARTED state.
 `onResume()`: The fragment has entered the RESUMED state and now has focus (can respond to user input).
 `onPause()`: The fragment has re-entered the STARTED state. The UI is visible to the user
