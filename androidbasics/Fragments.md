@@ -294,3 +294,15 @@ Another fitting reason is that Fragment's lifecycle is similar to Activity's lif
 
 
 
+## Fragment and viewmodel init order log
+
+Viewmodel init happens after fragment -> init -> attach -> onCreate.
+```
+2022-06-05 17:44:30.513 11388-11388/com.example.android.unscramble D/GameFragment: init!
+2022-06-05 17:44:30.517 11388-11388/com.example.android.unscramble D/GameFragment: onAttach
+2022-06-05 17:44:30.518 11388-11388/com.example.android.unscramble D/GameFragment: onCreate
+2022-06-05 17:44:30.519 11388-11388/com.example.android.unscramble D/MainActivity: onCreate
+2022-06-05 17:44:30.545 11388-11388/com.example.android.unscramble D/GameViewModel: init
+2022-06-05 17:44:30.546 11388-11388/com.example.android.unscramble D/GameFragment: GameFragment View created/re-created!
+2022-06-05 17:44:30.569 11388-11388/com.example.android.unscramble D/MainActivity: onAttachedToWindow
+```
