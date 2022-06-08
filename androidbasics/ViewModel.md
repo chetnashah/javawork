@@ -23,8 +23,6 @@ Default `ViewModelProvider` for an Activity or a Fragment can be obtained by pas
 `The reason`: instantiating directly from fragment/activity might result in multiple viewmodels, but we want to viewmodel to live across config changes/fragment/activity recreation.
 
 
-
-
 ViewModelProvider internally does the lifecycle management with the first argument it gets: `ViewModelProvider.get(this)..`
 
 How `ViewModelProvider` works:
@@ -42,6 +40,10 @@ viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
 ```
 
 `ViewModelProvider(ViewModelStoreOwner owner)`: Creates ViewModelProvider. This will create ViewModels and retain them in a store of the given ViewModelStoreOwner. Usually this `owner` will be either `Activity` or `Fragment`.
+
+## How long does a Viewmodel live?
+
+The ViewModel remains in memory until the Lifecycle it's scoped to goes away permanently: **in the case of an activity, when it finishes, while in the case of a fragment, when it's detached**. Note how Viewmodel stays intact when lifecycle like onCreate/onDestroy are called on activity/fragment.
 
 ## author a simple ViewModel (Not recommended)
 
@@ -105,6 +107,15 @@ SomeFragment {
 ### ViewModelStore
 
 ```java
+/*
+Class to store ViewModels.
+
+An instance of ViewModelStore must be retained through configuration changes: if an owner of this ViewModelStore is destroyed and recreated due to configuration changes, new instance of an owner should still have the same old instance of ViewModelStore.
+
+If an owner of this ViewModelStore is destroyed and is not going to be recreated, then it should call clear() on this ViewModelStore, so ViewModels would be notified that they are no longer used.
+
+Use ViewModelStoreOwner.getViewModelStore() to retrieve a ViewModelStore for activities and fragments.
+*/
 public class ViewModelStore {
     private final HashMap<String, ViewModel> mMap = new HashMap<>();
     //...
@@ -115,6 +126,15 @@ public class ViewModelStore {
 
 An object that holds a `ViewModelStore`:
 ```java
+/**
+ * A scope that owns {@link ViewModelStore}.
+ * <p>
+ * A responsibility of an implementation of this interface is to retain owned ViewModelStore
+ * during the configuration changes and call {@link ViewModelStore#clear()}, when this scope is
+ * going to be destroyed.
+ *
+ * @see ViewTreeViewModelStoreOwner
+ */
 public interface ViewModelStoreOwner {
     /**
      * Returns owned {@link ViewModelStore}

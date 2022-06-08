@@ -22,9 +22,9 @@ The lifecycle events that are dispatched from the framework and the Lifecycle cl
 
 The current state of the component tracked by the Lifecycle object.
 
-## class `LifeCycle`
+## abstract class `LifeCycle`
 
-Important methods are to getCurrentState, add and remove observers.
+Important methods are to `getCurrentState`, `add` and `remove` observers.
 
 ```java
     public abstract void addObserver(@NonNull LifecycleObserver observer);
@@ -32,6 +32,22 @@ Important methods are to getCurrentState, add and remove observers.
     public abstract State getCurrentState();
     public enum Event { ... }
     public enum State { ... }
+```
+
+## Interface LifeCycleObserver (empty marker interface)
+
+```java
+/**
+ * Marks a class as a LifecycleObserver. Don't use this interface directly. Instead implement either
+ * {@link DefaultLifecycleObserver} or {@link LifecycleEventObserver} to be notified about
+ * lifecycle events.
+ *
+ * @see Lifecycle Lifecycle - for samples and usage patterns.
+ */
+@SuppressWarnings("WeakerAccess")
+public interface LifecycleObserver {
+
+}
 ```
 
 ## Interface LifecycleOwner (to get Lifecycle object)
@@ -140,5 +156,39 @@ class FullLifecycleObserverAdapter implements LifecycleEventObserver {
             mLifecycleEventObserver.onStateChanged(source, event);
         }
     }
+}
+```
+
+## LifeCycleRegistry
+
+```java
+/**
+ * An implementation of {@link Lifecycle} that can handle multiple observers.
+ * <p>
+ * It is used by Fragments and Support Library Activities. You can also directly use it if you have
+ * a custom LifecycleOwner.
+ */
+public class LifecycleRegistry extends Lifecycle {
+        /**
+     * The provider that owns this Lifecycle.
+     * Only WeakReference on LifecycleOwner is kept, so if somebody leaks Lifecycle, they won't leak
+     * the whole Fragment / Activity. However, to leak Lifecycle object isn't great idea neither,
+     * because it keeps strong references on all other listeners, so you'll leak all of them as
+     * well.
+     */
+    private final WeakReference<LifecycleOwner> mLifecycleOwner;
+    /**
+     * Custom list that keeps observers and can handle removals / additions during traversal.
+     *
+     * Invariant: at any moment of time for observer1 & observer2:
+     * if addition_order(observer1) < addition_order(observer2), then
+     * state(observer1) >= state(observer2),
+     */
+    private FastSafeIterableMap<LifecycleObserver, ObserverWithState> mObserverMap =
+            new FastSafeIterableMap<>();
+    /**
+     * Current state
+     */
+    private State mState;
 }
 ```

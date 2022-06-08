@@ -85,3 +85,8 @@ and this data can be recovered in `onRestoreInstanceState()` calback or in `onCr
 Combination of `onSaveInstanceState` + `onCreate` is an interesting combination to persist Activity level instance variables (i.e. activity instance state) across process restarts without using stuff like sharedprefs/files or any other persisted mechanism.
 
 
+## Config changes and object retain across config changes
+
+`public Object onRetainNonConfigurationInstance ()` - Called by the system, as part of destroying an activity due to a configuration change, when it is known that a new instance will immediately be created for the new configuration. 
+
+You can return any object you like here, including the activity instance itself, which can later be retrieved by calling `getLastNonConfigurationInstance()` in the new activity instance.
