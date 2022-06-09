@@ -1,4 +1,7 @@
 
+https://medium.com/androiddevelopers/viewmodel-one-off-event-antipatterns-16a1da869b95
+
+https://medium.com/androiddevelopers/migrating-from-livedata-to-kotlins-flow-379292f419fb
 ##
 
 The ViewModel class is designed to store and manage UI-related data in a lifecycle conscious way. The ViewModel class allows data to survive configuration changes such as screen rotations.

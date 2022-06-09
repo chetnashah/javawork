@@ -1,5 +1,7 @@
 https://www.youtube.com/watch?v=B8ppnjGPAGE
 
+https://medium.com/androiddevelopers/viewmodel-one-off-event-antipatterns-16a1da869b95
+
 ##
 
 LiveData is an **observable data holder (abstract) class**. 
@@ -81,6 +83,7 @@ If the code is executed in a worker thread, you can use the `postValue(T)` metho
 
 THe reason for problem: LiveData is associated with lifecyleowner like fragment/activity, but we dont have access to fragment/activity in our viewmodel.
 
+https://medium.com/androiddevelopers/viewmodels-and-livedata-patterns-antipatterns-21efaef74a54
 
 ## Cleanup of observers
 
