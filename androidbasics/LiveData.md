@@ -4,10 +4,12 @@ https://medium.com/androiddevelopers/viewmodel-one-off-event-antipatterns-16a1da
 
 ##
 
-LiveData is an **observable data holder (abstract) class**. 
+LiveData is an **lifecycle aware observable data holder (abstract) class**. 
 LiveData is observable, which means that an observer is notified when the data held by the LiveData object changes.
 
 Unlike a regular observable, **LiveData is lifecycle-aware**, meaning it respects the lifecycle of other app components, such as activities, fragments, or services. 
+
+The LiveData only updates observers that are in an active lifecycle state such as `STARTED` or `RESUMED`.
 
 This awareness ensures LiveData only updates app component observers that are in an active lifecycle state.
 
@@ -75,9 +77,62 @@ You must call the `setValue(T)` method to update the LiveData object from the ma
 
 If the code is executed in a worker thread, you can use the `postValue(T)` method instead to update the LiveData object.
 
+## Accessing value of a LiveData object
+
+To access the data within a LiveData object, use the `value` property (this is kotlin shorthand for setter and getter `setValue` and `getValue`).
+
+For java, use `setValue(T)` and `T getValue()` respectively. 
+
+## When should we setup observer on LiveData references?
+
+`onViewCreated()` is a sensible place to setup observer on LiveData objects.
+
 ## Lifecycle awareness
 
 ![lifecycleawareness](images/livedatalifecycleawareness.png)
+
+## Prefer observing via viewLifecycleOwner in Fragments
+
+```kt
+// Inside a fragment
+//...
+    onViewCreated(){
+        viewModel.currentScrambledWord.observe(viewLifecycleOwner) {
+            binding.textViewUnscrambledWord.text = it.toString()
+    }
+// ...
+```
+
+## State exposing pattern, Mutable reference locally, Immutable reference shared out of class
+
+```kt
+class MyViewModel{
+    
+    private val _score = MutableLiveData<Int>() // mutable state is local, modifiable only through local methods
+    val score: LiveData<Int>         // public state is immutable, but can be observed via attaching observer
+        get() = _score
+
+    // ...
+}
+```
+
+## LiveData and Databinding
+
+In simpler terms Data binding is binding data (from code) to views + view binding (binding views to code)
+
+helps map/reference app data values in views.
+It binds  from data sources in app to UI components in layout.
+
+Example:
+```kt
+binding.textViewUnscrambledWord.text = viewModel.currentScrambledWord
+```
+Example using data binding in layout file
+```xml
+android:text="@{gameViewModel.currentScrambledWord}"
+```
+
+
 
 ## Problem: what if viewmodel livedata wants to listen to repository LiveData?
 

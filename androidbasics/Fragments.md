@@ -154,6 +154,7 @@ Each set of fragment changes that you commit is called a transaction, and you ca
 ## Sharing data between fragments
 
 You can have a shared viewmodel on activity scope, which can be shared between all the fragments inside that activity.
+The shared viewmodel would be tied to activity scope instead of fragment scope.
 
 ## FragmentFactory
 

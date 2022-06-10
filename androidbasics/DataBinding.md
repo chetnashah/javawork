@@ -4,7 +4,7 @@
 
 https://guides.codepath.com/android/Applying-Data-Binding-for-Views#mvvm-architecture-and-data-binding
 https://developer.android.com/topic/libraries/data-binding
-
+https://medium.com/androiddevelopers/data-binding-lessons-learnt-4fd16576b719
 
 ## ViewBinding vs DataBinding
 
@@ -96,6 +96,17 @@ layout file:
 
 1. get rid of `findViewById`:
 
+
+### Inflate part
+
+Replace
+```
+binding = GameFragmentBinding.inflate(inflater, container, false)
+```
+With
+```kt
+binding = DataBindingUtil.inflate(inflater, R.layout.game_fragment, container, false)
+```
 
 ### Usage by DataBindingUtil in Activity onCreate
 

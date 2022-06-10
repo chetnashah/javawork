@@ -65,6 +65,18 @@ lateinit var gameViewModel: GameViewModel
 ```
 
 
+## Using viewmodel via delegation in a fragment
+
+delegation happening to an object returned by extension method `viewModels()` in `Fragment` class.
+All access to `viewModel` are routed via the returned object from `viewModels()`, and it automatically manages lifecycle stuff.
+
+```kt
+class GameFragment : Fragment() {
+    // delegation happening to an object returned by extension method `viewModels()
+    private val viewModel: GameViewModel by viewModels()
+
+```
+
 ## lifecycle of a viewmodel
 
 ### onCleared callback
@@ -104,6 +116,10 @@ SomeFragment {
     }
 }
 ```
+
+## Viewmodel creation is typically lazy
+
+On first access via `ViewModelProvider.get()` or on first access via fragment delegate, the first creation would happen on first need/access. tODO: verify.
 
 ## Internals
 
@@ -157,3 +173,12 @@ final class FragmentManagerViewModel extends ViewModel {
     private final HashMap<String, ViewModelStore> mViewModelStores = new HashMap<>();
 }
 ```
+
+## Scoped viewmodels
+
+there are 3 major scoped ViewModels extensions
+
+`viewModels()` — scoped to its fragment
+`activityViewModels()` — scoped to its activity
+`navGraphViewModels()` — scoped to its sub-navGraph
+
