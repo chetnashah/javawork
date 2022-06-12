@@ -89,6 +89,43 @@ layout file:
 </layout>
 ```
 
+
+### `layout` tag can contain data variables for binding in xml
+
+This is how we make data available to layout
+e.g.
+```xml
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".SummaryFragment">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.cupcake.OrderViewModel" />
+    </data>
+    <!-- ... some views -->
+</layout>
+```
+
+### Databinding expressions in layout file
+
+Prefixed by `@` and wrapped in curly braces:
+e.g. `<Element attr="@{expression}">`
+e.g.
+```xml
+<TextView android:text="@{viewmodel.name}">
+```
+
+### Exposing code viewmodel to layout viewmodel
+
+```kt
+onViewCreated() {
+    val binding = DataBindingUtil.inflate<MySampleBinding>(inflater, R.layout.fragment_layout, container, false)
+    binding.viewModel = orderViewModel // now layout has viewmodel access
+}
+```
+
+
 ### Everything works internally using a bindingadapter
 
 

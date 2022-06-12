@@ -178,7 +178,7 @@ final class FragmentManagerViewModel extends ViewModel {
 
 there are 3 major scoped ViewModels extensions
 
-`viewModels()` — scoped to its fragment
-`activityViewModels()` — scoped to its activity
-`navGraphViewModels()` — scoped to its sub-navGraph
+`viewModels()` — scoped to its fragment, can use it in fragment
+`activityViewModels()` — scoped to its activity, can use it in fragment (for shared viewmodel between fragment use cases)
+`navGraphViewModels()` — scoped to its sub-navGraph.
 

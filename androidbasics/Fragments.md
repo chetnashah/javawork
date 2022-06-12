@@ -156,6 +156,16 @@ Each set of fragment changes that you commit is called a transaction, and you ca
 You can have a shared viewmodel on activity scope, which can be shared between all the fragments inside that activity.
 The shared viewmodel would be tied to activity scope instead of fragment scope.
 
+```kt
+class StartFragment : Fragment() {
+    // Binding object instance corresponding to the fragment_start.xml layout
+    // This property is non-null between the onCreateView() and onDestroyView() lifecycle callbacks,
+    // when the view hierarchy is attached to the fragment.
+    private var binding: FragmentStartBinding? = null
+
+    private val sharedViewModel: OrderViewModel by activityViewModels()
+```
+
 ## FragmentFactory
 
 https://proandroiddev.com/android-fragments-fragmentfactory-ceec3cf7c959
