@@ -168,7 +168,17 @@ The lifecycle awareness automatically cleans up observers (on lifecycleowner des
 
 ## LiveData transformations
 
+Any derived state from live data can be calculated using Transformations.
 
+e.g. formatted date, filtering based on selection, sum of values, last item etc.
+
+e.g.
+```kt
+private val _price = MutableLiveData<Double>()
+val price: LiveData<String> = Transformations.map(_price) {
+   NumberFormat.getCurrencyInstance().format(it)
+}
+```
 
 ## How lifecycle connects with LiveData Observer ?
 

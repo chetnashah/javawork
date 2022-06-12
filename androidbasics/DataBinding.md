@@ -126,6 +126,31 @@ onViewCreated() {
 ```
 
 
+## Getting error: Data Binding : Resources$NotFoundException when attribute of object is int
+
+Use `String.valueOf()` because int means resourceId
+e.g.
+```xml
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@{String.valueOf(user.age)}"/>
+```
+
+### Observing livedata changes
+
+Set lifecycleowner on binding object, app will be able to observe livedata objects.
+
+```kt
+binding?.apply {   
+    lifecycleOwner = viewLifecycleOwner
+    ...
+}
+```
+
+### No need to do liveData.value in bindings
+
+
 ### Everything works internally using a bindingadapter
 
 
