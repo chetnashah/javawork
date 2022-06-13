@@ -90,7 +90,7 @@ layout file:
 ```
 
 
-### `layout` tag can contain data variables for binding in xml
+### `layout` tag can contain `data` variables for binding in xml
 
 This is how we make data available to layout
 e.g.
@@ -105,6 +105,56 @@ e.g.
     </data>
     <!-- ... some views -->
 </layout>
+```
+
+Anyt `variable` declared in the `data` tag in xml, is available in kotlin/java under `XYZBinding` generated class.
+e.g. for
+```xml
+    <data>
+        <variable
+            name="myName"
+            type="String" />
+    </data>
+```
+
+Can be manipulated using
+```kt
+bindingVar?.myName = "hi"
+```
+
+This also used to access hosting class/fragment/activity instance inside the layout to call listener in the UI contorller.
+E.g.
+```xml
+        <variable
+            name="flavorFragment"
+            type="com.example.cupcake.FlavorFragment" />
+
+    <!-- some stuff -->
+    <!-- note onClick callsback into hosting fragment -->
+    <Button
+                android:id="@+id/order_six_cupcakes"
+                android:layout_width="wrap_content"
+                android:onClick="@{() -> startFragment.orderCupcake(6)}" 
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_between_elements"
+                android:minWidth="@dimen/order_cupcake_button_width"
+                android:text="@string/six_cupcakes" />
+```
+
+```kt
+override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+    binding?.flavorFragment = this
+}
+
+fun orderCupcake(quantity: Int) {
+    sharedViewModel.setQuantity(quantity)
+    if(sharedViewModel.hasNoFlavorSet()) {
+        sharedViewModel.setFlavor(getString(R.string.vanilla))
+    }
+    findNavController().navigate(R.id.action_startFragment_to_flavorFragment)
+}
 ```
 
 ### Databinding expressions in layout file

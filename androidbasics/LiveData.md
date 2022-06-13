@@ -170,6 +170,9 @@ The lifecycle awareness automatically cleans up observers (on lifecycleowner des
 
 Any derived state from live data can be calculated using Transformations.
 
+These methods permit functional composition and delegation of LiveData instances. The transformations are calculated lazily, and **will run only when the returned LiveData is observed**. 
+`Lifecycle behavior is propagated from the input sourceLiveData to the returned one`.
+
 e.g. formatted date, filtering based on selection, sum of values, last item etc.
 
 e.g.

@@ -182,3 +182,6 @@ there are 3 major scoped ViewModels extensions
 `activityViewModels()` — scoped to its activity, can use it in fragment (for shared viewmodel between fragment use cases)
 `navGraphViewModels()` — scoped to its sub-navGraph.
 
+## Sharing viewmodels between multiple components
+
+https://developer.android.com/topic/libraries/architecture/viewmodel#sharing
