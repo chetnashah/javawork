@@ -185,3 +185,18 @@ there are 3 major scoped ViewModels extensions
 ## Sharing viewmodels between multiple components
 
 https://developer.android.com/topic/libraries/architecture/viewmodel#sharing
+
+## dependencies for testing
+
+```groovy
+testImplementation 'junit:junit:4.+'
+testImplementation 'androidx.arch.core:core-testing:2.1.0'
+```
+
+### Why use `observeForever` in tests?
+
+Unless you observe forever, transformations will not run to save battery/resources.
+Use following to trgger all transformations.
+```kt
+viewModel.price.observeForever {}
+```

@@ -290,6 +290,8 @@ The completion continuation is invoked when the coroutine completes with a resul
 
 ### CoroutineScope
 
+A CoroutineScope is a context that enforces cancellation and other rules to its children and their children recursively.
+basically an abstraction for structured concurrency.
 Scope decides lifetime in which a coroutine is valid. Every coroutine needs to run in a scope. 
 Coroutine scope is responsible for the structure and parent-child relationships between different coroutines. We always start new coroutines inside a scope.
 CoroutineScope is a place where execution can be suspended.
@@ -390,6 +392,10 @@ internal class ContextScope(context: CoroutineContext) : CoroutineScope {
 ```
 
 ### Dispatchers
+
+**Determines the thread the coroutine will use**. Dispatcher manages which backing thread the coroutine will use for its execution.
+
+The Main dispatcher will always run coroutines on the main thread, while dispatchers like Default, IO, or Unconfined will use other threads.
 
 Base class to be extended by all coroutine dispatcher implementations.
 `determines what thread` or threads the corresponding coroutine uses for its execution. 
