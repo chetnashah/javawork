@@ -107,3 +107,11 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 }
 ```
+
+## Checking if intent to an activity actually resolves to something before navigating
+
+```kt
+if (activity?.packageManager?.resolveActivity(intent, 0) != null) {
+    startActivity(intent)
+}
+```

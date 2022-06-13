@@ -169,3 +169,14 @@ plugins {
 }
 ```
 
+
+## `app:popUpTo` attribute
+
+By including an `app:popUpTo` attribute on the `navigation action in the navigation graph`, more than one destination can be popped off the back stack up until that specified destination is reached. 
+
+If you specify `app:popUpTo="@id/startFragment"`, then destinations in the back stack will get popped off until you reach StartFragment, which will remain on the stack.
+
+This is especially useful to pop destinations instead of pushing when you want to go back in history.
+
+`app:popUpToInclusive="true"` - add `app:popUpToInclusive="true"` on the appropriate navigation actions. That way, you will only have the one new instance of StartFragment in the back stack.
+
