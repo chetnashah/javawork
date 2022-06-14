@@ -200,3 +200,17 @@ Use following to trgger all transformations.
 ```kt
 viewModel.price.observeForever {}
 ```
+
+## ViewModelScope
+
+A `ViewModelScope` is the built-in coroutine scope defined for each ViewModel in your app. 
+**Any coroutine launched in this scope is automatically canceled if the ViewModel is cleared.**
+
+e.g.
+```kt
+private fun getMarsPhotos() {
+    viewModelScope.launch {
+        val listResult = MarsApi.retrofitService.getPhotos()
+    }
+}
+```

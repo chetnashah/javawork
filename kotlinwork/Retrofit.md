@@ -11,6 +11,49 @@ Use json to kotlin class plugin
 
 recommended to create an api folder for this
 
+## Create YourAPISErvice (an interface)
+
+## Create a retrofit object with BaseURL and converterFactory
+
+## Exposing retrofit instance
+
+The call to `create()` function on a Retrofit object is expensive and the app needs only one instance of Retrofit API service. So, you expose the service to the rest of the app using object declaration.
+
+```kt
+private const val BASE_URL = "https://android-kotlin-fun-mars-server.appspot.com"
+
+private val retrofit = Retrofit.Builder()
+        .addConverterFactory(ScalarsConverterFactory.create())
+        .baseUrl(BASE_URL)
+        .build()
+
+object MarsApi {
+    val retrofitService : MarsApiService by lazy {
+        retrofit.create(MarsApiService::class.java) 
+    }
+}
+
+interface MarsApiService {
+    @GET("photos")
+    suspend fun getPhotos(): String
+}
+```
+
+## fetch data call from a viewmodel
+
+```kt
+private fun getMarsPhotos() {
+    viewModelScope.launch {
+        val listResult = MarsApi.retrofitService.getPhotos()
+    }
+}
+```
+
+## Data classes with custom name
+
+```kt
+data class MarsPhoto(val id: String, @Json(name = "img_src") val imgSrc: String)
+```
 
 ## Coroutine integration
 
@@ -75,5 +118,31 @@ class RetroFitInstance {
             retrofit.create(NewsAPI::class.java)
         }
     }
+}
+```
+
+## Using moshi with retrofit
+
+```kt
+private const val BASE_URL = "https://android-kotlin-fun-mars-server.appspot.com"
+
+val moshi = Moshi.Builder()
+    .add(KotlinJsonAdapterFactory())
+    .build()
+
+private val retrofit = Retrofit.Builder()
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .baseUrl(BASE_URL)
+        .build()
+
+object MarsApi {
+    val retrofitService : MarsApiService by lazy {
+        retrofit.create(MarsApiService::class.java)
+    }
+}
+
+interface MarsApiService {
+    @GET("photos")
+    suspend fun getPhotos(): String
 }
 ```

@@ -198,11 +198,58 @@ binding?.apply {
 }
 ```
 
+
+
 ### No need to do liveData.value in bindings
 
 
 ### Everything works internally using a bindingadapter
 
+
+## Generated Binding classes
+
+**A binding class is generated for each layout file**. By default, the name of the class is based on the name of the layout file, converting it to Pascal case and adding the Binding suffix to it. The above layout filename is `activity_main.xml` so the corresponding generated class is `ActivityMainBinding`.
+
+The Data Binding Library generates binding classes that are used to access the layout's variables and views.
+
+The generated binding class links the layout variables with the views within the layout. The name and package of the binding class can be customized. All generated binding classes inherit from the `ViewDataBinding` class.
+
+
+## Binding adapters
+
+Binding Adapters are annotated methods used to **create custom setters for custom properties of your view**.
+
+you can provide a custom attribute and custom logic that will be called by the Data binding library.
+In xml:
+```xml
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:imageUrl="@{product.imageUrl}"/>
+```
+
+In kt:
+```kt
+// this can be at top level of any file, no need to put it any file
+@BindingAdapter("imageUrl")
+fun bindImage(imgView: ImageView, imgUrl: String?) {
+    imgUrl?.let {
+        // Load the image in the background using Coil.
+        }
+    }
+}
+```
+
+`Note`: in order for this to work you must use layout code mentioned above, which will generated Databinding code that uses BindingAdapter.
+
+Another example:
+With `app:listData="@{viewModel.photos}"` custom attribute on RecyclerView xml
+```kt
+@BindingAdapter("listData")
+fun bindRecyclerView(recyclerView: RecyclerView,
+                     data: List<MarsPhoto>?) {
+}
+```
 
 ### beginner
 
@@ -241,9 +288,4 @@ the binding variables that can be used in expressions are defined inside a data 
     <ConstraintLayout... /> <!-- UI layout's root element -->
 </layout>
 ```
-
-### Intermediate
-
-
-### Expeert
 
