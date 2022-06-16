@@ -132,6 +132,60 @@ class Pet extends Animal {
 }
 ```
 
+## Declaration with Extends wildcard `? extends Type` is read-only 
+
+that is **`extends` wildcard variable is read-only**
+
+example:
+```java
+public class Main {
+    public static void main(String[] args) {
+            List<? extends Animal> animals = new ArrayList<>();
+            animals.add(new Animal());// Compile r error! Animal cannot be converted to type CAP1 where CAP1 is fresh type variable, CAP1 extends Animal from capture of ? extends Animal
+            animals.add(new Pet());// compiler error: Pet cannot be converted to CAP#1
+
+    }
+    
+    public static void methodTakesAnimals(List<? extends Animal> as) {   
+    }
+}
+
+class Animal {
+    String name;
+}
+
+class Pet extends Animal {
+    int age;
+}
+```
+
+Even when used with methods, same issue is present, 
+
+You can't add any object to `List<? extends T>` because you can't guarantee what kind of List it is really pointing to, so you can't guarantee that the object is allowed in that List. The only "guarantee" is that you can only read from it and you'll get a T or subclass of T.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+            List<Animal> animals = new ArrayList<>();
+            methodTakesAnimals(animals);
+    }
+    
+    public static void methodTakesAnimals(List<? extends Animal> as) {   
+        as.add(new Animal());// Compiler Error!: Animal cannot be converted to CAP1
+    }
+}
+
+class Animal {
+    String name;
+}
+
+class Pet extends Animal {
+    int age;
+}
+```
+
+**Why is it read only?** - because if we allowed adding/writing, somebody could add a `Dog` to a list of `Cats`, thus breaking type safety.
+
 ## Producer Extends consumer super
 
 https://howtodoinjava.com/java/generics/java-generics-what-is-pecs-producer-extends-consumer-super/
@@ -148,3 +202,61 @@ This method is called for adding “elements” to collection “c”.
 public static <T> boolean addAll(Collection<? super T> c, T... elements);
 ```
 Both seems to be doing simple thing, so why they both have different syntax
+
+## super wildcard bound (lets you modify variable) - super means supertypes are allowed
+
+`List<? super Animal> lst` will allow to store all supertypes of `Animal`(and subtypes since subtypes are assignable to supertypes).
+
+`List< ? super X >` allows to add anything that is-a X (X or its supertype), or null.
+
+`Assignability` - you can assign `List<Animals>` or `List<Object>`
+
+```java
+public class Main {
+    public static void main(String[] args) {   
+            List<? super Animal> as = new ArrayList<Animal>(); // Ok
+            List<? super Animal> aas = new ArrayList<Object>(); // Ok
+            
+            // Compiler error!
+            List<? super Animal> aaas = new ArrayList<Pet>(); // Compiler error! ArrayList<Pet> cannot be converted to List<? super Animal> 
+    }
+}
+
+class Animal {
+    String name;
+}
+
+class Pet extends Animal {
+    int age;
+}
+```
+
+`Read`: The only guarantee is that you will get an instance of an Object. Not much help with read.
+
+`Write`: You can write/put only classes that are subtypes of given bound.
+```java
+public class Main {
+    public static void main(String[] args) {
+            List<? super Animal> asa = new ArrayList<>();
+            asa.add(new Pet());// ok
+            asa.add(new Animal()); // ok
+            asa.add(new Object()); // error! Object cannot be converted to CAP#1 
+    }
+}
+
+class Animal {
+    String name;
+}
+
+class Pet extends Animal {
+    int age;
+}
+```
+
+
+Following are legal
+```java
+List<? super Integer> foo3 = new ArrayList<Integer>();  // Integer is a "superclass" of Integer (in this context)
+List<? super Integer> foo3 = new ArrayList<Number>();   // Number is a superclass of Integer
+List<? super Integer> foo3 = new ArrayList<Object>();   // Object is a superclass of Integer
+```
