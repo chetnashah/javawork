@@ -11,6 +11,15 @@
 
 ## Coroutine support for room
 
+
+## Common steps
+
+1. Define Database (persistence)
+2. Define Entity/Table (data class (POJO) with annotations)
+3. Define Dao (Interface with functions to read/write data) - can refer models in return types of query and in argument type for inserts.
+4. Define repository (public interface to manipulation collections)
+5. Define viewModel (state/data holder for UI)
+
 ## Tables
 
 Tables are specified via `@Entity` annotation, along with a `@PrimaryKey`

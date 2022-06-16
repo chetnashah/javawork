@@ -89,6 +89,7 @@ A `ViewModelFactory instantiates ViewModel objects`, with or without constructor
 
 `isAssignableFrom`: `clazz.isAssignableFrom(Foo.class)` will be true whenever the class represented by the clazz object is a superclass or superinterface of Foo, or in other words, Foo is a subclass of clazz.
 
+`ViewModelProvider.Factory` interface has one method to be implemented: `create` method.
 
 e.g.
 ```java

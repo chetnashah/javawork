@@ -38,3 +38,14 @@ Method that will insert data
 Which means queries are observable.
 
 
+## Referring kotlin values
+
+You can reference Kotlin values from the query by preceding it with a colon (:) (e.g. `:stopName` from the function parameter).
+
+```kt
+@Dao
+interface SomeDao{
+    @Query("SELECT * FROM schedule WHERE stop_name = :stopName ORDER BY arrival_time ASC")
+    fun getByStopName(stopName: String): List<Schedule>
+}
+```

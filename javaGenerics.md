@@ -12,7 +12,7 @@ T[] items = (T[]) new Object[10];
 ### Sub-typing
 
 Sub-types are more specific, where as supertypes are more general.
- If S is a subtype of T, the subtyping relation is often written S <: T, to mean that any term of type S can be safely used in a context where a term of type T is expected
+ If S is a subtype of T, the subtyping relation is often written `S <: T` or `S extends T`, to mean that any term of type S can be safely used in a context where a term of type T is expected
 
 ### Arrays are co-variant, Lists are not.
 
@@ -22,9 +22,9 @@ Liskov Substitution principle: Wherever an Animal can be used, a dog can be used
 i.e Dog <: Animal
 
 
-Then covariance: Dog[] <: Animal[]
+Then covariance: `Dog[] <: Animal[]`
 
-List is invariant: i.e List<Dog> is not a subtype of List<Animal>
+List is invariant: i.e `List<Dog>` is not a subtype of `List<Animal>`
 
 Instead the designer should Have used something like following
 ``` java
@@ -75,3 +75,76 @@ One can Either try `List<T extends Object>` or just `List<?>`.
 
 There are many situations where you simply don't care what type you are referring to. In those cases, you may use ? without cluttering code with unused type parameter declarations.
 
+## direct list of subtypes/types is invariant
+
+Error: `List<Pet>` cannot be converted to `List<Animal>`
+e.g.
+```java
+// "static void main" must be defined in a public class.
+public class Main {
+    public static void main(String[] args) {
+    
+            List<Animal> as = new ArrayList<>();
+            List<Pet> ps = new ArrayList<>();
+        
+            methodTakesAnimals(ps);
+    }
+    
+    public static void methodTakesAnimals(List<Animal> as) {
+        
+    }
+
+}
+
+class Animal {
+    String name;
+}
+
+class Pet extends Animal {
+    int age;
+}
+```
+
+To fix this one must add wildcard bound to make `List` or generic types variant
+i.e. `List<Pet> <: List<? extends Animal>`
+```java
+public class Main {
+    public static void main(String[] args) {
+    
+            List<Animal> as = new ArrayList<>();
+            List<Pet> ps = new ArrayList<>();
+        
+            methodTakesAnimals(ps);
+    }
+    
+    public static void methodTakesAnimals(List<? extends Animal> as) {// now List<Pet> <: List<Animals>
+        
+    }
+
+}
+
+class Animal {
+    String name;
+}
+
+class Pet extends Animal {
+    int age;
+}
+```
+
+## Producer Extends consumer super
+
+https://howtodoinjava.com/java/generics/java-generics-what-is-pecs-producer-extends-consumer-super/
+
+### Problem
+
+This method is responsible for adding all members of collection `c` into another collection where this method is called.
+
+```
+boolean addAll(Collection<? extends E> c);
+```
+This method is called for adding “elements” to collection “c”.
+```
+public static <T> boolean addAll(Collection<? super T> c, T... elements);
+```
+Both seems to be doing simple thing, so why they both have different syntax
