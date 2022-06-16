@@ -14,7 +14,7 @@
 
 ## Common steps
 
-1. Define Database (persistence)
+1. Define Database (abstract class extending RoomDatabase, exposing abstract `getXYZDao()` methods).
 2. Define Entity/Table (data class (POJO) with annotations)
 3. Define Dao (Interface with functions to read/write data) - can refer models in return types of query and in argument type for inserts.
 4. Define repository (public interface to manipulation collections)
@@ -47,5 +47,33 @@ data class Article(
 abstract class ArticleDatabase : RoomDatabase() {
     // usually database wiill have this getXYZDao()
     abstract fun getArticleDao(): ArticleDao
+}
+```
+
+### Another sample Database class implementation
+
+```kt
+abstract class AppDatabase: RoomDatabase() {
+
+    abstract fun scheduleDao(): ScheduleDao
+
+    companion object {
+        @Volatile
+        private var INSTANCE: AppDatabase? = null
+
+        fun getDatabase(context: Context): AppDatabase {
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context,
+                    AppDatabase::class.java,
+                    "app_database")
+                    .createFromAsset("database/bus_schedule.db")
+                    .build()
+                INSTANCE = instance
+
+                instance
+            }
+        }
+    }
 }
 ```
