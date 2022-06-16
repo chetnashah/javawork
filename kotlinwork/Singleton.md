@@ -10,6 +10,8 @@ class Singleton private constructor() {
 }
 ```
 
+More on lazy pattern: https://medium.com/til-kotlin/how-kotlins-delegated-properties-and-lazy-initialization-work-552cbad8be60
+
 ## Double checked locking
 
 ```kt
