@@ -44,6 +44,14 @@ doSomething(listOfDogs); // works fine
 The primary need for bounded types is to work around the fact the collections etc are invariant, and cannot accept subtypes/supertypes, so inorder to make them flexible, types are given bounds. For example, a method that operates on numbers might only want to accept instances of Number or its subclasses. This is what bounded type parameters are for. e.g. use of super or extends in type parameter.
 
 
+## understanding upper and lower bounds
+
+**Assume type hierarchy is written such that the most general type is on the top, and the most specific types are at the bottom of the hierarchy.**
+
+`? extends A` represents `upper bound` of `A` on all types. meaning any given type must be lower than the upper bound i.e. a speicif/cub type of `A`
+
+`? super A` represents `lower bound` of `A` on all types, meaning any given type must be above or equal to level of `A`.
+
 ### When to use 'super' vs 'extends' in type bounds?
 
 
@@ -106,7 +114,10 @@ class Pet extends Animal {
 ```
 
 To fix this one must add wildcard bound to make `List` or generic types variant
-i.e. `List<Pet> <: List<? extends Animal>`
+i.e. `List<Pet> <: List<? extends Animal>` for more info check:
+http://www.angelikalanger.com/GenericsFAQ/FAQSections/TechnicalDetails.html#Which%20super-subtype%20relationships%20exist%20among%20instantiations%20of%20parameterized%20types?
+
+
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -205,11 +216,9 @@ Both seems to be doing simple thing, so why they both have different syntax
 
 ## super wildcard bound (lets you modify variable) - super means supertypes are allowed
 
-`List<? super Animal> lst` will allow to store all supertypes of `Animal`(and subtypes since subtypes are assignable to supertypes).
+`List< ? super X >` allows to add anything that is-a X (X or its subtype), or null.
 
-`List< ? super X >` allows to add anything that is-a X (X or its supertype), or null.
-
-`Assignability` - you can assign `List<Animals>` or `List<Object>`
+`Assignability` - 
 
 ```java
 public class Main {
@@ -231,9 +240,37 @@ class Pet extends Animal {
 }
 ```
 
-`Read`: The only guarantee is that you will get an instance of an Object. Not much help with read.
+Another example of assignability: supertypes allowed:
+```java
+public class Main {
+    public static void main(String[] args) {
+            List<Creature> csa = new ArrayList<>();
+            methodTakesAnimals(csa);
+    
+            List<Animal> asa = new ArrayList<>();
+            methodTakesAnimals(asa);
+    
+            List<Pet> ps = new ArrayList<>(); 
+            methodTakesAnimals(ps);// Compiler error: List<Pet> cannot be converted to List<? super Animal>
+    }
+    
+    public static void methodTakesAnimals(List<? super Animal> animals) {}
+}
 
-`Write`: You can write/put only classes that are subtypes of given bound.
+class Creature {}
+
+class Animal extends Creature {
+    String name;
+}
+
+class Pet extends Animal {
+    int age;
+}
+```
+
+`Read`: The only guarantee is that you will get an instance of an Object. Not much help with read (very restrictive)
+
+`Boxed Write`: You can write/put only classes that are subtypes of given lower bound.
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -259,4 +296,37 @@ Following are legal
 List<? super Integer> foo3 = new ArrayList<Integer>();  // Integer is a "superclass" of Integer (in this context)
 List<? super Integer> foo3 = new ArrayList<Number>();   // Number is a superclass of Integer
 List<? super Integer> foo3 = new ArrayList<Object>();   // Object is a superclass of Integer
+```
+
+## What is capture of wildcard (?) ?
+
+
+An anonymous type variable that represents the particular unknown type that the wildcard stands for.
+
+usually you will see anonymous names like `CAP1` etc 
+
+## Capture of unbounded wildcard is only assignment compatible to itself
+
+```java
+private static void method( List<?> list) {
+  List <String>            ll1 = list;     // error
+  List <? extends String> ll2 = list;     // error
+  List <? super String>    ll3 = list;     // error
+  List <?>                 ll4 = list;     // fine
+}
+error: incompatible types
+found   : java.util.List <capture of ? >
+required: java.util.List<java.lang.String>
+        List<String> ll1 = list;
+                           ^
+error : incompatible types
+found   : java.util.List <capture of ?
+required: java.util.List<? extends java.lang.String>
+        List<? extends String> ll2 = list;
+                                     ^
+error : incompatible types
+found   : java.util.List <capture of ?
+required: java.util.List<? super java.lang.String>
+        List<? super String> ll3 = list;
+                                   ^
 ```
