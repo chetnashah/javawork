@@ -104,6 +104,18 @@ e.g.
  }
 ```
 
+### submitList() usage
+
+// submitList() is a call that accesses the database. To prevent the
+// call from potentially locking the UI, you should use a
+// coroutine scope to launch the function. Using GlobalScope is not
+// best practice, and in the next step we'll see how to improve this.
+```kt
+GlobalScope.launch(Dispatchers.IO) {
+   busStopAdapter.submitList(viewModel.fullSchedule())
+}
+```
+
 ## DiffUtil ItemCallback
 
 ```java
@@ -161,3 +173,75 @@ class PhotoGridAdapter : ListAdapter<MarsPhoto, PhotoGridAdapter.MarsPhotoViewHo
     }
 }
 ```
+
+## AsyncListDiffer
+
+Helper for computing the difference between two lists via `DiffUtil` on a background thread.
+
+It can be connected to a `RecyclerView.Adapter`, and will signal the adapter of changes between sumbitted lists.
+
+For simplicity, the `ListAdapter` wrapper class can often be used instead of the `AsyncListDiffer` directly. This `AsyncListDiffer` can be used for complex cases, where overriding an adapter base class to support asynchronous List diffing isn't convenient.
+
+Creation:
+```java
+class SomeAdapter extends RecyclerView.Adapter{
+    //this passed in constructor is the Adapter
+     private final AsyncListDiffer<User> mDiffer = new AsyncListDiffer(this, DIFF_CALLBACK);
+
+     public static final DiffUtil.ItemCallback<User> DIFF_CALLBACK
+             = new DiffUtil.ItemCallback<User>() {
+         @Override
+         public boolean areItemsTheSame(
+                 @NonNull User oldUser, @NonNull User newUser) {
+             // User properties may have changed if reloaded from the DB, but ID is fixed
+             return oldUser.getId() == newUser.getId();
+         }
+         @Override
+         public boolean areContentsTheSame(
+                 @NonNull User oldUser, @NonNull User newUser) {
+             // NOTE: if you use equals, your object must properly override Object#equals()
+             // Incorrectly returning false here will result in too many animations.
+             return oldUser.equals(newUser);
+         }
+     }
+}
+```
+
+
+## ViewHolder subclass convention : usually as an inner class of Adapter class
+
+
+## ViewHolder constructor convention: accept a ItemLayoutBinding in ViewHolder subclass constructor and make it as a property of the viewholder class as a private var
+
+```kt
+// notice constructor param is ItemyoutBinding
+class BusStopViewHolder(private var binding: BusStopItemBinding): RecyclerView.ViewHolder(binding.root) {
+    @SuppressLint("SimpleDateFormat")
+    fun bind(schedule: Schedule) {
+        binding.stopNameTextView.text = schedule.stopName
+        binding.arrivalTimeTextView.text = SimpleDateFormat(
+            "h:mm a").format(Date(schedule.arrivalTime.toLong() * 1000)
+        )
+    }
+}
+```
+
+## ViewHolder convention: add a `bind` method in viewholder sub-class
+
+`fun bind(entity: Entity)`: Job of this function is to setup all the UI fields in this viewholder accoridng to the entity data.
+
+```kt
+class BusStopViewHolder(private var binding: BusStopItemBinding): RecyclerView.ViewHolder(binding.root) {
+    @SuppressLint("SimpleDateFormat")
+    fun bind(schedule: Schedule) {
+        binding.stopNameTextView.text = schedule.stopName
+        binding.arrivalTimeTextView.text = SimpleDateFormat(
+            "h:mm a").format(Date(schedule.arrivalTime.toLong() * 1000)
+        )
+    }
+}
+```
+
+## Where/when to setup item listeners inside adapter?
+
+`onCreateViewHolder`
