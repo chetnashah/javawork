@@ -41,6 +41,8 @@ When using Android Gradle plugin 7.0 to build your app, JDK 11 is now required t
 
 ## Starting from bumblebee
 
+old way was classpath+apply
+
 This is deprecateD:
 ```
 buildscript {
@@ -56,3 +58,20 @@ plugins {
   id <plugin> apply false
 }
 ```
+Buildscript block is no longer needed:
+https://stefma.medium.com/its-time-to-ditch-the-buildscript-block-a1ab12e0d9ce
+
+
+`Plugins block`:
+```
+plugins {
+  id("org.gradle.java")
+  kotlin("jvm") version "1.2.40"
+}
+```
+By default the plugin block can only resolve plugins which are either:
+
+Core Plugins (provides by Gradle themself). These are e.g.: `org.gradle.java`, `org.gradle.groovy`, `org.gradle.java-gradle-plugin` and so on…
+Published to the Gradle Plugin Portal.
+Unfortunately not all Gradle Plugins are available at the Plugin Portal (looking at you, Android Gradle Plugin! 😡).
+
