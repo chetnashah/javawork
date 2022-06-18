@@ -1,6 +1,10 @@
 
 Android Studio 4.2 can open projects that use AGP 3.1 and higher provided that AGP is running Gradle 4.8.1 and higher
 
+### where to find googles published lib on maven
+
+https://maven.google.com/web/index.html?q=room#androidx.room:room-compiler
+
 ### setting AGP version
 
 specify along with the plugins 
