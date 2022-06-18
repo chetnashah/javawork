@@ -39,3 +39,20 @@ When using Android Gradle plugin 7.0 to build your app, JDK 11 is now required t
 
 
 
+## Starting from bumblebee
+
+This is deprecateD:
+```
+buildscript {
+  dependencies {
+    classpath <plugin>
+  }
+}
+```
+
+you'd instead have
+```
+plugins {
+  id <plugin> apply false
+}
+```
