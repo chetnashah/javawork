@@ -1,4 +1,10 @@
 
+## DTO stands for "Data Transfer Object"
+
+DTO models can be considered fatter objects that come from api/network.
+You may have separate domain models that are lighter versions of above to manage the data relevant to app & UI.
+
+
 ## DTOs
 
 One other thing you probably want to do, while we're at it, is have DTOs. 

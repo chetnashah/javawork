@@ -49,3 +49,16 @@ interface SomeDao{
     fun getByStopName(stopName: String): List<Schedule>
 }
 ```
+
+## How to write query with variables?
+
+Note `:varname` in query
+
+```kt
+@Dao
+interface NoteDao {
+
+    @Query("select * from note where id=:id")
+    suspend fun getNoteEntity(id: Long): NoteEntity?
+}
+```

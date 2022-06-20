@@ -15,9 +15,9 @@
 ## Common steps
 
 1. Define Database (abstract class extending RoomDatabase, exposing abstract `getXYZDao()` methods).
-2. Define Entity/Table (data class (POJO) with annotations)
-3. Define Dao (Interface with functions to read/write data) - can refer models in return types of query and in argument type for inserts.
-4. Define repository (public interface to manipulation collections)
+2. Define Entity/Table (data class (POJO) with annotations) - note it can be treated as domain models or domain model class can be separate
+3. Define Dao (Interface with suspend functions to read/write data i.e CRUD like methods) - can refer models in return types of query and in argument type for inserts. - methods are annotated with @INSERT/@UPDATE/@DELETE/@QUERY
+4. Define repository (public interface to manipulation collections) 
 5. Define viewModel (state/data holder for UI)
 
 ## Tables

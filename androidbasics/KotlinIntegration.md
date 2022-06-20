@@ -41,3 +41,14 @@ android {
     }
 }
 ```
+
+## Kotlin android extensions
+
+Added in plugins block using
+`id 'kotlin-android-extensions'`
+
+Helps you get rid of findviewbyId boilerplate in fragment/activity by generating classes
+and importing like this:
+`import kotlinx.android.synthetic.main.fragment_note.*` for `NoteFragment.kt` that uses `R.layout.fragment_note`
+
+
