@@ -2,6 +2,8 @@ https://www.youtube.com/watch?v=B8ppnjGPAGE
 
 https://medium.com/androiddevelopers/viewmodel-one-off-event-antipatterns-16a1da869b95
 
+**suspend and LiveData seem not to work together**
+
 ##
 
 LiveData is an **lifecycle aware observable data holder (abstract) class**. 

@@ -215,3 +215,18 @@ private fun getMarsPhotos() {
     }
 }
 ```
+
+## If you need context for stuff like Resources, use application context (not activity context), because application context can live larger than viewmodel
+
+## AndroidViewModel
+
+AndroidViewModel is a Application context aware ViewModel.
+having static Application instance is not as bad as you might think because there is only one Application instance in the running application.
+
+subclasses need to pass application instance in Constructor
+
+```kt
+class NoteViewModel(application: Application): AndroidViewModel(application) {
+    
+}
+```

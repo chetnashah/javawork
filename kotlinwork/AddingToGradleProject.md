@@ -35,3 +35,11 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile) {
     }
 }
 ```
+
+## To use coroutines
+
+```groovy
+dependencies {
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
+}
+```
