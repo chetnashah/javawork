@@ -146,3 +146,50 @@ interface MarsApiService {
     suspend fun getPhotos(): String
 }
 ```
+
+## Encapsulating responses with Resource classes
+
+```kt
+data class Resource<out T>
+(val status: Status, val data:T?, val message:String?){
+
+    companion object{
+
+        fun <T> success(data:T): Resource<T> =
+                Resource(status = Status.SUCCESS, data = data, message = null)
+
+        fun <T> error(data:T?, message: String?):Resource<T> =
+                Resource(status = Status.FAILURE, data = data, message = message)
+
+        fun <T> loading(data:T?):Resource<T> =
+                Resource(status = Status.LOADING, data = data, message = null)
+    }
+
+}
+```
+
+```kt
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
+
+class CommentViewModel(private val mCommentRepo: CommentRepo) : ViewModel(){
+
+    fun getAllComments() = liveData {
+        emit(Resource.loading(null))
+        try{
+            emit(Resource.success(mCommentRepo.getAllComments()))
+        } catch (e:Exception){
+            emit(Resource.error(null,e.message.toString()))
+        }
+    }
+}
+```
+
+## Retrofit api with path params
+
+```kt
+interface PostsApi {
+    @GET("/posts/{id}")
+    suspend fun getPostById(@Path("id") id: Long): Post
+}
+```

@@ -2,6 +2,8 @@ https://www.youtube.com/watch?v=B8ppnjGPAGE
 
 https://medium.com/androiddevelopers/viewmodel-one-off-event-antipatterns-16a1da869b95
 
+https://medium.com/corouteam/exploring-kotlin-coroutines-and-lifecycle-architectural-components-integration-on-android-c63bb8a9156f
+
 **suspend and LiveData seem not to work together**
 
 ##
@@ -134,7 +136,15 @@ Example using data binding in layout file
 android:text="@{gameViewModel.currentScrambledWord}"
 ```
 
+## Using coroutines with LiveData
 
+https://developer.android.com/topic/libraries/architecture/coroutines#livedata
+```kt
+val user: LiveData<User> = liveData {
+    val data = database.loadUser() // loadUser is a suspend function.
+    emit(data)
+}
+```
 
 ## Problem: what if viewmodel livedata wants to listen to repository LiveData?
 
