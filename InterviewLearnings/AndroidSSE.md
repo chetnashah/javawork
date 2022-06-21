@@ -1,5 +1,5 @@
 
-1. remember api cancellation
+1. remember api cancellation (in all frameworks)
 2. Do some good android code reviews
 3. Remember equals/hashcode/toString impl
 4. Remember Rx java api
