@@ -89,6 +89,16 @@ data class NoteEntity (
 ```
 
 
+## DataSource interface
+
+We can have one data source interface, and one implementation per data source 
+e.g.
+1. RemoteDataSource extends DataSource
+2. LocalDataSource extends DataSource
+
+DataSource can typically expose CRUD methods, and most likely being.
+DataSource implementations will most likely be used by a repository.
+
 ## Room DAOs
 
 These will also go inside `framework.db` package inside `main` module (And not inside core), since they are tied to room framework.
@@ -131,4 +141,17 @@ class RoomNoteDataSource(context: Context): NoteDataSource {
 
 ## Viewmodels and other classes can refer to usecases instead of repository directly but only introduce extra layer of useCase if you really need to!
 
+Viewmodel would expose methods to UI, which will be called by UI to do some event/data handling.
+
+
 ## Presentation layer/UI controllers can refer to viewmodels (dependency, but managed via observer levels)
+
+
+## Cases where id is owned/created by DB
+
+in those cases model classes can have an id field but source of truth is db.
+
+Model classes can be used before they are saved in DB and after saved in DB.
+e.g. `Note` is used in `saveNote` function in viewmodel.
+Before the model classes are persisted by DB, the `id` field in those model classes shall be `0L` which is the default value.
+Post persistence, the model classes can hold the actual `id` of the persisted Note.
