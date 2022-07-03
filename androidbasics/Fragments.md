@@ -15,6 +15,9 @@ Because these events aren't under your control, you shouldn't store any app data
 
 Fragments introduce modularity and reusability into your activity’s UI by allowing you to divide the UI into discrete chunks.
 
+You should avoid depending on or manipulating one fragment from another.
+
+
 **You can even show multiple fragments at once on a single screen, such as a master-detail layout for tablet devices**
 
 ## Implemented interfaces:
@@ -318,4 +321,97 @@ Viewmodel init happens after fragment -> init -> attach -> onCreate.
 2022-06-05 17:44:30.545 11388-11388/com.example.android.unscramble D/GameViewModel: init
 2022-06-05 17:44:30.546 11388-11388/com.example.android.unscramble D/GameFragment: GameFragment View created/re-created!
 2022-06-05 17:44:30.569 11388-11388/com.example.android.unscramble D/MainActivity: onAttachedToWindow
+```
+
+## What is a fragment host?
+
+An example of a fragment host is `Activity`, There can be other classes that can host fragments.
+
+It is the responsibility of the host to take care of the Fragment's lifecycle. The methods provided by `FragmentController` are for that purpose.
+
+### FragmentController
+
+An object of this class is used by fragment hosting objects like `Activity` to forward all event/methods and also get encapsulates FragmentManager (`via mHost i.e. FragmentHostCallback class instance also defined in FragmentActivity`).
+
+https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:fragment/fragment/src/main/java/androidx/fragment/app/FragmentActivity.java;l=89
+
+```java
+public class FragmentController {
+    private final FragmentHostCallback<?> mHost;
+
+    /**
+     * Returns a {@link FragmentController}.
+     */
+    @NonNull
+    public static FragmentController createController(@NonNull FragmentHostCallback<?> callbacks) {
+        return new FragmentController(checkNotNull(callbacks, "callbacks == null"));
+    }
+
+    private FragmentController(FragmentHostCallback<?> callbacks) {
+        mHost = callbacks;
+    }
+
+    /**
+     * Returns a {@link FragmentManager} for this controller.
+     */
+    @NonNull
+    public FragmentManager getSupportFragmentManager() {
+        return mHost.mFragmentManager;
+    }
+
+    //...
+```
+
+### FragmentContainer
+
+```java
+/**
+ * Callbacks to a {@link Fragment}'s container.
+ */
+public abstract class FragmentContainer {
+    /**
+     * Return the view with the given resource ID. May return {@code null} if the
+     * view is not a child of this container.
+     */
+    @Nullable
+    public abstract View onFindViewById(@IdRes int id);
+
+    /**
+     * Return {@code true} if the container holds any view.
+     */
+    public abstract boolean onHasView();
+
+    /**
+     * Creates an instance of the specified fragment, can be overridden to construct fragments
+     * with dependencies, or change the fragment being constructed. By default just calls
+     * {@link Fragment#instantiate(Context, String, Bundle)}.
+     * @deprecated Use {@link FragmentManager#setFragmentFactory} to control how Fragments are
+     * instantiated.
+     */
+    @SuppressWarnings("deprecation")
+    @Deprecated
+    @NonNull
+    public Fragment instantiate(@NonNull Context context, @NonNull String className,
+            @Nullable Bundle arguments) {
+        return Fragment.instantiate(context, className, arguments);
+    }
+}
+```
+
+### public abstract `class FragmentHostCallback<E> extends FragmentContainer`
+
+Integration points with the Fragment host.
+
+Fragments may be hosted by any object; such as an Activity. 
+In order to host fragments, implement `FragmentHostCallback`, overriding the methods applicable to the host.
+
+
+**Holds a final reference to FragmentManager**:
+```java
+public abstract class FragmentHostCallback<E> extends FragmentContainer {
+    @Nullable private final Activity mActivity;
+    @NonNull private final Context mContext;
+    @NonNull private final Handler mHandler;
+    private final int mWindowAnimations;
+    final FragmentManager mFragmentManager = new FragmentManagerImpl();
 ```
