@@ -5,6 +5,22 @@ If your activity was starting fresh, this Bundle savedInstanceState in `onCreate
 So if the bundle is not null, you know you're "re-creating" the activity from a previously known point.
 
 
+## ComponentActivity
+
+Knows nothing about fragments
+https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:activity/activity/src/main/java/androidx/activity/ComponentActivity.java;l=157?q=componentact&sq=
+
+## FragmentActivity
+
+Built on top of ComponentActivity, has basic support of fragments
+
+https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:fragment/fragment/src/main/java/androidx/fragment/app/FragmentActivity.java;l=107
+
+## AppCompat Activity
+
+Typically used by devs as an extension point, built on top of FragmentActivity.
+
+https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:appcompat/appcompat/src/main/java/androidx/appcompat/app/AppCompatActivity.java;l=89?q=appcompatact&sq=
 
 ### AndroidManifest.xml activity attribute parentActivityName
 
@@ -76,7 +92,7 @@ cases when configuration change might happen:
 
 `Activity is destroyed and recreated on configuration change by default.`
 
-### use onSaveInstanceState to save bundle data (by instance state we mean activity instance state)
+### use onSaveInstanceState to save bundle data (by instance state we mean activity instance state - i.e serialized data)
 
 `onSaveInstanceStatEe() is called after activity has been stopped but before being destroyed`.
 This is usually used to save data before destruction as a part of configuration change,
@@ -84,6 +100,9 @@ and this data can be recovered in `onRestoreInstanceState()` calback or in `onCr
 
 Combination of `onSaveInstanceState` + `onCreate` is an interesting combination to persist Activity level instance variables (i.e. activity instance state) across process restarts without using stuff like sharedprefs/files or any other persisted mechanism.
 
+`onSavedInstanceState()` serializes data to disk, which is available in `onCreate`/`onSaveRestoreInstanceState()`. Note it does not retain live objects, only its data in serialized form.
+
+Do not use store onSavedInstanceState() to store large amounts of data, such as bitmaps, nor complex data structures that require lengthy serialization or deserialization.
 
 ## Config changes and object retain across config changes
 
