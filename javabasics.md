@@ -5,6 +5,13 @@
 `arr.length` i.e. a property for array length,
 but `str.length()` is a function call for string length.
 
+## Convert arraylist to array
+
+```java
+String []dsf = new String[al.size()];// first initialize/allocate with size
+al.toArray(dsf);// copy
+```
+
 ### Why is defining equals(), hashcode() important?
 It will define how your value classes will behave with well known collections.
 e.g. Set, HashMap etc.
