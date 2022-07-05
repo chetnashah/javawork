@@ -33,12 +33,16 @@ Use `Calendar` only as a calculator which, when given `Date` and `TimeZone` obje
 `Date` and `Calendar` are really the same fundamental concept (both represent an instant in time and are wrappers around an underlying long value - time since jan 1 1970).
 `Date`s should be used as immutable points in time; `Calendar`s are mutable, and can be passed around and modified
 
-
 ## Java Time API (jdk 8 onwards)
 
 ### java.time.LocalDate
 
 `java.time.LocalDate` : represents a year-month-day in the ISO calendar and is useful for representing a date without a time. It can be used to represent a date only information such as a birth date or wedding date.
+
+E.g.
+```java
+System.out.println(LocalDate.now());// 2022-07-05
+```
 
 ### java.time.LocalTime
 

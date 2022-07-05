@@ -12,6 +12,10 @@ String []dsf = new String[al.size()];// first initialize/allocate with size
 al.toArray(dsf);// copy
 ```
 
+## Final variable instantiation
+
+final class members are allowed to be assigned only in three places: `declaration`, `constructor` or an `instance-initializer` block.
+
 ### Why is defining equals(), hashcode() important?
 It will define how your value classes will behave with well known collections.
 e.g. Set, HashMap etc.

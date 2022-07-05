@@ -101,6 +101,33 @@ Why use it?
 1. Do it so that you can take advantage of the compiler checking to make sure you actually are overriding a method when you think you are.
 2. If the parent class changes, the compiler will make sure that the child classes have been updated as well
 
+Is override keyword mandatory?
+**No, Using Override is not mandatory, but recommended.**
+
+Here is an example that runs fine:
+```java
+import java.util.*;
+public class MyClass {
+    public static void main(String args[]) {
+        Main m = new Main();
+        System.out.println(m.message());
+    }
+}
+
+class MainClass {
+    String message(){
+        return "Hello!";
+    }
+}
+
+class Main extends MainClass {
+    String message(){
+        return "World!";
+    }
+}
+```
+
+
 ### Auto super insertion in subclass constructor
 
 If parent has a no-arg constructor, and we are missing call to super constructor in subclass constructor,
