@@ -32,6 +32,99 @@ You should avoid depending on or manipulating one fragment from another.
     implementation("androidx.fragment:fragment-ktx:$fragment_version")
 ```
 
+## Fragment instantiation/constructor stacktrace
+
+```
+<init>:28, ListFragment (com.example.samplememorynotes.presentation)
+newInstance0:-1, Constructor (java.lang.reflect)
+newInstance:343, Constructor (java.lang.reflect)
+instantiate:615, Fragment (androidx.fragment.app)
+instantiate:57, FragmentContainer (androidx.fragment.app)
+instantiate:448, FragmentManager$2 (androidx.fragment.app)
+navigate:190, FragmentNavigator (androidx.navigation.fragment)
+navigate:162, FragmentNavigator (androidx.navigation.fragment)
+navigate:83, NavGraphNavigator (androidx.navigation)
+navigate:49, NavGraphNavigator (androidx.navigation)
+navigateInternal:261, NavController (androidx.navigation)
+navigate:1715, NavController (androidx.navigation)
+onGraphCreated:1158, NavController (androidx.navigation)
+setGraph:1086, NavController (androidx.navigation)
+setGraph:1039, NavController (androidx.navigation)
+onCreate:155, NavHostFragment (androidx.navigation.fragment)
+performCreate:2981, Fragment (androidx.fragment.app)
+create:474, FragmentStateManager (androidx.fragment.app)
+moveToExpectedState:257, FragmentStateManager (androidx.fragment.app)
+executeOpsTogether:1840, FragmentManager (androidx.fragment.app)
+removeRedundantOperationsAndExecute:1764, FragmentManager (androidx.fragment.app)
+execSingleAction:1670, FragmentManager (androidx.fragment.app)
+commitNowAllowingStateLoss:323, BackStackRecord (androidx.fragment.app)
+<init>:158, FragmentContainerView (androidx.fragment.app)
+onCreateView:53, FragmentLayoutInflaterFactory (androidx.fragment.app)
+onCreateView:135, FragmentController (androidx.fragment.app)
+dispatchFragmentsOnCreateView:295, FragmentActivity (androidx.fragment.app)
+onCreateView:274, FragmentActivity (androidx.fragment.app)
+tryCreateView:1073, LayoutInflater (android.view)
+createViewFromTag:1001, LayoutInflater (android.view)
+createViewFromTag:965, LayoutInflater (android.view)
+rInflate:1127, LayoutInflater (android.view)
+rInflateChildren:1088, LayoutInflater (android.view)
+inflate:686, LayoutInflater (android.view)
+inflate:538, LayoutInflater (android.view)
+inflate:485, LayoutInflater (android.view)
+setContentView:706, AppCompatDelegateImpl (androidx.appcompat.app)
+setContentView:195, AppCompatActivity (androidx.appcompat.app)
+onCreate:9, MainActivity (com.example.samplememorynotes)
+performCreate:8051, Activity (android.app)
+performCreate:8031, Activity (android.app)
+callActivityOnCreate:1329, Instrumentation (android.app)
+performLaunchActivity:3608, ActivityThread (android.app)
+handleLaunchActivity:3792, ActivityThread (android.app)
+execute:103, LaunchActivityItem (android.app.servertransaction)
+executeCallbacks:135, TransactionExecutor (android.app.servertransaction)
+execute:95, TransactionExecutor (android.app.servertransaction)
+handleMessage:2210, ActivityThread$H (android.app)
+dispatchMessage:106, Handler (android.os)
+loopOnce:201, Looper (android.os)
+loop:288, Looper (android.os)
+main:7839, ActivityThread (android.app)
+invoke:-1, Method (java.lang.reflect)
+run:548, RuntimeInit$MethodAndArgsCaller (com.android.internal.os)
+main:1003, ZygoteInit (com.android.internal.os)
+```
+
+The method inside Fragment class for instantiation looks like this:
+```java
+    @NonNull
+    public static Fragment instantiate(@NonNull Context context, @NonNull String fname,
+            @Nullable Bundle args) {
+        try {
+            Class<? extends Fragment> clazz = FragmentFactory.loadFragmentClass(
+                    context.getClassLoader(), fname);
+            Fragment f = clazz.getConstructor().newInstance();
+            if (args != null) {
+                args.setClassLoader(f.getClass().getClassLoader());
+                f.setArguments(args);
+            }
+            return f;
+        } catch (java.lang.InstantiationException e) {
+            throw new InstantiationException("Unable to instantiate fragment " + fname
+                    + ": make sure class name exists, is public, and has an"
+                    + " empty constructor that is public", e);
+        } catch (IllegalAccessException e) {
+            throw new InstantiationException("Unable to instantiate fragment " + fname
+                    + ": make sure class name exists, is public, and has an"
+                    + " empty constructor that is public", e);
+        } catch (NoSuchMethodException e) {
+            throw new InstantiationException("Unable to instantiate fragment " + fname
+                    + ": could not find Fragment constructor", e);
+        } catch (InvocationTargetException e) {
+            throw new InstantiationException("Unable to instantiate fragment " + fname
+                    + ": calling Fragment constructor caused an exception", e);
+        }
+    }
+```
+
+
 ## lifecycle summary
 
 To manage lifecycle, `Fragment` implements `LifecycleOwner`, exposing a `Lifecycle` object that you can access through the `getLifecycle()` method.
@@ -52,6 +145,62 @@ A fragment's lifecycle state can never be greater than its parent. For example, 
 `onStop()`: The fragment has re-entered the CREATED state. The object is instantiated but is no longer presented on screen.
 `onDestroyView()`: Called right before the fragment enters the DESTROYED state. The view has already been removed from memory, but the fragment object still exists.
 `onDestroy()`: The fragment enters the DESTROYED state.
+
+
+## Fragment onCreate stacktrace
+
+```
+onCreate:33, ListFragment (com.example.samplememorynotes.presentation)
+performCreate:2981, Fragment (androidx.fragment.app)
+create:474, FragmentStateManager (androidx.fragment.app)
+moveToExpectedState:257, FragmentStateManager (androidx.fragment.app)
+executeOpsTogether:1840, FragmentManager (androidx.fragment.app)
+removeRedundantOperationsAndExecute:1764, FragmentManager (androidx.fragment.app)
+execPendingActions:1701, FragmentManager (androidx.fragment.app)
+dispatchStateChange:2849, FragmentManager (androidx.fragment.app)
+dispatchCreate:2773, FragmentManager (androidx.fragment.app)
+onCreate:1913, Fragment (androidx.fragment.app)
+onCreate:169, NavHostFragment (androidx.navigation.fragment)
+performCreate:2981, Fragment (androidx.fragment.app)
+create:474, FragmentStateManager (androidx.fragment.app)
+moveToExpectedState:257, FragmentStateManager (androidx.fragment.app)
+executeOpsTogether:1840, FragmentManager (androidx.fragment.app)
+removeRedundantOperationsAndExecute:1764, FragmentManager (androidx.fragment.app)
+execSingleAction:1670, FragmentManager (androidx.fragment.app)
+commitNowAllowingStateLoss:323, BackStackRecord (androidx.fragment.app)
+<init>:158, FragmentContainerView (androidx.fragment.app)
+onCreateView:53, FragmentLayoutInflaterFactory (androidx.fragment.app)
+onCreateView:135, FragmentController (androidx.fragment.app)
+dispatchFragmentsOnCreateView:295, FragmentActivity (androidx.fragment.app)
+onCreateView:274, FragmentActivity (androidx.fragment.app)
+tryCreateView:1073, LayoutInflater (android.view)
+createViewFromTag:1001, LayoutInflater (android.view)
+createViewFromTag:965, LayoutInflater (android.view)
+rInflate:1127, LayoutInflater (android.view)
+rInflateChildren:1088, LayoutInflater (android.view)
+inflate:686, LayoutInflater (android.view)
+inflate:538, LayoutInflater (android.view)
+inflate:485, LayoutInflater (android.view)
+setContentView:706, AppCompatDelegateImpl (androidx.appcompat.app)
+setContentView:195, AppCompatActivity (androidx.appcompat.app)
+onCreate:9, MainActivity (com.example.samplememorynotes)
+performCreate:8051, Activity (android.app)
+performCreate:8031, Activity (android.app)
+callActivityOnCreate:1329, Instrumentation (android.app)
+performLaunchActivity:3608, ActivityThread (android.app)
+handleLaunchActivity:3792, ActivityThread (android.app)
+execute:103, LaunchActivityItem (android.app.servertransaction)
+executeCallbacks:135, TransactionExecutor (android.app.servertransaction)
+execute:95, TransactionExecutor (android.app.servertransaction)
+handleMessage:2210, ActivityThread$H (android.app)
+dispatchMessage:106, Handler (android.os)
+loopOnce:201, Looper (android.os)
+loop:288, Looper (android.os)
+main:7839, ActivityThread (android.app)
+invoke:-1, Method (java.lang.reflect)
+run:548, RuntimeInit$MethodAndArgsCaller (com.android.internal.os)
+main:1003, ZygoteInit (com.android.internal.os)
+```
 
 ## Declaring fragments in XML only
 
