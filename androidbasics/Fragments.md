@@ -125,6 +125,28 @@ The method inside Fragment class for instantiation looks like this:
 ```
 
 
+## Where would I need to instatiate/create new fragment in application code?
+
+inside `FragmentPagerAdapter.getItem()`
+
+
+## newInstance convention to create fragment with arguments
+
+```java
+MyFragment newInstance(Long someVideoId) { // construct fragment and set given arguments
+    MyFragment myFragment = new MyFragment();
+    Bundle bundle = new Bundle();
+    bundle.setArguments("id", someId);
+    myFragment.setArguments(bundle)
+    return myFragment
+}
+```
+
+When a fragment gets recreated, you can access these arguments in `onCreate` via
+`Long videoId = getArguments().getLong("id")`
+
+`setArguments`: Supply the construction arguments for this fragment. The arguments supplied here will be retained across fragment destroy and creation.
+
 ## lifecycle summary
 
 To manage lifecycle, `Fragment` implements `LifecycleOwner`, exposing a `Lifecycle` object that you can access through the `getLifecycle()` method.
@@ -136,7 +158,7 @@ A fragment's lifecycle state can never be greater than its parent. For example, 
 
 ![fragment lifecycle](images/fragmentlifecycle.png)
 
-`onCreate()`: The fragment has been instantiated and is in the CREATED state. However, its corresponding view has not been created yet.
+`onCreate()`: The fragment has been instantiated and is in the CREATED state. However, its corresponding view has not been created yet. you can not rely on things like the activity's content view hierarchy being initialized at this point.
 `onCreateView()`: This method is where you inflate the layout. The fragment has entered the CREATED state.
 `onViewCreated()`: This is called after the view is created. In this method, you would typically bind specific views to properties by calling findViewById(). This is where you can bind views and setup view stuff like layoutadapters, api calls, click listeners.
 `onStart()`: The fragment has entered the STARTED state.
@@ -563,4 +585,81 @@ public abstract class FragmentHostCallback<E> extends FragmentContainer {
     @NonNull private final Handler mHandler;
     private final int mWindowAnimations;
     final FragmentManager mFragmentManager = new FragmentManagerImpl();
+```
+
+## FragmentManager vs FragmentStateManager
+
+The `FragmentManager` only has state that applies to all fragments, FragmentManager is the class responsible for performing actions on your app's fragments, such as adding, removing, or replacing them, and adding them to the back stack. Each set of changes are committed together as a single unit called a `FragmentTransaction`.
+
+The `FragmentStateManager` manages the state at the individual fragment level.
+
+![Fragment managers](images/fragmentmanagersref.png)
+
+### FragmentManager holds reference to `FragmentStore mFragmentStore` reference
+
+```java
+    private final FragmentStore mFragmentStore = new FragmentStore();
+```
+
+### FragmentManager.addFragment(Fragment fragment) returns FragmentStateManager
+
+```java
+// FragmentManager.java
+FragmentStateManager addFragment(@NonNull Fragment fragment) {
+    if (fragment.mPreviousWho != null) {
+        FragmentStrictMode.onFragmentReuse(fragment, fragment.mPreviousWho);
+    }
+    if (isLoggingEnabled(Log.VERBOSE)) Log.v(TAG, "add: " + fragment);
+    FragmentStateManager fragmentStateManager = createOrGetFragmentStateManager(fragment);
+    fragment.mFragmentManager = this;
+    mFragmentStore.makeActive(fragmentStateManager);
+    if (!fragment.mDetached) {
+        mFragmentStore.addFragment(fragment);
+        fragment.mRemoving = false;
+        if (fragment.mView == null) {
+            fragment.mHiddenChanged = false;
+        }
+        if (isMenuAvailable(fragment)) {
+            mNeedMenuInvalidate = true;
+        }
+    }
+    return fragmentStateManager;
+}
+```
+
+## BeginTransaction returns a `BackStackRecord`
+
+```java
+    // FragmentManager.java
+    public FragmentTransaction beginTransaction() {
+        return new BackStackRecord(this);
+    }
+```
+
+### BackstackRecord
+
+holds ref to `final FragmentManager mManager`, instance it gets in constructor.
+For add/remove etc ops, forwards calls to `mManager`.
+
+```java
+class BackStackRecord extends FragmentTransaction implements
+        FragmentManager.BackStackEntry, FragmentManager.OpGenerator
+```
+
+## FragmentStore
+
+HOlds a lot of Fragment state
+
+```java
+//
+class FragmentStore {
+    private static final String TAG = FragmentManager.TAG;
+
+    private final ArrayList<Fragment> mAdded = new ArrayList<>();
+    private final HashMap<String, FragmentStateManager> mActive = new HashMap<>();
+    private final HashMap<String, Bundle> mSavedState = new HashMap<>();
+
+    private FragmentManagerViewModel mNonConfig;
+    // ...
+}
 ```
