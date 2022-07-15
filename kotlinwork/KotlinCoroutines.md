@@ -481,6 +481,39 @@ Think of `async` as `launch`, but with a Deferred result to be returned.
 Runs as soon as specified,
 `Deferred` extends `JOb`, but also has extra methods like `.await()`.
 
+Q - **Do async blocks run, if `await` is never called on deferred object returned by async blocks** - yes they will run (and they will run in parellel), even if `await` is not called on Deferred objects returned by async.
+
+Lines after `await()` call only executed after await call returns.
+E.g.
+```kt
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        lifecycleScope.launch {
+            val user1 = async { bringAUser() }
+            val user2 = async { bringAUser2()}
+
+            val mixed = user1.await() + user2.await()
+            // this line executes after both await are completed
+            Log.d("ListFragment", " mixed is "+mixed);
+        }
+    }
+
+    // this executes and returns quickly
+    suspend fun bringAUser(): String{
+        delay(100)
+        Log.d("ListFragment", "bringing user 1")
+        return "user1"
+    }
+
+    // this takes time
+    suspend fun bringAUser2(): String{
+        delay(6000)
+        Log.d("ListFragment", "bringing user 2");
+        return "user2"
+    }
+```
+
 ### delay
 
 special suspending function, `suspending does not block the thread`.
