@@ -91,6 +91,17 @@ Java Memory model FAQ - http://www.cs.umd.edu/~pugh/java/memoryModel/jsr-133-faq
 3. cpu caches not flushing values to main memory.
 
 
+### Memory visibility
+
+Java Memory model defines, when changes made to memory by one thread is visible to another thread.
+
+**There are no guarantees for memory changes unless reading and writing threads use synchronization**
+
+**When you synchronize on an object monitor A, it is guaranteed that another thread synchronizing on the same monitor A afterwards will see any changes made by the first thread to any object.** That's the visibility guarantee provided by synchronized, nothing more.
+
+a "dirty read" can occur if a read operation is allowed (without synchronization) while a write
+operation is in progress. If read is also synchronized, it will wait for unlock+value flush done by write synchronization.
+
 ### Memory barriers
 
 At the processor level, a memory model defines necessary and sufficient conditions for knowing that writes to memory by other processors are visible to the current processor, and writes by the current processor are visible to other processors. Some processors exhibit a strong memory model, where all processors see exactly the same value for any given memory location at all times. Other processors exhibit a weaker memory model, where special instructions, called memory barriers, are required to flush or invalidate the local processor cache in order to see writes made by other processors or make writes by this processor visible to others. These memory barriers are usually performed when lock and unlock actions are taken; they are invisible to programmers in a high level language.
@@ -181,7 +192,9 @@ unless they are declared volatile or guarded by a lock.
 ### Visibility and synchronization
 
 Locking is not just about mutual exclusion. `It is also about memory visibility`.
-To ensure visibility across all threads for a common shared mutable object, reading and writing threads must synchronize on a common lock.
+To ensure visibility across all threads for a common shared mutable object, **reading and writing threads must synchronize on a common lock.**
+
+**When you synchronize on an object monitor A, it is guaranteed that another thread synchronizing on the same monitor A afterwards will see any changes made by the first thread to any object.** That's the visibility guarantee provided by synchronized, nothing more.
 
 ## Double checked locking
 
@@ -205,4 +218,47 @@ The point of this code is to avoid synchronization when the object has already b
 See the double-checked locking is broken declaration for a much more detailed explanation.
 
 Anyway, the question I always get is "does making the helper field volatile fix this?" The answer is yes. If you make the helper field volatile, the actions that happen before the write to helper in the code must, when the program executes, actually happen before the write to helper — no sneaky reordering is allowed.
+
+## static method Thread.yield()
+
+It provides hint to scheduler that current thread wants to yield/give up its use of processor.
+
+## t.join() method makes current thread wait till thread t terminates
+
+`join()` is another mechanism of inter-thread synchronization, waits for referred thread to finish.
+
+`threadRef.join()` puts the calling thread in waiting state, and the calling thread waits till the referred thread `threadRef` is either terminated or interrupted.
+
+if the referenced thread was already terminated or hasn't been started, the call to join() method returns immediately.
+
+Here is an example program where main thread waits for a spawned thread.
+This will always print message from new/fresh spawned thread before message from main thread.
+```java
+public class JoinSample {
+    public static void main(String[] args) throws InterruptedException {
+        Thread t = new Thread(new Runnable() {// this thread terminates when run returns
+            @Override
+            public void run() {
+                System.out.println("printing from fresh new thread, will finish now");
+            }
+        });
+
+        t.start();
+        t.join();// wait for t to finish
+        System.out.println("Main thread done");
+    }
+}
+```
+
+
+## Shared memory Example - shared counter updated by two threads
+
+Have same counter variable be updated by two threads, 100 times by each thread.
+At the end of execution of both, the counter value should be 200. 
+
+Solution part 1: `increment` method that increments the shared counter should be marked `synchronized`,
+for exclusive access by a single thread at a time.
+
+**There would still be a bug present.**
+**increment/write method alone synchronized is not enough. getCount/read method also needs to be synchronized** - Why?
 
