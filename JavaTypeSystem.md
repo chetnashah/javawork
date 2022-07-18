@@ -3,6 +3,134 @@
 
 https://docs.oracle.com/javase/tutorial/java/generics/restrictions.html
 
+#### Cannot instantiate generic types with primitive types
+
+The error that we get is: `Type argument cannot be of primitive type`.
+
+```java
+Pair<int, char> p = new Pair<>(8, 'a');  // compile-time error
+```
+
+#### Cannot create instance of type parameter T
+
+Following is not allowed
+
+```java
+public static <E> void append(List<E> list) {
+    E elem = new E();  // compile-time error
+    list.add(elem);
+}
+```
+
+Why?
+
+Java generics are implemented by erasure which means there will be no parameter type information at runtime. You won't know the T class at runtime (there is not such T.class).
+
+Suggested alternative: - Using type tokens.
+A strategy for circumventing some problems with type erasure and Java generics is to use type tokens. This strategy is implemented in the following generic method that creates a new T object:
+
+```java
+public <T> T newInstance(Class<T> cls) {
+    T myObject = cls.newInstance();
+    return myObject;
+}
+```
+
+For e.g. for above given problem we can use `Class<E>`:
+```java
+public static <E> void append(List<E> list, Class<E> cls) throws Exception {
+    E elem = cls.newInstance();   // OK
+    list.add(elem);
+}
+```
+
+Class literals as runtime type tokens - https://docs.oracle.com/javase/tutorial/extra/generics/literals.html
+
+#### Static fields cannot have a generic type T
+
+```java
+public class MobileDevice<T> {
+    private static T os; // not allowed
+
+    // ...
+}
+```
+
+Why?
+
+Because type would be confusing, given different type parameters but single reference.
+```java
+// whoat will be type of MobileDevice.os ?
+MobileDevice<Smartphone> phone = new MobileDevice<>();
+MobileDevice<Pager> pager = new MobileDevice<>();
+MobileDevice<TabletPC> pc = new MobileDevice<>();
+```
+
+#### Cannot create arrays of parametrized types
+
+**You cannot create arrays of parametrized types**. Create lists instead.
+
+```java
+List<Integer>[] arrayOfLists = new List<Integer>[2];  // compile-time error
+```
+
+Why ?
+
+if we allowed array of lists (of integers) to be created, we cannot guarantee at runtime, 
+that if someone is trying to add a non-integer List to our array. (Note ArrayStore exception is a runtime exception and its semantics should be preserved here as well).
+
+The following code illustrates what happens when different types are inserted into an array:
+```java
+Object[] strings = new String[2];
+strings[0] = "hi";   // OK
+strings[1] = 100;    // An ArrayStoreException is thrown.
+```
+
+If you try the same thing with a generic list, there would be a problem:
+```java
+Object[] stringLists = new List<String>[2];  // compiler error, but pretend it's allowed
+stringLists[0] = new ArrayList<String>();   // OK
+stringLists[1] = new ArrayList<Integer>();  // An ArrayStoreException should be thrown,
+                                            // but the runtime can't detect it.
+```
+
+#### Generic Array creation
+
+Following is not allowed:
+```java
+public class GenSet<E> {
+    private E a[];
+
+    public GenSet() {
+        a = new E[INITIAL_ARRAY_LENGTH]; // error: generic array creation
+    }
+}
+```
+
+Alternative like earlier is to use type token instead:
+```java
+import java.lang.reflect.Array;
+
+class Stack<T> {
+    public Stack(Class<T> clazz, int capacity) {
+        array = (T[])Array.newInstance(clazz, capacity);
+    }
+
+    private final T[] array;
+}
+```
+
+#### Cannot overload where raw type after erasure is same
+
+e.g.
+```java
+public class Example {
+    public void print(Set<String> strSet) { }
+    public void print(Set<Integer> intSet) { }
+}
+```
+
+
 
 ### Type erasure of generics
 
@@ -42,7 +170,7 @@ public class Node {
 ```
 
 ### Reifiable types
-A reifiable type is a type whose type information is fully available at runtime. This includes `primitives`, `non-generic types`, `raw types`, and `invocations of unbound wildcards`.
+**A reifiable type is a type whose type information is fully available at runtime. This includes `primitives`, `non-generic types`, `raw types`, and `invocations of unbound wildcards`.**
 
 ### Non-reifiable types
 
