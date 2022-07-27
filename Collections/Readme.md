@@ -28,3 +28,24 @@ class Main {
 	}
 }
 ```
+
+## Create array from ArrayList
+
+1. first create an empty array of same size & type
+2. pass this new array inside `toArray` method.
+
+```java
+ArrayList<String> sList = new ArrayList<>();
+sList.add("hey");
+sList.add("hi");
+sList.add("hello");
+String[] sArr = new String[sList.size()];
+sList.toArray(sArr); // when sArr is same size as sList, all items are copied over to sAr, the passed arr is also used for type inference
+```
+
+There are two variations of `toArray` method:
+1. `toArray()` - Returns an array containing all of the elements in this list in proper sequence (from first to last element). The returned array will be "safe" in that no references to it are maintained by this list. (In other words, this method must allocate a new array). The caller is thus free to modify the returned array.
+2. `toArray(T[] a)` - Returns an array containing all of the elements in this list in proper sequence (from first to last element); the runtime type of the returned array is that of the specified array. If the list fits in the specified array, it is returned therein. Otherwise, a new array is allocated with the runtime type of the specified array and the size of this list.
+
+
+

@@ -22,7 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e83217d-f47d-4bb9-ab81-ecc378fccd4e" name="Default Changelist" comment="" />
+    <list default="true" id="2e83217d-f47d-4bb9-ab81-ecc378fccd4e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Collections/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Collections/Readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -98,7 +101,7 @@
       <recent name="C:\Users\jay\Documents\programming\javawork\SedgewickBooksite\app\src\main\java" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.FridayTheThirteenth">
+  <component name="RunManager" selected="Application.RabinKarp">
     <configuration name="FridayTheThirteenth" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.com.onlinejudges.topcoder.SRM832.FridayTheThirteenth" />
       <module name="sedgewickbooksite.app.main" />
@@ -112,28 +115,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NumUtilsTest (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":app:test" />
-            <option value="--tests" />
-            <option value="&quot;NumUtilsTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
+    <configuration name="RabinKarp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.course.basics.RabinKarp" />
+      <module name="sedgewickbooksite.app.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.course.basics.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="NumUtilsTest.testDivisors" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -202,13 +197,20 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Application.FridayTheThirteenth" />
+      <item itemvalue="Application.RabinKarp" />
+      <item itemvalue="Gradle.NumUtilsTest.testDivisors" />
+      <item itemvalue="Gradle.NumUtilsTest.testSeive" />
+      <item itemvalue="Gradle.UnionFindTest" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.RabinKarp" />
         <item itemvalue="Application.FridayTheThirteenth" />
         <item itemvalue="Gradle.NumUtilsTest.testSeive" />
         <item itemvalue="Gradle.UnionFindTest" />
         <item itemvalue="Gradle.NumUtilsTest.testDivisors" />
-        <item itemvalue="Gradle.NumUtilsTest (1)" />
       </list>
     </recent_temporary>
   </component>
