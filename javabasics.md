@@ -112,3 +112,15 @@ Prior to Java SE 7, you can use a finally block to ensure that a resource is clo
 Java String and arrays do not implement iterable intrface.
 However you can use `for : loop` with arrays, and a `for c: str.toCharArray()` with strings.
 
+## Iterating through unicode charachters
+
+```java
+final int length = s.length();
+for (int offset = 0; offset < length; ) {
+   final int codepoint = s.codePointAt(offset);
+
+   // do something with the codepoint
+
+   offset += Character.charCount(codepoint);
+}
+```
