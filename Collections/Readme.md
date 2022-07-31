@@ -49,3 +49,14 @@ There are two variations of `toArray` method:
 
 
 
+## `Arrays.sort` Sorting and primitives
+
+Sorting of an array of primitive values with a custom comparator is not supported by the standard Java libraries.
+
+Java's library doesn't provide a sort function for ints with comparators (comparators can be used only with objects).
+
+The `Arrays.sort(T[], Comparator)` is a generic method where both the first and second parameters use the type variable. Since primitives can't be used as generic type arguments, ex. `Comparator<int>` not possible, you cannot pass an `int[]` as the first argument.
+
+You will need to pass an `Integer[]`.
+
+

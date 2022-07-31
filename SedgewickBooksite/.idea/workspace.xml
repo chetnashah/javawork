@@ -23,9 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e83217d-f47d-4bb9-ab81-ecc378fccd4e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/test/java/FenwickTreeOneBasedIndexingTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Collections/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Collections/Readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/course/basics/RabinKarp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/course/basics/RabinKarp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +95,7 @@
       <recent name="C:\Users\jay\Documents\programming\javawork\SedgewickBooksite\app\src\main\java" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.RabinKarp">
+  <component name="RunManager" selected="Gradle.FenwickTreeOneBasedIndexingTest">
     <configuration name="RabinKarp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.course.basics.RabinKarp" />
       <module name="sedgewickbooksite.app.main" />
@@ -109,7 +109,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NumUtilsTest (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="FenwickTreeOneBasedIndexingTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -122,7 +122,7 @@
           <list>
             <option value=":app:test" />
             <option value="--tests" />
-            <option value="&quot;NumUtilsTest&quot;" />
+            <option value="&quot;FenwickTreeOneBasedIndexingTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -132,7 +132,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="NumUtilsTest.testDivisors" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="FenwickTreeOneBasedIndexingTest.testSum" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -145,7 +145,30 @@
           <list>
             <option value=":app:test" />
             <option value="--tests" />
-            <option value="&quot;NumUtilsTest.testDivisors&quot;" />
+            <option value="&quot;FenwickTreeOneBasedIndexingTest.testSum&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="FenwickTreeOneBasedIndexingTest.testUpdates" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;FenwickTreeOneBasedIndexingTest.testUpdates&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -178,34 +201,13 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="UnionFindTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;UnionFindTest&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":app:test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.FenwickTreeOneBasedIndexingTest" />
+        <item itemvalue="Gradle.FenwickTreeOneBasedIndexingTest.testUpdates" />
+        <item itemvalue="Gradle.FenwickTreeOneBasedIndexingTest.testSum" />
         <item itemvalue="Application.RabinKarp" />
         <item itemvalue="Gradle.NumUtilsTest.testSeive" />
-        <item itemvalue="Gradle.UnionFindTest" />
-        <item itemvalue="Gradle.NumUtilsTest.testDivisors" />
-        <item itemvalue="Gradle.NumUtilsTest (1)" />
       </list>
     </recent_temporary>
   </component>
