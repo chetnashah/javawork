@@ -11,6 +11,11 @@ The error that we get is: `Type argument cannot be of primitive type`.
 Pair<int, char> p = new Pair<>(8, 'a');  // compile-time error
 ```
 
+But `int[]` is a object type not primitive type so following is possible:
+```java
+LinkedList<int[]> merged = new LinkedList<>();
+```
+
 #### Cannot create instance of type parameter T
 
 Following is not allowed
