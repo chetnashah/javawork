@@ -11,8 +11,19 @@ int[] arr = list.stream().mapToInt(i -> i).toArray();
 
 ## Create ArrayList from array
 
+For primitive array to ArrayList: `no good option exists`
 ```java
-new ArrayList<>(Arrays.asList(array));// new fresh arraylist with similar contents as array, does not modify the original array
+// For primitives we must manually create boxed versions
+// and add
+List<Integer> l = new ArrayList<>();
+for(int i=0;i<arr.length;i++) {
+	l.add(arr[i]);
+}
+```
+
+For array of objects there is a simpler way using `Arrays.asList(T[] as)`
+```java
+List<String> ls = new ArrayList<>(Arrays.asList(as));// fresh arraylist with contents copied from passed in array
 ```
 
 **Note** - The `java.util.Arrays.asList(T... a)` **returns a fixed-size list backed by the specified array(Changes to the returned list "write through" to the original array.)**. To get fresh separate allocation, see example above. 
