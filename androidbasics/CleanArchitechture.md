@@ -1,5 +1,13 @@
 
 
+## modules modularity
+
+App can depend on feature modules or library modules.
+Feature modules can depend on library modules, but not on other feature modules.
+library modules can depend on each other.
+
+![app modularity](images/appmodularity.png)
+
 ## Models do not refer/import anything (part of business core - nothing android related)
 
 Being part of the core, it is more flexible and not framework dependent so easily portable and generic.
