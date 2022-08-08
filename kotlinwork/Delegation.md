@@ -1,6 +1,8 @@
 
 Zero boilerplate needed in kotlin.
 
+https://www.youtube.com/watch?v=MfJB-JhRAoQ
+
 ## Supports inheritance delegation Derived -> Base without any boiler plate code
 
 ### Need a delegate interface and a delegate object
@@ -27,19 +29,39 @@ We cannot delegate directly to subclass, but only via interface.
 
 e.g.
 ```kt
-class Derived(b: BaseImpl): BaseImpl by b // Error! Only interfaces can be delegated to
+class SomeClass(b: BaseImpl): BaseImpl by b // Error! Only interfaces can be delegated to
 ```
+
 
 **Only delegation via interfaces is allowed, not directly via classes**
 ```kt
 // here b is also called the delegate object
-class Derived(b: Base) : Base by b // delegate everything to b instance, which is guarantted to fulfill Base interface 
+class SomeClass(b: Base) : Base by b // delegate everything to b instance, which is guarantted to fulfill Base interface 
 
 fun main() {
     val b = BaseImpl(10)
-    Derived(b).print()// you need to give the delegate object which implements the delegate interface
+    SomeClass(b).print()// you need to give the delegate object which implements the delegate interface
 }
 ```
+
+Common usage:
+
+Or if you dont want to have arguments, and create a new impl instance on the fly:
+```kt
+class SomeClass(): Base by BaseImpl() // tells to delegate all non-implemented in SomeClass which are part of Base interface to be forwarded to BaseImpl
+```
+
+Android usage example
+```kt
+class Activity: ComponentActivity, AnalyticsLogger by AnalyticsLoggerImpl() {
+
+}
+```
+
+## Lifetime of a delegate
+
+Lifetime of delegate object is same as that of a field in the class that is delegating
+
 ## Overriding delegated methods works as expected: dervied overrides of methods are given preference
 
 
