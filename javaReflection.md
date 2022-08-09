@@ -6,6 +6,19 @@ Instance of this type represent classes and interfaces in a running Java applica
 
 **Class has no public constructor. Instead Class objects are constructed automatically by the Java Virtual Machine as classes are loaded and by calls to the defineClass method in the class loader**
 
+## Class for primitive int and others
+
+https://stackoverflow.com/questions/22470985/integer-class-vs-int-class
+
+`Integer.class` is, as you say, a reference to the `Class` object for the `Integer` type.
+
+`int.class` is, similarity, a reference to the `Class` object for the `int` type. You're right that this doesn't sound right; **the primitives all have a Class object as a special case**. It's useful for reflection, if you want to tell the difference between foo(Integer value) and foo(int value).
+
+`int.class` its of type `Class<Integer>` but its different to Integer.class obviously
+
+Integer.TYPE (not Integer.type, mind you) is just a shortcut for `int.class`.
+
+
 ### Getting class reference from an object instantiation of that class
 
 ```java
