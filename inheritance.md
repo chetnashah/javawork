@@ -183,3 +183,16 @@ public class ClassSuperTest {
 }
 
 ```
+
+
+## Static and inheritance
+
+Static methods in Java are inherited, but can not be overridden. 
+
+If you declare the same method in a subclass, you hide the superclass method instead of overriding it.
+
+compiler will decide which method to execute at the compile time, and not at the runtime, as it does with overridden instance methods.
+
+Overriding simply means runtime polymorphism based on object type, but it does not make much sense for statics, since
+you are always supposed to use the statics with class Type instead of object references.
+
