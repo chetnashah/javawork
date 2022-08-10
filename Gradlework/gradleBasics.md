@@ -1,4 +1,8 @@
 
+### Useful shortcuts
+
+Use `Cmd-N` in gradle file to search for dependency first and then add.
+
 ### Kotlin with Gradle
 
 https://www.youtube.com/watch?v=KN-_q3ss4l0
