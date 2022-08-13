@@ -25,6 +25,8 @@ A class in Kotlin can have a primary constructor and one or more secondary const
 // this kind of looks like JS constructor functions
 class Person(firstName: String) { // firstName is a parameter to constructor body, not a property/member on the class
     /*...*/ // class body - only memer declarations allowed, for other code it will complain: Expecting member declaration
+    
+    val name = "Mr."+firstName // member declarations and assignment expression allowed, but not statements
     init {
         // custom init code goes here
     }

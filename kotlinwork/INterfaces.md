@@ -10,6 +10,8 @@ They can have properties, but these **need to be abstract or provide accessor im
 
 ## Classes implementing interfaces
 
+**`override` keyword is mandatory for implementing abstract methods as well as hiding fully implemented methods in interface**
+
 ```kotlin
 class Eagle(val name: String) : Flyable {   
     override fun fly() { // note: override keyword is necessary
@@ -71,4 +73,35 @@ val isEven = IntPredicate { it % 2 == 0 }
 Another example is of `Runnable`, where the single abstract method is `run`:
 ```kotlin
 val runnable = Runnable { println("hello") }
+```
+
+
+## Trying to hide interface methods without override keyword results in error
+
+```kt
+interface IHealth {
+    fun getHealth(): Int
+	fun getBaseStats(): Int {
+        return 100
+    }
+}
+
+class Person(name: String): IHealth {
+	val name = name
+    
+    override fun getHealth(): Int {
+        return name.length * 10
+    }
+
+    // Error! trying to hide interface method without using override keyword! , add override keyword to fix
+    fun getBaseStats(): Int {
+        return 200
+    }
+}
+
+fun main() {
+	val p = Person("Jay")
+    println(p.getHealth())
+    println(p.getBaseStats())
+}
 ```
