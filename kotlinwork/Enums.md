@@ -64,6 +64,8 @@ Enum classes help in exhaustive pattern matching using `when` expression.
 
 An enum class can implement an interface (but it cannot derive from a class), providing either a common implementation of interface members for all of the entries, or separate implementations for each entry within its anonymous class.
 
+Each enum constant must implement interface  methods
+
 Example:
 ```kt
 interface IHealth {
@@ -146,6 +148,14 @@ fun main() {
 }
 ```
 
+## sealed classes with child data classes
+
+```kt
+sealed class Result<T> {
+    data class Success<T>(val data: T): Result<T>()
+    data class Error(val exception: Exception): Result<Nothing>()
+}
+```
 
 ## Relation with sealed stuff.
 
