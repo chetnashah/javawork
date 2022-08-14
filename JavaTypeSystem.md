@@ -1,5 +1,8 @@
 
+Read: http://www.bracha.org/mirrors.pdf
+
 ### Restrictions on Java Generics
+
 
 https://docs.oracle.com/javase/tutorial/java/generics/restrictions.html
 

@@ -1,6 +1,8 @@
 
 Comes via `kotlinx.coroutines.flow.Flow`
 
+`Flow`s only exist in context of `coroutines`, and do not make sense outside of coroutines.
+
 Conceptually a stream of data whose values can be computed asynchronously..
 Similar to observable.
 
