@@ -71,3 +71,9 @@ The `Arrays.sort(T[], Comparator)` is a generic method where both the first and 
 You will need to pass an `Integer[]`.
 
 
+## TreeMap only allows one key (adding same key with different value will override previous value)
+
+you cannot have multiple keys for that you need MultiMap (e.g. from Guava library).
+Adding multiple key, it will override value for previously added key.
+
+Alternatively maintain list of values per key.
