@@ -8,11 +8,36 @@ All methods are `public abstract` by default.
 
 ### Adding static method to interfaces
 
-**you can define static methods in interfaces**
+**you can define static methods in interfaces (as of Java 8)**
 
 If you add static methods, then programmers would regard them as utility methods, not as essential, core methods.
 
 This makes it easier for you to organize helper methods in your libraries; you can keep static methods specific to an interface in the same interface rather than in a separate class.
+
+https://stackoverflow.com/questions/512877/why-cant-i-define-a-static-method-in-a-java-interface
+
+Why static method override is not supported? It doesn't make sense.
+**There is no point in "overriding" a static method since one can always specify the class that contains the desired version**
+
+```java
+public interface TimeClient {
+    // ...
+    // treat this as util method
+    static public ZoneId getZoneId (String zoneString) {
+        try {
+            return ZoneId.of(zoneString);
+        } catch (DateTimeException e) {
+            System.err.println("Invalid time zone: " + zoneString +
+                "; using default time zone instead.");
+            return ZoneId.systemDefault();
+        }
+    }
+
+    default public ZonedDateTime getZonedDateTime(String zoneString) {
+        return ZonedDateTime.of(getLocalDateTime(), getZoneId(zoneString));
+    }    
+}
+```
 
 ## default implementation
 
