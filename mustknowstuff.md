@@ -141,6 +141,19 @@ e.g.
 	}
 ```
 
+### Fields vs local variables initialization
+
+### Fields in Class
+
+It's not always necessary to assign a value when a field is declared. Fields that are declared but not initialized will be set to a reasonable default by the compiler. Generally speaking, this default will be zero or null, depending on the data type. Relying on such default values, however, is generally considered bad programming style.
+
+If not specified the default value, it only be treated as a bad style, while it's not the same case in local variables.
+
+#### Local Variables
+
+Local variables are slightly different; the compiler never assigns a default value to an uninitialized local variable. If you cannot initialize your local variable where it is declared, make sure to assign it a value before you attempt to use it. `Accessing an uninitialized local variable will result in a compile-time error.`
+
+
 ### Bound Properties
 
 A bound property notifies listeners when its value changes.

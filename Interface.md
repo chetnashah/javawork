@@ -53,11 +53,12 @@ Default methods enable you to add new functionality to existing interfaces and e
 
 ![def methods](images/defaultmethods.png)
 
-### Calling default method in class via `super`
+### Calling default method that is overriden in class via `InterfaceName.super.defaultMethodName()`
 
-A class can override a default interface method and call the original method by using `super`
+A class can override a default interface method and call the original method by using `InterfaceName.super.defMethodName()`
+**Note - plain `super.defaultMethodName()` results in an error!, you must use `InterfaceName.super.defaultMethodName()` or directly `defaultMethodName()` if method name is unique**
+
 e.g.
-
 ```java
 // interface defines a default method
 interface A {
@@ -74,8 +75,7 @@ class B implements A {
 }
 ```
 
-Another example:
-
+Another example (with method overriding):
 ```java
 interface One {
     default void method() {
@@ -90,6 +90,7 @@ interface Two {
 }
 
 class Three implements One, Two {
+    @Override  // since we override only way to access is InterfaceName.super.defaultMethod()
     public void method() {
         One.super.method(); // invoke interface default method via `InterfaceName.super.defaultMethod()`
     }

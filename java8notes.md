@@ -20,7 +20,7 @@ A functional interface's method's type signature will usually take up as the typ
 ### Well known functional interfaces:
 
 ```Java
-main ones inside java.util.function
+// main ones inside java.util.function
 
 public interface Predicate<T> {
     boolean test(T t);
@@ -37,5 +37,10 @@ public interface Supplier<T> {
 // Represents a function that takes one argument and produces a result
 public interface Function<T,R> {
     R apply(T t);
+}
+
+// java.util.Comparator
+public interface Comparator<T> {
+    int compare(T o1, T o2);
 }
 ```
