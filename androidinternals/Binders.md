@@ -22,6 +22,13 @@ Binders are globally unique, which means if you create one, nobody else can crea
 
 For this reason, the application framework uses Binder tokens extensively in order to ensure secure interaction between cooperating processes: a client can create a Binder object to use as a token that can be shared with a server process, and the server can use it to validate the client’s requests without there being anyway for others to spoof it.
 
+
+### Token semantics
+
+The data sent through `transact()` is a `Parcel`, a generic buffer of data that also maintains some meta-data about its contents. The meta data is used to manage `IBinder` object references in the buffer, so that those references can be maintained as the buffer moves across processes. T
+
+his mechanism ensures that when an IBinder is written into a Parcel and sent to another process, if that other process sends a reference to that same `IBinder` back to the original process, then the original process will receive the same `IBinder` object back. **These semantics allow IBinder/Binder objects to be used as a unique identity (to serve as a token or for other purposes) that can be managed across processes.**
+
 App example:
 ```java
 /**
@@ -93,6 +100,117 @@ public final class PowerManager {
 ```
 
  The PowerManager sends the WakeLock’s unique Binder `token` as part of the `acquire()` request. When the PowerManagerService receives the request, it holds onto the token for safe-keeping and forces the device to remain awake
+
+
+### Transaction threads semantics
+
+The system maintains a pool of transaction threads in each process that it runs in. These threads are used to dispatch all IPCs coming in from other processes. For example, when an IPC is made from process A to process B, the calling thread in A blocks in `transact() `as it sends the transaction to process B. The next available pool thread in B receives the incoming transaction, calls `Binder.onTransact()` on the target object, and replies with the result Parcel. Upon receiving its result, the thread in process A returns to allow its execution to continue. In effect, other processes appear to use as additional threads that you did not create executing in your own process.
+
+The Binder system also supports recursion across processes. For example if process A performs a transaction to process B, and process B while handling that transaction calls `transact()` on an IBinder that is implemented in A, then the thread in A that is currently waiting for the original transaction to finish will take care of calling Binder.onTransact() on the object being called by B. This ensures that the recursion semantics when calling remote binder object are the same as when calling local objects.
+
+### IBinder definition
+
+```java
+public interface IBinder {
+  /**
+  * Get the canonical name of the interface supported by this binder.
+  */
+  public @Nullable String getInterfaceDescriptor() throws RemoteException;
+    /**
+     * Check to see if the object still exists.
+     *
+     * @return Returns false if the
+     * hosting process is gone, otherwise the result (always by default
+     * true) returned by the pingBinder() implementation on the other
+     * side.
+     */
+    public boolean pingBinder();
+
+    /**
+     * Check to see if the process that the binder is in is still alive.
+     *
+     * @return false if the process is not alive.  Note that if it returns
+     * true, the process may have died while the call is returning.
+     */
+    public boolean isBinderAlive();
+
+    /**
+     * Attempt to retrieve a local implementation of an interface
+     * for this Binder object.  If null is returned, you will need
+     * to instantiate a proxy class to marshall calls through
+     * the transact() method.
+     */
+    public @Nullable IInterface queryLocalInterface(@NonNull String descriptor);
+    /**
+     * Perform a generic operation with the object.
+     *
+     * @param code The action to perform.  This should
+     * be a number between {@link #FIRST_CALL_TRANSACTION} and
+     * {@link #LAST_CALL_TRANSACTION}.
+     * @param data Marshalled data to send to the target.  Must not be null.
+     * If you are not sending any data, you must create an empty Parcel
+     * that is given here.
+     * @param reply Marshalled data to be received from the target.  May be
+     * null if you are not interested in the return value.
+     * @param flags Additional operation flags.  Either 0 for a normal
+     * RPC, or {@link #FLAG_ONEWAY} for a one-way RPC.
+     *
+     * @return Returns the result from {@link Binder#onTransact}.  A successful call
+     * generally returns true; false generally means the transaction code was not
+     * understood.
+     */
+    public boolean transact(int code, @NonNull Parcel data, @Nullable Parcel reply, int flags)
+        throws RemoteException;
+
+
+    /**
+     * Register the recipient for a notification if this binder
+     * goes away.  If this binder object unexpectedly goes away
+     * (typically because its hosting process has been killed),
+     * then the given {@link DeathRecipient}'s
+     * {@link DeathRecipient#binderDied DeathRecipient.binderDied()} method
+     * will be called.
+     *
+     * <p>You will only receive death notifications for remote binders,
+     * as local binders by definition can't die without you dying as well.
+     *
+     * @throws RemoteException if the target IBinder's
+     * process has already died.
+     *
+     * @see #unlinkToDeath
+     */
+    public void linkToDeath(@NonNull DeathRecipient recipient, int flags)
+            throws RemoteException;
+    /**
+     * Remove a previously registered death notification.
+     * The recipient will no longer be called if this object
+     * dies.
+     *
+     * @return {@code true} if the <var>recipient</var> is successfully
+     * unlinked, assuring you that its
+     * {@link DeathRecipient#binderDied DeathRecipient.binderDied()} method
+     * will not be called;  {@code false} if the target IBinder has already
+     * died, meaning the method has been (or soon will be) called.
+     *
+     * @throws java.util.NoSuchElementException if the given
+     * <var>recipient</var> has not been registered with the IBinder, and
+     * the IBinder is still alive.  Note that if the <var>recipient</var>
+     * was never registered, but the IBinder has already died, then this
+     * exception will <em>not</em> be thrown, and you will receive a false
+     * return value instead.
+     */
+    public boolean unlinkToDeath(@NonNull DeathRecipient recipient, int flags
+
+```
+
+### Binder
+
+Implementation of IBinder that provides standard local implementation of such an object.
+
+Most developers will not implement this class directly, instead using the aidl tool to describe the desired interface, having it generate the appropriate Binder subclass.
+
+You can, however, derive directly from Binder to implement your own custom RPC protocol or simply instantiate a raw Binder object directly to use as a token that can be shared across processes.
+
 
 
 ### WindowToken

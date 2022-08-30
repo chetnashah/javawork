@@ -4,14 +4,18 @@ https://docs.oracle.com/javase/specs/jls/se8/html/jls-17.html#jls-17.4
 
 http://jeremymanson.blogspot.com/
 
+https://www.youtube.com/watch?v=YzpAJ08c61s&list=PLZ9NgFYEMxp6IM0Cddzr_qjqfiGC2pq1a&index=18
+
 ## Java Thread states
 
 A thread state. A thread can be in one of the following states:
 * `NEW` - A thread that has not yet started is in this state.
 * `RUNNABLE` - A thread executing in the Java virtual machine is in this state ( but it may be waiting for other resources from the operating system like file I/O). **Note** - this also contains `RUNNING` inside of it, there is no way to distinguish from `RUNNING` from `RUNNABLE` via `thread.getState()`.
 * `BLOCKED` - A thread that is blocked waiting for a monitor lock is in this state.
-* `WAITING` -A thread that is waiting indefinitely for another thread to perform a particular action is in this state.
-* `TIMED_WAITING` - A thread that is waiting for another thread to perform an action for up to a specified waiting time is in this state. (Think `Thread.Sleep`), sometimes also considered `SLEEPING`.
+* `WAITING` -A thread that is waiting indefinitely for another thread to perform a particular action is in this state. A thread is in the waiting state due to calling one of the following methods:
+`Object.wait with no timeout`,`Thread.join with no timeout`,`LockSupport.park`.
+* `TIMED_WAITING` - A thread that is waiting for another thread to perform an action for up to a specified waiting time is in this state. (Think `Thread.Sleep`), sometimes also considered `SLEEPING`.  A thread is in the timed waiting state due to calling one of the following methods with a specified positive waiting time:
+`Thread.sleep`,`Object.wait with timeout`,`Thread.join with timeout`,`LockSupport.parkNanos`,`LockSupport.parkUntil`
 * `TERMINATED` - A thread that has exited is in this state.
 
 Linux States -  state (R is `running`, S is `sleeping`, D is `sleeping in an uninterruptible wait`, Z is `zombie`,T is `traced or stopped`)
@@ -44,6 +48,11 @@ There is a happens-before edge from the end of a constructor of an object to the
 3. If hb(x, y) and hb(y, z), then hb(x, z).
 
 
+## UI frameworks and threads
+
+To protect UI objects, windowing/UI toolkits will restrict threads from which UI objects can be manipulated.
+And UI objects will be modified only via UI threads, and it will be applications responsibility to manage communication
+between bg thread and UI thread and call UI objects only on UI thread.
 
 ### JNI and threads
 
@@ -157,7 +166,7 @@ MyClass obj = new MyClass();
 
 ### Synchronized
 
-**Synchronization also creates a `"happens-before" memory barrier`, causing a memory visibility constraint such that anything done up to the point some thread releases a lock appears to another thread subsequently acquiring the same lock to have happened before it acquired the lock**
+**Synchronization also creates a `"happens-before" memory barrier`, causing a memory visibility constraint such that anything done up to the point some thread releases a lock appears to another thread subsequently acquiring the same lock to have happened before it acquired the lock**, i.e. memory is flushed to main memory, just before exiting the synchronized block.
 
 exiting monitor flushes everyting, entering monitor gets everything afresh.
 
@@ -261,4 +270,21 @@ for exclusive access by a single thread at a time.
 
 **There would still be a bug present.**
 **increment/write method alone synchronized is not enough. getCount/read method also needs to be synchronized** - Why?
+
+
+
+## How to make my thread run forever?
+
+### Approach 1: while(true) + break;
+
+
+## Why do we need wait/notify in java?
+
+We can do things perfectly with schronzied blocks + busy loop checking (e.g. a synchronized queue).
+But that is wasteful for CPU, that is why wait/notify were introduced. So there is a sense of observability/reactivity in case of wait/notify, where the waited one does not take up cpu and notifying one notifies the waiting one.
+
+
+## Use @GuardedBy annotation for static analysis
+
+https://developer.android.com/reference/androidx/annotation/GuardedBy
 

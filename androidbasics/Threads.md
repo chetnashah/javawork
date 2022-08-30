@@ -1,4 +1,5 @@
 
+
 ### what happens to a thread if the activity which started a thread is destroyed?
 
 Thread will still stay alive, but no guarantee of how long the thread will stay alive.
