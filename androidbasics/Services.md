@@ -34,3 +34,17 @@ Started service will usually have command processor pattern, where command is pr
 
 
 
+## START_STICKY will not get your service restarted on some devices
+
+
+## How to keep a long running persistent background connection?
+
+https://socketio.github.io/socket.io-client-java/android.html
+
+Developers recommend not to do so to prevent battery drain.
+
+e.g: The Socket.IO client is not meant to be used in a background service, as it will keep an open TCP connection to the server and quickly drain the battery of your users.
+
+It is totally usable in the foreground though.
+
+

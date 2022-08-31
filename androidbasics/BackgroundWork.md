@@ -31,6 +31,11 @@ Likewise, background work in each of these three categories can be either persis
 adb shell dumpsys activity | grep 'Process LRU list' -A 50
 ```
 
+Output looks like following (in increasing order of chances of getting evicted -> last entry evicted first):
+
+![LRU list](images/androidoslrulist.png)
+
+
 ## What happens if I start a thread from an activity and then leave the activity(back press) ?
 
 Thread will stay alive only for sometime (till there is resource pressure in OS and the whole process along with the thread is cleared).
