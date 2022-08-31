@@ -134,3 +134,14 @@ if (activity?.packageManager?.resolveActivity(intent, 0) != null) {
     startActivity(intent)
 }
 ```
+
+## When is onDestroy called?
+
+onDestroy() is called only when system is low on resources(memory, cpu time and so on) and makes a decision to kill your activity/application or when somebody calls finish() on your activity.
+
+It may not be called during process kill.
+
+if your app is no longer running normally (you crashed) or your app is gone (process terminated), onDestroy() is not relevant.
+
+`onDestroy` can be useful for graceful termination of started threads if any, but it can be ignored, as process termination already kills all the threads along with process. db/cleanup work should ideally be in onStop instead of onDestroy.
+

@@ -31,6 +31,7 @@ dumpsys activity processes
 
 
 ```java
+    ActivityManagerService mService; // AMS
     /**
      * Contains {@link ProcessRecord} objects for pending process starts.
      *
@@ -134,4 +135,71 @@ dumpsys activity processes
     boolean handleProcessStartedLocked(ProcessRecord app, int pid, boolean usingWrapper,
             long expectedStartSeq, boolean procAttached) {
     }
+```
+
+
+#### Remove process locked
+
+```java
+    @GuardedBy("mService")
+    boolean removeProcessLocked(ProcessRecord app,
+            boolean callerWillRestart, boolean allowRestart, int reasonCode, String reason) {
+        return removeProcessLocked(app, callerWillRestart, allowRestart, reasonCode,
+                ApplicationExitInfo.SUBREASON_UNKNOWN, reason);
+    }
+
+    @GuardedBy("mService")
+    boolean removeProcessLocked(ProcessRecord app, boolean callerWillRestart,
+            boolean allowRestart, int reasonCode, int subReason, String reason) {
+        final String name = app.processName;
+        final int uid = app.uid;
+        if (DEBUG_PROCESSES) Slog.d(TAG_PROCESSES,
+                "Force removing proc " + app.toShortString() + " (" + name + "/" + uid + ")");
+
+        ProcessRecord old = mProcessNames.get(name, uid);
+        if (old != app) {
+            // This process is no longer active, so nothing to do.
+            Slog.w(TAG, "Ignoring remove of inactive process: " + app);
+            return false;
+        }
+        removeProcessNameLocked(name, uid);
+        mService.mAtmInternal.clearHeavyWeightProcessIfEquals(app.getWindowProcessController());
+
+        boolean needRestart = false;
+        final int pid = app.getPid();
+        if ((pid > 0 && pid != ActivityManagerService.MY_PID)
+                || (pid == 0 && app.isPendingStart())) {
+            if (pid > 0) {
+                mService.removePidLocked(pid, app);
+                app.setBindMountPending(false);
+                mService.mHandler.removeMessages(PROC_START_TIMEOUT_MSG, app);
+                mService.mBatteryStatsService.noteProcessFinish(app.processName, app.info.uid);
+                if (app.isolated) {
+                    mService.mBatteryStatsService.removeIsolatedUid(app.uid, app.info.uid);
+                    mService.getPackageManagerInternal().removeIsolatedUid(app.uid);
+                }
+            }
+            boolean willRestart = false;
+            if (app.isPersistent() && !app.isolated) {
+                if (!callerWillRestart) {
+                    willRestart = true;
+                } else {
+                    needRestart = true;
+                }
+            }
+            app.killLocked(reason, reasonCode, subReason, true);
+            mService.handleAppDiedLocked(app, pid, willRestart, allowRestart,
+                    false /* fromBinderDied */);
+            if (willRestart) {
+                removeLruProcessLocked(app);
+                mService.addAppLocked(app.info, null, false, null /* ABI override */,
+                        ZYGOTE_POLICY_FLAG_EMPTY);
+            }
+        } else {
+            mRemovedProcesses.add(app);
+        }
+
+        return needRestart;
+    }
+
 ```

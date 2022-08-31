@@ -1,4 +1,4 @@
-
+All of services logic holder, like service start, bind/unbind etc.
 
 ### AM state holder
 definition:
@@ -383,5 +383,135 @@ ComponentName startServiceLocked(IApplicationThread caller, Intent service, Stri
             smap.ensureNotStartingBackgroundLocked(r);
         }
         return r.name;
+    }
+```
+
+
+## Killing of a service
+
+```java
+    final void killServicesLocked(ProcessRecord app, boolean allowRestart) {
+        // Clean up any connections this application has to other services.
+        for (int i=app.connections.size()-1; i>=0; i--) {
+            ConnectionRecord r = app.connections.valueAt(i);
+            removeConnectionLocked(r, app, null);
+        }
+        app.connections.clear();
+
+        // Clear app state from services.
+        for (int i=app.services.size()-1; i>=0; i--) {
+            ServiceRecord sr = app.services.valueAt(i);
+            synchronized (sr.stats.getBatteryStats()) {
+                sr.stats.stopLaunchedLocked();
+            }
+            if (sr.app != app && sr.app != null && !sr.app.persistent) {
+                sr.app.services.remove(sr);
+            }
+            sr.app = null;
+            sr.isolatedProc = null;
+            sr.executeNesting = 0;
+            sr.forceClearTracker();
+            if (mDestroyingServices.remove(sr)) {
+                if (DEBUG_SERVICE) Slog.v(TAG, "killServices remove destroying " + sr);
+            }
+
+            final int numClients = sr.bindings.size();
+            for (int bindingi=numClients-1; bindingi>=0; bindingi--) {
+                IntentBindRecord b = sr.bindings.valueAt(bindingi);
+                if (DEBUG_SERVICE) Slog.v(TAG, "Killing binding " + b
+                        + ": shouldUnbind=" + b.hasBound);
+                b.binder = null;
+                b.requested = b.received = b.hasBound = false;
+            }
+        }
+
+        ServiceMap smap = getServiceMap(app.userId);
+
+        // Now do remaining service cleanup.
+        for (int i=app.services.size()-1; i>=0; i--) {
+            ServiceRecord sr = app.services.valueAt(i);
+
+            // Unless the process is persistent, this process record is going away,
+            // so make sure the service is cleaned out of it.
+            if (!app.persistent) {
+                app.services.removeAt(i);
+            }
+
+            // Sanity check: if the service listed for the app is not one
+            // we actually are maintaining, just let it drop.
+            if (smap.mServicesByName.get(sr.name) != sr) {
+                ServiceRecord cur = smap.mServicesByName.get(sr.name);
+                Slog.wtf(TAG, "Service " + sr + " in process " + app
+                        + " not same as in map: " + cur);
+                continue;
+            }
+
+            // Any services running in the application may need to be placed
+            // back in the pending list.
+            if (allowRestart && sr.crashCount >= 2 && (sr.serviceInfo.applicationInfo.flags
+                    &ApplicationInfo.FLAG_PERSISTENT) == 0) {
+                Slog.w(TAG, "Service crashed " + sr.crashCount
+                        + " times, stopping: " + sr);
+                EventLog.writeEvent(EventLogTags.AM_SERVICE_CRASHED_TOO_MUCH,
+                        sr.userId, sr.crashCount, sr.shortName, app.pid);
+                bringDownServiceLocked(sr);
+            } else if (!allowRestart) {
+                bringDownServiceLocked(sr);
+            } else {
+                boolean canceled = scheduleServiceRestartLocked(sr, true);
+
+                // Should the service remain running?  Note that in the
+                // extreme case of so many attempts to deliver a command
+                // that it failed we also will stop it here.
+                if (sr.startRequested && (sr.stopIfKilled || canceled)) {
+                    if (sr.pendingStarts.size() == 0) {
+                        sr.startRequested = false;
+                        if (sr.tracker != null) {
+                            sr.tracker.setStarted(false, mAm.mProcessStats.getMemFactorLocked(),
+                                    SystemClock.uptimeMillis());
+                        }
+                        if (!sr.hasAutoCreateConnections()) {
+                            // Whoops, no reason to restart!
+                            bringDownServiceLocked(sr);
+                        }
+                    }
+                }
+            }
+        }
+
+        if (!allowRestart) {
+            app.services.clear();
+
+            // Make sure there are no more restarting services for this process.
+            for (int i=mRestartingServices.size()-1; i>=0; i--) {
+                ServiceRecord r = mRestartingServices.get(i);
+                if (r.processName.equals(app.processName) &&
+                        r.serviceInfo.applicationInfo.uid == app.info.uid) {
+                    mRestartingServices.remove(i);
+                    clearRestartingIfNeededLocked(r);
+                }
+            }
+            for (int i=mPendingServices.size()-1; i>=0; i--) {
+                ServiceRecord r = mPendingServices.get(i);
+                if (r.processName.equals(app.processName) &&
+                        r.serviceInfo.applicationInfo.uid == app.info.uid) {
+                    mPendingServices.remove(i);
+                }
+            }
+        }
+
+        // Make sure we have no more records on the stopping list.
+        int i = mDestroyingServices.size();
+        while (i > 0) {
+            i--;
+            ServiceRecord sr = mDestroyingServices.get(i);
+            if (sr.app == app) {
+                sr.forceClearTracker();
+                mDestroyingServices.remove(i);
+                if (DEBUG_SERVICE) Slog.v(TAG, "killServices remove destroying " + sr);
+            }
+        }
+
+        app.executingServices.clear();
     }
 ```
