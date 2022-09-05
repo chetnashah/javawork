@@ -5,11 +5,16 @@
 1. room runtime - runtime stuff for room
 2. room compiler - annotations and other compile time checking stuff.
 
+Room can be used with or without coroutines.
+Room without coroutines would be slightly harder, since app developer has to manually take care of threading/background.
+Where as coroutine help easilys schedule background work.
+
 ## Gradle plugin needed
 
 `apply kotlin-kapt`
 
 ## Coroutine support for room
+
 
 
 ## Common steps
