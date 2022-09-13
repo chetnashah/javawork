@@ -145,3 +145,59 @@ if your app is no longer running normally (you crashed) or your app is gone (pro
 
 `onDestroy` can be useful for graceful termination of started threads if any, but it can be ignored, as process termination already kills all the threads along with process. db/cleanup work should ideally be in onStop instead of onDestroy.
 
+## Lifecycle call order for two activities
+
+### Going from activity A -> activity B
+
+* ActivitA: onPause
+* ActivityB: onCreate
+* ActivityB: onStart
+* ActivityB: onResume
+* ActivityA: onStop
+
+
+### Going back from Activity B -> Activity A
+
+* ActivityB: onPause
+* ActivityA: onRestart
+* ActivityA: onStart
+* ActivityA: onResume
+* ActivityB: onStop
+* ActivityB: onDestroy
+
+
+## Lifecycle call order on screen lock
+
+* onPause
+* onStop
+
+## Lifecycle order on screen unlock
+
+* onRestart
+* onStart
+* onResume
+
+## Home button click 
+
+* onPause
+* onStop
+
+### resume app from recents
+
+* onRestart
+* onStart
+* onResume
+
+
+## Killing app from recents
+
+* onPause
+* onStop
+* onDestroy
+
+## Fresh app launch
+
+* onCreate
+* onStart
+* onResume
+

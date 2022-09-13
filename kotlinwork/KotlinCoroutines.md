@@ -1,4 +1,6 @@
 
+Coroutines can help you avoid callback hell code, by replacing it with imperative looking code, similar to async/await in JS.
+
 ## Usage
 Not available by default, needs to be added as a gradle dependency.
 
