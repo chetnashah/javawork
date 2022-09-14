@@ -202,11 +202,24 @@ if your app is no longer running normally (you crashed) or your app is gone (pro
 * onResume
 
 
+## Activity/task launch after process death
+
+Lets say we have activities: A->B->C, we press home and task moved to background.
+
+Now we open a lot more apps and our app process is killed/evicted.
+
+If we relaunch the app or go from recents, which activity is opened?
+Ans: **The innermost activity where the user left off**, e.g. in this case **C activity**. Also note: A and B are not started at this point, only C.
+
+//TODO verify with code.
+
+
 ## Launch modes
 
 ### Standard
 
-Multiple activities allowed, even if same activity present on top
+Multiple activities allowed, even if same activity present on top.
+E.g. A->B->C->C->C is fine
 
 ### Singletop
 
@@ -214,10 +227,15 @@ If same activity on top, do not push and deliver `onNewIntent()`.
 If not same activity ont top, push it.
 
 In essence think of it as double top not possible.
+e.g. `A->B->C->C` is not allowed!
+but `A->B->C->D->C` is fine.
+
 
 ### Single Task
 
 Single task means -> single instance in a task. (pop everything if necessary).
+e.g. if your task stack is `A->B->C->D` and you push `B`, your stack will pop everything upto B.
+and result in `A->B` and call `B` activity's `onNewIntent()`.
 
 ### SingleInstance
 
