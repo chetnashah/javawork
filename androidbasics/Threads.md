@@ -80,3 +80,28 @@ public class LoginRepository {
     
 }
 ```
+
+
+## Handler, looper and threads
+
+**Looper prepares a messagequeue & infinitely loops whereever lopper.loop/looper.prepare is called**
+
+**Handler always attaches to a looper, to give messages the looper**.
+
+If no argument specified in handler constructor, it attaches to the current thread's looper. otherwise attaches to the explicitly specified looper in the constructor.
+
+`Handler` is the main interface to post/enqueue tasks/messages/runnables.
+
+Sending and processing messages:
+
+1. sending happens via `handler.post(runnable)` or `handler.sendMessage(msg)`
+2. processing happens in `handleMessage(){ ... }` method that needs to be overriden.
+
+
+### Simplifiying things with handler thread
+
+A powerful version of thread that has builtin handler/looper already setup with it. 
+Looper is created after handlerthread.start.
+Which means we don't need to prepare a loopeer for it.
+
+To talk/send messages to handler thread - 

@@ -201,3 +201,26 @@ if your app is no longer running normally (you crashed) or your app is gone (pro
 * onStart
 * onResume
 
+
+## Launch modes
+
+### Standard
+
+Multiple activities allowed, even if same activity present on top
+
+### Singletop
+
+If same activity on top, do not push and deliver `onNewIntent()`.
+If not same activity ont top, push it.
+
+In essence think of it as double top not possible.
+
+### Single Task
+
+Single task means -> single instance in a task. (pop everything if necessary).
+
+### SingleInstance
+
+It is similar to singleTask except that **no other activities will be created in the same task**. If another Activity is called from this kind of Activity, a new Task would be automatically created to place that new Activity.
+
+If the same activity is already present in an isolated task, it gets `onNewIntent()` instead of double instances.
