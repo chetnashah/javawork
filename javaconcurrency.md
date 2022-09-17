@@ -278,6 +278,56 @@ for exclusive access by a single thread at a time.
 ### Approach 1: while(true) + break;
 
 
+
+## Spin wait approach to co-ordinated concurrency
+
+mutex is usually not enough, since if some condition was not satisfied, consumer must retry in a loop.
+See example below.Common use case include: check queue size non-empty before consume, or check queue size non-full before produce.
+
+```java
+void busyWaitFunction() {
+    acquire-mutex();
+    while (predicate is false) {
+      release-mutex();
+      acquire-mutex();
+    }
+    // do something useful
+    // in this critical section
+    release-mutex();
+}
+```
+
+
+## Instead of spinning in a loop, we introduce a queue + notification event system
+
+This is essence of a monitor/condition variable i.e. a wait queue+notify over a condition, 
+instead of spin lock over a condition.
+
+The `wait()` method when call on a condition-variable, will be release the lock, and will be placed on a `wait queue` for that condition variable.
+
+The `signal()` method causes one of the threads in the waitqueue to continue execution.
+
+**Condition variable based solution, note: predicate var and condVar are separate** - wait/notify being methods on condition variable(queue):
+
+```java
+void efficientWaitingFunction() {
+    mutex.acquire()
+    while (predicate == false) { // note here also we have while loop, but no spinning
+      condVar.wait() // enqueue and wake up on some signaling
+    }
+    // Do something useful
+    mutex.release()     
+}
+
+void changePredicate() {
+    mutex.acquire()
+    set predicate = true
+    condVar.signal() // signal to wake up others based whoe were waiting based on some predicate
+    mutex.release()
+}
+```
+
+
 ## Why do we need wait/notify in java?
 
 We can do things perfectly with schronzied blocks + busy loop checking (e.g. a synchronized queue).
