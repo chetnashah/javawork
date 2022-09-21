@@ -41,7 +41,21 @@ https://www.youtube.com/watch?v=AZBW5StgF8o
 
 When using Android Gradle plugin 7.0 to build your app, JDK 11 is now required to run Gradle. Android Studio Arctic Fox bundles JDK 11 and configures Gradle to use it by default, which means that most Android Studio users do not need to make any configuration changes to their projects
 
+## Learning about gradle tricks
 
+https://github.com/android/gradle-recipes
+
+## task list
+
+https://cs.android.com/android-studio/platform/tools/base/+/mirror-goog-studio-main:build-system/gradle-core/src/main/java/com/android/build/gradle/internal/tasks/
+
+https://cs.android.com/android-studio/platform/tools/base/+/mirror-goog-studio-main:build-system/gradle-core/src/main/java/com/android/build/gradle/tasks/
+
+https://cs.android.com/android-studio/platform/tools/base/+/mirror-goog-studio-main:build-system/gradle-core/src/main/java/com/android/build/gradle/internal/TaskManager.kt;l=1689?q=connectedAndroidTest&ss=android-studio%2Fplatform%2Ftools%2Fbase:build-system%2Fgradle-core%2Fsrc%2Fmain%2Fjava%2Fcom%2Fandroid%2Fbuild%2F
+
+## How it works
+
+https://developer.android.com/studio/build/extend-agp
 
 ## Starting from bumblebee
 

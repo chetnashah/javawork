@@ -24,6 +24,31 @@ dependencies {
 
 `src/test/java/`
 
+## Unit "Android" Test
+
+An **Unit Android Test** is a test that needs an Android device or emulator but it's different from a UI test because it doesn't start any activities.
+
+In this sample the test can't run without the Android Framework because the `Parcel` class is used in one of the methods of the Parcelable interface and the way data is written into a Parcel and read from it is not trivial enough to be stubbed. i.e Instrumentation tests can be used to test none UI logic as well. They are especially useful when you need to test code that has a dependency on a context.
+
+
+
+Note that the unit test is placed in `/androidTest/` instead of `/test/`.
+
+Add a Specific instrumentation runner: androidx.test.runner.AndroidJUnitRunner
+
+https://github.com/android/testing-samples/tree/main/unit/BasicUnitAndroidTest
+
+`./gradlew connectedCheck` to run a unit androoid test.
+
+Another way is to interact with am in adb shell
+```
+adb shell am instrument -w <test_package_name>/<runner_class>
+```
+
+**an instrumentation test** provides a special test execution environment as launched via the am instrument command, where the targeted application process is restarted and initialized with basic application context, and an instrumentation thread is started inside the application process VM. 
+
+Your test code starts execution on this instrumentation thread and is provided with an Instrumentation instance that provides access to the application context and APIs to manipulate the application process under test.
+
 ## Quck way to generate tests in intellij/android studio
 
 ![gen tests](images/quickgentests.png)
