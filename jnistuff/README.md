@@ -30,7 +30,8 @@ javac MyApp.java
 javah -jni myApp // generates headers to be used in native proj
 ```  
 
-## It is possible to call Java code from native (rarely used):
+It is possible to call Java code from native (rarely used)?
+
 
 
 ### LD_LIBRARY_PATH
