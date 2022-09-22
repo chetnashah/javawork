@@ -9,20 +9,27 @@ https://www.youtube.com/watch?v=_cFwDnKvgfw
 
 On java side :
   declare the methode to be called wit modifier native.
-  Use System.LoadLibrary("libXyz.so")
+  Use `System.LoadLibrary("libXyz.so")`
     How will System.loadlibrary look for my xyz.so ?
       1. default search path
       2. Environment LD_LIBRARY_PATH=`dir with xyz.so`
       3. CMD line -Djava.library.path=`dir with xyz.so`
       
   Next step is to compile your java code using javac
+  ```
   javac MyApp.java
   javah -jni myApp // generates headers to be used in native proj
-  
+  ```
   
 
 2. It is possible to call Java code from native (rarely used):
 
+
+### LD_LIBRARY_PATH
+
+`LD_LIBRARY_PATH` is the predefined environmental variable in Linux/Unix which sets the path which the linker should look in to while linking dynamic libraries/shared libraries.
+
+`LD_LIBRARY_PATH` contains a colon separated list of paths and the linker gives priority to these paths over the standard library paths `/lib` and `/usr/lib`. The standard paths will still be searched, but only after the list of paths in `LD_LIBRARY_PATH` has been exhausted.
 
 ### library mgmt
 
