@@ -1,5 +1,9 @@
 
 
+Declaring a dependency on a component is usually done by providing a set of coordinates (group, artifact, version also known as GAV coordinates).
+
+but such a component may provide different variants. A variant is typically chosen based on the usage
+
 ## How it works
 
 Dependency resolution is a process that consists of two phases, which are repeated until the dependency graph is complete:
