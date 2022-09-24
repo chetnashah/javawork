@@ -131,9 +131,9 @@ root project's directory.
 
 The set containing the subprojects of this project.
 
-### tasks
+### TaskContainer tasks
 
-The tasks of this project.
+The tasks of this project, which is instance of `TaskContainer`.
 
 ## Searching for dynamic properties
 

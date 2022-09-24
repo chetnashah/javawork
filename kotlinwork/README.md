@@ -15,6 +15,14 @@ class Some {
 }
 ```
 
+### Reverse for loop
+
+```kt
+for (n in 100 downTo 1) {
+    println(n)
+}
+```
+
 ## Common Idioms
 
 Function Syntax:
