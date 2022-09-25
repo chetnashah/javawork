@@ -7,6 +7,9 @@ https://docs.gradle.org/current/javadoc/org/gradle/api/invocation/Gradle.html
 
 ## Important properties
 
+### includedBuilds: `Collection<IncludedBuild>`
+
+
 
 ## Important listeners/configurators
 

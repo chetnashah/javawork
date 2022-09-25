@@ -9,25 +9,71 @@ There is a one-to-one relationship between a Project and a build.gradle file. Du
 4. Finally, **evaluate each Project by executing its build.gradle file, if present, against the project**. **The projects are evaluated in breadth-wise order, such that a project is evaluated before its child projects**. This order can be overridden by calling `Project.evaluationDependsOnChildren()` or by adding an explicit evaluation dependency using `Project.evaluationDependsOn(java.lang.String)`.
 
 
+## Common lifecycle callbacks
 
-
-## Common methods
+**Note -  configuration phase in multiproject build runs in breadth first order, i.e. parents before children**
 
 ### afterEvaluate
 
-**Adds a closure to be called immediately after this project has been evaluated.** The project is passed to the closure as a parameter. Such a listener gets notified when the build file belonging to this project has been executed. A parent project may for example add such a listener to its child project. Such a listener can further configure those child projects based on the state of the child projects after their build files have been run.
+**Adds a closure to be called immediately after this project has been evaluated.** **The project is passed to the closure as a parameter.** Such a listener gets notified when the build file belonging to this project has been executed. A parent project may for example add such a listener to its child project. Such a listener can further configure those child projects based on the state of the child projects after their build files have been run.
+
+**The afterEvaluate is useful in the root gradle file of a multi project build when you want to configure specific items based on the configuration made in subprojects**
+
+### beforeEvaluate
+
+Adds a closure to be called immediately before this project is evaluated. The project is passed to the closure as a parameter.
+
+
+## Task creation callback
+
+You can receive a notification immediately after a task is added to a project..
+**This can be used to set some default values or add behaviour before the task is made available in the build file.**
+
+```groovy
+// build.gradle
+tasks.whenTaskAdded { task ->
+    task.ext.srcDir = 'src/main/java'
+}
+
+tasks.register('a')
+
+println "source dir is $a.srcDir"
+```
+
+## Task execution pre/post callback
+
+```groovy
+gradle.taskGraph.beforeTask { Task task ->
+    println "executing $task ..."
+}
+
+gradle.taskGraph.afterTask { Task task, TaskState state ->
+    if (state.failure) {
+        println "FAILED"
+    }
+    else {
+        println "done"
+    }
+}
+```
+
+## What happens when I execute a task which has same name in different projects?
+
+E.g. we have `:app:hello` and `:app:lib:hello` and others, and I inovke from cli: `gradlew hello`.
+**It will execute all tasks with matching name across all projects**.
+
+ 
+## Common methods
+
 
 ### allProjects({})
 
-Configures this project and each of its sub-projects.
+Configures this project and each of its sub-projects. applies closure on all projects
 
 ### apply({})
 
 Applies zero or more plugins or scripts.
 
-### beforeEvaluate
-
-Adds a closure to be called immediately before this project is evaluated. The project is passed to the closure as a parameter.
 
 ### evaulationDependsOn
 
@@ -187,3 +233,41 @@ Returns a file pointing to the root directory of the test results.
 
 
 
+
+
+## Creating/registering tasks
+
+If you want to create a new task, don’t use create, but register instead
+
+In the DSL, the following code that you find in many tutorials would immediately create a task:
+```
+task hello {
+   doLast {
+       println "Hello!"
+   }
+}
+```
+So the correct way to do this is:
+```
+tasks.register("hello") {
+    doLast {
+         println "Hello!"
+    }
+}
+```
+
+## Configuring tasks by name (this is lazy)
+
+it will fail if the task that you’re looking for doesn’t exist.
+
+```
+tasks.named("myTask") {
+   // configure the task
+}
+```
+or
+```
+tasks.named("myTask", SomeType) {
+   // configure the task
+}
+```

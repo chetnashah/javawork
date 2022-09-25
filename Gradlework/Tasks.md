@@ -1,5 +1,69 @@
 
 
+## What task gets executed when you sync gradle:
+
+```
+prepareKotlinBuildScriptModel or prepareBuildScriptModel
+```
+
+## How to add a task to all projects
+
+**This is a faster way to add tasks across mmany projects in oneshot**
+
+`allprojects` closure gets individual proj as closure param.
+
+```
+allprojects { proj ->
+    task('hello').doLast {
+        println("im hello task for project: "+proj)
+    }
+}
+```
+
+## How to target the task that report tasks?
+e.g. only show tasks of certain kind
+
+```groovy
+tasks.named<TaskReportTask>("tasks") {
+     displayGroup = "My build group"
+}
+```
+now doing `./gradlew tasks` will only output tasks under group "My build group"
+
+`Note`: `displayGroup` can help us categorize tasks into local tasks, ci tasks etc by forming individual groups for them and categorizing tasks for them
+
+```
+// build.gradle
+def mybuildgroup = "My build group"
+tasks.named("tasks") {
+    displayGroup = mybuildgroup
+}
+
+tasks.named("build") {
+    group = mybuildgroup
+}
+
+tasks.named("check") {
+    group = mybuildgroup
+}
+```
+Running `./gradlew tasks return`
+```
+$./gradlew tasks
+My build group tasks
+--------------------
+build - Assembles and tests this project.
+check - Runs all checks.
+```
+
+## Create a project level task that runs samee task on all subprojects
+
+```groovy
+task.register("qualityCheckAll") {
+     dependsOn(subprojects.map { ":${it.name}:qualityCheck" }) // return list of mapped subproject task
+}
+```
+
 ## TaskContainer (`project.tasks` property)
 
 A TaskContainer is responsible for managing a set of Task instances.
@@ -83,8 +147,9 @@ will give output like:
 1. lifecycle tasks
 2. actionable tasks
 
-* `actionable tasks` which perform an action – for example, the jar task has an action associated with it which goes and creates a jar file. These types of tasks may or may not depend on other tasks.
-* `aggregate tasks` – these tasks are there just to provide a convenient way for you to execute a grouping of functionality. For example, rather than you having to run the check and assemble tasks separately, the build task just aggregates them together.
+* `actionable tasks` which perform an action – for example, the jar task has an action associated with it which goes and creates a jar file. These types of tasks may or may not depend on other tasks. These will do a concrete thing and driven by inputs and outputs.
+
+* `aggregate/orchestrator/lifecycle tasks` – these tasks are there just to provide a convenient way for you to execute a grouping of tasks/functionality. For example, rather than you having to run the check and assemble tasks separately, the build task just aggregates them together. Usually they will not have input/output.
 
 
 ## Task actions
