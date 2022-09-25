@@ -1,6 +1,6 @@
 
 
-## TaskContainer
+## TaskContainer (`project.tasks` property)
 
 A TaskContainer is responsible for managing a set of Task instances.
 
@@ -8,7 +8,39 @@ You can obtain a TaskContainer instance by calling Project.getTasks(), or using 
 
 ### Useful methods on TaskContainer
 
-### 
+### How to print all tasks of a project
+
+```
+tasks.forEach {
+    println(it.name)
+}
+```
+
+### Refer a task by name 
+
+```groovy
+tasks.named("build") {
+    println(it.name)
+}
+``` 
+
+## Task execution graph
+
+
+https://docs.gradle.org/current/javadoc/org/gradle/api/execution/TaskExecutionGraph.html
+
+Sits on gradle object of the project, Can be retrieved from `project.gradle.taskGraph`
+
+### Imp callbacks
+
+1. `whenReady` - Adds a closure to be called when this graph has been populated.
+
+### Imp methods
+
+1. `taskGraph.getDependencies​(Task task)` - get dependencies of given taks
+2. `taskGraph.hasTask(Task task)` or `taskGraph.hasTask(String path)` - check if task exists in build graph
+3. `addTaskExecutionGraphListener​(TaskExecutionGraphListener listener)` - Adds a listener to this graph, to be notified when this graph is ready.
+
 
 ## View the task dependency tree
 
@@ -50,6 +82,9 @@ will give output like:
 
 1. lifecycle tasks
 2. actionable tasks
+
+* `actionable tasks` which perform an action – for example, the jar task has an action associated with it which goes and creates a jar file. These types of tasks may or may not depend on other tasks.
+* `aggregate tasks` – these tasks are there just to provide a convenient way for you to execute a grouping of functionality. For example, rather than you having to run the check and assemble tasks separately, the build task just aggregates them together.
 
 
 ## Task actions

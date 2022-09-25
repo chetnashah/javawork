@@ -9,6 +9,8 @@ There is a one-to-one relationship between a Project and a build.gradle file. Du
 4. Finally, **evaluate each Project by executing its build.gradle file, if present, against the project**. **The projects are evaluated in breadth-wise order, such that a project is evaluated before its child projects**. This order can be overridden by calling `Project.evaluationDependsOnChildren()` or by adding an explicit evaluation dependency using `Project.evaluationDependsOn(java.lang.String)`.
 
 
+
+
 ## Common methods
 
 ### afterEvaluate

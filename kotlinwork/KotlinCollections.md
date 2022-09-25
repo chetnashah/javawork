@@ -25,4 +25,45 @@ It is created by attaching `keySelector: (T) -> K` function to a source of eleme
 
 Extension functions: https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-grouping/#extension-functions
 
+## For loop is inclusive of end index
 
+```kt
+for (i in 0..5) {
+        println(i) // 0,1,2,3,4,5   --> upto 5
+}
+```
+
+## Iterating an array with index
+
+```kt
+for ((index, value) in array.withIndex()) {
+}
+```
+
+## Sort by indexing into another array
+
+```kt
+/**
+    Input: names = ["Mary","John","Emma"], heights = [180,165,170]
+    Output: ["Mary","Emma","John"]
+    Explanation: Mary is the tallest, followed by Emma and John.
+*/
+fun sortPeople(names: Array<String>, heights: IntArray): Unit {
+    val sortedArray = names.withIndex().sortedBy {
+        heights[it.index]
+    }
+    val ans = sortedArray.map { it.value }
+}
+```
+
+## Counting down
+
+```kt
+// 100 downTo 0
+for (i in 100 toward 0) {
+    // Do things
+}
+```
+
+
+## IntArray has `.size` and not `.length`
