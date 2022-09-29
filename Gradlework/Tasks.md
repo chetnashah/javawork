@@ -106,6 +106,25 @@ Sits on gradle object of the project, Can be retrieved from `project.gradle.task
 3. `addTaskExecutionGraphListener​(TaskExecutionGraphListener listener)` - Adds a listener to this graph, to be notified when this graph is ready.
 
 
+## Enhanced (typed) tasks
+
+Most Gradle plugins use enhanced tasks. 
+**With enhanced tasks, you don’t need to implement the task behaviour as you do with simple tasks. You simply declare the task and configure the task using its properties.** In this way, enhanced tasks let you reuse a piece of behaviour in many different places, possibly across different builds.
+
+`Typed tasks`: The behaviour and properties of an enhanced task are defined by the task’s class. When you declare an enhanced task, you specify the type, or class of the task.
+
+e.g. of builtin enhanced tasks are copy task, exec task.
+
+### Where to define custom task type/class?
+
+1. build script (build.gradle) - the task class is not visible outside the build script.
+2. `buildSrc` project - You can put the source for the task class in the `rootProjectDir/buildSrc/src/main/groovy` directory (or `rootProjectDir/buildSrc/src/main/java` or `rootProjectDir/buildSrc/src/main/kotlin`). scope = The task class is visible to every build script used by the build. However, it is not visible outside the build, and so you cannot reuse the task class outside the build it is defined in.
+3. As a JVM/jar library - reusable everywhere
+
+
+
+
+
 ## View the task dependency tree
 
 https://www.youtube.com/watch?v=gTYHEcSbdes
