@@ -62,6 +62,8 @@ There are two variations of `toArray` method:
 
 ## `Arrays.sort` Sorting and primitives
 
+Both `Arrays.sort` and `Collections.sort` are in-place sorts.
+
 Sorting of an array of primitive values with a custom comparator is not supported by the standard Java libraries.
 
 Java's library doesn't provide a sort function for ints with comparators (comparators can be used only with objects).
