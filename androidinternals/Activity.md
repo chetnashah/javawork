@@ -100,3 +100,6 @@ public <T extends View> T findViewById(@IdRes int id) {
         return getWindow().findViewById(id);
 }
 ```
+
+## Permission & result callbacks are called before onResume
+
