@@ -4,6 +4,31 @@ Note: see (inferred) type of a binding with Ctrl + Shft + P.
 
 1. functions can be put on the top of a file, no need to put them in classes. This helps in modular and cleaner strucuture and separation of logic from entities.
 
+## KOtlin has operator overloading
+
+Unlike Java, **Kotlin has operator overloading**.
+
+https://kotlinlang.org/docs/operator-overloading.html
+
+**Kotlin heavily makes use of operator overloading for some of the basic operators like `indexing[]`, `functionCall()` and `comparision<,>` operators**
+
+Instead of a regular function i.e. `fun`, we must use an operator function i.e. `operator fun`.
+
+e.g.
+```kotlin
+fun main() {
+	  var ctr = Counter(2)
+    println(ctr)
+	  ctr = ctr + 1 // plus is overloaded in Counter class
+    println(ctr)
+}
+
+data class Counter(val dayIndex: Int) {
+    operator fun plus(increment: Int): Counter {
+        return Counter(dayIndex + increment)
+    }
+}
+```
 
 ### All properties must be initialized or lateinit
 

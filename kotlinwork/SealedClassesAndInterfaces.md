@@ -30,3 +30,20 @@ class DatabaseError(val source: DataSource): IOError()
 
 object RuntimeError : Error
 ```
+
+## Since sealed/classes interface are exhaustive, else branch is not needed in `when` based pattern matching
+
+```kt
+fun eval(expr: Expr): Int =
+        when (expr) {
+            is Num -> expr.value
+            is Sum -> eval(expr.left) + eval(expr.right)
+        }
+
+sealed interface Expr
+class Num(val value: Int) : Expr
+class Sum(val left: Expr, val right: Expr) : Expr
+```
+
+
+In java/kotlin, the sum-types are emulated via sub-classing.

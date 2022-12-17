@@ -25,3 +25,32 @@ operator fun Int.invoke() { println(this) }
 
 1() // prints 1
 ```
+
+## Why do we have named/default parameters for function?
+
+Default and named arguments help to minimize the number of overloads and improve the readability of the function invocation.
+
+### Default argument values
+
+Imagine you have several overloads of 'foo()' in Java:
+```java
+public String foo(String name, int number, boolean toUpperCase) {
+    return (toUpperCase ? name.toUpperCase() : name) + number;
+}
+public String foo(String name, int number) {
+    return foo(name, number, false);
+}
+public String foo(String name, boolean toUpperCase) {
+    return foo(name, 42, toUpperCase);
+}
+public String foo(String name) {
+    return foo(name, 42);
+}
+```
+
+**You can replace all these Java overloads with one function in Kotlin.**
+i.e.
+```kotlin
+fun foo(name: String, number: Int = 42, toUpperCase: Boolean = false) =
+        (if (toUpperCase) name.uppercase() else name) + number
+```

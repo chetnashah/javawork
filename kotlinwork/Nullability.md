@@ -83,7 +83,7 @@ if (b != null && b.length > 0) {
 }
 ```
 
-#### Safe call/optional chaining operator (`?.`)
+#### Safe call/optional chaining operator (`?.`) (Similar to one found in Javascript)
 
 if preceding variable `v` is null `v?.prop` is also `null`,
 else the value is `v.prop`.
@@ -94,7 +94,7 @@ val b: String? = null
 println(b?.length)// null
 ```
 
-A safe call can also be placed on the left side of an assignment. Then, if one of the receivers in the safe calls chain is null, the assignment is skipped and the expression on the right is not evaluated at all:
+**A safe call can also be placed on the left side of an assignment.** Then, if one of the receivers in the safe calls chain is null, the assignment is skipped and the expression on the right is not evaluated at all:
 
 ```kt
 // If either `person` or `person.department` is null, the function is not called:
