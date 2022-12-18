@@ -90,7 +90,7 @@ https://kotlinlang.org/docs/typecasts.html#type-erasure-and-generic-type-checks
 
 When you call such a function, the compiler uses the information that the execution doesn't continue beyond the function.
 
-## Type level Equality (==) is actually an operator with following semantics
+## Type/instance level Equality (==) is actually an operator with following semantics
 
 https://kotlinlang.org/docs/operator-overloading.html#equality-and-inequality-operators
 
@@ -98,7 +98,7 @@ https://kotlinlang.org/docs/operator-overloading.html#equality-and-inequality-op
 
 * `a != b` transforms to `!(a?.equals(b) ?: (b === null))`
 
-## Type level index [] operator overload/support
+## Type/instance level index [] operator overload/support
 
 https://kotlinlang.org/docs/operator-overloading.html#indexed-access-operator
 
@@ -115,7 +115,7 @@ https://kotlinlang.org/docs/operator-overloading.html#indexed-access-operator
 * `a[i_1, ..., i_n] = b` transforms to `a.set(i_1, ..., i_n, b)`
 
 
-## Type level invoke () operator overload
+## Type/instance level invoke () operator overload
 
 https://kotlinlang.org/docs/operator-overloading.html#invoke-operator
 
@@ -127,8 +127,20 @@ https://kotlinlang.org/docs/operator-overloading.html#invoke-operator
 
 * `a(i_1, ..., i_n)` transforms to `a.invoke(i_1, ..., i_n)`
 
-## Type level comparision support (<,>) with `compareTo operator function`
+## Type/instance level comparision support (<,>) with `compareTo operator function`
 
 https://kotlinlang.org/docs/operator-overloading.html#comparison-operators
 
 
+## Type/instance level `in` operator transforms to contains call
+
+* `a in b` transforms to `b.contains(a)`
+
+* `a !in b` transforms to `!b.contains(a)`
+
+
+## Type/instance level range support using `a..b` syntax i.e. `..` operator
+
+`a..b` transforms to `a.rangeTo(b)`
+
+`

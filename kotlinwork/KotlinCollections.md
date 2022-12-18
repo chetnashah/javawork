@@ -67,3 +67,16 @@ for (i in 100 toward 0) {
 
 
 ## IntArray has `.size` and not `.length`
+
+
+## Ranges using `a..b` and complemented by `in` operator for containment checking
+
+`..` is an operator function with name `rangeTo(that)` which is **called on the start instance**, and given the value of `end`. 
+
+`rangeTo()` is complemented by `in` or `!in` functions.
+
+```kt
+operator fun <T : Comparable<T>> T.rangeTo(
+    that: T
+): ClosedRange<T>
+```
