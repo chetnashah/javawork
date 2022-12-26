@@ -71,12 +71,43 @@ for (i in 100 toward 0) {
 
 ## Ranges using `a..b` and complemented by `in` operator for containment checking
 
+**Ranges can be used for any data type that is Comparable**
+
 `..` is an operator function with name `rangeTo(that)` which is **called on the start instance**, and given the value of `end`. 
 
-`rangeTo()` is complemented by `in` or `!in` functions.
+`Range<T>` requires `<T : Comparable>`, i.e. it needs parameters to be comparable. 
+
+`rangeTo()` is complemented by `in` or `!in` functions, to check containment, which invokes `.contains()` method on range object.
+
+**Note** - `Range` can be created from **any Comparable** via `C1..C2`, e.g. proof:
+```kt
+public operator fun <T : Comparable<T>> T.rangeTo(that: T): ClosedRange<T> = ComparableRange(this, that)
+// rangeTo is invoked via `C1..C2`
+```
+e.g. Making `MyDate` comparable will allow us to use `..` and `in` operator on `MyDate` automatically.
+```kt
+data class MyDate(val year: Int, val month: Int, val dayOfMonth: Int) : Comparable<MyDate> {
+    override fun compareTo(other: MyDate): Int {
+        if (year != other.year) return year - other.year
+        if (month != other.month) return month - other.month
+        return dayOfMonth - other.dayOfMonth
+    }
+}
+```
 
 ```kt
 operator fun <T : Comparable<T>> T.rangeTo(
     that: T
 ): ClosedRange<T>
 ```
+
+
+## Useful extensions
+
+### Convert List to Set
+
+`list.toSet()`
+
+### Convert Set to List
+
+`set.toList()`

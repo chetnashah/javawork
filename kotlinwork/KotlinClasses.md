@@ -317,3 +317,43 @@ class GameViewModel {
         get() = _currentScrambledWord
 }
 ```
+
+## Object expressions can have members/state
+
+e.g.
+```kotlin
+class DateRange(val start: MyDate, val end: MyDate) : Iterable<MyDate> {
+    override fun iterator(): Iterator<MyDate> {
+        return object : Iterator<MyDate> {
+            var currDate = start // member of this object expression i.e anonymous class
+            override fun hasNext(): Boolean {
+                return currDate <= end
+            }
+
+            override fun next(): MyDate {
+                val result = currDate
+                currDate = currDate.followingDate()
+                return result
+            }
+
+        }
+    }
+}
+
+```
+
+## Operator overloads can also be extension functions on a class/type
+
+```kotlin
+operator fun MyDate.plus(timeInterval: TimeInterval): MyDate = TODO()
+```
+
+## Objects with invoke method can be invoked as a function
+
+You can add `invoke()` operator to anyy class as an extension, to make it's objects callable.
+
+```kt
+operator fun Int.invoke() { println(this) }
+
+1() //huh?..
+```
