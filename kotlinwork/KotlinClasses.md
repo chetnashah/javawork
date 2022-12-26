@@ -18,7 +18,7 @@ After this logic applying we get major rule: to cover the most frequent class in
 
 ## Primary constructor
 
-A class in Kotlin can have a primary constructor and one or more secondary constructors. The primary constructor is a part of the class header, and it goes after the class name and optional type parameters.
+A class in Kotlin can have a primary constructor and one or more secondary constructors. **The primary constructor is a part of the class header, and it goes after the class name and optional type parameters.**
 
 **The primary constructor cannot contain any code, only member declarations. Initialization code can be placed in initializer blocks prefixed with the init keyword**
 ```kotlin
@@ -55,7 +55,7 @@ Kotlin has a concise syntax for declaring properties and initializing them from 
 class Person(val firstName: String, val lastName: String, var age: Int)
 ```
 
-## Secondary constructors
+## Secondary constructors (helpers constructors in the same class)
 
 The main use case of secondary constructors is overloaded constructors which can have some sensible defaults or extra logic before calling primary constructor.
 A class can also declare secondary constructors, which are prefixed with constructor keyword:
@@ -68,7 +68,7 @@ class Pet {
 }
 ```
 
-**Note** - `If the class has a primary constructor, each secondary constructor needs to delegate to the primary constructor, either directly or indirectly through another secondary constructor(s) using this`. Delegation to another constructor of the same class is done using the `this` keyword.
+**Note** - **`If the class has a primary constructor, each secondary constructor needs to delegate to the primary constructor, either directly or indirectly through another secondary constructor(s) using this`**. Delegation to another constructor of the same class is done using the `this` keyword.
 
 ```kotlin
 class Abc(val name: String, val surname: String) {
