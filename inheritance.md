@@ -127,6 +127,12 @@ class Main extends MainClass {
 }
 ```
 
+### is `@override` necessary?
+It is not necessary, but it provides good benefits.
+
+1. conveys explicitly to human reader that this is an overriding method, and
+2. catches a bug at compile time that could take at least a few brain cycles to catch at run-time once you even know to look for it
+
 
 ### Auto super insertion in subclass constructor
 
