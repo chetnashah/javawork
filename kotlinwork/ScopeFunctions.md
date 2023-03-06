@@ -44,3 +44,12 @@ with(numbers) {
 
 https://kotlinlang.org/docs/scope-functions.html#function-selection
 
+
+## Implementation of our own `apply`
+
+```kt
+fun <T> T.myApply(f: T.() -> Unit): T {
+    this.f();
+    return this;
+}
+```

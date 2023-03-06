@@ -19,7 +19,19 @@ fun MutableList<Int>.swap(index1: Int, index2: Int) {
 
 ## Extension properties
 
-Kotlin supports extension properties much like it supports functions.
+Kotlin supports extension properties much like it supports functions. (But no stored/backing field).
+
+
+Since extensions do not actually insert members into classes, there's no efficient way for an extension property to have a backing field. This is why initializers are not allowed for extension properties. Their behavior can only be defined by explicitly providing getters/setters.
+
+```kt
+// computed properties are fine as extensions
+val <T> List<T>.lastIndex: Int
+    get() = size - 1
+
+val House.number = 1 // error: initializers are not allowed for extension properties
+```
+
 
 ## Extensions are resolved statically
 
