@@ -22,6 +22,38 @@ Linux States -  state (R is `running`, S is `sleeping`, D is `sleeping in an uni
 
 Checking Windows thread states - download (Process Explorer) http://technet.microsoft.com/en-us/sysinternals/bb896653.aspx
 
+## Can you kill or stop a thread (if you have reference to it)?
+
+**No**
+
+https://docs.oracle.com/javase/1.5.0/docs/guide/misc/threadPrimitiveDeprecation.html
+
+
+## What is thread interruption?
+
+https://docs.oracle.com/javase/tutorial/essential/concurrency/interrupt.html
+
+`Thread.interrupt()` method sets internal 'interrupt status' flag
+
+Then code running in that target thread (the thread that got interrupted) MAY poll the interrupted status and handle it appropriately. 
+
+Some methods that block such as `Object.wait()` may consume the interrupted status immediately and throw an appropriate exception (usually `InterruptedException`)
+
+**Interruption in Java is not pre-emptive.** Put another way both threads have to cooperate in order to process the interrupt properly. **If the target thread does not poll the interrupted status the interrupt is effectively ignored.**
+
+Polling occurs via the `Thread.interrupted()` method which returns the current thread's interrupted status AND clears that interrupt flag.
+
+Methods with interruption handling built-in:
+1. `Object.wait()`
+2. `Thread.sleep()`
+3. `Thread.join()`
+4. Most `java.util.concurrent` data structures
+
+
+
+
+
+
 ## Synchronization actions
 
 Synchronization actions, which are:
@@ -338,3 +370,67 @@ But that is wasteful for CPU, that is why wait/notify were introduced. So there 
 
 https://developer.android.com/reference/androidx/annotation/GuardedBy
 
+## Condition variables in Java
+
+
+**Where a Lock replaces the use of synchronized methods and statements, a Condition replaces the use of the Object monitor methods.**
+
+Condition factors out the Object monitor methods (`wait`, `notify` and `notifyAll`) into distinct objects to give the effect of having multiple wait-sets per object, by combining them with the use of arbitrary Lock implementations. 
+
+Inter thread message driven unblocking based on queue - 
+**Conditions (also known as condition queues or condition variables) provide a means for one thread to suspend execution (to "wait") until notified by another thread that some state condition may now be true.**
+
+**Condition should always be waited upon in a loop, testing the state predicate that is being waited for**
+
+Because access to this shared state information occurs in different threads, it must be protected, so a lock of some form is associated with the condition.
+
+The key property that waiting for a condition provides is that it atomically releases the associated lock and suspends the current thread, just like Object.wait.
+
+**A Condition instance is intrinsically bound to a lock.** To obtain a Condition instance for a particular Lock instance use its `lock.newCondition()` method.
+
+Useful methods on Condition:
+1. `await()`
+2. `notify()` 
+
+Example:
+```java
+// Similar to ArrayBlockingQueue
+ class BoundedBuffer {
+   final Lock lock = new ReentrantLock();
+   final Condition notFull  = lock.newCondition(); 
+   final Condition notEmpty = lock.newCondition(); 
+
+   final Object[] items = new Object[100];
+   int putptr, takeptr, count;
+
+   public void put(Object x) throws InterruptedException {
+     lock.lock();
+     try {
+       while (count == items.length)
+         notFull.await();
+       items[putptr] = x;
+       if (++putptr == items.length) putptr = 0;
+       ++count;
+       notEmpty.signal();
+     } finally {
+       lock.unlock();
+     }
+   }
+
+   public Object take() throws InterruptedException {
+     lock.lock();
+     try {
+       while (count == 0)
+         notEmpty.await();
+       Object x = items[takeptr];
+       if (++takeptr == items.length) takeptr = 0;
+       --count;
+       notFull.signal();
+       return x;
+     } finally {
+       lock.unlock();
+     }
+   }
+ }
+
+```
