@@ -11,6 +11,23 @@ e.g.
 var abc : String? = null
 ```
 
+
+### you can have nullable/optional variables declared with val, but it makes more sense with var (if lifetime updates)
+
+`val` is good for single assignment. `var` is good for multiple assignments
+
+```kt
+fun main() {    
+    val k: String?;
+    k = null; // First assignment is ok!
+    // k = "hi"; // Error!
+    
+    var j: String?; // can reassign many times, if varaible lifetime is dynamic, go with var
+    j = null;
+    j = "hey";
+}
+```
+
 ### lateinit var preferred for onetime late initialization
 
 Use the lateinit keyword for the field to avoid needing to declare it nullable. (one time late initialization use case)

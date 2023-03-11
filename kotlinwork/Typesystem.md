@@ -11,6 +11,16 @@ But in kotlin you have to be explicit.
 Int.toLong(1)
 ```
 
+### No type inference for function return type, better be explicit about function return type
+
+`why?`
+
+Return type must be provided in two cases:
+
+* function is public or protected, i. e. it is part of API, and you don't want it's signature to change implicitly;
+* function has block body, and it may be hard to infer return types by compiler and human reading the code :)
+
+
 ### By default classes are not extensible (use `open` keyword)
 
 
@@ -54,21 +64,42 @@ This kind of typechecks can be considered equivalent to pattern matching/variant
 
 Usually, **the `as` cast operator throws an exception if the cast isn't possible. And so, it's called unsafe.** The unsafe cast in Kotlin is done by the infix operator `as`.
 
+We also call this down cast. **Upcasting is casting to a supertype, while downcasting is casting to a subtype**. Think of type hierarchy with general types on top, and specific types on the bottom.
+
+**Upcasting is implicit (by the nature of liskov substitution principle), but downcast is unsafe/explicit using as operator.**
+
 ```kt
-val x: String = y as String
+var i: Number = 123
+fun main() {
+    // Explicit Downcast, we know i is already Int, otherwise we would have ClassCastException
+    val j = (i as Int) + 10 println(j) // 133
+}
+```
 
-
+Implicit upcast example
+```
+val j = 11;
+val t: Number = j; // Implicit upcast from Int to Number
 ```
 
 ## Safe nullable cast operator `as?`
 
-**returns null on failure, so receiving type must be nullable**
+Safer alternative to `as` operator, as you get null return value instead of classcastexception.
+
+**returns null on failure to cast, so receiving type must be nullable**
 Note that despite the fact that the right-hand side of `as?` is a non-null type `String`, 
 
-the result of the cast is nullable.
+**the result of the cast is nullable**
 
 ```kt
-val x: String? = y as? String
+var n: Number = 123
+fun main() {
+    val i: Int? = n as? Int // Successful cast, return as is 
+    println(i) // 123
+
+    val d: Double? = n as? Double // unsuccessful cast, return null
+    println(d) // null
+}
 ```
 
 Not having receiving type as nullable will cause error, even if there was guarantee of types
