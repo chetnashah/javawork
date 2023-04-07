@@ -1,5 +1,7 @@
 
 
+**auto assignment to null never happens, null init/assignment must also be explicit!**
+
 ### Default types are non-nullable in kotlin
 
 e.g. `String` typed variable cannot hold null.
@@ -14,11 +16,13 @@ var abc : String? = null
 
 ### you can have nullable/optional variables declared with val, but it makes more sense with var (if lifetime updates)
 
-`val` is good for single assignment. `var` is good for multiple assignments
+`val` is good for single assignment (does not have to be immediate initializzer). `var` is good for multiple assignments
 
 ```kt
 fun main() {    
-    val k: String?;
+    val k: String?; 
+    val j: String;
+    j = "hey";
     k = null; // First assignment is ok!
     // k = "hi"; // Error!
     
@@ -28,9 +32,9 @@ fun main() {
 }
 ```
 
-### lateinit var preferred for onetime late initialization
+### lateinit var preferred for onetime late initialization of non-null values
 
-Use the lateinit keyword for the field to avoid needing to declare it nullable. (one time late initialization use case)
+Use the lateinit keyword for the field to avoid needing to declare it nullable. (one time late initialization use case). This is useful when you don’t want to initialize a variable immediately but want to avoid null checks when accessing it later.
 Can be used for class member fields or also function level variables.
 
 ```kt
@@ -84,6 +88,12 @@ fun main() {
 Why?
 https://discuss.kotlinlang.org/t/why-cant-one-use-lateinit-with-nullable-types/19992
 https://gyurigrell.com/2018/08/lateinit-modifier-is-not-allowed/
+
+* What if I try to access lateinit variable before init?
+
+A lateinit variable in Kotlin is a variable that is not initialized when it is declared. It must be initialized before it is used. If you try to use a lateinit variable before initializing it, you will get a `UninitializedPropertyAccessException exception`.
+
+**The default value of a lateinit variable in Kotlin is not defined**
 
 ### Null checking 
 
@@ -229,4 +239,18 @@ private class SynchronizedLazyImpl<out T>(initializer: () -> T, lock: Any? = nul
 
     private fun writeReplace(): Any = InitializedLazyImpl(value)
 }
+```
+
+
+## Least resttrictive to most restrictive variable declarations
+
+```kt
+lateinit var abc: String? // can change once assigned, but cannot use before assignment
+lateinit var abc: String // can change to non-null values once assigned, but cannot use before assignment 
+// all below must be assigned/initialized in scope before use
+// auto assignment to null never happens, null init/assignment must also be explicit!
+var abc: String? // both variable and value can change be null
+var abc: String // variable can change but held value cannot be null
+val abc: String? // one time assignment, can be null or non-null
+val abc: String // one time non-null assignment
 ```

@@ -48,6 +48,17 @@ for (n in 100 downTo 1) {
 }
 ```
 
+
+### A read only val property can hold a mutable object
+
+`val` variables cannot be reassigned, but they can point to mutable objects
+
+```kt
+val list = mutableListOf()
+list.add(4)
+print(list)
+```
+
 ## Common Idioms
 
 Function Syntax:
