@@ -26,3 +26,30 @@ class PropertyExample() {
 
 ## val can only have getter, var can have both getter/setter
 
+## properties with getters cannot be smart casted
+
+Since getter might result in any value on every invocation, the control flow cannot be narrowed down by if guards, and smart casts cannot be done on properties with getters
+
+**You cannot use if/else etc with properties defined by getters!**
+
+```kt
+class Person {
+    val name: String? = "Marton"
+    val surname: String = "braun"
+
+    val fullName: String?
+        get() = name?.let { "$it $surname"}
+    val fullName2: String? = name?.let { "$it $surname" }
+
+    fun tryNames(){
+
+        if (fullName != null) {
+            // Smart cast to 'String' is impossible, because 'fullName' is a property that has open or custom getter
+            println(fullName.length) // not possible because getter may return null here and break cast
+        }
+        if(fullName2 != null) {
+            println(fullName2.length)
+        }
+    }
+}
+```
