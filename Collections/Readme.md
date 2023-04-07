@@ -79,3 +79,14 @@ you cannot have multiple keys for that you need MultiMap (e.g. from Guava librar
 Adding multiple key, it will override value for previously added key.
 
 Alternatively maintain list of values per key.
+
+
+## What is the difference between java.util.ArrayList and java.utils.Arrays.ArrayList (private) ?
+
+`java.util.ArrayList` is a full fledge array list that supports mutablity ,e.g. adding elements and all list operations as well. It is a public class
+
+`java.util.Arrays.ArrayList` is a private class within `java.utils.Arrays`, it implements `List`, but only in a immutable fashion, i.e. it does not have `add` methods. an instance of this type is returned when we call `java.util.Arrays.asList(T... a)`
+
+https://github.com/openjdk/jdk/blob/master/src/java.base/share/classes/java/util/ArrayList.java#L109
+
+https://github.com/openjdk/jdk/blob/master/src/java.base/share/classes/java/util/Arrays.java#L4225
