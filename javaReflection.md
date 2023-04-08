@@ -1,10 +1,33 @@
 
 
+most notes from https://learning.oreilly.com/videos/java-reflection
+
 ## Class 
 
 Instance of this type represent classes and interfaces in a running Java application.
 
-**Class has no public constructor. Instead Class objects are constructed automatically by the Java Virtual Machine as classes are loaded and by calls to the defineClass method in the class loader**
+**Class class itself has no fields and no public constructor, only methods. Instead Class objects are constructed automatically by the Java Virtual Machine as classes are loaded and by calls to the defineClass method in the class loader**
+
+## What does a value of type Class<?> represent?
+
+1. Classes
+2. Primitive types
+3. Interfaces
+4. Arrays
+5. Void
+
+
+## What can class objects do?
+
+1. Get class name
+2. Find its modifiers - private/abstract/final
+3. Find fields/constructors/methods
+4. Check if it is primitive/array type
+5. Find package
+6. Create instances
+7. Find interfaces this class implements
+8. find super classes
+9. Find generic types and annotations
 
 ## Class for primitive int and others
 
@@ -19,7 +42,8 @@ https://stackoverflow.com/questions/22470985/integer-class-vs-int-class
 Integer.TYPE (not Integer.type, mind you) is just a shortcut for `int.class`.
 
 
-### Getting class reference from an object instantiation of that class
+
+### Getting runtime class reference from an object instantiation of that class
 
 ```java
      void printClassName(Object obj) {
@@ -30,10 +54,15 @@ Integer.TYPE (not Integer.type, mind you) is just a shortcut for `int.class`.
 
 ### Getting class reference using Class literal syntax way (by appending `.class` to type name)
 
+This is compiletime acces of a class.
+
 class literal, formed by taking a type name and appending `.class`; for example, `String.class`.
 
 ```java
 Class<String> c = String.class;
+Class intclass = int.class;
+Class inarrclass = int[].class;
+Class voidclass = void.class;
 ```
 
 

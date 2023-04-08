@@ -3,6 +3,20 @@
 
 https://docs.oracle.com/javase/7/docs/api/java/util/Collections.html#sort(java.util.List)
 
+## Varargs can take arrays
+
+https://docs.oracle.com/javase/8/docs/api/java/util/Arrays.html#asList-T...-
+
+```
+            // Creating Arrays of String type
+            String a[]
+                = new String[] { "A", "B", "C", "D" };
+ 
+            // Getting the list view of Array
+            List<String> list = Arrays.asList(a);
+
+```
+
 ## Java 8 way of converting Integer List to int array
 
 ```java
