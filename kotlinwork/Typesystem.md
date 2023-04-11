@@ -84,7 +84,7 @@ val t: Number = j; // Implicit upcast from Int to Number
 
 ## Safe nullable cast operator `as?`
 
-Safer alternative to `as` operator, as you get null return value instead of classcastexception.
+Safer alternative to `as` operator, as **you get null return value instead of classcastexception.**
 
 **returns null on failure to cast, so receiving type must be nullable**
 Note that despite the fact that the right-hand side of `as?` is a non-null type `String`, 

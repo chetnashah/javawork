@@ -135,10 +135,21 @@ Provides a default value for a nullish variable
 var b: String? = null
 var j = b ?: "hola" // j is now hola
 ```
-**Similar to nullish coaelescing operator in JS: `??`**
+**Same as nullish coaelescing operator in JS and Swift: `??`**
 
 If the expression to the left of `?:` is not `null`, the Elvis operator returns it, 
 otherwise it returns the expression to the right.
+
+`return` and `throw` with elvis operator:
+```
+fun doSomething(a: Int?) {
+    var b = a ?: throw SomeException("Expected a to be defined")
+}
+
+fun doSomething2(a: Int?) {
+    var b = a ?: return // early return
+}
+```
 
 #### Non-null assertion operator (!!) - May cause NPEs
 
@@ -157,7 +168,7 @@ val l = b!!.length
 
 `arguments: Bundle?`, so it must be either surrounded by null check or `?.let` with a lambda where nullable variable can be referred via `it`.
 
-```
+```kotlin
 override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
@@ -253,4 +264,45 @@ var abc: String? // both variable and value can change be null
 var abc: String // variable can change but held value cannot be null
 val abc: String? // one time assignment, can be null or non-null
 val abc: String // one time non-null assignment
+```
+
+
+## Nullability of type parameters
+
+Type parameter `T` always includes nullable also, even without `?`.
+So by default `T` is inferred as `Any?`, if you want to restrict to non-null explicitly add upper bound of `Any`.
+```kotlin
+// default inference: T = Any?
+fun <T> printHashCode(t: T) {
+    println(t?.hashCode())
+}
+printHashCode(null) // ok
+
+// see upper bound of T is non-nullable Any
+fun <T : Any> printHashCode2(t: T) {
+    println(t.hashCode())
+}
+```
+
+## Extensions for nullable types
+
+**You can have extensions of nullable types** where you can chck if `this` is null or not.
+
+An interesting side effect: No need of safe call, the receiver extension will take care of check `this` being null or not.
+
+There are some usecasese 
+
+```
+// receiver is nullable, inside it check for this is null or not!
+fun String?.isBlankOrNull() {
+    if(this == null || this == "") {
+        return true;
+    }
+    return false;
+}
+
+var str: String? = null
+if(str.isBlankOrNull()) { // Note no need of safe call
+    println("str was null")
+}
 ```
