@@ -1,5 +1,28 @@
 
+### Any and Any?: the root types
 
+* `Any` is the super type of all non-nullable types, including primitives like `Int`. Since `Any` is a reference type, autoboxing from `Int` to `Integer` will happen when assigning to variable with type `Any`.
+* `Any?` is the super type of all types!
+* Under the hood, `Any` type corresponds to `java.lang.Object`
+
+### Unit type: Java's void in Kotlin
+
+`Unit` is a full fledged type, and unlike `void`, it can be used as type parameter.
+Functions that do not return anything, implicitly return `Unit`.
+
+Here is a good usecase":
+```kt
+interface<T> Processor{
+    fun process(): T
+}
+
+class NoResultProcessor: Processor<Unit> {
+    fun process() {
+        // do stuff
+        // no need to return anything
+    }
+}
+```
 
 ### No distinction between primitive and reference types
 
@@ -174,4 +197,33 @@ https://kotlinlang.org/docs/operator-overloading.html#comparison-operators
 
 `a..b` transforms to `a.rangeTo(b)`
 
-`
+
+## Platform types and java interop
+
+* Java primitive types like `int` etc become non-null types `Int` because they cannot hold null values.
+By the same reasoning, nullable types in kotlin like `Int?` cannot be stored with java primitive types, because Java primitive types cannot hold null values. That means when you use nullable version of primitive type in Kotlin, it compiles down to corresponding wrapper type like `Integer` in Java.
+
+e.g.
+```kt
+fun abc() {
+    var j : Int? = null;
+    var k: Int = 1;
+}
+```
+gets compiled to following Java code
+```java
+public static final void abc() {
+  Integer j = null;
+  int k = 1;
+}
+```
+
+### Boxed primitives types will be used for collections
+
+E.g. following list will used boxed types i.e. `Int` compiles to `Integer` internally for int primitives inside a collection.
+```kt
+val list = listOf(1,2,3);
+```
+
+
+

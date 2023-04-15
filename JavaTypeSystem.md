@@ -283,3 +283,10 @@ class MyNode extends Node {
 ```
 The bridge method `MyNode.setData(object)` delegates to the original `MyNode.setData(Integer)` method. As a result, the `n.setData("Hello");` statement calls the method `MyNode.setData(Object)`, and a `ClassCastException` is thrown because "Hello" can't be cast to Integer.
 
+### Void wrapper type - `java.lang.Void`
+
+Only one value allowed for reference type `java.lang.Void`, it is `null`.
+
+https://stackoverflow.com/questions/10839042/what-is-the-difference-between-java-lang-void-and-void
+
+Typically it is useful in generics.
