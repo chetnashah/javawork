@@ -140,7 +140,7 @@ https://kotlinlang.org/docs/typecasts.html#type-erasure-and-generic-type-checks
 
 ## Nothing type
 
-`Nothing` type can be used as a return type for a function that always throws an exception. 
+`Nothing` type can be used as a return type for a function that always throws an exception (never returns). 
 
 When you call such a function, the compiler uses the information that the execution doesn't continue beyond the function.
 
@@ -200,6 +200,10 @@ https://kotlinlang.org/docs/operator-overloading.html#comparison-operators
 
 ## Platform types and java interop
 
+Types defined in Java code are seen as platform types. Kotlin does not have nullability info of these platform types.
+
+**Compiler allows platform types to be treated as either nullable or non-null**
+
 * Java primitive types like `int` etc become non-null types `Int` because they cannot hold null values.
 By the same reasoning, nullable types in kotlin like `Int?` cannot be stored with java primitive types, because Java primitive types cannot hold null values. That means when you use nullable version of primitive type in Kotlin, it compiles down to corresponding wrapper type like `Integer` in Java.
 
@@ -226,4 +230,11 @@ val list = listOf(1,2,3);
 ```
 
 
+## Array is an explicit type in Kotlin
+
+it has a type parameter i.e. `Array<T>`.
+
+To represent arrays of primitive types, Kotlin provides a number of separate classes, one for each primitive type. For example, an array of values of type `Int` is called `IntArray`. 
+
+For other types, Kotlin provides `ByteArray`, `CharArray`, `Boolean-Array`, and so on. All of these types are compiled to regular Java primitive type arrays, such as `int[]`, `byte[]`, `char[]`, and so on
 

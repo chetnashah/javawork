@@ -1,5 +1,46 @@
 
 
+## Collection interface
+
+```kt
+interface Collection {
+    fun iterator()
+    size
+    fun contains()
+}
+```
+These interfaces are for compile time/static type use checking, it may be pointing to a mutable collection underneath.
+
+### Mutable collection interface
+
+```kt
+interface MutableCollection: Collection {
+    fun add()
+    fun remove()
+    fun clear()
+}
+```
+
+
+### Things to think about
+
+1. is collection nullable? e.g. `List<String>?`
+2. Are collection elements nullable? e.g. `List<String?>`
+3. Will the collection be modified? e.g. `MutableList<String>` or `MutableList<String?>`
+
+### Kotlin collection hierarchy
+
+![Kotlin collection hierarchy](images/kotlincollectionhierarchy.png)
+
+Kotlin sees `java.util.ArrayList` and `java.util.HashSet` as instances of `MutbaleList` and `MutaleSet` respectively.
+
+
+## Java Interop
+
+Java does not distinguish between read only and mutable collections. and it can modify readonly collections passed from Kotlin side.
+
+
+
 ## Sequence
 
 https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.sequences/-sequence/
@@ -111,3 +152,10 @@ operator fun <T : Comparable<T>> T.rangeTo(
 ### Convert Set to List
 
 `set.toList()`
+
+
+## Read only collection interface type isn't necessary immutable
+
+If you’re working with a variable that has a read-only interface type e.g. `List`, this can be just one of the many references to the same mutable collection `MutableList`.
+
+
