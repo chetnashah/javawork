@@ -24,3 +24,37 @@ hard to well maintain and hard to test
 Should be used whenever logic needs to be reused or shared across independent projects.
 Properly structuring code into class and packages, cacheable and versioning.
 
+
+
+## How to check if plugin-id refers to buildSrc Plugin? (Check definiton of id in buildSrc gradle)
+
+**It is possible that a plugin id refers to a buildSrc plugin, if the plugin is not published on any repository.**
+
+Plugin present in the `buildSrc` can be referred by `id` declared in that plugin.
+
+e.g.
+Plugin Definition:
+```kt
+// buildSrc/build.gradle
+plugins {
+    id 'java-gradle-plugin' // needed for authoring plugins
+}
+
+// defining this plugin metadata/identifiers
+gradlePlugin {
+    plugins {
+        myPlugins {
+            id = 'my-plugin'
+            implementationClass = 'my.MyPlugin'
+        }
+    }
+}
+```
+
+usage in a project via id
+```kt
+// app/build.gradle
+plugins {
+    id 'my-plugin' // referring to a plugin inside buildSrc by id
+}
+```
