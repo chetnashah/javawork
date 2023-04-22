@@ -15,6 +15,23 @@ println(arr::class.java.simpleName);
 
 ## Ways to create Array
 
+### Array Constructor with size and lambda
+
+```kt
+val arr = Array<Int>(10, { i -> i * 2 });
+
+// or with trailing lambda syntax
+val arr2 = Array<Int>(10) { i -> i * 2 }
+```
+
+### Array of nullables, with `arrayOfNulls<T>` with size
+
+It is necessary to give type parameter.
+
+```kt
+val arr = arrayOfNulls<Int>(22); // arr: Array<Int?>
+```
+
 ### arrayOf and primitiveArrayOf methods
 
 Similar to `listOf` methods which return lists, we have arrayOf methods which return Arrays.

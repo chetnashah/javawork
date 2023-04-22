@@ -58,3 +58,10 @@ plugins {
     id 'my-plugin' // referring to a plugin inside buildSrc by id
 }
 ```
+
+## What are extensions introduced by plugins?
+
+`Extensions` are way to add additional properties and methods on an object (usually project). You can also have extension on plugin to configure plugin.
+
+Example - Java Plugin adds an extension named `sourceSets`, that allows us to configure source sets for our project. That is, usually it is a block to configure the task/project via extension block.
+
