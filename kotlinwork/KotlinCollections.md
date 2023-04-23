@@ -114,6 +114,8 @@ for (i in 100 toward 0) {
 
 **Ranges can be used for any data type that is Comparable**
 
+**Ranges are not iterable by defualt, iterable needs to be explicitly implemented on type separately for type to be used with for-in on a type with range** - https://kotlinlang.org/docs/ranges.html#progression
+
 `..` is an operator function with name `rangeTo(that)` which is **called on the start instance**, and given the value of `end`. 
 
 `Range<T>` requires `<T : Comparable>`, i.e. it needs parameters to be comparable. 
@@ -142,6 +144,16 @@ operator fun <T : Comparable<T>> T.rangeTo(
 ): ClosedRange<T>
 ```
 
+## Progression is same as Iterable
+
+To iterate over a range, it needs to implement Progression interface
+
+
+
+```
+open class IntProgression : Iterable<Int>
+```
+
 
 ## Useful extensions
 
@@ -159,3 +171,14 @@ operator fun <T : Comparable<T>> T.rangeTo(
 If you’re working with a variable that has a read-only interface type e.g. `List`, this can be just one of the many references to the same mutable collection `MutableList`.
 
 
+
+## iterators can be defined as extension on a type
+
+e.g. string was made iterable by defining `iterator()` extension function on `CharSequence` type.
+
+```kt
+operator fun CharSequence.iterator(): CharIterator
+
+// usage
+for(s in "afaf") {...}
+```

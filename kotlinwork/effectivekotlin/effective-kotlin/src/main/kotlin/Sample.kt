@@ -12,6 +12,8 @@ fun abc() {
 
     println(Arrays.toString(arr))
 
+    println(3 in arrayOf(1,2,3))
+
     println(Arrays.toString(arr2))
 
 }

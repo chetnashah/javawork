@@ -44,6 +44,20 @@ suspend fun tryCoroutineIncCounter() {
 suspend fun main(args: Array<String>) {
     println("Hello World!")
 
+    var b1 = BankAccount()
+    b1.deposit(22.0)
+
+    var b2 = BankAccount()
+    b2.deposit(29.0)
+
+    val kk= b1..b2
+
+    println(kk)
+
+    for(k in kk) {
+        println("k = ${k}")
+    }
+
     abc()
 
     // Try adding program arguments via Run/Debug configuration.

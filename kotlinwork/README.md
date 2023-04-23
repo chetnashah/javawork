@@ -48,6 +48,18 @@ for (n in 100 downTo 1) {
 }
 ```
 
+## Ranges are not iterable, they are just a start,end pair!
+
+If you want to make your range iterable override following function via extension
+
+```kt
+// defining an iterator for MyType's ClosedRange to help iteration with .. operator
+operator fun ClosedRange<MyType>.iterator(): Iterator<MyType> = 
+  object: Iterator<MyType> {
+    hasNext() { // impl }
+    next() { // impl }
+  };
+```
 
 ### A read only val property can hold a mutable object
 

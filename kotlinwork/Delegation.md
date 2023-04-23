@@ -3,6 +3,37 @@ Zero boilerplate needed in kotlin.
 
 https://www.youtube.com/watch?v=MfJB-JhRAoQ
 
+## prop by Delegate()
+
+**Property Delegation** using `by` statement, all access of get/set to property are forwarded to `Delegate`
+
+The `Delegate` object must have following `operator fun` methods:
+1. `setValue` 
+2. `getValue`
+
+These can be methods or extensions.
+
+This is how it works behind the scenes, compiler generates a hidden property with 
+
+```kt
+class MyClass {
+    val prop: Type by Delegate()
+}
+```
+gets converted to following:
+```kt
+class MyClass {
+    private val delegate = Delegate()
+    val prop: Type
+        get() {
+            delegate.getValue()
+        }
+        set(v: Type) {
+            delegate.setValue(v)
+        }
+}
+```
+
 ## Supports inheritance delegation Derived -> Base without any boiler plate code
 
 ### Need a delegate interface and a delegate object
@@ -159,3 +190,36 @@ fun main() {
 
 
 
+## Easily achieve observable properties by builtin Delegates.Observable
+
+https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.properties/-delegates/observable.html
+
+```kt
+var observed = false
+var max: Int by Delegates.observable(0) { property, oldValue, newValue ->
+    observed = true
+}
+
+println(max) // 0
+println("observed is ${observed}") // false
+
+max = 10
+println(max) // 10
+println("observed is ${observed}") // true
+```
+
+It's usage in a real class
+```kt
+class Person(
+    val name: String, age: Int, salary: Int
+) : PropertyChangeAware() {
+
+    private val observer = {
+        prop: KProperty<*>, oldValue: Int, newValue: Int ->
+        changeSupport.firePropertyChange(prop.name, oldValue, newValue)
+    }
+
+    var age: Int by Delegates.observable(age, observer)
+    var salary: Int by Delegates.observable(salary, observer)
+}
+```

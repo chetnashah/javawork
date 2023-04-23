@@ -54,3 +54,18 @@ i.e.
 fun foo(name: String, number: Int = 42, toUpperCase: Boolean = false) =
         (if (toUpperCase) name.uppercase() else name) + number
 ```
+
+
+## Kotlin has trailing lambdas (just like swift)
+
+If a lambda/anonymous function is last argument of a function, it can be moved out of function call
+
+e.g.
+```kt
+val itemPricesDoubled = itemPrices.map { itemPrice -> itemPrice * 2 }
+```
+
+If lambda is the only argument in the call, the parentheses can be omitted entirely
+```kt
+run { println("...") }
+```
