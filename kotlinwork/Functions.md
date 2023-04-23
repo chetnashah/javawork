@@ -63,6 +63,11 @@ If a lambda/anonymous function is last argument of a function, it can be moved o
 e.g.
 ```kt
 val itemPricesDoubled = itemPrices.map { itemPrice -> itemPrice * 2 }
+
+ints.filter {
+    val shouldFilter = it > 0
+    shouldFilter
+}
 ```
 
 If lambda is the only argument in the call, the parentheses can be omitted entirely
