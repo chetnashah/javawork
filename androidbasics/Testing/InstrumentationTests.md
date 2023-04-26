@@ -136,6 +136,26 @@ specify `ActivityScenarioRule` to get an activity launched for test:
     val activity = ActivityScenarioRule(MainActivity::class.java)
 ```
 
+https://developer.android.com/training/testing/instrumented-tests/androidx-test-libraries/rules#activityscenariorule
+
+Class of ActivityScenarioRule - `androidx.test.ext.junit.rules.ActivityScenarioRule`
+
 ## Reducing flakiness
 
 https://developer.android.com/training/testing/espresso/idling-resource
+
+### Useful base TestRule "ExternalResource" for rules that have a `before`/`after` phase
+
+`ExternalResource` is an abstraction over plain `TestRule` exposing `before`/`after` methods instead of plain old `apply` of `TestRule`.
+
+https://cs.android.com/android/platform/superproject/+/master:external/junit/src/main/java/org/junit/rules/ExternalResource.java;l=41?q=ExternalResource&sq=
+
+ActivityScenarioRule is based on `ExternalResource` and has instructions in `before` and `after` instead of `apply`.
+
+### ActivityTestRule
+
+TestRule help us modify how tests are run without modifying the runner, e.g. `ActivityTestRule` will help instrumentation start activity as per
+
+
+
+https://cs.android.com/androidx/android-test/+/master:runner/rules/java/androidx/test/rule/ActivityTestRule.java;l=294?q=activitytestrule - check `apply` method.

@@ -1,5 +1,8 @@
 
 
+JUnit (and probably all other similar frameworks) uses reflection to identify and call your test methods.
+E.g. methods annotated with `@Test` are found using reflection
+
 ### JUNit test
 
 An annotation for method that has to be tested.
@@ -14,7 +17,8 @@ our test code is run.
 ### JUnit TestRule
 
 Affects all tests!
-A `TestRule` is an change in how a test method/methods is run and reported. (enhance tests by running some code around a test case execution)
+**A `TestRule` is an change in how a test method/methods is run and reported. (enhance tests by running some code around a test case execution)**, this is a better alternative to inheriting/extending TestRunner!
+
 It is an interface with a single method `apply : Statement -> Statement`.
 A `TestRule` may add additional checks that cause a test to either fail/pass, or perform necessary setup/cleanup or observe execution to report elsewhere.
 The `Statement` that executes the method or suite is passed to each annotated `Rule` in turn, and each may return a substitute or modified `Statement` which is passed to
@@ -49,14 +53,14 @@ Common TestRules: `ErrorCollector`: collect multiple error in one test method
 
 ### JUnit Runner
 
-A `Runner` runs tests and notifies a `RunNotifier` of significant events as it does so. You will need to subclass `Runner` when using `RunWith` to invoke a custom runner. When creating a custom runner, in addition to implementing the abstract methods here you must also provide a constructor that takes as an argument the Class containing the tests.
+A `Runner` runs tests and notifies a `RunNotifier` of significant events as it does so. You will need to subclass `Runner` when using `RunWith` to invoke a custom runner. When creating a custom runner, **in addition to implementing the abstract methods here you must also provide a constructor that takes as an argument the Class containing the tests.**
 
 The default runner implementation guarantees that the instances of the test case class will be constructed immediately before running the test and that the runner will retain no reference to the test case instances, generally making them available for garbage collection.
 
 ```java
 public class MinimalRunner extends Runner {
  
-    public MinimalRunner(Class testClass) {
+    public MinimalRunner(Class testClass) {// testClass contains all tests
     }
  
     public Description getDescription() {
