@@ -7,6 +7,18 @@ These tests run on actual devices, not in jdk or laptop. although they will run 
 
 The Android Plug-in for Gradle builds a test app based on your test code, then loads the test app on the same device as the target app.
 
+## Instrumentation explained
+
+Android instrumentation is a set of control methods or "hooks" in the Android system. These hooks control an Android component independently of its normal lifecycle. They also control how Android loads applications.
+
+Normally, an Android component runs in a lifecycle determined by the system. For example, an Activity object's lifecycle starts when the Activity is activated by an Intent. The object's onCreate() method is called, followed by onResume(). When the user starts another application, the onPause() method is called. If the Activity code calls the finish() method, the onDestroy() method is called. The Android framework API does not provide a way for your code to invoke these callback methods directly, but you can do so using instrumentation.
+
+Also, the system runs all the components of an application into the same process. You can allow some components, such as content providers, to run in a separate process, but you can't force an application to run in the same process as another application that is already running.
+
+With Android instrumentation, though, you can invoke callback methods in your test code. This allows you to run through the lifecycle of a component step by step, as if you were debugging the component. The following test code snippet demonstrates how to use this to test that an Activity saves and restores its state:
+
+
+
 ## Testing options for UI testing
 
 1. Espresso - https://developer.android.com/training/testing/espresso
