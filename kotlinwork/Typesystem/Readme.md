@@ -1,4 +1,8 @@
 
+### Type parameters
+
+Kotlin always requires type arguments to be either specified explicitly or inferred by the compiler
+
 ### Any and Any?: the root types
 
 * `Any` is the super type of all non-nullable types, including primitives like `Int`. Since `Any` is a reference type, autoboxing from `Int` to `Integer` will happen when assigning to variable with type `Any`.
