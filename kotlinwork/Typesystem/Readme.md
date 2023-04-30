@@ -188,3 +188,26 @@ To represent arrays of primitive types, Kotlin provides a number of separate cla
 
 For other types, Kotlin provides `ByteArray`, `CharArray`, `Boolean-Array`, and so on. All of these types are compiled to regular Java primitive type arrays, such as `int[]`, `byte[]`, `char[]`, and so on
 
+## Is it possible to use type arguments in `is` checks?
+
+No, due to type erasure. Ues `*` as type parameter
+```kt
+    val ls: List<Int> = listOf();
+    if(ls is List<String>) { // Error!: Cannot check for instance of erased type: List<String>
+        return 0.0;
+    }
+    if(ls is List<*String*>) { // Correct!
+        return 0.0;
+    }
+
+```
+
+## Explicitly passing type parameters
+
+```kt
+fun <T> myfun() {
+    // do something
+}
+
+myFun<String>(); // explicitly passing type parameter T = String
+```

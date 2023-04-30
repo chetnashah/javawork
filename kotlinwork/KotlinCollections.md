@@ -182,3 +182,13 @@ operator fun CharSequence.iterator(): CharIterator
 // usage
 for(s in "afaf") {...}
 ```
+
+## Many collection functions are inlined!
+
+e.g. Iterable.forEach
+
+```kt
+public inline fun <T> Iterable<T>.forEach(action: (T) -> Unit): Unit {
+    for (element in this) action(element)
+}
+```

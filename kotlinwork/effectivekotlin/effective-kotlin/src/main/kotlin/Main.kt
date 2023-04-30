@@ -41,24 +41,53 @@ suspend fun tryCoroutineIncCounter() {
     print(num)
 }
 
-suspend fun main(args: Array<String>) {
-    println("Hello World!")
+ fun ordinaryFunction(block: () -> Unit) {
+    println("hi!")
+}
 
-    var b1 = BankAccount()
-    b1.deposit(22.0)
-
-    var b2 = BankAccount()
-    b2.deposit(29.0)
-
-    val kk= b1..b2
-
-    println(kk)
-
-    for(k in kk) {
-        println("k = ${k}")
+fun foo2() {
+    listOf(1, 2, 3, 4, 5).forEach {
+        if (it == 3) return // non-local return directly to the caller of foo()
+        print(it)
     }
+    println("this point is unreachable")
+}
 
-    abc()
+fun <T> addAnswer(list: List<Any>) {
+    list.forEach { println("it = $it") }
+}
+
+
+fun foo() {
+    ordinaryFunction {
+        return@ordinaryFunction // ERROR: cannot make `foo` return here
+    }
+}
+
+suspend fun main(args: Array<String>) {
+    val ls = mutableListOf("af","Adf")
+addAnswer(ls)
+//    println("Hello World!")
+//
+//    var b1 = BankAccount()
+//    b1.deposit(22.0)
+//
+//    var b2 = BankAccount()
+//    b2.deposit(29.0)
+//
+//    val kk= b1..b2
+//
+//    println(kk)
+//
+//    for(k in kk) {
+//        println("k = ${k}")
+//    }
+//
+//    abc()
+
+    val l: LockIt = LockIt();
+    lockMe(l, { println("Hello body!")})
+
 
     // Try adding program arguments via Run/Debug configuration.
     // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
