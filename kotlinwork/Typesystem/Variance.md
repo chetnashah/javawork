@@ -42,3 +42,16 @@ fun addAnswer(list: List<Any>) {
 val ls = mutableListOf("af","Adf")
 addAnswer(ls)
 ```
+
+#### MutableList is invariant, List is co-variant
+
+In java, all classes are invariant. but in kotlin, mutability factors in.
+
+
+## Co variance
+
+Co-variance means preserved subtyping relation when more types become more composite.
+e.g. `A <: B` -> `List<A> <: List<B>`
+
+### Declaring co-variant generic classes in Kotlin - `out` keyword
+
