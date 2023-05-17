@@ -242,3 +242,20 @@ and result in `A->B` and call `B` activity's `onNewIntent()`.
 It is similar to singleTask except that **no other activities will be created in the same task**. If another Activity is called from this kind of Activity, a new Task would be automatically created to place that new Activity.
 
 If the same activity is already present in an isolated task, it gets `onNewIntent()` instead of double instances.
+
+
+## onActivityResult
+
+The call to `onActivityResult` happens before onResume, actually (see the docs).
+
+https://developer.android.com/reference/android/app/Activity#onActivityResult(int,%20int,%20android.content.Intent)
+
+https://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/java/android/app/ActivityThread.java;l=4738;bpv=1;bpt=1?q=delivernewintent
+
+## onNewIntent
+
+Whenever we doa `startActivity` to an activity that is supposed to be singleTop/singleTask, then that activity is brought to front with the new intent delivered in `onNewIntent(intent)` callback. Note, `getIntent()` will still return the original intent that started the activity, if you want to change that, call `setIntent()`.
+
+**Note** - `onNewIntent` is always called before `onResume` but after `onStart`.
+
+e.g. https://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/java/android/app/ActivityThread.java;l=4738;bpv=1;bpt=1?q=delivernewintent
