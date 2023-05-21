@@ -192,3 +192,15 @@ public inline fun <T> Iterable<T>.forEach(action: (T) -> Unit): Unit {
     for (element in this) action(element)
 }
 ```
+
+
+## How to use stacks in Kotlin
+
+`ArrayDeque` is a multi utility class that is useful for stack:
+Kotlin 1.3.70 introduced the kotlin.collections.ArrayDeque class, which functions as both a queue and a stack, like Java's java.util.Deque (Deque meaning "double-ended queue"). It was created out of a necessity for a multiplatform ArrayDeque implementation.
+
+```kt
+val stack = ArrayDeque(listOf(1, 2, 3)) // stack: [1, 2, 3]
+stack.addLast(0)                        // stack: [1, 2, 3, 0]         (push)
+val value = stack.removeLast()          // value: 0, stack: [1, 2, 3]  (pop)
+```
