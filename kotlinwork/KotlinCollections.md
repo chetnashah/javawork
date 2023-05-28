@@ -106,6 +106,21 @@ for (i in 100 toward 0) {
 }
 ```
 
+## Creating normal array with size
+
+```kt
+var arr = IntArray(size) // construct with only size
+```
+
+
+## Creating 2d array in Kotlin
+
+```kt
+var matrix: Array<IntArray> = Array(height) { IntArray(width) }
+
+// from an existing grid
+var ansArray = Array(grid.length) { IntArray(grid[0].length) } 
+```
 
 ## IntArray has `.size` and not `.length`
 
