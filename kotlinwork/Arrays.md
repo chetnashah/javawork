@@ -65,3 +65,6 @@ All Arrays will have a `arr.toList()` method. Autoboxing happens by default.
 
 `List` has a useful extension method `toTypedArray()` to convert from `List` -> `Array`.
 
+## Array<Int> vs IntArray
+
+`Array<Int>` is an `Integer[]` under the hood, while `IntArray` is an `int[]`. 
