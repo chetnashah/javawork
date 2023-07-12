@@ -2,6 +2,14 @@
 
 Read: http://www.bracha.org/mirrors.pdf
 
+## 
+
+Annotation processing is a standard feature of the Java SE platform, using standard APIs. **Annotation processors are executed by javac while compiling code, and may even create additional files to be compiled.** Despite the name, annotation processors are not restricted to just processing annotations, and may be used to analyze any classes involved in a compilation, whether found in source form or compiled class form, and whether or not they contain any annotations. An annotation processor may also access the documentation comments for declarations found in source files: it may access the comment as either raw text or as a parsed DocCommentTree.
+
+**Annotation processing occurs at a specific point in the timeline of a compilation, after all source files and classes specified on the command line have been read, and analyzed for the types and members they contain, but before the contents of any method bodies have been analyzed.**
+
+
+
 ## Where can annotations be applied?
 
 Annotations can be applied to declarations: declarations of `classes`, `fields`, `methods`, and other program elements.

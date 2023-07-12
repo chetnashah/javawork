@@ -1,4 +1,16 @@
 
+## Constructors
+
+**Superclass should always be initialized/constructed before derived class**
+
+https://stackoverflow.com/a/527069/5130114
+
+1. If you do not make a constructor, the default empty constructor is automatically created. - https://docs.oracle.com/javase/specs/jls/se7/html/jls-8.html#jls-8.8.9
+
+2. **If any constructor does not explicitly call a super or this constructor as its first statement, a call to super() is automatically added.** - https://docs.oracle.com/javase/specs/jls/se7/html/jls-8.html#jls-8.8.7
+
+
+
 ## Abstract classes
 
 **Methods may or not be abstract, properties cannot be marked abstract.**
