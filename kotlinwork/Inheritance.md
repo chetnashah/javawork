@@ -1,4 +1,5 @@
 
+
 ## All classes implicitly inherit from **Any**
 
 ```kt
@@ -19,6 +20,10 @@ class Example // Implicitly inherits from Any
 
 Always: **derived class must be initialized first (constructors, member init included)**
 
+In Kotlin, this must be explicit, but in java, same behavior is implicit is implicit via compiler adding super construction if missing:
+Refer [here](../inheritance.md#constructors)
+
+
 If derived class has a primary constructor, **base class must be initialized in that primary constructor according to its parameters**
 
 ```kt
@@ -31,6 +36,18 @@ If derived class has no primary constructor, secondary constructors must delegat
 class MyView: View {
     constructor(ctx: Context): super(ctx) // delegate to superclass constructor first
     constructor(ctx: Context, attrs:AttributeSet) : super(ctx, attrs)
+}
+```
+
+zero arg constructor example:
+```kt
+open class Shape {
+    open val vertexCount: Int = 0
+}
+
+// notice the zero arg superclass constructor call
+class Rectangle : Shape() {
+    override val vertexCount = 4
 }
 ```
 
