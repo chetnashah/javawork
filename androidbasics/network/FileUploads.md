@@ -62,7 +62,7 @@ As changes like scoped storage increase the need to be able to work with content
 
 **If you have a need to do a multipart form upload, and your content is identified by a Uri instead of a File, the InputStreamRequestBody that Jared Burrows created (with help from Jake Wharton) is what you need.**
 
-Introducing Androidism - **OkHttp knows nothing about Uri or ContentResolver or other Android SDK classes. But RequestBody is an abstract class, so we can create our own implementation that can use Android SDK classes for our own Android projects.**
+Introducing Androidism - **OkHttp knows nothing about Uri or ContentResolver or other Android SDK classes. But RequestBody is an abstract class, so we can create our own implementation that can use Android SDK classes for our own Android projects. Intents like ACTION_GET_DOCUMENT or ACTION_GET_CONTENT tend to return content URIs**
 
 We create our own `RequestBody` that can copy all data from a `Uri` by creating an input stream by opening it via Contentresolver.
 And copying all data from that InputStream into itself.
