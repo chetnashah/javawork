@@ -64,3 +64,48 @@ As changes like scoped storage increase the need to be able to work with content
 
 Introducing Androidism - **OkHttp knows nothing about Uri or ContentResolver or other Android SDK classes. But RequestBody is an abstract class, so we can create our own implementation that can use Android SDK classes for our own Android projects.**
 
+We create our own `RequestBody` that can copy all data from a `Uri` by creating an input stream by opening it via Contentresolver.
+And copying all data from that InputStream into itself.
+
+```kt
+class InputStreamRequestBody(
+  private val contentType: MediaType,
+  private val contentResolver: ContentResolver,
+  private val uri: Uri
+) : RequestBody() {
+  override fun contentType() = contentType
+
+  override fun contentLength(): Long = -1
+
+  @Throws(IOException::class)
+  override fun writeTo(sink: BufferedSink) {
+    val input = contentResolver.openInputStream(uri)
+
+    input?.use { sink.writeAll(it.source()) }
+      ?: throw IOException("Could not open $uri")
+  }
+}
+```
+
+Using `InputStreamRequestBody` in a `MultipartBody.Builder`:
+You can create an instance of `InputStreamRequestBody` by passing it a `Uri`,
+ and include it in an `addFormDataPart()` call where the OkHttp recipe shows the one based on the File. 
+
+```kt
+val contentPart = InputStreamRequestBody(type, resolver, content)
+
+val requestBody = MultipartBody.Builder()
+  .setType(MultipartBody.FORM)
+  // TODO add other form elements here
+  .addFormDataPart("something", name, contentPart)
+  .build()
+
+val request = Request.Builder()
+  .url(serverUrl)
+  .post(requestBody)
+  .build()
+
+ok.newCall(request).execute().use { response ->
+  // TODO something with the response
+}
+```
