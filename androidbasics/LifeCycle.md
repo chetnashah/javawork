@@ -11,11 +11,18 @@ Think of the states as nodes of a graph and events as the edges between these no
 
 `Note`: on_pause, we don't say "Paused" state, but we say `STARTED` state. similarly on_stop, we don't say `STOPPED` state, instead we say `CREATED` state.
 
-ON_CREATE, ON_START, ON_RESUME events in this class are dispatched after the LifecycleOwner's related method returns. ON_PAUSE, ON_STOP, ON_DESTROY events in this class are dispatched before the LifecycleOwner's related method is called. For instance, ON_START will be dispatched after onStart returns, ON_STOP will be dispatched before onStop is called. This gives you certain guarantees on which state the owner is in.
+
+For instance, ON_START will be dispatched after onStart returns, ON_STOP will be dispatched before onStop is called. This gives you certain guarantees on which state the owner is in.
 
 ## Events
 
 The lifecycle events that are dispatched from the framework and the Lifecycle class. These events map to the callback events in activities and fragments.
+
+### Event ordering
+
+`ON_CREATE`, `ON_START`, `ON_RESUME` events in this class are dispatched after the LifecycleOwner's related method returns. 
+`ON_PAUSE`, `ON_STOP`, `ON_DESTROY` events in this class are dispatched before the LifecycleOwner's related method is called. 
+
 
 
 ## States
@@ -52,7 +59,7 @@ public interface LifecycleObserver {
 
 ## Interface LifecycleOwner (to get Lifecycle object)
 
-LifecycleOwner is a single method interface that denotes that the class has a Lifecycle. (Examples are `Activity` and `Fragment`).
+LifecycleOwner is a single method interface that denotes that the class has a Lifecycle. (Examples are `SupportActivity` and `Fragment`).
 
 ```java
 public interface LifecycleOwner {
@@ -192,3 +199,5 @@ public class LifecycleRegistry extends Lifecycle {
     private State mState;
 }
 ```
+
+

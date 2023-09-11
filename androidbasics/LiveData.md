@@ -4,14 +4,18 @@ https://medium.com/androiddevelopers/viewmodel-one-off-event-antipatterns-16a1da
 
 https://medium.com/corouteam/exploring-kotlin-coroutines-and-lifecycle-architectural-components-integration-on-android-c63bb8a9156f
 
+https://www.youtube.com/watch?v=bEKNi1JOrNs
+
 **suspend and LiveData seem not to work together**
+
+
 
 ##
 
 LiveData is an **lifecycle aware observable data holder (abstract) class**. 
 LiveData is observable, which means that an observer is notified when the data held by the LiveData object changes.
 
-Unlike a regular observable, **LiveData is lifecycle-aware**, meaning it respects the lifecycle of other app components, such as activities, fragments, or services. 
+Unlike a regular observable (e.g. RXJava Observable), **LiveData is lifecycle-aware**, meaning it respects the lifecycle of other app components, such as activities, fragments, or services. 
 
 The LiveData only updates observers that are in an active lifecycle state such as `STARTED` or `RESUMED`.
 
@@ -47,6 +51,8 @@ fun observe(@NonNull LifecycleOwner owner, @NonNull Observer<Object> observer)
 ```
 The `observe() method takes a LifecycleOwner object`.
 Adds the given observer to the observers list within the lifespan of the given owner.
+
+**It is like saying I want to observe, but respecting this lifecycle component I pass in.**
 
 Example:
 ```kt
