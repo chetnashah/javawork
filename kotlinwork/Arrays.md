@@ -68,3 +68,20 @@ All Arrays will have a `arr.toList()` method. Autoboxing happens by default.
 ## Array<Int> vs IntArray
 
 `Array<Int>` is an `Integer[]` under the hood, while `IntArray` is an `int[]`. 
+
+## Array custom object sorting with `.sortWith Comparator`
+
+```kt
+fun <T> Array<out T>.sortWith(comparator: Comparator<in T>)
+```
+
+Usage
+
+```kt
+var words : Array<String> = arrayOf("abc", "d", "", "ad") 
+words.sortWith { a, b -> 
+    Integer.compare(a.length, b.length);
+}
+println(Arrays.toString(words)) // ["", "d", "ad", "abc"]
+```
+
