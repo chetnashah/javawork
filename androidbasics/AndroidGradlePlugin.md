@@ -1,9 +1,77 @@
 
 Android Studio 4.2 can open projects that use AGP 3.1 and higher provided that AGP is running Gradle 4.8.1 and higher
 
+
+### Where is the source code for Android Gradle plugin?
+
+It actually sits with "Android studio" source code.
+
+https://android.googlesource.com/platform/tools/base/+/studio-master-dev/source.md
+
+The plugin code can be found under `android-studio-master-dev/tools/base`.
+
+Majority of the android gradle plugin source code sits in `tools/base/build-system` (https://cs.android.com/android-studio/platform/tools/base/+/mirror-goog-studio-main:build-system/). This is where you should find tasks defined from android gradle plugin.
+
 ### where to find googles published lib on maven
 
 https://maven.google.com/web/index.html?q=room#androidx.room:room-compiler
+
+### Where are all the common plugins implemented in gradle?
+
+Common android gradle exposed plugins like `com.android.application` , `com.android.library` etc are implemented as below:
+
+The source of truth is at: https://cs.android.com/android-studio/platform/tools/base/+/mirror-goog-studio-main:build-system/gradle-core/build.gradle;l=81
+
+Full list available at: https://cs.android.com/android-studio/platform/tools/base/+/mirror-goog-studio-main:build-system/gradle-core/src/main/java/com/android/build/gradle/internal/plugins/
+
+```
+gradlePlugin {
+    testSourceSets sourceSets.apiTest
+    plugins {
+        comAndroidApplication {
+            id = "com.android.application"
+            implementationClass = "com.android.build.gradle.AppPlugin"
+        }
+        comAndroidLibrary {
+            id = "com.android.library"
+            implementationClass = "com.android.build.gradle.LibraryPlugin"
+        }
+        comAndroidDynamicFeature {
+            id = "com.android.dynamic-feature"
+            implementationClass = "com.android.build.gradle.DynamicFeaturePlugin"
+        }
+        comAndroidAssetPack {
+            id = "com.android.asset-pack"
+            implementationClass = "com.android.build.gradle.AssetPackPlugin"
+        }
+        comAndroidAssetOnlyBundle {
+            id = "com.android.asset-pack-bundle"
+            implementationClass = "com.android.build.gradle.AssetPackBundlePlugin"
+        }
+        comAndroidLint {
+            id = "com.android.lint"
+            implementationClass = "com.android.build.gradle.LintPlugin"
+        }
+        comAndroidTest {
+            id = "com.android.test"
+            implementationClass = "com.android.build.gradle.TestPlugin"
+        }
+        comAndroidFusedLibrary {
+            id = "com.android.fused-library"
+            implementationClass = "com.android.build.gradle.api.FusedLibraryPlugin"
+        }
+        comAndroidSdkLibrary {
+            id = "com.android.privacy-sandbox-sdk"
+            implementationClass = "com.android.build.gradle.api.PrivacySandboxSdkPlugin"
+        }
+        comAndroidKotlinMultiplatform {
+            id = "com.android.kotlin.multiplatform.library"
+            implementationClass = "com.android.build.gradle.api.KotlinMultiplatformAndroidPlugin"
+        }
+    }
+}
+
+```
 
 ### setting AGP version
 

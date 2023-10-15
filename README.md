@@ -26,3 +26,7 @@ javap -c -verbose is more verbose
 ### JNI code for JDK sits in `jdk/src/java.base/share/native/libjava/`
 e.g. `FileInputStream.c` which has native methods implemented 
 for `FileInputStream.java`.
+
+## JDK 17 deprecations
+
+Use MaxMetaspaceSize in place of MaxPermSize and MetaspaceSize in place of PermSize in jdk17
