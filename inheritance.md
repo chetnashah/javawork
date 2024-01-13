@@ -9,7 +9,23 @@ https://stackoverflow.com/a/527069/5130114
 
 2. **If any constructor does not explicitly call a super or this constructor as its first statement, a call to super() is automatically added.** - https://docs.oracle.com/javase/specs/jls/se7/html/jls-8.html#jls-8.8.7
 
+3. **If there are no default constructors/no-arg constructors in base class (i.e a parametrized constructor is present in Base), you must init Base class in derived class constructor** -
 
+```java
+class Base {
+    int m_id;
+    Base(int id) {
+        m_id = id;
+    }
+}
+
+class Derived extends Base {
+    String m_str;
+    Derived(String str) { // COMPILER Error! - There is no default constructor available in 'Base', To fix: use super(1) to call parameterized Base constructor
+        m_str = str;
+    }
+}
+```
 
 ## Abstract classes
 

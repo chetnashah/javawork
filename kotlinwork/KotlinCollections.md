@@ -97,6 +97,22 @@ fun sortPeople(names: Array<String>, heights: IntArray): Unit {
 }
 ```
 
+## Sort a collection in place using a comparator via `sortWith`
+
+```kt
+val list = listOf(7,3,5,9,1,3)
+list.sortedWith(Comparator<Int>{ a, b ->
+    when {
+        a > b -> 1
+        a < b -> -1
+        else -> 0
+    }
+})
+```
+
+**Note** - `sortWith` is a **mutable** operation, i.e. it modifies the collection in place.
+`sortedWith` is the immutable version of `sortWith` which returns a new collection.
+
 ## Counting down
 
 ```kt
