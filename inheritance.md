@@ -9,7 +9,9 @@ https://stackoverflow.com/a/527069/5130114
 
 2. **If any constructor does not explicitly call a super or this constructor as its first statement, a call to super() is automatically added.** - https://docs.oracle.com/javase/specs/jls/se7/html/jls-8.html#jls-8.8.7
 
-3. **If there are no default constructors/no-arg constructors in base class (i.e a parametrized constructor is present in Base), you must init Base class in derived class constructor** -
+It means - If a constructor body does not begin with an explicit constructor invocation and the constructor being declared is not part of the primordial class Object, then the constructor body implicitly begins with a superclass constructor invocation "super();", an invocation of the constructor of its direct superclass that takes no arguments.
+
+3. **If there are no default constructors/no-arg constructors in base class (i.e a parametrized constructor is present in Base), you must construct Base class in derived class constructor via super(params)** -
 
 ```java
 class Base {
