@@ -1,4 +1,41 @@
+## Working with 2D arrays
 
+Create 2D arrays, with `val array2D = Array(rows) { IntArray(cols) }`
+
+```kt
+fun main() {
+    // Declare a 2D array
+    val rows = 3
+    val cols = 4
+    val array2D = Array(rows) { IntArray(cols) }
+
+    // Initialize values in the 2D array
+    array2D[0][0] = 1
+    array2D[0][1] = 2
+    array2D[1][2] = 3
+    // ...
+
+    // Accessing values in the 2D array
+    val value = array2D[1][2]
+    println("Value at (1, 2) is $value")
+
+    // Iterating over the 2D array
+    for (row in array2D) {
+        for (element in row) {
+            print("$element ")
+        }
+        println()
+    }
+
+    // Modifying values in the 2D array
+    array2D[2][3] = 5
+
+    // Getting the dimensions of the 2D array
+    val numRows = array2D.size
+    val numCols = array2D[0].size
+    println("Number of rows: $numRows, Number of columns: $numCols")
+}
+```
 
 ## Collection interface
 
@@ -9,6 +46,7 @@ interface Collection {
     fun contains()
 }
 ```
+
 These interfaces are for compile time/static type use checking, it may be pointing to a mutable collection underneath.
 
 ### Mutable collection interface
@@ -20,7 +58,6 @@ interface MutableCollection: Collection {
     fun clear()
 }
 ```
-
 
 ### Things to think about
 
@@ -34,12 +71,9 @@ interface MutableCollection: Collection {
 
 Kotlin sees `java.util.ArrayList` and `java.util.HashSet` as instances of `MutbaleList` and `MutaleSet` respectively.
 
-
 ## Java Interop
 
 Java does not distinguish between read only and mutable collections. and it can modify readonly collections passed from Kotlin side.
-
-
 
 ## Sequence
 
@@ -59,10 +93,10 @@ A `Grouping` structure serves as an intermediate step in `group-and-fold` operat
 
 It is created by attaching `keySelector: (T) -> K` function to a source of elements. To get an instance of Grouping use one of **groupingBy extension functions**
 
-* Iterable.groupingBy
-* Sequence.groupingBy
-* Array.groupingBy
-* CharSequence.groupingBy
+- Iterable.groupingBy
+- Sequence.groupingBy
+- Array.groupingBy
+- CharSequence.groupingBy
 
 Extension functions: https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-grouping/#extension-functions
 
@@ -128,18 +162,16 @@ for (i in 100 toward 0) {
 var arr = IntArray(size) // construct with only size
 ```
 
-
 ## Creating 2d array in Kotlin
 
 ```kt
 var matrix: Array<IntArray> = Array(height) { IntArray(width) }
 
 // from an existing grid
-var ansArray = Array(grid.length) { IntArray(grid[0].length) } 
+var ansArray = Array(grid.length) { IntArray(grid[0].length) }
 ```
 
 ## IntArray has `.size` and not `.length`
-
 
 ## Ranges using `a..b` and complemented by `in` operator for containment checking
 
@@ -147,18 +179,21 @@ var ansArray = Array(grid.length) { IntArray(grid[0].length) }
 
 **Ranges are not iterable by defualt, iterable needs to be explicitly implemented on type separately for type to be used with for-in on a type with range** - https://kotlinlang.org/docs/ranges.html#progression
 
-`..` is an operator function with name `rangeTo(that)` which is **called on the start instance**, and given the value of `end`. 
+`..` is an operator function with name `rangeTo(that)` which is **called on the start instance**, and given the value of `end`.
 
-`Range<T>` requires `<T : Comparable>`, i.e. it needs parameters to be comparable. 
+`Range<T>` requires `<T : Comparable>`, i.e. it needs parameters to be comparable.
 
 `rangeTo()` is complemented by `in` or `!in` functions, to check containment, which invokes `.contains()` method on range object.
 
 **Note** - `Range` can be created from **any Comparable** via `C1..C2`, e.g. proof:
+
 ```kt
 public operator fun <T : Comparable<T>> T.rangeTo(that: T): ClosedRange<T> = ComparableRange(this, that)
 // rangeTo is invoked via `C1..C2`
 ```
+
 e.g. Making `MyDate` comparable will allow us to use `..` and `in` operator on `MyDate` automatically.
+
 ```kt
 data class MyDate(val year: Int, val month: Int, val dayOfMonth: Int) : Comparable<MyDate> {
     override fun compareTo(other: MyDate): Int {
@@ -179,12 +214,9 @@ operator fun <T : Comparable<T>> T.rangeTo(
 
 To iterate over a range, it needs to implement Progression interface
 
-
-
 ```
 open class IntProgression : Iterable<Int>
 ```
-
 
 ## Useful extensions
 
@@ -196,12 +228,9 @@ open class IntProgression : Iterable<Int>
 
 `set.toList()`
 
-
 ## Read only collection interface type isn't necessary immutable
 
 If you’re working with a variable that has a read-only interface type e.g. `List`, this can be just one of the many references to the same mutable collection `MutableList`.
-
-
 
 ## iterators can be defined as extension on a type
 
@@ -223,7 +252,6 @@ public inline fun <T> Iterable<T>.forEach(action: (T) -> Unit): Unit {
     for (element in this) action(element)
 }
 ```
-
 
 ## How to use stacks in Kotlin
 
