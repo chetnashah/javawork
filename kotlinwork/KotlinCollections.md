@@ -1,3 +1,106 @@
+
+## Working with arrays
+
+**Arrays in Kotlin are mutable by default, Lists in Kotlin are immutable by defaut**
+
+In Kotlin, you can work with arrays of integers using the `IntArray` class. Here are some basic examples to help you get started:
+
+### Creating an IntArray
+
+1. **Using the `IntArray` constructor:**
+   ```kotlin
+   val arr = IntArray(5) // creates an IntArray of size 5 initialized with zeros
+   ```
+
+2. **Using the `intArrayOf` function:**
+   ```kotlin
+   val arr = intArrayOf(1, 2, 3, 4, 5) // creates an IntArray with specified elements
+   ```
+
+3. **Using the `Array` constructor with a lambda:**
+   ```kotlin
+   val arr = IntArray(5) { it * 2 } // creates an IntArray of size 5 with elements [0, 2, 4, 6, 8]
+   ```
+
+### Accessing and Modifying Elements
+
+1. **Accessing elements:**
+   ```kotlin
+   val arr = intArrayOf(1, 2, 3, 4, 5)
+   println(arr[0]) // prints 1
+   println(arr[2]) // prints 3
+   ```
+
+2. **Modifying elements:**
+   ```kotlin
+   val arr = intArrayOf(1, 2, 3, 4, 5)
+   arr[2] = 10
+   println(arr[2]) // prints 10
+   ```
+
+### Iterating Over an IntArray
+
+1. **Using a for loop:**
+   ```kotlin
+   val arr = intArrayOf(1, 2, 3, 4, 5)
+   for (i in arr) {
+       println(i)
+   }
+   ```
+
+2. **Using the `forEach` function:**
+   ```kotlin
+   val arr = intArrayOf(1, 2, 3, 4, 5)
+   arr.forEach { println(it) }
+   ```
+
+### Common Operations
+
+1. **Finding the size of the array:**
+   ```kotlin
+   val arr = intArrayOf(1, 2, 3, 4, 5)
+   println(arr.size) // prints 5
+   ```
+
+2. **Filtering elements:**
+   ```kotlin
+   val arr = intArrayOf(1, 2, 3, 4, 5)
+   val filtered = arr.filter { it > 2 } // filter and other utility methods available over array as well
+   println(filtered) // prints [3, 4, 5]
+   ```
+
+3. **Mapping elements:**
+   ```kotlin
+   val arr = intArrayOf(1, 2, 3, 4, 5)
+   val mapped = arr.map { it * 2 }
+   println(mapped) // prints [2, 4, 6, 8, 10]
+   ```
+
+4. **Summing elements:**
+   ```kotlin
+   val arr = intArrayOf(1, 2, 3, 4, 5)
+   val sum = arr.sum()
+   println(sum) // prints 15
+   ```
+
+### Examples
+
+1. **Example: Sum of even numbers in an array:**
+   ```kotlin
+   val arr = intArrayOf(1, 2, 3, 4, 5, 6)
+   val sumOfEvens = arr.filter { it % 2 == 0 }.sum()
+   println(sumOfEvens) // prints 12
+   ```
+
+2. **Example: Reversing an array:**
+   ```kotlin
+   val arr = intArrayOf(1, 2, 3, 4, 5)
+   val reversed = arr.reversedArray()
+   println(reversed.joinToString()) // prints 5, 4, 3, 2, 1
+   ```
+
+These examples should give you a good starting point for working with `IntArray` in Kotlin. You can explore more functions and methods available for `IntArray` in the Kotlin standard library documentation.
+
 ## Working with 2D arrays
 
 Create 2D arrays, with `val array2D = Array(rows) { IntArray(cols) }`
@@ -172,6 +275,7 @@ var ansArray = Array(grid.length) { IntArray(grid[0].length) }
 ```
 
 ## IntArray has `.size` and not `.length`
+
 
 ## Ranges using `a..b` and complemented by `in` operator for containment checking
 
