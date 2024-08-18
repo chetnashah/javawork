@@ -367,3 +367,26 @@ val stack = ArrayDeque(listOf(1, 2, 3)) // stack: [1, 2, 3]
 stack.addLast(0)                        // stack: [1, 2, 3, 0]         (push)
 val value = stack.removeLast()          // value: 0, stack: [1, 2, 3]  (pop)
 ```
+
+### Tree set
+
+Usag is similar to that of Java, you can init it with a set
+```kt
+    fun nthUglyNumber(n: Int): Int {
+        if (n == 1) {
+            return 1;
+        }
+        // sorting ordering is necessary for correctness!
+        var lst = TreeSet(setOf(1L))
+        for (i in 1..n-1) {
+            // we poll n-1 ugly numbers
+            var el = lst.pollFirst()
+            // println("el = "+ el)
+            lst.add(el*2)
+            lst.add(el*3)
+            lst.add(el*5)
+        }
+        // nth ugly number
+        return lst.pollFirst().toInt()
+    }
+```
