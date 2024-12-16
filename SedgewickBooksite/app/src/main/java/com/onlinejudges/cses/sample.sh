@@ -1,0 +1,4 @@
+
+MYVAR="hello"
+pwd
+

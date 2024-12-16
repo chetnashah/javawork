@@ -22,7 +22,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e83217d-f47d-4bb9-ab81-ecc378fccd4e" name="Default Changelist" comment="" />
+    <list default="true" id="2e83217d-f47d-4bb9-ab81-ecc378fccd4e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/Solution208BTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/UnionFindTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../androidbasics/WorkManager/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../androidbasics/WorkManager/README.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,14 +65,20 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit3 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;jayshah123&quot;
+  }
+}</component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
       <filtered-out-file-type name="LOCAL_BRANCH" />
@@ -72,16 +87,27 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/chetnashah/javawork.git&quot;,
+    &quot;accountId&quot;: &quot;f481ea96-cca6-4c0c-99d6-422b0d1d5d1c&quot;
+  }
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.2.3\plugins\maven\lib\maven3" />
+        <option name="customMavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2020.2.3\plugins\maven\lib\maven3" />
+        <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="1lE2fxTCOeHbgT1ukT15cgtI86q" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -90,8 +116,20 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Application.PointLocationTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;Gradle.Build SedgewickBooksite.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SedgewickBooksite:app [:app:com.com.onlinejudges.leetcode.DungeonEscape.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SedgewickBooksite:app [:app:com.com.onlinejudges.leetcode.MaxFactorScore.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.SedgewickBooksite:app [:app:com.onlinejudges.cses.PointLocationTest.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Upgrade Gradle wrapper.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.3643678&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -105,16 +143,58 @@
       <recent name="com.course.basics" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.FenwickTreeOneBasedIndexingTest">
-    <configuration name="RabinKarp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.course.basics.RabinKarp" />
+  <component name="RunManager" selected="Application.DungeonEscape">
+    <configuration name="DungeonEscape" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.com.onlinejudges.leetcode.DungeonEscape" />
       <module name="sedgewickbooksite.app.main" />
+      <selectedOptions>
+        <option name="redirectInput" />
+      </selectedOptions>
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.course.basics.*" />
+          <option name="PATTERN" value="com.com.onlinejudges.leetcode.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MaxFactorScore" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.com.onlinejudges.leetcode.MaxFactorScore" />
+      <module name="sedgewickbooksite.app.main" />
+      <selectedOptions>
+        <option name="redirectInput" />
+      </selectedOptions>
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.com.onlinejudges.leetcode.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PointLocationTest" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.onlinejudges.cses.PointLocationTest" />
+      <module name="sedgewickbooksite.app.main" />
+      <option name="REDIRECT_INPUT" value="true" />
+      <option name="INPUT_FILE" value="$USER_HOME$/Downloads/test_input.txt" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.onlinejudges.cses.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <selectedOptions>
+        <option name="redirectInput" />
+      </selectedOptions>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -140,6 +220,7 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="FenwickTreeOneBasedIndexingTest.testSum" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -163,6 +244,7 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="FenwickTreeOneBasedIndexingTest.testUpdates" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -186,38 +268,24 @@
       <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="NumUtilsTest.testSeive" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":app:test" />
-            <option value="--tests" />
-            <option value="&quot;NumUtilsTest.testSeive&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
+    <list>
+      <item itemvalue="Application.PointLocationTest" />
+      <item itemvalue="Application.DungeonEscape" />
+      <item itemvalue="Application.MaxFactorScore" />
+      <item itemvalue="Gradle.FenwickTreeOneBasedIndexingTest" />
+      <item itemvalue="Gradle.FenwickTreeOneBasedIndexingTest.testSum" />
+      <item itemvalue="Gradle.FenwickTreeOneBasedIndexingTest.testUpdates" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.DungeonEscape" />
+        <item itemvalue="Application.MaxFactorScore" />
         <item itemvalue="Gradle.FenwickTreeOneBasedIndexingTest" />
         <item itemvalue="Gradle.FenwickTreeOneBasedIndexingTest.testUpdates" />
         <item itemvalue="Gradle.FenwickTreeOneBasedIndexingTest.testSum" />
-        <item itemvalue="Application.RabinKarp" />
-        <item itemvalue="Gradle.NumUtilsTest.testSeive" />
       </list>
     </recent_temporary>
   </component>
@@ -249,5 +317,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/sedgewickbooksite$PointLocationTest.ic" NAME="PointLocationTest Coverage Results" MODIFIED="1729692623376" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.onlinejudges.cses.*</FILTER>
+    </SUITE>
   </component>
 </project>

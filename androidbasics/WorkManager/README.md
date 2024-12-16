@@ -2,6 +2,22 @@
 
 https://www.youtube.com/watch?v=_SQM-10TB4k&list=PLWz5rJ2EKKc_J88-h0PhCO_aV0HIAs9Qk&index=2
 
+## Constraints
+1. guaranteed execution
+2. Deferrable
+3. Periodic execution
+4. Battery friendly
+   1. Long running tasks should be done in chunks because it exceeds background execution limits.
+
+## Use cases
+
+1. Syncing data with a server
+2. Performing database maintenance
+3. Sending logs or analytics
+4. Backing up user data
+5. Applying filters to images
+6. Uploading files
+
 ## Two main classes
 
 1. Worker (sub)class - This class contains the code that needs to be executed in the background.
