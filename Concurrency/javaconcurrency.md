@@ -10,13 +10,15 @@ https://www.youtube.com/watch?v=YzpAJ08c61s&list=PLZ9NgFYEMxp6IM0Cddzr_qjqfiGC2p
 
 A thread state. A thread can be in one of the following states:
 * `NEW` - A thread that has not yet started is in this state.
-* `RUNNABLE` - A thread executing in the Java virtual machine is in this state ( but it may be waiting for other resources from the operating system like file I/O). **Note** - this also contains `RUNNING` inside of it, there is no way to distinguish from `RUNNING` from `RUNNABLE` via `thread.getState()`.
-* `BLOCKED` - A thread that is blocked waiting for a monitor lock is in this state.
+* `RUNNABLE` - A thread executing in the Java virtual machine is in this state ( but it may be waiting for other resources from the operating system like file I/O). **Note** - this also contains `RUNNING` inside of it, there is no way to distinguish from `RUNNING` from `RUNNABLE` via `thread.getState()`. Note, when system calls like `read()` and `write()` happen in the kernel, the userspace/JVM is unaware and still considers the thread runnable.
+* `BLOCKED` - A thread that is blocked waiting for a monitor lock/mutexes is in this state.
 * `WAITING` -A thread that is waiting indefinitely for another thread to perform a particular action is in this state. A thread is in the waiting state due to calling one of the following methods:
 `Object.wait with no timeout`,`Thread.join with no timeout`,`LockSupport.park`.
 * `TIMED_WAITING` - A thread that is waiting for another thread to perform an action for up to a specified waiting time is in this state. (Think `Thread.Sleep`), sometimes also considered `SLEEPING`.  A thread is in the timed waiting state due to calling one of the following methods with a specified positive waiting time:
 `Thread.sleep`,`Object.wait with timeout`,`Thread.join with timeout`,`LockSupport.parkNanos`,`LockSupport.parkUntil`
 * `TERMINATED` - A thread that has exited is in this state.
+
+![java thread states](./images/javathreadstates.png)
 
 Linux States -  state (R is `running`, S is `sleeping`, D is `sleeping in an uninterruptible wait`, Z is `zombie`,T is `traced or stopped`)
 
